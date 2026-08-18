@@ -15,35 +15,9 @@ from bs4 import BeautifulSoup
 # ============================================================
 
 ARQUIVO_DADOS = "dados.json"
-
-PROCESSOS = [
-    "01.01.028101.030037/2026-43",
-    "01.01.028101.030087/2026-20",
-    "01.01.028101.030283/2026-03",
-    "01.01.028101.030287/2026-83",
-    "01.01.028101.030288/2026-28",
-    "01.01.028101.031074/2026-79",
-    "01.01.028101.031331/2026-72",
-    "01.01.028101.031373/2026-03",
-    "01.01.028101.031077/2026-02",
-    "01.01.028101.031217/2026-42",
-    "01.01.028101.031129/2026-40",
-    "01.01.028101.031393/2026-84",
-    "01.01.028101.031411/2026-28",
-    "01.01.028101.030117/2026-07",
-    "01.01.028101.030118/2026-43",
-    "01.01.028101.030125/2026-45",
-    "01.01.028101.030450/2026-08",
-    "01.01.028101.030453/2026-41",
-    "01.01.028101.030855/2026-46",
-    "01.01.028101.030858/2026-80",
-    "01.01.028101.030869/2026-60",
-    "01.01.013102.003068/2026-44",
-    "01.01.028101.000655/2026-69",
-]
+ARQUIVO_PROCESSOS = "processos.json"
 
 BASE_URL = "https://online.sefaz.am.gov.br/processo/"
-
 TIMEOUT = 30
 
 HEADERS = {
@@ -96,6 +70,69 @@ def url_processo(numero):
         numero,
         safe="/"
     )
+
+
+# ============================================================
+# processos.json
+# ============================================================
+
+def carregar_processos():
+
+    if not os.path.exists(
+        ARQUIVO_PROCESSOS
+    ):
+        raise FileNotFoundError(
+            "Arquivo processos.json não encontrado."
+        )
+
+    with open(
+        ARQUIVO_PROCESSOS,
+        "r",
+        encoding="utf-8"
+    ) as arquivo:
+        dados = json.load(arquivo)
+
+    if not isinstance(dados, dict):
+        raise ValueError(
+            "processos.json possui formato inválido."
+        )
+
+    lista = dados.get(
+        "processos",
+        []
+    )
+
+    if not isinstance(lista, list):
+        raise ValueError(
+            'O campo "processos" precisa ser uma lista.'
+        )
+
+    processos = []
+    vistos = set()
+
+    for numero in lista:
+
+        numero = texto_limpo(numero)
+
+        if not numero:
+            continue
+
+        if numero in vistos:
+            print(
+                "Aviso: processo duplicado ignorado:",
+                numero
+            )
+            continue
+
+        vistos.add(numero)
+        processos.append(numero)
+
+    if not processos:
+        raise ValueError(
+            "Nenhum processo cadastrado em processos.json."
+        )
+
+    return processos
 
 
 # ============================================================
@@ -185,9 +222,7 @@ def salvar_dados(dados):
 
 def baixar_pagina(numero):
 
-    url = url_processo(
-        numero
-    )
+    url = url_processo(numero)
 
     print(
         f"Consultando: {numero}"
@@ -362,8 +397,7 @@ def extrair_movimentacoes(soup):
 
         if (
             valores[0].lower() == "data"
-            and
-            valores[1].lower() == "setor"
+            and valores[1].lower() == "setor"
         ):
             continue
 
@@ -492,7 +526,10 @@ def assinatura_movimentacao(processo):
     ])
 
 
-def localizar_anterior(dados, numero):
+def localizar_anterior(
+    dados,
+    numero
+):
 
     for processo in dados.get(
         "processos",
@@ -500,19 +537,13 @@ def localizar_anterior(dados, numero):
     ):
 
         if (
-            processo.get(
-                "numero"
-            )
+            processo.get("numero")
             == numero
         ):
             return processo
 
     return None
 
-
-# ============================================================
-# CONSULTA ANTERIOR VÁLIDA
-# ============================================================
 
 def anterior_e_valido(anterior):
 
@@ -612,9 +643,7 @@ def alerta_ja_existe(
     for alerta in alertas:
 
         if (
-            alerta.get(
-                "numero"
-            )
+            alerta.get("numero")
             == numero
             and
             alerta.get(
@@ -652,23 +681,75 @@ def main():
         "=" * 60
     )
 
+
+    # --------------------------------------------------------
+    # CARREGA A LISTA DINÂMICA
+    # --------------------------------------------------------
+
+    try:
+
+        processos_monitorados = (
+            carregar_processos()
+        )
+
+    except Exception as erro:
+
+        print(
+            "ERRO ao carregar processos.json:",
+            erro
+        )
+
+        return 1
+
+
+    print(
+        "Processos cadastrados:",
+        len(
+            processos_monitorados
+        )
+    )
+
+
     dados_anteriores = carregar_dados()
 
     novos_processos = []
 
-    novos_alertas = list(
-        dados_anteriores.get(
+
+    # Mantém alertas somente dos processos
+    # que continuam cadastrados.
+
+    processos_ativos = set(
+        processos_monitorados
+    )
+
+    novos_alertas = [
+
+        alerta
+
+        for alerta
+        in dados_anteriores.get(
             "alertas",
             []
         )
-    )
+
+        if alerta.get(
+            "numero"
+        )
+        in processos_ativos
+
+    ]
+
 
     erros = 0
 
     novos_alertas_detectados = 0
 
 
-    for numero in PROCESSOS:
+    # --------------------------------------------------------
+    # CONSULTA TODOS OS PROCESSOS DO processos.json
+    # --------------------------------------------------------
+
+    for numero in processos_monitorados:
 
         anterior = localizar_anterior(
             dados_anteriores,
@@ -702,6 +783,7 @@ def main():
                 atual["setor"],
                 atual["evento"]
             )
+
 
             if anterior_e_valido(
                 anterior
@@ -849,10 +931,15 @@ def main():
                 })
 
 
-    novos_alertas = novos_alertas[:100]
+    # Limita histórico de alertas.
+
+    novos_alertas = (
+        novos_alertas[:100]
+    )
 
 
     saida = {
+
         "ultima_verificacao":
             agora_iso(),
 
@@ -916,6 +1003,7 @@ def main():
 
 
 if __name__ == "__main__":
+
     sys.exit(
         main()
     )
