@@ -1,3 +1,4 @@
+// Monitor SEFAZ-AM - Cloudflare Worker
 export default {
   async fetch(request, env) {
     const allowedOrigin = "https://rclo29.github.io";
