@@ -5,13 +5,10 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <meta
-    name="theme-color"
-    content="#0b63ce"
-  >
+  <meta name="theme-color" content="#0b63ce">
 
   <title>Monitor SEFAZ-AM</title>
 
@@ -30,19 +27,21 @@
       --vermelho: #c93434;
       --vermelho-claro: #fff0f0;
 
-      --amarelo: #b77900;
-      --amarelo-claro: #fff8df;
+      --amarelo: #f4b400;
+      --amarelo-claro: #fff8dc;
 
       --cinza: #667085;
-      --cinza-escuro: #344054;
+      --cinza-2: #98a2b3;
       --cinza-claro: #f4f6f8;
 
-      --borda: #e2e7ec;
       --texto: #17202a;
       --branco: #ffffff;
+      --borda: #e2e7ec;
 
       --sombra:
-        0 4px 18px rgba(0,0,0,.07);
+        0 4px 18px rgba(0, 0, 0, 0.07);
+
+      --menu-height: 82px;
     }
 
     * {
@@ -56,17 +55,33 @@
 
     body {
       margin: 0;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Roboto,
+        Helvetica,
         Arial,
         sans-serif;
 
-      background: #f5f7fa;
+      background:
+        linear-gradient(
+          180deg,
+          #eef5ff 0,
+          #f7f9fc 190px,
+          #f5f7fa 100%
+        );
+
       color: var(--texto);
+
+      min-height: 100vh;
+
+      padding-bottom:
+        calc(
+          var(--menu-height)
+          + env(safe-area-inset-bottom)
+          + 20px
+        );
     }
 
     button,
@@ -81,1305 +96,940 @@
 
     .app {
       width: 100%;
-      max-width: 900px;
-      min-height: 100vh;
-
+      max-width: 760px;
       margin: 0 auto;
-
-      padding-bottom:
-        calc(
-          94px +
-          env(safe-area-inset-bottom)
-        );
     }
 
-
-    /* =====================================================
+    /* =========================================================
        CABEÇALHO
-    ===================================================== */
+       ========================================================= */
 
     .header {
+      padding:
+        calc(18px + env(safe-area-inset-top))
+        18px
+        22px;
+
       background:
         linear-gradient(
           135deg,
-          #0864ce,
-          #074d9f
+          #075dbf,
+          #0b73de
         );
 
-      color: white;
+      color: #fff;
 
-      padding:
-        calc(
-          18px +
-          env(safe-area-inset-top)
-        )
-        18px
-        25px;
+      border-radius:
+        0 0 26px 26px;
+
+      box-shadow:
+        0 8px 24px rgba(11, 99, 206, 0.20);
     }
 
     .header-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      gap: 12px;
+      gap: 14px;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-
-      gap: 11px;
+      min-width: 0;
     }
 
-    .logo {
-      width: 45px;
-      height: 45px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      flex: 0 0 auto;
-
-      border-radius: 13px;
-
-      background:
-        rgba(255,255,255,.16);
-
-      border:
-        1px solid
-        rgba(255,255,255,.20);
-
-      font-size: 23px;
+    .brand-small {
+      font-size: 13px;
+      opacity: .85;
+      margin-bottom: 4px;
     }
 
-    .brand h1 {
+    .brand-title {
       margin: 0;
-
-      font-size: 20px;
-      line-height: 1.15;
+      font-size: 25px;
+      line-height: 1.1;
+      font-weight: 800;
     }
 
-    .brand small {
-      display: block;
-
-      margin-top: 3px;
-
-      font-size: 12px;
-
-      opacity: .82;
-    }
-
-    .status-online {
-      display: flex;
-      align-items: center;
-
-      gap: 7px;
-
-      padding:
-        7px 10px;
-
-      border-radius: 999px;
+    .status-pill {
+      flex: 0 0 auto;
 
       background:
         rgba(255,255,255,.15);
 
+      border:
+        1px solid rgba(255,255,255,.20);
+
+      border-radius: 999px;
+
+      padding: 8px 11px;
+
       font-size: 12px;
+      font-weight: 700;
 
-      white-space: nowrap;
+      backdrop-filter: blur(8px);
     }
 
-    .bolinha {
-      width: 8px;
-      height: 8px;
+    .header-info {
+      margin-top: 17px;
 
-      border-radius: 50%;
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
 
-      background: #4ee17b;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(78,225,123,.15);
+      gap: 10px;
     }
 
-    .schedule {
-      margin-top: 20px;
-
-      padding: 13px 14px;
-
-      border-radius: 15px;
-
+    .header-info-card {
       background:
         rgba(255,255,255,.12);
 
       border:
-        1px solid
-        rgba(255,255,255,.15);
-    }
-
-    .schedule-title {
-      margin-bottom: 6px;
-
-      font-size: 12px;
-
-      opacity: .8;
-    }
-
-    .schedule-next {
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-
-    /* =====================================================
-       CONTEÚDO
-    ===================================================== */
-
-    .content {
-      padding: 16px;
-    }
-
-    .section-title {
-      margin:
-        6px 0
-        12px;
-
-      font-size: 16px;
-      font-weight: 800;
-
-      color: var(--cinza-escuro);
-    }
-
-    .section-subtitle {
-      margin:
-        -5px 0
-        12px;
-
-      color: var(--cinza);
-
-      font-size: 12px;
-      line-height: 1.4;
-    }
-
-    .card {
-      margin-bottom: 12px;
-
-      overflow: hidden;
-
-      background: white;
-
-      border:
-        1px solid
-        var(--borda);
-
-      border-radius: 17px;
-
-      box-shadow:
-        var(--sombra);
-    }
-
-    .card-body {
-      padding: 16px;
-    }
-
-
-    /* =====================================================
-       INDICADORES
-    ===================================================== */
-
-    .summary {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 9px;
-
-      margin-top: -10px;
-      margin-bottom: 17px;
-    }
-
-    .summary-card {
-      padding:
-        14px 7px;
-
-      text-align: center;
-
-      background: white;
-
-      border:
-        1px solid
-        var(--borda);
+        1px solid rgba(255,255,255,.15);
 
       border-radius: 15px;
 
+      padding: 11px 12px;
+    }
+
+    .header-info-label {
+      display: block;
+      font-size: 11px;
+      opacity: .78;
+      margin-bottom: 3px;
+    }
+
+    .header-info-value {
+      display: block;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* =========================================================
+       CONTEÚDO
+       ========================================================= */
+
+    main {
+      padding:
+        18px 15px
+        0;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+      animation: fade .18s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .3;
+        transform: translateY(3px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 12px;
+
+      margin:
+        3px 3px
+        13px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .section-sub {
+      color: var(--cinza);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    /* =========================================================
+       CARDS RESUMO
+       ========================================================= */
+
+    .metrics {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 11px;
+
+      margin-bottom: 16px;
+    }
+
+    .metric {
+      background: var(--branco);
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 18px;
+
+      padding: 15px;
+
       box-shadow:
-        var(--sombra);
+        0 2px 9px rgba(0,0,0,.035);
     }
 
-    .summary-number {
-      font-size: 22px;
+    .metric-icon {
+      font-size: 21px;
+      margin-bottom: 9px;
+    }
+
+    .metric-number {
+      font-size: 28px;
       font-weight: 800;
-
-      color: var(--azul);
+      line-height: 1;
     }
 
-    .summary-label {
-      margin-top: 4px;
+    .metric-label {
+      margin-top: 5px;
 
-      font-size: 10px;
-
+      font-size: 12px;
       color: var(--cinza);
     }
 
-    .numero-verde {
-      color: var(--verde);
+    /* =========================================================
+       BOTÃO ATUALIZAR
+       ========================================================= */
+
+    .update-area {
+      background: var(--branco);
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 20px;
+
+      padding: 14px;
+
+      box-shadow: var(--sombra);
+
+      margin-bottom: 17px;
     }
 
-    .numero-laranja {
-      color: var(--laranja);
-    }
+    .update-button {
+      width: 100%;
 
-    .numero-vermelho {
-      color: var(--vermelho);
-    }
+      border: 0;
 
+      border-radius: 15px;
 
-    /* =====================================================
-       VISÃO GERAL
-    ===================================================== */
+      background:
+        linear-gradient(
+          135deg,
+          var(--azul),
+          #137be3
+        );
 
-    .status-monitor {
-      display: flex;
-      align-items: flex-start;
+      color: #fff;
 
-      gap: 11px;
-    }
+      padding: 15px 16px;
 
-    .status-icon {
-      width: 42px;
-      height: 42px;
+      font-size: 15px;
+      font-weight: 800;
 
-      flex: 0 0 auto;
+      min-height: 52px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      gap: 8px;
+
+      box-shadow:
+        0 5px 14px
+        rgba(11,99,206,.22);
+
+      transition:
+        transform .12s ease,
+        opacity .12s ease;
+    }
+
+    .update-button:active {
+      transform: scale(.985);
+    }
+
+    .update-button:disabled {
+      opacity: .65;
+      cursor: default;
+    }
+
+    .update-message {
+      display: none;
+
+      margin-top: 11px;
+
       border-radius: 12px;
 
+      padding: 10px 12px;
+
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .update-message.show {
+      display: block;
+    }
+
+    .update-message.info {
+      color: #084f9f;
+      background: var(--azul-claro);
+    }
+
+    .update-message.success {
+      color: #116b34;
+      background: var(--verde-claro);
+    }
+
+    .update-message.error {
+      color: #a52d2d;
+      background: var(--vermelho-claro);
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+
+      border:
+        2px solid rgba(255,255,255,.45);
+
+      border-top-color:
+        #fff;
+
+      border-radius: 50%;
+
+      animation:
+        spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================================================
+       CARTÃO DE PROCESSO
+       ========================================================= */
+
+    .process-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .process-card {
+      position: relative;
+
+      background: var(--branco);
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 2px 9px rgba(0,0,0,.035);
+    }
+
+    .process-card.priority {
+      border-color:
+        rgba(244,180,0,.6);
+
+      box-shadow:
+        0 5px 18px
+        rgba(244,180,0,.14);
+    }
+
+    .priority-bar {
+      display: none;
+
       background:
-        var(--verde-claro);
+        linear-gradient(
+          90deg,
+          #fff5bc,
+          #fffaf0
+        );
 
-      font-size: 20px;
+      color: #8b6400;
+
+      padding: 7px 14px;
+
+      font-size: 11px;
+      font-weight: 800;
     }
 
-    .status-monitor strong {
+    .process-card.priority
+    .priority-bar {
       display: block;
-
-      margin-bottom: 4px;
-
-      font-size: 14px;
     }
 
-    .status-monitor span {
-      display: block;
+    .process-main {
+      padding: 14px;
+    }
+
+    .process-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .process-top-content {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .process-number {
+      font-size: 13px;
+      font-weight: 800;
+
+      word-break: break-word;
+
+      line-height: 1.35;
+    }
+
+    .process-subject {
+      margin-top: 5px;
 
       color: var(--cinza);
 
       font-size: 12px;
-      line-height: 1.45;
+
+      line-height: 1.35;
     }
 
-    .linha-info {
-      margin-top: 14px;
+    .star-button {
+      flex: 0 0 38px;
 
-      padding-top: 13px;
+      width: 38px;
+      height: 38px;
 
-      border-top:
-        1px solid
-        #eef0f3;
-    }
-
-    .label {
-      display: block;
-
-      margin-bottom: 4px;
-
-      color: var(--cinza);
-
-      font-size: 11px;
-    }
-
-    .valor {
-      font-size: 13px;
-      font-weight: 600;
-
-      line-height: 1.45;
-    }
-
-
-    /* =====================================================
-       DESTAQUES
-    ===================================================== */
-
-    .destaque-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 10px;
-    }
-
-    .destaque {
-      padding: 14px;
-
-      border-radius: 14px;
-
-      background: #f8fafc;
+      place-items: center;
 
       border:
-        1px solid
-        #edf0f3;
-    }
+        1px solid var(--borda);
 
-    .destaque-numero {
+      border-radius: 12px;
+
+      background: #fff;
+
       font-size: 20px;
-      font-weight: 800;
-
-      color: var(--azul);
     }
 
-    .destaque-label {
-      margin-top: 4px;
-
-      color: var(--cinza);
-
-      font-size: 11px;
-    }
-
-
-    /* =====================================================
-       PROCESSO PRIORITÁRIO
-    ===================================================== */
-
-    .prioritario-card {
-      border:
-        1px solid
-        #e6c35d;
-
-      box-shadow:
-        0 5px 22px
-        rgba(183,121,0,.12);
-    }
-
-    .prioritario-faixa {
-      display: flex;
-      align-items: center;
-
-      gap: 6px;
-
-      padding:
-        8px 15px;
-
+    .star-button.active {
       background:
         var(--amarelo-claro);
-
-      color:
-        var(--amarelo);
-
-      font-size: 11px;
-      font-weight: 800;
-
-      border-bottom:
-        1px solid
-        #f1dda4;
-    }
-
-    .btn-prioridade {
-      background:
-        var(--amarelo-claro);
-
-      color:
-        var(--amarelo);
-
-      border:
-        1px solid
-        #f0d994;
-    }
-
-    .btn-prioridade.ativo {
-      background:
-        #ffe9a4;
-
-      color:
-        #8c5d00;
 
       border-color:
-        #e3bf54;
+        #f1d475;
     }
 
-
-    /* =====================================================
-       RESUMO EXECUTIVO
-    ===================================================== */
-
-    .resumo-kpis {
+    .process-grid {
       display: grid;
 
       grid-template-columns:
-        repeat(4, 1fr);
+        1fr 1fr;
 
-      gap: 8px;
+      gap: 9px;
 
-      margin-bottom: 14px;
+      margin-top: 13px;
     }
 
-    .resumo-kpi {
-      padding: 12px 7px;
-
-      text-align: center;
-
-      border-radius: 13px;
-
-      background: #f8fafc;
-
-      border:
-        1px solid
-        #edf0f3;
-    }
-
-    .resumo-kpi strong {
-      display: block;
-
-      margin-bottom: 3px;
-
-      color: var(--azul);
-
-      font-size: 19px;
-    }
-
-    .resumo-kpi span {
-      color: var(--cinza);
-
-      font-size: 10px;
-    }
-
-    .grupo-resumo {
-      margin-bottom: 18px;
-    }
-
-    .grupo-titulo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 10px;
-
-      margin-bottom: 9px;
-
-      font-size: 13px;
-      font-weight: 800;
-
-      color:
-        var(--cinza-escuro);
-    }
-
-    .grupo-contagem {
-      padding:
-        4px 8px;
-
-      border-radius:
-        999px;
+    .process-info {
+      padding: 9px 10px;
 
       background:
         var(--cinza-claro);
 
-      color:
-        var(--cinza);
+      border-radius: 11px;
 
-      font-size: 10px;
-    }
-
-    .mini-processo {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      gap: 10px;
-
-      padding:
-        11px 0;
-
-      border-bottom:
-        1px solid
-        #edf0f3;
-    }
-
-    .mini-processo:last-child {
-      border-bottom: 0;
-    }
-
-    .mini-processo-main {
       min-width: 0;
-
-      flex: 1;
     }
 
-    .mini-numero {
-      margin-bottom: 4px;
-
-      font-size: 12px;
-      font-weight: 800;
-
-      word-break: break-word;
+    .process-info.wide {
+      grid-column: 1 / -1;
     }
 
-    .mini-evento {
-      color: var(--cinza);
-
-      font-size: 11px;
-      line-height: 1.4;
-    }
-
-    .mini-data {
-      flex: 0 0 auto;
-
-      color: var(--cinza);
+    .process-info-label {
+      display: block;
 
       font-size: 10px;
 
-      white-space: nowrap;
+      text-transform: uppercase;
+
+      letter-spacing: .3px;
+
+      color: var(--cinza);
+
+      margin-bottom: 3px;
     }
 
-
-    /* =====================================================
-       QUADRO GERAL
-    ===================================================== */
-
-    .quadro-wrap {
-      width: 100%;
-
-      overflow-x: auto;
-
-      -webkit-overflow-scrolling:
-        touch;
-    }
-
-    .quadro {
-      width: 100%;
-      min-width: 790px;
-
-      border-collapse: collapse;
-
+    .process-info-value {
       font-size: 12px;
-    }
 
-    .quadro th {
-      padding:
-        11px 10px;
-
-      text-align: left;
-
-      background: #f2f5f9;
-
-      color:
-        var(--cinza-escuro);
-
-      border-bottom:
-        1px solid
-        var(--borda);
-
-      white-space: nowrap;
-    }
-
-    .quadro td {
-      padding:
-        11px 10px;
-
-      vertical-align: top;
-
-      border-bottom:
-        1px solid
-        #edf0f3;
-
-      line-height: 1.4;
-    }
-
-    .quadro tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .linha-prioritaria {
-      background:
-        #fffdf5;
-    }
-
-    .quadro-numero {
       font-weight: 700;
 
-      white-space: nowrap;
-    }
-
-    .quadro-evento {
-      max-width: 280px;
-    }
-
-    .resumo-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 10px;
-
-      margin-bottom: 12px;
-    }
-
-    .resumo-toolbar span {
-      color: var(--cinza);
-
-      font-size: 12px;
-    }
-
-
-    /* =====================================================
-       PROCESSOS
-    ===================================================== */
-
-    .processo-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      gap: 10px;
-    }
-
-    .processo-numero {
-      font-size: 14px;
-      font-weight: 800;
-
-      line-height: 1.4;
+      line-height: 1.35;
 
       word-break: break-word;
     }
 
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 5px;
-
-      margin-top: 7px;
-    }
-
-    .badge {
+    .status {
       display: inline-flex;
       align-items: center;
 
-      padding:
-        5px 9px;
+      gap: 5px;
 
-      border-radius:
-        999px;
+      border-radius: 999px;
+
+      padding: 5px 8px;
 
       font-size: 11px;
-      font-weight: 700;
-
-      white-space: nowrap;
+      font-weight: 800;
     }
 
-    .badge-aberto {
-      color: var(--verde);
-
+    .status.open {
       background:
         var(--verde-claro);
-    }
 
-    .badge-erro {
-      color: var(--vermelho);
-
-      background:
-        var(--vermelho-claro);
-    }
-
-    .badge-alerta {
-      color: var(--laranja);
-
-      background:
-        var(--laranja-claro);
-    }
-
-    .badge-prioritario {
       color:
-        var(--amarelo);
-
-      background:
-        var(--amarelo-claro);
+        var(--verde);
     }
 
-    .badge-outro {
-      color: var(--azul);
-
-      background:
-        var(--azul-claro);
-    }
-
-    .info {
-      margin-top: 13px;
-
-      padding-top: 12px;
-
-      border-top:
-        1px solid
-        #eef0f3;
-    }
-
-    .movimentacao {
-      margin-top: 13px;
-
-      padding: 12px;
-
-      border-radius: 12px;
-
-      background: #f7faff;
-
-      border:
-        1px solid
-        #e4efff;
-    }
-
-    .movimentacao.alerta {
-      background:
-        var(--laranja-claro);
-
-      border-color:
-        #f4d49f;
-    }
-
-    .mov-data {
-      margin-bottom: 5px;
-
-      color: var(--cinza);
-
-      font-size: 11px;
-    }
-
-    .mov-texto {
-      font-size: 12px;
-      font-weight: 700;
-
-      line-height: 1.45;
-    }
-
-    .erro-consulta {
-      margin-top: 12px;
-
-      padding: 11px;
-
-      border-radius: 11px;
-
+    .status.error {
       background:
         var(--vermelho-claro);
 
       color:
         var(--vermelho);
-
-      font-size: 11px;
-
-      line-height: 1.4;
     }
 
+    .status.waiting {
+      background:
+        var(--cinza-claro);
 
-    /* =====================================================
-       BUSCA / FILTROS
-    ===================================================== */
-
-    .toolbar {
-      margin-bottom: 13px;
+      color:
+        var(--cinza);
     }
+
+    .movement {
+      margin-top: 12px;
+
+      border-top:
+        1px solid var(--borda);
+
+      padding-top: 11px;
+    }
+
+    .movement-title {
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      color: var(--cinza);
+
+      font-weight: 700;
+
+      margin-bottom: 4px;
+    }
+
+    .movement-text {
+      font-size: 12px;
+
+      line-height: 1.45;
+
+      font-weight: 650;
+    }
+
+    .new-badge {
+      display: inline-block;
+
+      margin-left: 5px;
+
+      background:
+        var(--laranja-claro);
+
+      color:
+        var(--laranja);
+
+      border-radius: 999px;
+
+      padding:
+        3px 7px;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      vertical-align: middle;
+    }
+
+    /* =========================================================
+       RESUMO
+       ========================================================= */
+
+    .summary-card {
+      background: #fff;
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 18px;
+
+      padding: 15px;
+
+      margin-bottom: 12px;
+    }
+
+    .summary-card-title {
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding:
+        9px 0;
+
+      border-bottom:
+        1px solid #eef1f4;
+
+      font-size: 13px;
+    }
+
+    .summary-row:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-row-label {
+      color: var(--cinza);
+    }
+
+    .summary-row-value {
+      text-align: right;
+      font-weight: 750;
+    }
+
+    /* =========================================================
+       BUSCA
+       ========================================================= */
 
     .search-box {
-      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 9px;
 
-      margin-bottom: 9px;
+      background: #fff;
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 15px;
+
+      padding:
+        0 12px;
+
+      margin-bottom: 13px;
     }
 
     .search-box input {
       width: 100%;
-      height: 46px;
-
-      padding:
-        0 14px
-        0 42px;
-
-      border:
-        1px solid
-        #ccd3dc;
-
-      border-radius:
-        13px;
-
-      outline: none;
-
-      background: white;
-
-      font-size: 15px;
-    }
-
-    .search-box input:focus {
-      border-color:
-        var(--azul);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(11,99,206,.1);
-    }
-
-    .search-icon {
-      position: absolute;
-
-      left: 14px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      pointer-events: none;
-
-      color: var(--cinza);
-    }
-
-    .filter-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 8px;
-    }
-
-    .select {
-      width: 100%;
-      height: 43px;
-
-      padding:
-        0 10px;
-
-      border:
-        1px solid
-        #ccd3dc;
-
-      border-radius:
-        11px;
-
-      outline: none;
-
-      background: white;
-
-      color:
-        var(--cinza-escuro);
-
-      font-size: 12px;
-    }
-
-    .filter-check {
-      display: flex;
-      align-items: center;
-
-      gap: 8px;
-
-      margin-top: 9px;
-
-      padding:
-        10px 12px;
-
-      border-radius:
-        11px;
-
-      background: white;
-
-      border:
-        1px solid
-        var(--borda);
-
-      color:
-        var(--cinza-escuro);
-
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .filter-check input {
-      width: 18px;
-      height: 18px;
-    }
-
-    .resultado-filtro {
-      margin:
-        4px 0
-        12px;
-
-      color:
-        var(--cinza);
-
-      font-size: 11px;
-    }
-
-
-    /* =====================================================
-       BOTÕES
-    ===================================================== */
-
-    .acoes {
-      display: grid;
-
-      grid-template-columns:
-        1fr auto;
-
-      gap: 8px;
-
-      margin-top: 14px;
-    }
-
-    .btn {
-      min-height: 43px;
-
-      padding:
-        10px 13px;
 
       border: 0;
+      outline: none;
 
-      border-radius: 11px;
+      background: transparent;
 
-      font-size: 13px;
-      font-weight: 700;
-    }
+      padding:
+        13px 0;
 
-    .btn-primary {
-      background:
-        var(--azul);
-
-      color: white;
-    }
-
-    .btn-secondary {
-      background:
-        #eef2f6;
+      font-size: 14px;
 
       color:
-        #344054;
+        var(--texto);
     }
 
-    .btn-full {
-      width: 100%;
-    }
-
-    .btn:disabled {
-      opacity: .55;
-
-      cursor: not-allowed;
-    }
-
-
-    /* =====================================================
+    /* =========================================================
        ALERTAS
-    ===================================================== */
+       ========================================================= */
 
-    .alerta-item {
-      display: flex;
-      align-items: flex-start;
+    .alert-card {
+      background: #fff;
 
-      gap: 11px;
+      border:
+        1px solid var(--borda);
+
+      border-radius: 17px;
+
+      padding: 14px;
+
+      margin-bottom: 10px;
     }
 
-    .alerta-icon {
-      width: 40px;
-      height: 40px;
-
-      flex: 0 0 auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 11px;
-
-      background:
-        var(--laranja-claro);
+    .alert-card.new {
+      border-left:
+        4px solid var(--laranja);
     }
 
-    .alerta-texto {
-      min-width: 0;
+    .alert-card.error {
+      border-left:
+        4px solid var(--vermelho);
     }
 
-    .alerta-texto strong {
-      display: block;
-
-      margin-bottom: 5px;
-
+    .alert-title {
       font-size: 13px;
+      font-weight: 800;
     }
 
-    .alerta-processo {
-      margin-bottom: 6px;
-
-      font-size: 12px;
-      font-weight: 700;
-
-      word-break: break-word;
-    }
-
-    .alerta-texto span {
-      display: block;
+    .alert-text {
+      margin-top: 5px;
 
       color: var(--cinza);
 
       font-size: 12px;
-      line-height: 1.5;
+
+      line-height: 1.45;
     }
 
+    .empty-state {
+      background: #fff;
 
-    /* =====================================================
-       LOADING / EMPTY
-    ===================================================== */
+      border:
+        1px dashed #ccd4dc;
 
-    .empty {
+      border-radius: 18px;
+
       padding:
         35px 20px;
 
       text-align: center;
 
-      color: var(--cinza);
+      color:
+        var(--cinza);
     }
 
     .empty-icon {
-      margin-bottom: 10px;
-
-      font-size: 35px;
+      font-size: 34px;
+      margin-bottom: 8px;
     }
 
-    .loading {
-      padding:
-        30px 20px;
-
-      text-align: center;
-
-      color: var(--cinza);
-
-      font-size: 13px;
-    }
-
-    .spinner {
-      width: 30px;
-      height: 30px;
-
-      margin:
-        0 auto
-        12px;
-
-      border:
-        3px solid
-        #dfe7ef;
-
-      border-top-color:
-        var(--azul);
-
-      border-radius: 50%;
-
-      animation:
-        girar .8s linear infinite;
-    }
-
-    @keyframes girar {
-      to {
-        transform:
-          rotate(360deg);
-      }
-    }
-
-
-    /* =====================================================
+    /* =========================================================
        MENU INFERIOR
-    ===================================================== */
+       ========================================================= */
 
-    .nav {
+    .bottom-nav {
       position: fixed;
 
-      bottom: 0;
+      z-index: 1000;
+
       left: 50%;
+      bottom: 0;
 
       transform:
         translateX(-50%);
 
-      z-index: 20;
+      width:
+        min(760px, 100%);
 
-      width: 100%;
-      max-width: 900px;
+      min-height:
+        var(--menu-height);
+
+      padding:
+        8px 7px
+        calc(
+          8px
+          + env(safe-area-inset-bottom)
+        );
 
       display: grid;
 
       grid-template-columns:
         repeat(4, 1fr);
 
-      padding:
-        8px 2px
-        calc(
-          8px +
-          env(safe-area-inset-bottom)
-        );
-
       background:
-        rgba(255,255,255,.96);
-
-      backdrop-filter:
-        blur(15px);
-
-      -webkit-backdrop-filter:
-        blur(15px);
+        rgba(255,255,255,.94);
 
       border-top:
-        1px solid
-        var(--borda);
+        1px solid var(--borda);
+
+      box-shadow:
+        0 -6px 24px
+        rgba(0,0,0,.07);
+
+      backdrop-filter:
+        blur(18px);
     }
 
     .nav-item {
-      padding: 4px 2px;
-
       border: 0;
-
       background: transparent;
 
-      color: #88909a;
+      color:
+        #737b86;
 
-      font-size: 9px;
-      font-weight: 600;
+      border-radius: 14px;
+
+      padding:
+        7px 3px;
+
+      display: flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        center;
+
+      align-items:
+        center;
+
+      gap: 3px;
+
+      font-size: 10px;
+
+      font-weight: 700;
     }
 
     .nav-icon {
-      display: block;
+      font-size: 21px;
 
-      margin-bottom: 2px;
-
-      font-size: 20px;
+      line-height: 1;
     }
 
     .nav-item.active {
-      color: var(--azul);
+      color:
+        var(--azul);
+
+      background:
+        var(--azul-claro);
     }
 
-
-    /* =====================================================
+    /* =========================================================
        TOAST
-    ===================================================== */
+       ========================================================= */
 
     .toast {
-      visibility: hidden;
-      opacity: 0;
-
       position: fixed;
 
-      z-index: 200;
+      z-index: 2000;
 
       left: 50%;
 
       bottom:
         calc(
-          105px +
-          env(safe-area-inset-bottom)
+          var(--menu-height)
+          + env(safe-area-inset-bottom)
+          + 15px
         );
 
       transform:
-        translateX(-50%);
+        translate(-50%, 20px);
 
       width:
-        calc(100% - 35px);
-
-      max-width: 500px;
+        min(
+          calc(100% - 28px),
+          560px
+        );
 
       padding:
-        13px 15px;
-
-      border-radius: 13px;
+        12px 14px;
 
       background:
-        #202832;
+        #17202a;
 
-      color: white;
+      color:
+        #fff;
 
-      font-size: 13px;
+      border-radius:
+        13px;
 
-      line-height: 1.4;
+      font-size:
+        12px;
 
-      text-align: center;
+      text-align:
+        center;
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        all .22s ease;
 
       box-shadow:
-        0 7px 25px
-        rgba(0,0,0,.22);
-
-      transition: .2s;
+        var(--sombra);
     }
 
     .toast.show {
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
+
+      transform:
+        translate(-50%,0);
     }
 
-    .hidden {
-      display: none !important;
-    }
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
+    /* =========================================================
+       RESPONSIVO
+       ========================================================= */
 
     @media
-      (max-width: 550px) {
+    (min-width: 640px) {
 
-      .summary {
+      .metrics {
         grid-template-columns:
-          repeat(2, 1fr);
+          repeat(4,1fr);
       }
 
-      .resumo-kpis {
+      .process-list {
+        display: grid;
+
         grid-template-columns:
-          repeat(2, 1fr);
+          repeat(2, minmax(0,1fr));
+
+        align-items: start;
       }
 
-      .destaque-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .status-online span:last-child {
-        display: none;
-      }
-
-      .processo-numero {
-        font-size: 13px;
-      }
-
-      .acoes {
-        grid-template-columns:
-          1fr;
-      }
-
-      .btn-prioridade {
-        width: 100%;
-      }
     }
   </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-
-  <!-- CABEÇALHO -->
+  <!-- =======================================================
+       CABEÇALHO
+       ======================================================= -->
 
   <header class="header">
 
@@ -1387,50 +1037,55 @@
 
       <div class="brand">
 
-        <div class="logo">
-          🔎
+        <div class="brand-small">
+          Monitoramento processual
         </div>
 
-        <div>
-
-          <h1>
-            Monitor SEFAZ-AM
-          </h1>
-
-          <small>
-            Monitoramento automático
-          </small>
-
-        </div>
+        <h1 class="brand-title">
+          Monitor SEFAZ-AM
+        </h1>
 
       </div>
 
-
-      <div class="status-online">
-
-        <div class="bolinha">
-        </div>
-
-        <span>
-          Ativo
-        </span>
-
+      <div
+        class="status-pill"
+        id="systemStatus"
+      >
+        ● Online
       </div>
 
     </div>
 
+    <div class="header-info">
 
-    <div class="schedule">
+      <div class="header-info-card">
 
-      <div class="schedule-title">
-        Próxima consulta automática
+        <span class="header-info-label">
+          Processos cadastrados
+        </span>
+
+        <span
+          class="header-info-value"
+          id="headerTotal"
+        >
+          23
+        </span>
+
       </div>
 
-      <div
-        class="schedule-next"
-        id="proximaConsulta"
-      >
-        Calculando...
+      <div class="header-info-card">
+
+        <span class="header-info-label">
+          Última atualização
+        </span>
+
+        <span
+          class="header-info-value"
+          id="headerUpdated"
+        >
+          Carregando...
+        </span>
+
       </div>
 
     </div>
@@ -1438,493 +1093,115 @@
   </header>
 
 
+  <!-- =======================================================
+       CONTEÚDO
+       ======================================================= -->
 
-  <!-- CONTEÚDO -->
+  <main>
 
-  <main class="content">
-
-
-    <!-- INDICADORES PRINCIPAIS -->
-
-    <div class="summary">
-
-      <div class="summary-card">
-
-        <div
-          class="summary-number"
-          id="totalProcessos"
-        >
-          —
-        </div>
-
-        <div class="summary-label">
-          Processos
-        </div>
-
-      </div>
-
-
-      <div class="summary-card">
-
-        <div
-          class="summary-number numero-verde"
-          id="totalAbertos"
-        >
-          —
-        </div>
-
-        <div class="summary-label">
-          Abertos
-        </div>
-
-      </div>
-
-
-      <div class="summary-card">
-
-        <div
-          class="summary-number numero-laranja"
-          id="totalAlertas"
-        >
-          —
-        </div>
-
-        <div class="summary-label">
-          Alertas
-        </div>
-
-      </div>
-
-
-      <div class="summary-card">
-
-        <div
-          class="summary-number numero-vermelho"
-          id="totalErros"
-        >
-          —
-        </div>
-
-        <div class="summary-label">
-          Erros
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- =================================================
+    <!-- =====================================================
          VISÃO GERAL
-    ================================================== -->
-
-    <section id="view-geral">
-
-      <div class="section-title">
-        Visão geral
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-body">
-
-          <div class="status-monitor">
-
-            <div class="status-icon">
-              ⚙️
-            </div>
-
-            <div>
-
-              <strong>
-                Monitor automático ativo
-              </strong>
-
-              <span>
-                O GitHub consulta a SEFAZ-AM,
-                compara as movimentações e
-                atualiza este painel automaticamente.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="linha-info">
-
-            <span class="label">
-              Horários programados
-            </span>
-
-            <div class="valor">
-              08:00 • 11:00 • 14:00 • 17:00
-            </div>
-
-          </div>
-
-
-          <div class="linha-info">
-
-            <span class="label">
-              Dias de monitoramento
-            </span>
-
-            <div class="valor">
-              Segunda a sexta-feira
-            </div>
-
-          </div>
-
-
-          <div class="linha-info">
-
-            <span class="label">
-              Fuso horário
-            </span>
-
-            <div class="valor">
-              Manaus / Amazonas
-            </div>
-
-          </div>
-
-
-          <div class="linha-info">
-
-            <span class="label">
-              Última consulta à SEFAZ-AM
-            </span>
-
-            <div
-              class="valor"
-              id="ultimaConsulta"
-            >
-              Carregando...
-            </div>
-
-          </div>
-
-
-          <div class="linha-info">
-
-            <span class="label">
-              Resultado
-            </span>
-
-            <div
-              class="valor"
-              id="resultadoConsulta"
-            >
-              Carregando...
-            </div>
-
-          </div>
-
-
-          <button
-            class="btn btn-primary btn-full"
-            id="btnAtualizar"
-            style="margin-top:16px"
-            onclick="carregarDados(true)"
-          >
-            🔄 Atualizar painel
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="section-title">
-        Destaques
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-body">
-
-          <div class="destaque-grid">
-
-            <div class="destaque">
-
-              <div
-                class="destaque-numero"
-                id="destaqueHoje"
-              >
-                —
-              </div>
-
-              <div class="destaque-label">
-                Movimentados hoje
-              </div>
-
-            </div>
-
-
-            <div class="destaque">
-
-              <div
-                class="destaque-numero"
-                id="destaqueSemana"
-              >
-                —
-              </div>
-
-              <div class="destaque-label">
-                Últimos 7 dias
-              </div>
-
-            </div>
-
-
-            <div class="destaque">
-
-              <div
-                class="destaque-numero"
-                id="destaquePrioritarios"
-              >
-                —
-              </div>
-
-              <div class="destaque-label">
-                Prioritários
-              </div>
-
-            </div>
-
-
-            <div class="destaque">
-
-              <div
-                class="destaque-numero"
-                id="destaqueAlertas"
-              >
-                —
-              </div>
-
-              <div class="destaque-label">
-                Histórico de alertas
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="section-title"
-        id="tituloPrioritarios"
-      >
-        Processos prioritários
-      </div>
-
-      <div id="listaPrioritarios">
-      </div>
-
-
-      <div class="section-title">
-        Movimentações mais recentes
-      </div>
-
-      <div id="listaGeral">
-
-        <div class="card">
-
-          <div class="loading">
-
-            <div class="spinner">
-            </div>
-
-            Carregando dados...
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         RESUMO
-    ================================================== -->
+         ===================================================== -->
 
     <section
-      id="view-resumo"
-      class="hidden"
+      class="page active"
+      id="page-overview"
     >
 
       <div class="section-title">
-        Resumo executivo
-      </div>
 
-      <div class="section-subtitle">
-        Visão rápida da situação atual dos processos monitorados.
-      </div>
+        <div>
 
+          <h2>
+            Visão geral
+          </h2>
 
-      <div class="card">
-
-        <div class="card-body">
-
-          <div class="resumo-kpis">
-
-            <div class="resumo-kpi">
-
-              <strong id="resumoTotal">
-                —
-              </strong>
-
-              <span>
-                Monitorados
-              </span>
-
-            </div>
-
-
-            <div class="resumo-kpi">
-
-              <strong id="resumoHoje">
-                —
-              </strong>
-
-              <span>
-                Hoje
-              </span>
-
-            </div>
-
-
-            <div class="resumo-kpi">
-
-              <strong id="resumoSemana">
-                —
-              </strong>
-
-              <span>
-                7 dias
-              </span>
-
-            </div>
-
-
-            <div class="resumo-kpi">
-
-              <strong id="resumoPrioritarios">
-                —
-              </strong>
-
-              <span>
-                Prioritários
-              </span>
-
-            </div>
-
+          <div class="section-sub">
+            Quadro geral resumido dos processos
           </div>
 
+        </div>
+
+      </div>
+
+
+      <div class="metrics">
+
+        <div class="metric">
+
+          <div class="metric-icon">
+            📁
+          </div>
 
           <div
-            class="grupo-resumo"
-            id="grupoPrioritariosResumo"
+            class="metric-number"
+            id="metricTotal"
           >
-
-            <div class="grupo-titulo">
-
-              <span>
-                ⭐ Processos prioritários
-              </span>
-
-              <span
-                class="grupo-contagem"
-                id="contPrioritarios"
-              >
-                0
-              </span>
-
-            </div>
-
-            <div id="resumoPrioritariosLista">
-            </div>
-
+            23
           </div>
 
-
-          <div class="grupo-resumo">
-
-            <div class="grupo-titulo">
-
-              <span>
-                🟢 Movimentados hoje
-              </span>
-
-              <span
-                class="grupo-contagem"
-                id="contHoje"
-              >
-                0
-              </span>
-
-            </div>
-
-            <div id="resumoHojeLista">
-            </div>
-
+          <div class="metric-label">
+            Processos
           </div>
 
+        </div>
 
-          <div class="grupo-resumo">
 
-            <div class="grupo-titulo">
+        <div class="metric">
 
-              <span>
-                🔵 Movimentados nos últimos 7 dias
-              </span>
-
-              <span
-                class="grupo-contagem"
-                id="contSemana"
-              >
-                0
-              </span>
-
-            </div>
-
-            <div id="resumoSemanaLista">
-            </div>
-
+          <div class="metric-icon">
+            🟢
           </div>
 
+          <div
+            class="metric-number"
+            id="metricOpen"
+          >
+            0
+          </div>
 
-          <div class="grupo-resumo">
+          <div class="metric-label">
+            Abertos
+          </div>
 
-            <div class="grupo-titulo">
+        </div>
 
-              <span>
-                ⚪ Sem movimentação nos últimos 7 dias
-              </span>
 
-              <span
-                class="grupo-contagem"
-                id="contAntigos"
-              >
-                0
-              </span>
+        <div class="metric">
 
-            </div>
+          <div class="metric-icon">
+            🔔
+          </div>
 
-            <div id="resumoAntigosLista">
-            </div>
+          <div
+            class="metric-number"
+            id="metricNew"
+          >
+            0
+          </div>
 
+          <div class="metric-label">
+            Novidades
+          </div>
+
+        </div>
+
+
+        <div class="metric">
+
+          <div class="metric-icon">
+            ⭐
+          </div>
+
+          <div
+            class="metric-number"
+            id="metricPriority"
+          >
+            0
+          </div>
+
+          <div class="metric-label">
+            Prioritários
           </div>
 
         </div>
@@ -1932,410 +1209,366 @@
       </div>
 
 
-      <div class="section-title">
-        Quadro geral
-      </div>
+      <!-- BOTÃO NOVO -->
 
+      <div class="update-area">
 
-      <div class="card">
-
-        <div class="card-body">
-
-          <div class="resumo-toolbar">
-
-            <span id="resumoQuantidade">
-              Carregando...
-            </span>
-
-            <button
-              class="btn btn-secondary"
-              onclick="carregarDados(true)"
-            >
-              ↻ Atualizar
-            </button>
-
-          </div>
-
-
-          <div class="quadro-wrap">
-
-            <table class="quadro">
-
-              <thead>
-
-                <tr>
-
-                  <th>
-                    Prioridade
-                  </th>
-
-                  <th>
-                    Processo
-                  </th>
-
-                  <th>
-                    Situação
-                  </th>
-
-                  <th>
-                    Data
-                  </th>
-
-                  <th>
-                    Setor
-                  </th>
-
-                  <th>
-                    Último evento
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody id="tabelaResumo">
-
-                <tr>
-
-                  <td colspan="6">
-
-                    <div class="loading">
-
-                      <div class="spinner">
-                      </div>
-
-                      Carregando quadro...
-
-                    </div>
-
-                  </td>
-
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         PROCESSOS
-    ================================================== -->
-
-    <section
-      id="view-processos"
-      class="hidden"
-    >
-
-      <div class="section-title">
-        Processos
-      </div>
-
-
-      <div class="toolbar">
-
-        <div class="search-box">
-
-          <span class="search-icon">
-            🔎
+        <button
+          class="update-button"
+          id="updateProcessesButton"
+          onclick="updateProcesses()"
+        >
+          <span id="updateButtonIcon">
+            🔄
           </span>
 
-          <input
-            type="search"
-            id="buscaProcessos"
-            placeholder="Pesquisar processo, interessado, setor..."
-            oninput="aplicarFiltros()"
-          >
+          <span id="updateButtonText">
+            Atualizar processos
+          </span>
+        </button>
+
+        <div
+          class="update-message"
+          id="updateMessage"
+        ></div>
+
+      </div>
+
+
+      <div class="section-title">
+
+        <div>
+
+          <h2 style="font-size:17px">
+            Processos em destaque
+          </h2>
+
+          <div class="section-sub">
+            Processos prioritários aparecem primeiro
+          </div>
 
         </div>
-
-
-        <div class="filter-grid">
-
-          <select
-            class="select"
-            id="filtroSituacao"
-            onchange="aplicarFiltros()"
-          >
-
-            <option value="todos">
-              Todas as situações
-            </option>
-
-            <option value="aberto">
-              Abertos
-            </option>
-
-            <option value="erro">
-              Com erro
-            </option>
-
-            <option value="outros">
-              Outras situações
-            </option>
-
-          </select>
-
-
-          <select
-            class="select"
-            id="ordenacao"
-            onchange="aplicarFiltros()"
-          >
-
-            <option value="recente">
-              Mais recentes
-            </option>
-
-            <option value="antigo">
-              Mais antigos
-            </option>
-
-            <option value="numero">
-              Número
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <label class="filter-check">
-
-          <input
-            type="checkbox"
-            id="somenteAlertas"
-            onchange="aplicarFiltros()"
-          >
-
-          Mostrar somente processos com alerta
-
-        </label>
-
-
-        <label class="filter-check">
-
-          <input
-            type="checkbox"
-            id="somentePrioritarios"
-            onchange="aplicarFiltros()"
-          >
-
-          Mostrar somente processos prioritários
-
-        </label>
 
       </div>
 
 
       <div
-        class="resultado-filtro"
-        id="resultadoFiltro"
-      >
-      </div>
-
-
-      <div id="listaProcessos">
-
-        <div class="card">
-
-          <div class="loading">
-
-            <div class="spinner">
-            </div>
-
-            Carregando processos...
-
-          </div>
-
-        </div>
-
-      </div>
+        class="process-list"
+        id="overviewProcesses"
+      ></div>
 
     </section>
 
 
-
-    <!-- =================================================
-         ALERTAS
-    ================================================== -->
+    <!-- =====================================================
+         RESUMO
+         ===================================================== -->
 
     <section
-      id="view-alertas"
-      class="hidden"
+      class="page"
+      id="page-summary"
     >
 
       <div class="section-title">
-        Alertas de movimentação
-      </div>
 
+        <div>
 
-      <div id="listaAlertas">
+          <h2>
+            Resumo
+          </h2>
 
-        <div class="card">
-
-          <div class="loading">
-
-            <div class="spinner">
-            </div>
-
-            Carregando alertas...
-
+          <div class="section-sub">
+            Situação consolidada do monitor
           </div>
 
         </div>
 
       </div>
+
+
+      <div
+        id="summaryContent"
+      ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROCESSOS
+         ===================================================== -->
+
+    <section
+      class="page"
+      id="page-processes"
+    >
+
+      <div class="section-title">
+
+        <div>
+
+          <h2>
+            Processos
+          </h2>
+
+          <div class="section-sub">
+            Todos os 23 processos monitorados
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="search-box">
+
+        <span>
+          🔎
+        </span>
+
+        <input
+          type="search"
+          id="searchProcess"
+          placeholder="Buscar processo, assunto ou interessado..."
+          oninput="renderProcesses()"
+        >
+
+      </div>
+
+
+      <div
+        class="process-list"
+        id="allProcesses"
+      ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ALERTAS
+         ===================================================== -->
+
+    <section
+      class="page"
+      id="page-alerts"
+    >
+
+      <div class="section-title">
+
+        <div>
+
+          <h2>
+            Alertas
+          </h2>
+
+          <div class="section-sub">
+            Novas movimentações e problemas encontrados
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="alertsContent"
+      ></div>
 
     </section>
 
   </main>
 
-
-
-  <!-- MENU INFERIOR -->
-
-  <nav class="nav">
-
-    <button
-      class="nav-item active"
-      id="nav-geral"
-      onclick="mudarTela('geral')"
-    >
-
-      <span class="nav-icon">
-        ⌂
-      </span>
-
-      Visão geral
-
-    </button>
-
-
-    <button
-      class="nav-item"
-      id="nav-resumo"
-      onclick="mudarTela('resumo')"
-    >
-
-      <span class="nav-icon">
-        ▦
-      </span>
-
-      Resumo
-
-    </button>
-
-
-    <button
-      class="nav-item"
-      id="nav-processos"
-      onclick="mudarTela('processos')"
-    >
-
-      <span class="nav-icon">
-        📄
-      </span>
-
-      Processos
-
-    </button>
-
-
-    <button
-      class="nav-item"
-      id="nav-alertas"
-      onclick="mudarTela('alertas')"
-    >
-
-      <span class="nav-icon">
-        🔔
-      </span>
-
-      Alertas
-
-    </button>
-
-  </nav>
-
 </div>
 
+
+<!-- =========================================================
+     MENU INFERIOR
+     ordem solicitada:
+     visão geral / resumo / processos / alertas
+     ========================================================= -->
+
+<nav class="bottom-nav">
+
+  <button
+    class="nav-item active"
+    data-page="overview"
+    onclick="openPage('overview',this)"
+  >
+
+    <span class="nav-icon">
+      ◫
+    </span>
+
+    <span>
+      Visão geral
+    </span>
+
+  </button>
+
+
+  <button
+    class="nav-item"
+    data-page="summary"
+    onclick="openPage('summary',this)"
+  >
+
+    <span class="nav-icon">
+      ▤
+    </span>
+
+    <span>
+      Resumo
+    </span>
+
+  </button>
+
+
+  <button
+    class="nav-item"
+    data-page="processes"
+    onclick="openPage('processes',this)"
+  >
+
+    <span class="nav-icon">
+      📁
+    </span>
+
+    <span>
+      Processos
+    </span>
+
+  </button>
+
+
+  <button
+    class="nav-item"
+    data-page="alerts"
+    onclick="openPage('alerts',this)"
+  >
+
+    <span class="nav-icon">
+      🔔
+    </span>
+
+    <span>
+      Alertas
+    </span>
+
+  </button>
+
+</nav>
 
 
 <div
   class="toast"
   id="toast"
->
-</div>
-
+></div>
 
 
 <script>
 
-  /*
-  ==========================================================
-  CONFIGURAÇÃO
-  ==========================================================
-  */
+  /* =========================================================
+     CONFIGURAÇÃO
+     ========================================================= */
 
-  const STORAGE_PRIORIDADES =
-    "monitorSefazPrioridadesV1";
+  const WORKER_URL =
+    "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
+
+  const DATA_URL =
+    "./dados.json";
+
+  const REFRESH_INTERVAL =
+    5 * 60 * 1000;
+
+  const UPDATE_POLL_INTERVAL =
+    5000;
+
+  const UPDATE_TIMEOUT =
+    120000;
 
 
-  let dadosMonitor = null;
+  /* =========================================================
+     23 PROCESSOS CADASTRADOS
+     ========================================================= */
 
-  let timerToast = null;
+  const PROCESS_NUMBERS = [
 
-  let prioridades =
-    carregarPrioridades();
+    "01.01.028101.030037/2026-43",
+
+    "01.01.028101.030087/2026-20",
+
+    "01.01.028101.030283/2026-03",
+
+    "01.01.028101.030287/2026-83",
+
+    "01.01.028101.030288/2026-28",
+
+    "01.01.028101.031074/2026-79",
+
+    "01.01.028101.031331/2026-72",
+
+    "01.01.028101.031373/2026-03",
+
+    "01.01.028101.031077/2026-02",
+
+    "01.01.028101.031217/2026-42",
+
+    "01.01.028101.031129/2026-40",
+
+    "01.01.028101.031393/2026-84",
+
+    "01.01.028101.031411/2026-28",
+
+    "01.01.028101.030117/2026-07",
+
+    "01.01.028101.030118/2026-43",
+
+    "01.01.028101.030125/2026-45",
+
+    "01.01.028101.030450/2026-08",
+
+    "01.01.028101.030453/2026-41",
+
+    "01.01.028101.030855/2026-46",
+
+    "01.01.028101.030858/2026-80",
+
+    "01.01.028101.030869/2026-60",
+
+    "01.01.013102.003068/2026-44",
+
+    "01.01.028101.000655/2026-69"
+
+  ];
 
 
+  /* =========================================================
+     ESTADO
+     ========================================================= */
 
-  /*
-  ==========================================================
-  PRIORIDADES
-  ==========================================================
-  */
+  let processes = [];
 
-  function carregarPrioridades() {
+  let rawData = null;
+
+  let currentFingerprint = "";
+
+  let isUpdatingProcesses = false;
+
+
+  /* =========================================================
+     PRIORIDADES
+     ========================================================= */
+
+  function getPriorities() {
 
     try {
 
-      const salvo =
+      return JSON.parse(
         localStorage.getItem(
-          STORAGE_PRIORIDADES
-        );
+          "sefazPriorities"
+        ) || "[]"
+      );
 
-
-      if (!salvo) {
-        return [];
-      }
-
-
-      const lista =
-        JSON.parse(
-          salvo
-        );
-
-
-      if (!Array.isArray(lista)) {
-        return [];
-      }
-
-
-      return lista;
-
-    }
-
-    catch {
+    } catch {
 
       return [];
 
@@ -2344,802 +1577,1151 @@
   }
 
 
-  function salvarPrioridades() {
+  function savePriorities(list) {
 
     localStorage.setItem(
-      STORAGE_PRIORIDADES,
-      JSON.stringify(
-        prioridades
-      )
+      "sefazPriorities",
+      JSON.stringify(list)
     );
 
   }
 
 
-  function ehPrioritario(
-    numero
-  ) {
+  function isPriority(numero) {
 
-    return prioridades.includes(
-      String(numero)
-    );
+    return getPriorities()
+      .includes(numero);
 
   }
 
 
-  function alternarPrioridade(
-    numero
-  ) {
+  function togglePriority(numero) {
 
-    numero =
-      String(numero);
-
+    let priorities =
+      getPriorities();
 
     if (
-      ehPrioritario(
-        numero
-      )
+      priorities.includes(numero)
     ) {
 
-      prioridades =
-        prioridades.filter(
+      priorities =
+        priorities.filter(
           item =>
             item !== numero
         );
 
-
-      mostrarToast(
+      showToast(
         "Processo removido dos prioritários."
       );
 
-    }
+    } else {
 
-    else {
+      priorities.push(numero);
 
-      prioridades.push(
-        numero
-      );
-
-
-      mostrarToast(
-        "⭐ Processo marcado como prioritário."
+      showToast(
+        "⭐ Processo destacado e movido para o topo."
       );
 
     }
 
+    savePriorities(priorities);
 
-    salvarPrioridades();
+    renderAll();
+
+  }
 
 
-    if (dadosMonitor) {
+  /* =========================================================
+     NORMALIZAÇÃO DOS DADOS
+     ========================================================= */
 
-      renderizarTudo();
+  function firstValue(
+    object,
+    keys,
+    fallback = ""
+  ) {
+
+    for (
+      const key of keys
+    ) {
+
+      if (
+        object &&
+        object[key] !== undefined &&
+        object[key] !== null &&
+        object[key] !== ""
+      ) {
+
+        return object[key];
+
+      }
+
+    }
+
+    return fallback;
+
+  }
+
+
+  function normalizeMovement(value) {
+
+    if (!value) {
+      return "";
+    }
+
+    if (
+      typeof value === "string"
+    ) {
+
+      return value;
+
+    }
+
+    if (
+      typeof value === "object"
+    ) {
+
+      const date =
+        firstValue(
+          value,
+          [
+            "data",
+            "date"
+          ],
+          ""
+        );
+
+      const sector =
+        firstValue(
+          value,
+          [
+            "setor",
+            "sector"
+          ],
+          ""
+        );
+
+      const event =
+        firstValue(
+          value,
+          [
+            "evento",
+            "event",
+            "descricao",
+            "description"
+          ],
+          ""
+        );
+
+      return [
+        date,
+        sector,
+        event
+      ]
+        .filter(Boolean)
+        .join(" • ");
+
+    }
+
+    return String(value);
+
+  }
+
+
+  function normalizeOne(
+    item,
+    fallbackNumber
+  ) {
+
+    const numero =
+      firstValue(
+        item,
+        [
+          "numero",
+          "processo",
+          "numero_processo",
+          "process_number",
+          "id"
+        ],
+        fallbackNumber
+      );
+
+
+    const situacao =
+      firstValue(
+        item,
+        [
+          "situacao",
+          "status",
+          "situação"
+        ],
+        "Aguardando dados"
+      );
+
+
+    const assunto =
+      firstValue(
+        item,
+        [
+          "assunto",
+          "subject"
+        ],
+        ""
+      );
+
+
+    const interessado =
+      firstValue(
+        item,
+        [
+          "interessado",
+          "interested",
+          "empresa"
+        ],
+        ""
+      );
+
+
+    const orgao =
+      firstValue(
+        item,
+        [
+          "orgao",
+          "órgão",
+          "entidade",
+          "orgao_entidade"
+        ],
+        ""
+      );
+
+
+    const movimentoRaw =
+      firstValue(
+        item,
+        [
+          "ultima_movimentacao",
+          "última_movimentação",
+          "ultimo_movimento",
+          "ultimaMovimentacao",
+          "movimentacao",
+          "movement"
+        ],
+        ""
+      );
+
+
+    const erro =
+      firstValue(
+        item,
+        [
+          "erro",
+          "error"
+        ],
+        ""
+      );
+
+
+    const newFlag =
+      Boolean(
+        firstValue(
+          item,
+          [
+            "nova_movimentacao",
+            "novaMovimentacao",
+            "novo",
+            "new_movement",
+            "alteracao",
+            "changed"
+          ],
+          false
+        )
+      );
+
+
+    const updated =
+      firstValue(
+        item,
+        [
+          "atualizado_em",
+          "ultima_atualizacao",
+          "updated_at",
+          "data_atualizacao"
+        ],
+        ""
+      );
+
+
+    return {
+
+      numero,
+
+      situacao,
+
+      assunto,
+
+      interessado,
+
+      orgao,
+
+      movimento:
+        normalizeMovement(
+          movimentoRaw
+        ),
+
+      erro,
+
+      novaMovimentacao:
+        newFlag,
+
+      atualizadoEm:
+        updated
+
+    };
+
+  }
+
+
+  function extractProcessArray(data) {
+
+    if (
+      Array.isArray(data)
+    ) {
+
+      return data;
+
+    }
+
+
+    const possibilities = [
+
+      data?.processos,
+
+      data?.dados,
+
+      data?.items,
+
+      data?.results,
+
+      data?.processes
+
+    ];
+
+
+    for (
+      const possibility
+      of possibilities
+    ) {
+
+      if (
+        Array.isArray(
+          possibility
+        )
+      ) {
+
+        return possibility;
+
+      }
+
+    }
+
+
+    if (
+      data &&
+      typeof data === "object"
+    ) {
+
+      const values =
+        Object.values(data);
+
+      if (
+        values.length &&
+        values.every(
+          item =>
+            item &&
+            typeof item === "object"
+        )
+      ) {
+
+        return values;
+
+      }
+
+    }
+
+
+    return [];
+
+  }
+
+
+  function normalizeData(data) {
+
+    const array =
+      extractProcessArray(data);
+
+
+    const map =
+      new Map();
+
+
+    array.forEach(item => {
+
+      const normalized =
+        normalizeOne(item, "");
+
+      if (
+        normalized.numero
+      ) {
+
+        map.set(
+          normalized.numero,
+          normalized
+        );
+
+      }
+
+    });
+
+
+    return PROCESS_NUMBERS
+      .map(numero => {
+
+        if (
+          map.has(numero)
+        ) {
+
+          return map.get(numero);
+
+        }
+
+        return normalizeOne(
+          {},
+          numero
+        );
+
+      });
+
+  }
+
+
+  /* =========================================================
+     CARREGAR dados.json
+     ========================================================= */
+
+  async function fetchData() {
+
+    const url =
+      `${DATA_URL}?t=${Date.now()}`;
+
+    const response =
+      await fetch(
+        url,
+        {
+          cache: "no-store"
+        }
+      );
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        `dados.json: HTTP ${response.status}`
+      );
+
+    }
+
+    return response.json();
+
+  }
+
+
+  async function loadData(
+    showError = true
+  ) {
+
+    try {
+
+      const data =
+        await fetchData();
+
+      rawData =
+        data;
+
+      currentFingerprint =
+        JSON.stringify(data);
+
+      processes =
+        normalizeData(data);
+
+      updateHeader(data);
+
+      renderAll();
+
+      document
+        .getElementById(
+          "systemStatus"
+        )
+        .textContent =
+          "● Online";
+
+      return data;
+
+    } catch (error) {
+
+      console.error(error);
+
+      if (
+        !processes.length
+      ) {
+
+        processes =
+          normalizeData({});
+
+        renderAll();
+
+      }
+
+      document
+        .getElementById(
+          "systemStatus"
+        )
+        .textContent =
+          "● Sem dados";
+
+      if (
+        showError
+      ) {
+
+        showToast(
+          "Não foi possível carregar dados.json."
+        );
+
+      }
+
+      throw error;
 
     }
 
   }
 
 
+  /* =========================================================
+     ÚLTIMA ATUALIZAÇÃO
+     ========================================================= */
 
-  /*
-  ==========================================================
-  CARREGAR dados.json
-  ==========================================================
-  */
+  function getUpdatedDate(data) {
 
-  async function carregarDados(
-    mostrarMensagem = false
-  ) {
+    if (!data) {
+      return "";
+    }
 
-    const botao =
-      document.getElementById(
-        "btnAtualizar"
+    const value =
+      firstValue(
+        data,
+        [
+          "atualizado_em",
+          "ultima_atualizacao",
+          "updated_at",
+          "gerado_em",
+          "data_atualizacao"
+        ],
+        ""
       );
+
+    if (value) {
+      return value;
+    }
+
+
+    const array =
+      extractProcessArray(data);
+
+
+    for (
+      const item of array
+    ) {
+
+      const itemDate =
+        firstValue(
+          item,
+          [
+            "atualizado_em",
+            "ultima_atualizacao",
+            "updated_at",
+            "data_atualizacao"
+          ],
+          ""
+        );
+
+      if (
+        itemDate
+      ) {
+
+        return itemDate;
+
+      }
+
+    }
+
+
+    return "";
+  }
+
+
+  function formatDate(value) {
+
+    if (!value) {
+
+      return "Dados carregados";
+
+    }
+
+    const date =
+      new Date(value);
+
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
+
+      return String(value);
+
+    }
+
+    return date
+      .toLocaleString(
+        "pt-BR",
+        {
+          dateStyle: "short",
+          timeStyle: "short"
+        }
+      );
+
+  }
+
+
+  function updateHeader(data) {
+
+    document
+      .getElementById(
+        "headerTotal"
+      )
+      .textContent =
+        PROCESS_NUMBERS.length;
+
+
+    document
+      .getElementById(
+        "headerUpdated"
+      )
+      .textContent =
+        formatDate(
+          getUpdatedDate(data)
+        );
+
+  }
+
+
+  /* =========================================================
+     NOVO BOTÃO:
+     ATUALIZAR PROCESSOS
+     ========================================================= */
+
+  async function updateProcesses() {
+
+    if (
+      isUpdatingProcesses
+    ) {
+
+      return;
+
+    }
+
+    isUpdatingProcesses =
+      true;
+
+
+    const button =
+      document.getElementById(
+        "updateProcessesButton"
+      );
+
+    const icon =
+      document.getElementById(
+        "updateButtonIcon"
+      );
+
+    const text =
+      document.getElementById(
+        "updateButtonText"
+      );
+
+
+    button.disabled =
+      true;
+
+
+    icon.innerHTML =
+      '<span class="spinner"></span>';
+
+
+    text.textContent =
+      "Iniciando atualização...";
+
+
+    setUpdateMessage(
+      "info",
+      "Solicitando uma nova consulta de todos os 23 processos à SEFAZ-AM..."
+    );
+
+
+    let beforeFingerprint =
+      currentFingerprint;
 
 
     try {
 
-      if (botao) {
+      try {
 
-        botao.disabled =
-          true;
+        const before =
+          await fetchData();
 
-        botao.textContent =
-          "⏳ Atualizando...";
+        beforeFingerprint =
+          JSON.stringify(before);
 
+      } catch {
+        /* segue mesmo se a leitura anterior falhar */
       }
 
 
-      const resposta =
+      const response =
         await fetch(
-          "dados.json?t="
-          +
-          Date.now(),
+          WORKER_URL,
           {
-            cache:
-              "no-store"
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                source:
+                  "monitor-panel",
+                requestedAt:
+                  new Date()
+                    .toISOString()
+              })
           }
         );
 
 
-      if (!resposta.ok) {
+      let result = {};
+
+      try {
+
+        result =
+          await response.json();
+
+      } catch {
+        result = {};
+      }
+
+
+      if (
+        !response.ok ||
+        !result.ok
+      ) {
 
         throw new Error(
-          "HTTP "
-          +
-          resposta.status
+          result.erro ||
+          result.mensagem ||
+          `HTTP ${response.status}`
         );
 
       }
 
 
-      dadosMonitor =
-        await resposta.json();
+      text.textContent =
+        "Consultando processos...";
 
 
-      limparPrioridadesInexistentes();
-
-
-      renderizarTudo();
-
-
-      if (mostrarMensagem) {
-
-        mostrarToast(
-          "Painel atualizado."
-        );
-
-      }
-
-    }
-
-    catch (erro) {
-
-      console.error(
-        erro
+      setUpdateMessage(
+        "info",
+        "✅ Consulta iniciada. O GitHub Actions está verificando os 23 processos. Aguarde aproximadamente 1 minuto."
       );
 
 
-      mostrarErroCarregamento();
+      const changed =
+        await waitForNewData(
+          beforeFingerprint
+        );
 
 
-      if (mostrarMensagem) {
+      if (
+        changed
+      ) {
 
-        mostrarToast(
-          "Não foi possível atualizar o painel."
+        await loadData(false);
+
+        text.textContent =
+          "Processos atualizados";
+
+
+        icon.textContent =
+          "✅";
+
+
+        setUpdateMessage(
+          "success",
+          "Processos atualizados com sucesso. O painel já está exibindo os dados mais recentes."
+        );
+
+
+        showToast(
+          "✅ Atualização concluída."
+        );
+
+      } else {
+
+        text.textContent =
+          "Atualização solicitada";
+
+
+        icon.textContent =
+          "✅";
+
+
+        setUpdateMessage(
+          "success",
+          "A consulta foi executada. A publicação dos novos dados ainda pode levar alguns instantes. O painel continuará verificando automaticamente."
+        );
+
+
+        setTimeout(
+          () =>
+            loadData(false)
+              .catch(() => {}),
+          30000
         );
 
       }
 
-    }
+    } catch (error) {
 
-    finally {
+      console.error(error);
 
-      if (botao) {
 
-        botao.disabled =
+      icon.textContent =
+        "⚠️";
+
+
+      text.textContent =
+        "Tentar novamente";
+
+
+      setUpdateMessage(
+        "error",
+        "Não foi possível iniciar a atualização: " +
+        error.message
+      );
+
+
+      showToast(
+        "Falha ao atualizar os processos."
+      );
+
+    } finally {
+
+      setTimeout(() => {
+
+        button.disabled =
           false;
 
-        botao.textContent =
-          "🔄 Atualizar painel";
+        if (
+          text.textContent !==
+          "Tentar novamente"
+        ) {
 
-      }
+          icon.textContent =
+            "🔄";
+
+          text.textContent =
+            "Atualizar processos";
+
+        }
+
+        isUpdatingProcesses =
+          false;
+
+      }, 4500);
 
     }
 
   }
 
 
-  function limparPrioridadesInexistentes() {
+  async function waitForNewData(
+    oldFingerprint
+  ) {
 
-    const numeros =
-      new Set(
-        (
-          dadosMonitor
-            ?.processos
-          ||
-          []
+    const start =
+      Date.now();
+
+
+    while (
+      Date.now() - start <
+      UPDATE_TIMEOUT
+    ) {
+
+      await sleep(
+        UPDATE_POLL_INTERVAL
+      );
+
+
+      try {
+
+        const newest =
+          await fetchData();
+
+
+        const fingerprint =
+          JSON.stringify(
+            newest
+          );
+
+
+        if (
+          fingerprint !==
+          oldFingerprint
+        ) {
+
+          rawData =
+            newest;
+
+          currentFingerprint =
+            fingerprint;
+
+          processes =
+            normalizeData(
+              newest
+            );
+
+          updateHeader(
+            newest
+          );
+
+          renderAll();
+
+          return true;
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Aguardando publicação...",
+          error
+        );
+
+      }
+
+    }
+
+
+    return false;
+
+  }
+
+
+  function sleep(ms) {
+
+    return new Promise(
+      resolve =>
+        setTimeout(
+          resolve,
+          ms
         )
-        .map(
-          processo =>
-            String(
-              processo.numero
+    );
+
+  }
+
+
+  function setUpdateMessage(
+    type,
+    message
+  ) {
+
+    const element =
+      document.getElementById(
+        "updateMessage"
+      );
+
+
+    element.className =
+      "update-message show " +
+      type;
+
+
+    element.textContent =
+      message;
+
+  }
+
+
+  /* =========================================================
+     ORDENAÇÃO
+     ========================================================= */
+
+  function sortedProcesses() {
+
+    return [
+      ...processes
+    ].sort(
+      (a,b) => {
+
+        const priorityA =
+          isPriority(
+            a.numero
+          )
+            ? 1
+            : 0;
+
+        const priorityB =
+          isPriority(
+            b.numero
+          )
+            ? 1
+            : 0;
+
+
+        if (
+          priorityA !==
+          priorityB
+        ) {
+
+          return (
+            priorityB -
+            priorityA
+          );
+
+        }
+
+
+        return (
+          PROCESS_NUMBERS
+            .indexOf(
+              a.numero
             )
-        )
-      );
+          -
+          PROCESS_NUMBERS
+            .indexOf(
+              b.numero
+            )
+        );
 
-
-    prioridades =
-      prioridades.filter(
-        numero =>
-          numeros.has(
-            numero
-          )
-      );
-
-
-    salvarPrioridades();
+      }
+    );
 
   }
 
 
+  /* =========================================================
+     PROCESS CARD
+     ========================================================= */
 
-  /*
-  ==========================================================
-  RENDERIZAÇÃO GERAL
-  ==========================================================
-  */
+  function escapeHtml(value) {
 
-  function renderizarTudo() {
-
-    renderizarIndicadores();
-
-    renderizarInformacoesGerais();
-
-    renderizarDestaques();
-
-    renderizarPrioritariosGeral();
-
-    renderizarGeral();
-
-    renderizarResumoExecutivo();
-
-    renderizarTabelaResumo();
-
-    aplicarFiltros();
-
-    renderizarAlertas();
-
-  }
-
-
-
-  /*
-  ==========================================================
-  INDICADORES
-  ==========================================================
-  */
-
-  function renderizarIndicadores() {
-
-    const processos =
-      dadosMonitor
-        ?.processos
-      ||
-      [];
-
-
-    const alertas =
-      dadosMonitor
-        ?.alertas
-      ||
-      [];
-
-
-    const erros =
-      Number(
-        dadosMonitor
-          ?.erros
-        ||
-        0
-      );
-
-
-    const abertos =
-      processos.filter(
-        processo =>
-          normalizarTexto(
-            processo.situacao
-          )
-          .includes(
-            "aberto"
-          )
+    return String(
+      value ?? ""
+    )
+      .replace(
+        /&/g,
+        "&amp;"
       )
-      .length;
-
-
-    document.getElementById(
-      "totalProcessos"
-    ).textContent =
-      processos.length;
-
-
-    document.getElementById(
-      "totalAbertos"
-    ).textContent =
-      abertos;
-
-
-    document.getElementById(
-      "totalAlertas"
-    ).textContent =
-      alertas.length;
-
-
-    document.getElementById(
-      "totalErros"
-    ).textContent =
-      erros;
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
 
   }
 
 
+  function processCard(
+    process
+  ) {
 
-  /*
-  ==========================================================
-  INFORMAÇÕES GERAIS
-  ==========================================================
-  */
-
-  function renderizarInformacoesGerais() {
-
-    const ultima =
-      dadosMonitor
-        ?.ultima_verificacao;
-
-
-    const erros =
-      Number(
-        dadosMonitor
-          ?.erros
-        ||
-        0
+    const priority =
+      isPriority(
+        process.numero
       );
 
 
-    document.getElementById(
-      "ultimaConsulta"
-    ).textContent =
-      ultima
-        ?
-        formatarDataHora(
-          ultima
-        )
+    const statusClass =
+      process.erro
+        ? "error"
         :
-        "Ainda não disponível";
-
-
-    if (
-      erros === 0
-    ) {
-
-      document.getElementById(
-        "resultadoConsulta"
-      ).innerHTML =
-        "✅ Todas as consultas realizadas com sucesso.";
-
-    }
-
-    else {
-
-      document.getElementById(
-        "resultadoConsulta"
-      ).innerHTML =
-        "⚠️ "
-        +
-        erros
-        +
-        (
-          erros === 1
-            ?
-            " consulta apresentou erro."
-            :
-            " consultas apresentaram erro."
-        );
-
-    }
-
-  }
-
-
-
-  /*
-  ==========================================================
-  DESTAQUES
-  ==========================================================
-  */
-
-  function renderizarDestaques() {
-
-    const processos =
-      dadosMonitor
-        ?.processos
-      ||
-      [];
-
-
-    const alertas =
-      dadosMonitor
-        ?.alertas
-      ||
-      [];
-
-
-    const grupos =
-      classificarPorPeriodo(
-        processos
-      );
-
-
-    document.getElementById(
-      "destaqueHoje"
-    ).textContent =
-      grupos.hoje.length;
-
-
-    document.getElementById(
-      "destaqueSemana"
-    ).textContent =
-      grupos.semana.length;
-
-
-    document.getElementById(
-      "destaquePrioritarios"
-    ).textContent =
-      prioridades.length;
-
-
-    document.getElementById(
-      "destaqueAlertas"
-    ).textContent =
-      alertas.length;
-
-  }
-
-
-
-  /*
-  ==========================================================
-  ORDENAÇÃO COM PRIORIDADE
-  ==========================================================
-  */
-
-  function compararPrioridade(
-    a,
-    b
-  ) {
-
-    const prioridadeA =
-      ehPrioritario(
-        a.numero
-      );
-
-
-    const prioridadeB =
-      ehPrioritario(
-        b.numero
-      );
-
-
-    if (
-      prioridadeA
-      &&
-      !prioridadeB
-    ) {
-
-      return -1;
-
-    }
-
-
-    if (
-      !prioridadeA
-      &&
-      prioridadeB
-    ) {
-
-      return 1;
-
-    }
-
-
-    return 0;
-
-  }
-
-
-  function ordenarMaisRecentes(
-    processos
-  ) {
-
-    return processos.sort(
-      (
-        a,
-        b
-      ) => {
-
-        const prioridade =
-          compararPrioridade(
-            a,
-            b
-          );
-
-
-        if (
-          prioridade !== 0
-        ) {
-
-          return prioridade;
-
-        }
-
-
-        const dataA =
-          converterDataProcesso(
-            a.dataMovimentacao
-          );
-
-
-        const dataB =
-          converterDataProcesso(
-            b.dataMovimentacao
-          );
-
-
-        if (
-          !dataA
-          &&
-          !dataB
-        ) {
-
-          return 0;
-
-        }
-
-
-        if (!dataA) {
-
-          return 1;
-
-        }
-
-
-        if (!dataB) {
-
-          return -1;
-
-        }
-
-
-        return (
-          dataB.getTime()
-          -
-          dataA.getTime()
-        );
-
-      }
-    );
-
-  }
-
-
-  function ordenarMaisAntigos(
-    processos
-  ) {
-
-    return processos.sort(
-      (
-        a,
-        b
-      ) => {
-
-        const prioridade =
-          compararPrioridade(
-            a,
-            b
-          );
-
-
-        if (
-          prioridade !== 0
-        ) {
-
-          return prioridade;
-
-        }
-
-
-        const dataA =
-          converterDataProcesso(
-            a.dataMovimentacao
-          );
-
-
-        const dataB =
-          converterDataProcesso(
-            b.dataMovimentacao
-          );
-
-
-        if (
-          !dataA
-          &&
-          !dataB
-        ) {
-
-          return 0;
-
-        }
-
-
-        if (!dataA) {
-
-          return 1;
-
-        }
-
-
-        if (!dataB) {
-
-          return -1;
-
-        }
-
-
-        return (
-          dataA.getTime()
-          -
-          dataB.getTime()
-        );
-
-      }
-    );
-
-  }
-
-
-
-  /*
-  ==========================================================
-  CARD DE PROCESSO
-  ==========================================================
-  */
-
-  function criarCardProcesso(
-    processo
-  ) {
-
-    const numero =
-      processo.numero
-      ||
-      "—";
-
-
-    const situacao =
-      processo.situacao
-      ||
-      "Não identificada";
-
-
-    const interessado =
-      processo.interessado
-      ||
-      "Não identificado";
-
-
-    const assunto =
-      processo.assunto
-      ||
-      "Não identificado";
-
-
-    const data =
-      processo.dataMovimentacao
-      ||
-      "—";
-
-
-    const setor =
-      processo.setor
-      ||
-      "—";
-
-
-    const evento =
-      processo.evento
-      ||
-      "Nenhuma movimentação encontrada";
-
-
-    const erro =
-      processo.erro;
-
-
-    const possuiAlerta =
-      processoPossuiAlerta(
-        numero
-      );
-
-
-    const prioritario =
-      ehPrioritario(
-        numero
-      );
-
-
-    const badge =
-      classeBadge(
-        situacao,
-        erro
-      );
-
-
-    const url =
-      processo.url
-      ||
-      criarUrlProcesso(
-        numero
-      );
+        process.situacao
+          .toLowerCase()
+          .includes("aberto")
+        ? "open"
+        : "waiting";
+
+
+    const situation =
+      process.erro
+        ? "Erro na consulta"
+        :
+        process.situacao ||
+        "Aguardando dados";
 
 
     return `
-      <div
-        class="card
-        ${
-          prioritario
-            ?
-            "prioritario-card"
-            :
-            ""
-        }"
+
+      <article
+        class="
+          process-card
+          ${priority ? "priority" : ""}
+        "
       >
 
-        ${
-          prioritario
-            ?
-            `
-              <div class="prioritario-faixa">
-                ⭐ PROCESSO PRIORITÁRIO
-              </div>
-            `
-            :
-            ""
-        }
+        <div class="priority-bar">
+          ⭐ PROCESSO PRIORITÁRIO
+        </div>
 
-        <div class="card-body">
 
-          <div class="processo-top">
+        <div class="process-main">
 
-            <div>
+          <div class="process-top">
 
-              <div class="processo-numero">
+            <div class="process-top-content">
 
-                ${escaparHTML(
-                  numero
-                )}
-
+              <div class="process-number">
+                ${escapeHtml(process.numero)}
               </div>
 
-
-              <div class="badges">
-
-                ${
-                  prioritario
-                    ?
-                    `
-                      <span
-                        class="badge badge-prioritario"
-                      >
-                        ⭐ Prioritário
-                      </span>
-                    `
-                    :
-                    ""
-                }
-
+              <div class="process-subject">
 
                 ${
-                  possuiAlerta
-                    ?
-                    `
-                      <span
-                        class="badge badge-alerta"
-                      >
-                        🔔 Com alerta
-                      </span>
-                    `
-                    :
-                    ""
+                  escapeHtml(
+                    process.assunto ||
+                    "Assunto ainda não carregado"
+                  )
                 }
 
               </div>
@@ -3147,85 +2729,87 @@
             </div>
 
 
-            <span
-              class="badge ${badge}"
+            <button
+              class="
+                star-button
+                ${priority ? "active" : ""}
+              "
+              onclick="
+                togglePriority(
+                  '${escapeHtml(process.numero)}'
+                )
+              "
+              aria-label="
+                Destacar processo
+              "
+            >
+              ${priority ? "⭐" : "☆"}
+            </button>
+
+          </div>
+
+
+          <div class="process-grid">
+
+            <div class="process-info">
+
+              <span class="process-info-label">
+                Situação
+              </span>
+
+              <span
+                class="
+                  status
+                  ${statusClass}
+                "
+              >
+                ${escapeHtml(situation)}
+              </span>
+
+            </div>
+
+
+            <div class="process-info">
+
+              <span class="process-info-label">
+                Atualização
+              </span>
+
+              <span class="process-info-value">
+
+                ${
+                  escapeHtml(
+                    process.atualizadoEm ||
+                    "—"
+                  )
+                }
+
+              </span>
+
+            </div>
+
+
+            <div
+              class="
+                process-info
+                wide
+              "
             >
 
-              ${escaparHTML(
-                situacao
-              )}
+              <span class="process-info-label">
+                Interessado
+              </span>
 
-            </span>
+              <span class="process-info-value">
 
-          </div>
+                ${
+                  escapeHtml(
+                    process.interessado ||
+                    "—"
+                  )
+                }
 
-
-          <div class="info">
-
-            <span class="label">
-              Interessado
-            </span>
-
-            <div class="valor">
-
-              ${escaparHTML(
-                interessado
-              )}
-
-            </div>
-
-          </div>
-
-
-          <div class="info">
-
-            <span class="label">
-              Assunto
-            </span>
-
-            <div class="valor">
-
-              ${escaparHTML(
-                assunto
-              )}
-
-            </div>
-
-          </div>
-
-
-          <div
-            class="movimentacao
-            ${
-              possuiAlerta
-                ?
-                "alerta"
-                :
-                ""
-            }"
-          >
-
-            <div class="mov-data">
-
-              Última movimentação:
-
-              ${escaparHTML(
-                data
-              )}
-
-              •
-
-              ${escaparHTML(
-                setor
-              )}
-
-            </div>
-
-            <div class="mov-texto">
-
-              ${escaparHTML(
-                evento
-              )}
+              </span>
 
             </div>
 
@@ -3233,2032 +2817,703 @@
 
 
           ${
-            erro
-              ?
-              `
-                <div class="erro-consulta">
+            process.movimento
+            ?
+            `
 
-                  ⚠️ Última consulta apresentou erro:
+              <div class="movement">
 
-                  ${escaparHTML(
-                    erro
-                  )}
-
+                <div class="movement-title">
+                  Última movimentação
                 </div>
-              `
-              :
-              ""
-          }
 
+                <div class="movement-text">
 
-          <div class="acoes">
+                  ${escapeHtml(process.movimento)}
 
-            <button
-              class="btn btn-primary"
-              onclick="abrirProcesso(
-                '${escaparJS(url)}'
-              )"
-            >
-              Consultar na SEFAZ
-            </button>
-
-
-            <button
-              class="btn btn-prioridade
-              ${
-                prioritario
-                  ?
-                  "ativo"
-                  :
-                  ""
-              }"
-              onclick="alternarPrioridade(
-                '${escaparJS(numero)}'
-              )"
-            >
-
-              ${
-                prioritario
-                  ?
-                  "★ Remover destaque"
-                  :
-                  "☆ Destacar"
-              }
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
-
-  }
-
-
-
-  /*
-  ==========================================================
-  PRIORITÁRIOS NA VISÃO GERAL
-  ==========================================================
-  */
-
-  function renderizarPrioritariosGeral() {
-
-    const processos =
-      (
-        dadosMonitor
-          ?.processos
-        ||
-        []
-      )
-      .filter(
-        processo =>
-          ehPrioritario(
-            processo.numero
-          )
-      );
-
-
-    const titulo =
-      document.getElementById(
-        "tituloPrioritarios"
-      );
-
-
-    const container =
-      document.getElementById(
-        "listaPrioritarios"
-      );
-
-
-    if (
-      !processos.length
-    ) {
-
-      titulo.classList.add(
-        "hidden"
-      );
-
-      container.innerHTML =
-        "";
-
-      return;
-
-    }
-
-
-    titulo.classList.remove(
-      "hidden"
-    );
-
-
-    container.innerHTML =
-      ordenarMaisRecentes(
-        [
-          ...processos
-        ]
-      )
-      .map(
-        criarCardProcesso
-      )
-      .join("");
-
-  }
-
-
-
-  /*
-  ==========================================================
-  VISÃO GERAL
-  ==========================================================
-  */
-
-  function renderizarGeral() {
-
-    let processos =
-      ordenarMaisRecentes(
-        [
-          ...(
-            dadosMonitor
-              ?.processos
-            ||
-            []
-          )
-        ]
-      );
-
-
-    /*
-    Evita repetir os prioritários na seção
-    de movimentações recentes.
-    */
-
-    processos =
-      processos.filter(
-        processo =>
-          !ehPrioritario(
-            processo.numero
-          )
-      );
-
-
-    const container =
-      document.getElementById(
-        "listaGeral"
-      );
-
-
-    if (
-      !processos.length
-    ) {
-
-      container.innerHTML =
-        criarVazio(
-          "📄",
-          "Nenhum processo disponível."
-        );
-
-      return;
-
-    }
-
-
-    container.innerHTML =
-      processos
-      .slice(
-        0,
-        5
-      )
-      .map(
-        criarCardProcesso
-      )
-      .join("");
-
-  }
-
-
-
-  /*
-  ==========================================================
-  CLASSIFICAÇÃO POR PERÍODO
-  ==========================================================
-  */
-
-  function classificarPorPeriodo(
-    processos
-  ) {
-
-    const hoje =
-      inicioHojeManaus();
-
-
-    const limiteSemana =
-      new Date(
-        hoje.getTime()
-        -
-        6
-        *
-        24
-        *
-        60
-        *
-        60
-        *
-        1000
-      );
-
-
-    const resultado = {
-      hoje: [],
-      semana: [],
-      antigos: [],
-      semData: []
-    };
-
-
-    processos.forEach(
-      processo => {
-
-        const data =
-          converterDataProcesso(
-            processo.dataMovimentacao
-          );
-
-
-        if (!data) {
-
-          resultado.semData.push(
-            processo
-          );
-
-          resultado.antigos.push(
-            processo
-          );
-
-          return;
-
-        }
-
-
-        if (
-          data.getTime()
-          ===
-          hoje.getTime()
-        ) {
-
-          resultado.hoje.push(
-            processo
-          );
-
-        }
-
-
-        if (
-          data >= limiteSemana
-          &&
-          data <= hoje
-        ) {
-
-          resultado.semana.push(
-            processo
-          );
-
-        }
-
-        else {
-
-          resultado.antigos.push(
-            processo
-          );
-
-        }
-
-      }
-    );
-
-
-    return resultado;
-
-  }
-
-
-
-  /*
-  ==========================================================
-  MINI PROCESSO
-  ==========================================================
-  */
-
-  function miniProcessoHTML(
-    processo
-  ) {
-
-    const prioritario =
-      ehPrioritario(
-        processo.numero
-      );
-
-
-    return `
-      <div class="mini-processo">
-
-        <div class="mini-processo-main">
-
-          <div class="mini-numero">
-
-            ${
-              prioritario
-                ?
-                "⭐ "
-                :
-                ""
-            }
-
-            ${escaparHTML(
-              processo.numero
-              ||
-              "—"
-            )}
-
-          </div>
-
-          <div class="mini-evento">
-
-            ${escaparHTML(
-              processo.setor
-              ||
-              "—"
-            )}
-
-            —
-
-            ${escaparHTML(
-              processo.evento
-              ||
-              "Sem movimentação identificada"
-            )}
-
-          </div>
-
-        </div>
-
-
-        <div class="mini-data">
-
-          ${escaparHTML(
-            processo.dataMovimentacao
-            ||
-            "—"
-          )}
-
-        </div>
-
-      </div>
-    `;
-
-  }
-
-
-
-  /*
-  ==========================================================
-  RESUMO EXECUTIVO
-  ==========================================================
-  */
-
-  function renderizarResumoExecutivo() {
-
-    const processos =
-      dadosMonitor
-        ?.processos
-      ||
-      [];
-
-
-    const grupos =
-      classificarPorPeriodo(
-        processos
-      );
-
-
-    const prioritarios =
-      ordenarMaisRecentes(
-        processos
-        .filter(
-          processo =>
-            ehPrioritario(
-              processo.numero
-            )
-        )
-      );
-
-
-    document.getElementById(
-      "resumoTotal"
-    ).textContent =
-      processos.length;
-
-
-    document.getElementById(
-      "resumoHoje"
-    ).textContent =
-      grupos.hoje.length;
-
-
-    document.getElementById(
-      "resumoSemana"
-    ).textContent =
-      grupos.semana.length;
-
-
-    document.getElementById(
-      "resumoPrioritarios"
-    ).textContent =
-      prioritarios.length;
-
-
-    document.getElementById(
-      "contPrioritarios"
-    ).textContent =
-      prioritarios.length;
-
-
-    document.getElementById(
-      "contHoje"
-    ).textContent =
-      grupos.hoje.length;
-
-
-    document.getElementById(
-      "contSemana"
-    ).textContent =
-      grupos.semana.length;
-
-
-    document.getElementById(
-      "contAntigos"
-    ).textContent =
-      grupos.antigos.length;
-
-
-    const grupoPrioritarios =
-      document.getElementById(
-        "grupoPrioritariosResumo"
-      );
-
-
-    if (
-      prioritarios.length
-    ) {
-
-      grupoPrioritarios.classList.remove(
-        "hidden"
-      );
-
-
-      document.getElementById(
-        "resumoPrioritariosLista"
-      ).innerHTML =
-        prioritarios
-        .map(
-          miniProcessoHTML
-        )
-        .join("");
-
-    }
-
-    else {
-
-      grupoPrioritarios.classList.add(
-        "hidden"
-      );
-
-    }
-
-
-    renderizarGrupoResumo(
-      "resumoHojeLista",
-      ordenarMaisRecentes(
-        [
-          ...grupos.hoje
-        ]
-      ),
-      "Nenhum processo movimentado hoje."
-    );
-
-
-    renderizarGrupoResumo(
-      "resumoSemanaLista",
-      ordenarMaisRecentes(
-        [
-          ...grupos.semana
-        ]
-      ),
-      "Nenhuma movimentação nos últimos 7 dias."
-    );
-
-
-    renderizarGrupoResumo(
-      "resumoAntigosLista",
-      ordenarMaisRecentes(
-        [
-          ...grupos.antigos
-        ]
-      ),
-      "Nenhum processo nesta categoria."
-    );
-
-  }
-
-
-  function renderizarGrupoResumo(
-    id,
-    processos,
-    mensagemVazia
-  ) {
-
-    const container =
-      document.getElementById(
-        id
-      );
-
-
-    if (
-      !processos.length
-    ) {
-
-      container.innerHTML = `
-        <div
-          style="
-            color:#667085;
-            font-size:11px;
-            padding:6px 0 10px;
-          "
-        >
-          ${escaparHTML(
-            mensagemVazia
-          )}
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    container.innerHTML =
-      processos
-      .map(
-        miniProcessoHTML
-      )
-      .join("");
-
-  }
-
-
-
-  /*
-  ==========================================================
-  TABELA RESUMO
-  ==========================================================
-  */
-
-  function renderizarTabelaResumo() {
-
-    const processos =
-      ordenarMaisRecentes(
-        [
-          ...(
-            dadosMonitor
-              ?.processos
-            ||
-            []
-          )
-        ]
-      );
-
-
-    document.getElementById(
-      "resumoQuantidade"
-    ).textContent =
-      processos.length
-      +
-      (
-        processos.length === 1
-          ?
-          " processo monitorado"
-          :
-          " processos monitorados"
-      );
-
-
-    const corpo =
-      document.getElementById(
-        "tabelaResumo"
-      );
-
-
-    if (
-      !processos.length
-    ) {
-
-      corpo.innerHTML = `
-        <tr>
-          <td colspan="6">
-            Nenhum processo disponível.
-          </td>
-        </tr>
-      `;
-
-      return;
-
-    }
-
-
-    corpo.innerHTML =
-      processos
-      .map(
-        processo => {
-
-          const prioritario =
-            ehPrioritario(
-              processo.numero
-            );
-
-
-          const badge =
-            classeBadge(
-              processo.situacao,
-              processo.erro
-            );
-
-
-          return `
-            <tr
-              class="
-                ${
-                  prioritario
+                  ${
+                    process.novaMovimentacao
                     ?
-                    "linha-prioritaria"
+                    `
+                      <span class="new-badge">
+                        NOVA
+                      </span>
+                    `
                     :
                     ""
-                }
-              "
-            >
-
-              <td>
-
-                ${
-                  prioritario
-                    ?
-                    "⭐ Prioritário"
-                    :
-                    "—"
-                }
-
-              </td>
-
-
-              <td
-                class="quadro-numero"
-              >
-
-                ${escaparHTML(
-                  processo.numero
-                )}
-
-              </td>
-
-
-              <td>
-
-                <span
-                  class="badge ${badge}"
-                >
-
-                  ${escaparHTML(
-                    processo.situacao
-                    ||
-                    "—"
-                  )}
-
-                </span>
-
-              </td>
-
-
-              <td>
-
-                ${escaparHTML(
-                  processo.dataMovimentacao
-                  ||
-                  "—"
-                )}
-
-              </td>
-
-
-              <td>
-
-                ${escaparHTML(
-                  processo.setor
-                  ||
-                  "—"
-                )}
-
-              </td>
-
-
-              <td
-                class="quadro-evento"
-              >
-
-                ${escaparHTML(
-                  processo.evento
-                  ||
-                  "—"
-                )}
-
-              </td>
-
-            </tr>
-          `;
-
-        }
-      )
-      .join("");
-
-  }
-
-
-
-  /*
-  ==========================================================
-  FILTROS
-  ==========================================================
-  */
-
-  function aplicarFiltros() {
-
-    if (
-      !dadosMonitor
-    ) {
-
-      return;
-
-    }
-
-
-    const busca =
-      normalizarTexto(
-        document.getElementById(
-          "buscaProcessos"
-        ).value
-      );
-
-
-    const situacao =
-      document.getElementById(
-        "filtroSituacao"
-      ).value;
-
-
-    const ordenacao =
-      document.getElementById(
-        "ordenacao"
-      ).value;
-
-
-    const somenteAlertas =
-      document.getElementById(
-        "somenteAlertas"
-      ).checked;
-
-
-    const somentePrioritarios =
-      document.getElementById(
-        "somentePrioritarios"
-      ).checked;
-
-
-    let processos =
-      [
-        ...(
-          dadosMonitor
-            .processos
-          ||
-          []
-        )
-      ];
-
-
-    if (
-      busca
-    ) {
-
-      processos =
-        processos.filter(
-          processo => {
-
-            const texto =
-              normalizarTexto(
-                [
-                  processo.numero,
-                  processo.situacao,
-                  processo.interessado,
-                  processo.assunto,
-                  processo.setor,
-                  processo.evento
-                ]
-                .join(
-                  " "
-                )
-              );
-
-
-            return texto.includes(
-              busca
-            );
-
-          }
-        );
-
-    }
-
-
-    if (
-      situacao === "aberto"
-    ) {
-
-      processos =
-        processos.filter(
-          processo =>
-            normalizarTexto(
-              processo.situacao
-            )
-            .includes(
-              "aberto"
-            )
-        );
-
-    }
-
-
-    if (
-      situacao === "erro"
-    ) {
-
-      processos =
-        processos.filter(
-          processo =>
-            Boolean(
-              processo.erro
-            )
-        );
-
-    }
-
-
-    if (
-      situacao === "outros"
-    ) {
-
-      processos =
-        processos.filter(
-          processo => {
-
-            const texto =
-              normalizarTexto(
-                processo.situacao
-              );
-
-
-            return (
-              !texto.includes(
-                "aberto"
-              )
-              &&
-              !processo.erro
-            );
-
-          }
-        );
-
-    }
-
-
-    if (
-      somenteAlertas
-    ) {
-
-      processos =
-        processos.filter(
-          processo =>
-            processoPossuiAlerta(
-              processo.numero
-            )
-        );
-
-    }
-
-
-    if (
-      somentePrioritarios
-    ) {
-
-      processos =
-        processos.filter(
-          processo =>
-            ehPrioritario(
-              processo.numero
-            )
-        );
-
-    }
-
-
-    if (
-      ordenacao === "recente"
-    ) {
-
-      processos =
-        ordenarMaisRecentes(
-          processos
-        );
-
-    }
-
-
-    if (
-      ordenacao === "antigo"
-    ) {
-
-      processos =
-        ordenarMaisAntigos(
-          processos
-        );
-
-    }
-
-
-    if (
-      ordenacao === "numero"
-    ) {
-
-      processos.sort(
-        (
-          a,
-          b
-        ) => {
-
-          const prioridade =
-            compararPrioridade(
-              a,
-              b
-            );
-
-
-          if (
-            prioridade !== 0
-          ) {
-
-            return prioridade;
-
-          }
-
-
-          return String(
-            a.numero
-            ||
-            ""
-          )
-          .localeCompare(
-            String(
-              b.numero
-              ||
-              ""
-            )
-          );
-
-        }
-      );
-
-    }
-
-
-    document.getElementById(
-      "resultadoFiltro"
-    ).textContent =
-      processos.length
-      +
-      (
-        processos.length === 1
-          ?
-          " processo encontrado"
-          :
-          " processos encontrados"
-      );
-
-
-    renderizarListaProcessos(
-      processos
-    );
-
-  }
-
-
-
-  /*
-  ==========================================================
-  LISTA DE PROCESSOS
-  ==========================================================
-  */
-
-  function renderizarListaProcessos(
-    processos
-  ) {
-
-    const container =
-      document.getElementById(
-        "listaProcessos"
-      );
-
-
-    if (
-      !processos.length
-    ) {
-
-      container.innerHTML =
-        criarVazio(
-          "🔎",
-          "Nenhum processo corresponde aos filtros."
-        );
-
-      return;
-
-    }
-
-
-    container.innerHTML =
-      processos
-      .map(
-        criarCardProcesso
-      )
-      .join("");
-
-  }
-
-
-
-  /*
-  ==========================================================
-  ALERTAS
-  ==========================================================
-  */
-
-  function renderizarAlertas() {
-
-    const alertas =
-      dadosMonitor
-        ?.alertas
-      ||
-      [];
-
-
-    const container =
-      document.getElementById(
-        "listaAlertas"
-      );
-
-
-    if (
-      !alertas.length
-    ) {
-
-      container.innerHTML =
-        criarVazio(
-          "🔔",
-          "Nenhuma nova movimentação registrada."
-        );
-
-      return;
-
-    }
-
-
-    container.innerHTML =
-      alertas
-      .map(
-        alerta => {
-
-          const prioritario =
-            ehPrioritario(
-              alerta.numero
-            );
-
-
-          return `
-            <div
-              class="card
-              ${
-                prioritario
-                  ?
-                  "prioritario-card"
-                  :
-                  ""
-              }"
-            >
-
-              ${
-                prioritario
-                  ?
-                  `
-                    <div class="prioritario-faixa">
-                      ⭐ PROCESSO PRIORITÁRIO
-                    </div>
-                  `
-                  :
-                  ""
-              }
-
-              <div class="card-body">
-
-                <div class="alerta-item">
-
-                  <div class="alerta-icon">
-                    🔔
-                  </div>
-
-                  <div class="alerta-texto">
-
-                    <strong>
-                      Nova movimentação
-                    </strong>
-
-
-                    <div
-                      class="alerta-processo"
-                    >
-
-                      ${escaparHTML(
-                        alerta.numero
-                        ||
-                        ""
-                      )}
-
-                    </div>
-
-
-                    <span>
-
-                      ${
-                        alerta.data_movimentacao
-                          ?
-                          `
-                            Data:
-                            ${escaparHTML(
-                              alerta.data_movimentacao
-                            )}
-                            <br>
-                          `
-                          :
-                          ""
-                      }
-
-
-                      ${
-                        alerta.setor
-                          ?
-                          `
-                            Setor:
-                            ${escaparHTML(
-                              alerta.setor
-                            )}
-                            <br>
-                          `
-                          :
-                          ""
-                      }
-
-
-                      ${
-                        alerta.evento
-                          ?
-                          `
-                            Evento:
-                            ${escaparHTML(
-                              alerta.evento
-                            )}
-                            <br>
-                          `
-                          :
-                          ""
-                      }
-
-                      <br>
-
-                      Detectado em:
-
-                      ${escaparHTML(
-                        formatarDataHora(
-                          alerta.data
-                        )
-                      )}
-
-                    </span>
-
-                  </div>
+                  }
 
                 </div>
 
               </div>
 
-            </div>
-          `;
-
-        }
-      )
-      .join("");
-
-  }
+            `
+            :
+            ""
+          }
 
 
+          ${
+            process.erro
+            ?
+            `
 
-  /*
-  ==========================================================
-  PROCESSO POSSUI ALERTA
-  ==========================================================
-  */
+              <div class="movement">
 
-  function processoPossuiAlerta(
-    numero
-  ) {
+                <div
+                  class="movement-title"
+                  style="color:#c93434"
+                >
+                  Erro
+                </div>
 
-    const alertas =
-      dadosMonitor
-        ?.alertas
-      ||
-      [];
+                <div
+                  class="movement-text"
+                  style="color:#c93434"
+                >
+                  ${escapeHtml(process.erro)}
+                </div>
 
+              </div>
 
-    return alertas.some(
-      alerta =>
-        String(
-          alerta.numero
-          ||
-          ""
-        )
-        ===
-        String(
-          numero
-          ||
-          ""
-        )
-    );
+            `
+            :
+            ""
+          }
+
+        </div>
+
+      </article>
+
+    `;
 
   }
 
 
+  /* =========================================================
+     VISÃO GERAL
+     ========================================================= */
 
-  /*
-  ==========================================================
-  DATAS
-  ==========================================================
-  */
+  function renderOverview() {
 
-  function converterDataProcesso(
-    valor
-  ) {
+    const sorted =
+      sortedProcesses();
 
-    if (
-      !valor
-    ) {
 
-      return null;
-
-    }
-
-
-    const match =
-      String(
-        valor
-      )
-      .match(
-        /^(\d{2})\/(\d{2})\/(\d{4})$/
-      );
-
-
-    if (
-      !match
-    ) {
-
-      return null;
-
-    }
-
-
-    return new Date(
-      Number(
-        match[3]
-      ),
-      Number(
-        match[2]
-      )
-      -
-      1,
-      Number(
-        match[1]
-      )
-    );
-
-  }
-
-
-  function inicioHojeManaus() {
-
-    const partes =
-      new Intl.DateTimeFormat(
-        "en-CA",
-        {
-          timeZone:
-            "America/Manaus",
-
-          year:
-            "numeric",
-
-          month:
-            "2-digit",
-
-          day:
-            "2-digit"
-        }
-      )
-      .formatToParts(
-        new Date()
-      );
-
-
-    const obj = {};
-
-
-    partes.forEach(
-      parte => {
-
-        if (
-          parte.type
-          !==
-          "literal"
-        ) {
-
-          obj[
-            parte.type
-          ] =
-            parte.value;
-
-        }
-
-      }
-    );
-
-
-    return new Date(
-      Number(
-        obj.year
-      ),
-      Number(
-        obj.month
-      )
-      -
-      1,
-      Number(
-        obj.day
-      )
-    );
-
-  }
-
-
-
-  /*
-  ==========================================================
-  BADGES
-  ==========================================================
-  */
-
-  function classeBadge(
-    situacao,
-    erro
-  ) {
-
-    if (
-      erro
-    ) {
-
-      return "badge-erro";
-
-    }
-
-
-    const texto =
-      normalizarTexto(
-        situacao
-      );
-
-
-    if (
-      texto.includes(
-        "aberto"
-      )
-    ) {
-
-      return "badge-aberto";
-
-    }
-
-
-    return "badge-outro";
-
-  }
-
-
-
-  /*
-  ==========================================================
-  URL SEFAZ
-  ==========================================================
-  */
-
-  function criarUrlProcesso(
-    numero
-  ) {
-
-    return (
-      "https://online.sefaz.am.gov.br/processo/"
-      +
-      encodeURI(
-        numero
-      )
-    );
-
-  }
-
-
-  function abrirProcesso(
-    url
-  ) {
-
-    window.open(
-      url,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-  }
-
-
-
-  /*
-  ==========================================================
-  TROCAR TELA
-  ==========================================================
-  */
-
-  function mudarTela(
-    tela
-  ) {
-
-    const telas = [
-      "geral",
-      "resumo",
-      "processos",
-      "alertas"
-    ];
-
-
-    telas.forEach(
-      nome => {
-
-        document
-          .getElementById(
-            "view-"
-            +
-            nome
+    const priority =
+      sorted.filter(
+        process =>
+          isPriority(
+            process.numero
           )
-          .classList
-          .toggle(
-            "hidden",
-            nome !== tela
-          );
+      );
 
 
-        document
-          .getElementById(
-            "nav-"
-            +
-            nome
-          )
-          .classList
-          .toggle(
-            "active",
-            nome === tela
-          );
+    let selected;
 
-      }
-    );
-
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  }
-
-
-
-  /*
-  ==========================================================
-  FORMATAR DATA / HORA
-  ==========================================================
-  */
-
-  function formatarDataHora(
-    valor
-  ) {
 
     if (
-      !valor
+      priority.length
     ) {
 
-      return "—";
-
-    }
-
-
-    try {
-
-      const data =
-        new Date(
-          valor
+      const others =
+        sorted.filter(
+          process =>
+            !isPriority(
+              process.numero
+            )
         );
 
 
-      if (
-        Number.isNaN(
-          data.getTime()
-        )
-      ) {
-
-        return valor;
-
-      }
-
-
-      return new Intl.DateTimeFormat(
-        "pt-BR",
-        {
-          timeZone:
-            "America/Manaus",
-
-          day:
-            "2-digit",
-
-          month:
-            "2-digit",
-
-          year:
-            "numeric",
-
-          hour:
-            "2-digit",
-
-          minute:
-            "2-digit"
-        }
-      )
-      .format(
-        data
-      );
-
-    }
-
-    catch {
-
-      return valor;
-
-    }
-
-  }
-
-
-
-  /*
-  ==========================================================
-  PRÓXIMA CONSULTA
-  ==========================================================
-  */
-
-  const horariosConsulta = [
-    8,
-    11,
-    14,
-    17
-  ];
-
-
-  function partesManaus() {
-
-    const formatter =
-      new Intl.DateTimeFormat(
-        "en-US",
-        {
-          timeZone:
-            "America/Manaus",
-
-          weekday:
-            "short",
-
-          hour:
-            "2-digit",
-
-          minute:
-            "2-digit",
-
-          hour12:
-            false
-        }
-      );
-
-
-    const partes =
-      formatter.formatToParts(
-        new Date()
-      );
-
-
-    const objeto = {};
-
-
-    partes.forEach(
-      parte => {
-
-        if (
-          parte.type
-          !==
-          "literal"
-        ) {
-
-          objeto[
-            parte.type
-          ] =
-            parte.value;
-
-        }
-
-      }
-    );
-
-
-    return objeto;
-
-  }
-
-
-  function calcularProximaConsulta() {
-
-    const partes =
-      partesManaus();
-
-
-    const hora =
-      Number(
-        partes.hour
-      );
-
-
-    const minuto =
-      Number(
-        partes.minute
-      );
-
-
-    const dia =
-      partes.weekday;
-
-
-    const fimDeSemana =
-      dia === "Sat"
-      ||
-      dia === "Sun";
-
-
-    let proximaHora =
-      null;
-
-
-    let textoDia =
-      "Hoje";
-
-
-    if (
-      !fimDeSemana
-    ) {
-
-      for (
-        const horario
-        of horariosConsulta
-      ) {
-
-        if (
-          horario > hora
-          ||
-          (
-            horario === hora
-            &&
-            minuto < 1
+      selected = [
+        ...priority,
+        ...others.slice(
+          0,
+          Math.max(
+            0,
+            5 -
+            priority.length
           )
-        ) {
+        )
+      ];
 
-          proximaHora =
-            horario;
+    } else {
 
-          break;
-
-        }
-
-      }
+      selected =
+        sorted.slice(
+          0,
+          5
+        );
 
     }
+
+
+    document
+      .getElementById(
+        "overviewProcesses"
+      )
+      .innerHTML =
+        selected
+          .map(
+            processCard
+          )
+          .join("");
+
+  }
+
+
+  /* =========================================================
+     PROCESSOS
+     ========================================================= */
+
+  function renderProcesses() {
+
+    const search =
+      (
+        document
+          .getElementById(
+            "searchProcess"
+          )
+          ?.value ||
+        ""
+      )
+        .trim()
+        .toLowerCase();
+
+
+    const filtered =
+      sortedProcesses()
+        .filter(process => {
+
+          if (!search) {
+
+            return true;
+
+          }
+
+
+          const text = [
+
+            process.numero,
+
+            process.assunto,
+
+            process.interessado,
+
+            process.situacao,
+
+            process.movimento
+
+          ]
+            .join(" ")
+            .toLowerCase();
+
+
+          return text
+            .includes(search);
+
+        });
+
+
+    const container =
+      document.getElementById(
+        "allProcesses"
+      );
 
 
     if (
-      proximaHora === null
+      !filtered.length
     ) {
 
-      proximaHora =
-        8;
+      container.innerHTML = `
 
-
-      if (
-        dia === "Fri"
-        ||
-        dia === "Sat"
-        ||
-        dia === "Sun"
-      ) {
-
-        textoDia =
-          "Segunda-feira";
-
-      }
-
-      else {
-
-        textoDia =
-          "Amanhã";
-
-      }
-
-    }
-
-
-    document.getElementById(
-      "proximaConsulta"
-    ).textContent =
-      textoDia
-      +
-      " às "
-      +
-      String(
-        proximaHora
-      )
-      .padStart(
-        2,
-        "0"
-      )
-      +
-      ":00";
-
-  }
-
-
-
-  /*
-  ==========================================================
-  TEXTO
-  ==========================================================
-  */
-
-  function normalizarTexto(
-    valor
-  ) {
-
-    return String(
-      valor
-      ||
-      ""
-    )
-    .normalize(
-      "NFD"
-    )
-    .replace(
-      /[\u0300-\u036f]/g,
-      ""
-    )
-    .toLowerCase()
-    .trim();
-
-  }
-
-
-
-  /*
-  ==========================================================
-  SEGURANÇA
-  ==========================================================
-  */
-
-  function escaparHTML(
-    valor
-  ) {
-
-    return String(
-      valor
-      ??
-      ""
-    )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-  }
-
-
-  function escaparJS(
-    valor
-  ) {
-
-    return String(
-      valor
-      ??
-      ""
-    )
-    .replaceAll(
-      "\\",
-      "\\\\"
-    )
-    .replaceAll(
-      "'",
-      "\\'"
-    );
-
-  }
-
-
-
-  /*
-  ==========================================================
-  ESTADO VAZIO
-  ==========================================================
-  */
-
-  function criarVazio(
-    icone,
-    texto
-  ) {
-
-    return `
-      <div class="card">
-
-        <div class="empty">
+        <div class="empty-state">
 
           <div class="empty-icon">
-
-            ${icone}
-
+            🔎
           </div>
 
-          ${escaparHTML(
-            texto
+          Nenhum processo encontrado.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      filtered
+        .map(
+          processCard
+        )
+        .join("");
+
+  }
+
+
+  /* =========================================================
+     MÉTRICAS
+     ========================================================= */
+
+  function renderMetrics() {
+
+    const total =
+      processes.length;
+
+
+    const open =
+      processes.filter(
+        item =>
+          String(
+            item.situacao
+          )
+            .toLowerCase()
+            .includes(
+              "aberto"
+            )
+      )
+      .length;
+
+
+    const news =
+      processes.filter(
+        item =>
+          item.novaMovimentacao
+      )
+      .length;
+
+
+    const priorities =
+      processes.filter(
+        item =>
+          isPriority(
+            item.numero
+          )
+      )
+      .length;
+
+
+    document
+      .getElementById(
+        "metricTotal"
+      )
+      .textContent =
+        total;
+
+
+    document
+      .getElementById(
+        "metricOpen"
+      )
+      .textContent =
+        open;
+
+
+    document
+      .getElementById(
+        "metricNew"
+      )
+      .textContent =
+        news;
+
+
+    document
+      .getElementById(
+        "metricPriority"
+      )
+      .textContent =
+        priorities;
+
+  }
+
+
+  /* =========================================================
+     RESUMO
+     ========================================================= */
+
+  function renderSummary() {
+
+    const total =
+      processes.length;
+
+
+    const open =
+      processes.filter(
+        item =>
+          item.situacao
+            .toLowerCase()
+            .includes("aberto")
+      )
+      .length;
+
+
+    const errors =
+      processes.filter(
+        item =>
+          Boolean(
+            item.erro
+          )
+      )
+      .length;
+
+
+    const news =
+      processes.filter(
+        item =>
+          item.novaMovimentacao
+      )
+      .length;
+
+
+    const priorities =
+      processes.filter(
+        item =>
+          isPriority(
+            item.numero
+          )
+      )
+      .length;
+
+
+    const movementCount =
+      processes.filter(
+        item =>
+          Boolean(
+            item.movimento
+          )
+      )
+      .length;
+
+
+    document
+      .getElementById(
+        "summaryContent"
+      )
+      .innerHTML = `
+
+        <div class="summary-card">
+
+          <div class="summary-card-title">
+            Quadro geral
+          </div>
+
+
+          ${summaryRow(
+            "Total monitorado",
+            total
+          )}
+
+          ${summaryRow(
+            "Processos abertos",
+            open
+          )}
+
+          ${summaryRow(
+            "Com movimentação carregada",
+            movementCount
+          )}
+
+          ${summaryRow(
+            "Novas movimentações",
+            news
+          )}
+
+          ${summaryRow(
+            "Processos prioritários",
+            priorities
+          )}
+
+          ${summaryRow(
+            "Erros de consulta",
+            errors
           )}
 
         </div>
 
+
+        <div class="summary-card">
+
+          <div class="summary-card-title">
+            Monitoramento automático
+          </div>
+
+
+          ${summaryRow(
+            "Periodicidade",
+            "A cada 3 horas"
+          )}
+
+          ${summaryRow(
+            "Horários",
+            "08:00 • 11:00 • 14:00 • 17:00"
+          )}
+
+          ${summaryRow(
+            "Dias",
+            "Segunda a sexta"
+          )}
+
+          ${summaryRow(
+            "Consulta manual",
+            "Disponível pelo botão Atualizar processos"
+          )}
+
+          ${summaryRow(
+            "Últimos dados",
+            formatDate(
+              getUpdatedDate(
+                rawData
+              )
+            )
+          )}
+
+        </div>
+
+      `;
+
+  }
+
+
+  function summaryRow(
+    label,
+    value
+  ) {
+
+    return `
+
+      <div class="summary-row">
+
+        <span class="summary-row-label">
+          ${escapeHtml(label)}
+        </span>
+
+        <span class="summary-row-value">
+          ${escapeHtml(value)}
+        </span>
+
       </div>
+
     `;
 
   }
 
 
+  /* =========================================================
+     ALERTAS
+     ========================================================= */
 
-  /*
-  ==========================================================
-  ERRO DE CARREGAMENTO
-  ==========================================================
-  */
+  function renderAlerts() {
 
-  function mostrarErroCarregamento() {
-
-    [
-      "totalProcessos",
-      "totalAbertos",
-      "totalAlertas",
-      "totalErros"
-    ]
-    .forEach(
-      id => {
-
-        document.getElementById(
-          id
-        ).textContent =
-          "—";
-
-      }
-    );
+    const alerts = [];
 
 
-    document.getElementById(
-      "ultimaConsulta"
-    ).textContent =
-      "Não foi possível carregar";
+    sortedProcesses()
+      .forEach(process => {
+
+        if (
+          process.novaMovimentacao
+        ) {
+
+          alerts.push({
+
+            type: "new",
+
+            title:
+              `🔔 Nova movimentação — ${process.numero}`,
+
+            text:
+              process.movimento ||
+              "Nova movimentação detectada."
+
+          });
+
+        }
 
 
-    document.getElementById(
-      "resultadoConsulta"
-    ).textContent =
-      "Erro ao acessar dados.json";
+        if (
+          process.erro
+        ) {
+
+          alerts.push({
+
+            type: "error",
+
+            title:
+              `⚠️ Erro — ${process.numero}`,
+
+            text:
+              process.erro
+
+          });
+
+        }
+
+      });
 
 
-    const mensagem =
-      criarVazio(
-        "⚠️",
-        "Não foi possível carregar os dados do monitor."
+    const container =
+      document
+        .getElementById(
+          "alertsContent"
+        );
+
+
+    if (
+      !alerts.length
+    ) {
+
+      container.innerHTML = `
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            ✅
+          </div>
+
+          <strong>
+            Nenhum alerta pendente
+          </strong>
+
+          <div
+            style="
+              margin-top:6px;
+              font-size:12px;
+            "
+          >
+            Novas movimentações aparecerão aqui.
+          </div>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      alerts
+        .map(alert => `
+
+          <div
+            class="
+              alert-card
+              ${alert.type}
+            "
+          >
+
+            <div class="alert-title">
+              ${escapeHtml(alert.title)}
+            </div>
+
+            <div class="alert-text">
+              ${escapeHtml(alert.text)}
+            </div>
+
+          </div>
+
+        `)
+        .join("");
+
+  }
+
+
+  /* =========================================================
+     RENDER GERAL
+     ========================================================= */
+
+  function renderAll() {
+
+    renderMetrics();
+
+    renderOverview();
+
+    renderProcesses();
+
+    renderSummary();
+
+    renderAlerts();
+
+  }
+
+
+  /* =========================================================
+     ABAS
+     ========================================================= */
+
+  function openPage(
+    name,
+    button
+  ) {
+
+    document
+      .querySelectorAll(
+        ".page"
+      )
+      .forEach(page => {
+
+        page.classList
+          .remove(
+            "active"
+          );
+
+      });
+
+
+    document
+      .getElementById(
+        `page-${name}`
+      )
+      .classList
+      .add(
+        "active"
       );
 
 
-    document.getElementById(
-      "listaGeral"
-    ).innerHTML =
-      mensagem;
+    document
+      .querySelectorAll(
+        ".nav-item"
+      )
+      .forEach(item => {
+
+        item.classList
+          .remove(
+            "active"
+          );
+
+      });
 
 
-    document.getElementById(
-      "listaProcessos"
-    ).innerHTML =
-      mensagem;
+    button
+      .classList
+      .add(
+        "active"
+      );
 
 
-    document.getElementById(
-      "listaAlertas"
-    ).innerHTML =
-      mensagem;
-
-
-    document.getElementById(
-      "tabelaResumo"
-    ).innerHTML = `
-      <tr>
-
-        <td colspan="6">
-
-          Não foi possível carregar os dados.
-
-        </td>
-
-      </tr>
-    `;
+    window.scrollTo(
+      {
+        top: 0,
+        behavior: "smooth"
+      }
+    );
 
   }
 
 
+  /* =========================================================
+     TOAST
+     ========================================================= */
 
-  /*
-  ==========================================================
-  TOAST
-  ==========================================================
-  */
+  let toastTimer;
 
-  function mostrarToast(
-    mensagem
+
+  function showToast(
+    message
   ) {
 
     const toast =
@@ -5268,78 +3523,88 @@
 
 
     toast.textContent =
-      mensagem;
+      message;
 
 
-    toast.classList.add(
-      "show"
-    );
+    toast.classList
+      .add(
+        "show"
+      );
 
 
     clearTimeout(
-      timerToast
+      toastTimer
     );
 
 
-    timerToast =
+    toastTimer =
       setTimeout(
         () => {
 
-          toast.classList.remove(
-            "show"
-          );
+          toast.classList
+            .remove(
+              "show"
+            );
 
         },
-        3000
+        3200
       );
 
   }
 
 
+  /* =========================================================
+     INICIALIZAÇÃO
+     ========================================================= */
 
-  /*
-  ==========================================================
-  INICIALIZAÇÃO
-  ==========================================================
-  */
+  async function initialize() {
 
-  calcularProximaConsulta();
-
-  carregarDados();
+    processes =
+      normalizeData({});
 
 
-  /*
-  Atualiza os dados do painel
-  a cada 5 minutos enquanto estiver aberto.
-  */
-
-  setInterval(
-    () => {
-
-      carregarDados(
-        false
-      );
-
-    },
-    5
-    *
-    60
-    *
-    1000
-  );
+    renderAll();
 
 
-  /*
-  Atualiza a indicação da próxima
-  consulta a cada minuto.
-  */
+    try {
 
-  setInterval(
-    calcularProximaConsulta,
-    60
-    *
-    1000
-  );
+      await loadData(false);
+
+    } catch {
+
+      /* mantém estrutura básica */
+
+    }
+
+
+    /*
+      Atualização silenciosa periódica
+      da interface.
+
+      Isso NÃO dispara nova consulta.
+      Apenas verifica dados.json.
+    */
+
+    setInterval(
+      () => {
+
+        if (
+          !isUpdatingProcesses
+        ) {
+
+          loadData(false)
+            .catch(() => {});
+
+        }
+
+      },
+      REFRESH_INTERVAL
+    );
+
+  }
+
+
+  initialize();
 
 </script>
 
