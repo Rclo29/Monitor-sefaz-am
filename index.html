@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0b63ce">
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta name="theme-color" content="#0b63ce" />
 
   <title>Monitor SEFAZ-AM</title>
 
@@ -15,24 +20,20 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+        sans-serif;
       background: #f3f6fa;
       color: #172033;
       min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(135deg, #0756b5, #0b76df);
+      background: linear-gradient(135deg, #0b63ce, #084c9e);
       color: white;
       padding: 24px 18px 22px;
       padding-top: calc(24px + env(safe-area-inset-top));
-      border-radius: 0 0 28px 28px;
-      box-shadow: 0 4px 18px rgba(0,0,0,.12);
-    }
-
-    .header-content {
-      max-width: 800px;
-      margin: auto;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
     }
 
     header h1 {
@@ -43,775 +44,587 @@
 
     header p {
       font-size: 14px;
-      opacity: .9;
+      opacity: 0.9;
     }
 
-    .status-online {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 14px;
-      font-size: 13px;
-      background: rgba(255,255,255,.16);
-      padding: 7px 11px;
-      border-radius: 20px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4cff87;
-    }
-
-    main {
-      max-width: 800px;
-      margin: auto;
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
       padding: 18px;
-      padding-bottom: 100px;
+      padding-bottom: calc(40px + env(safe-area-inset-bottom));
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 4px;
-    }
-
-    .card {
+    .status-box {
       background: white;
       border-radius: 18px;
-      padding: 17px;
-      box-shadow: 0 3px 14px rgba(18,38,63,.07);
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
     }
 
-    .card .label {
-      color: #758094;
-      font-size: 13px;
+    .status-title {
+      font-size: 14px;
+      color: #697386;
       margin-bottom: 7px;
-    }
-
-    .card .number {
-      font-size: 28px;
-      font-weight: 750;
-      color: #172033;
-    }
-
-    .card.alert .number {
-      color: #e14444;
-    }
-
-    .schedule {
-      background: #eaf4ff;
-      border: 1px solid #cfe4ff;
-      margin-top: 14px;
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .schedule-title {
-      font-weight: 700;
-      font-size: 15px;
-      color: #0756b5;
-      margin-bottom: 7px;
-    }
-
-    .schedule p {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #47566d;
     }
 
     .next-check {
-      margin-top: 10px;
-      font-size: 14px;
-      font-weight: 650;
-      color: #0756b5;
+      font-size: 20px;
+      font-weight: 750;
+      color: #0b63ce;
     }
 
-    .section-title {
-      margin-top: 24px;
-      margin-bottom: 12px;
+    .schedule {
+      font-size: 13px;
+      color: #697386;
+      margin-top: 7px;
+      line-height: 1.5;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      background: white;
+      border-radius: 17px;
+      padding: 16px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .metric-number {
+      font-size: 25px;
+      font-weight: 800;
+      color: #0b63ce;
+    }
+
+    .metric-label {
+      font-size: 13px;
+      margin-top: 4px;
+      color: #697386;
+    }
+
+    .section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
     }
 
-    .section-title h2 {
+    .section-header h2 {
       font-size: 19px;
     }
 
-    button {
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .btn-primary {
+    .add-button {
+      appearance: none;
+      border: 0;
       background: #0b63ce;
       color: white;
-      padding: 11px 15px;
-      border-radius: 12px;
       font-size: 14px;
-      font-weight: 650;
+      font-weight: 700;
+      padding: 11px 14px;
+      border-radius: 12px;
+      cursor: pointer;
     }
 
     .process-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .process-card {
       background: white;
-      padding: 16px;
-      border-radius: 18px;
-      box-shadow: 0 3px 14px rgba(18,38,63,.07);
-      position: relative;
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: 0 3px 13px rgba(0, 0, 0, 0.055);
+      border-left: 4px solid #0b63ce;
+    }
+
+    .process-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
     }
 
     .process-number {
       font-size: 15px;
+      line-height: 1.35;
       font-weight: 750;
-      color: #172033;
-      padding-right: 30px;
-      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
-    .process-description {
-      font-size: 13px;
-      color: #6b7689;
-      margin-top: 5px;
+    .status {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #eaf6ee;
+      color: #19713b;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #24a148;
+      border-radius: 50%;
     }
 
     .process-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-top: 13px;
-    }
-
-    .badge {
+      margin-top: 9px;
       font-size: 12px;
-      font-weight: 650;
-      padding: 6px 10px;
-      border-radius: 20px;
+      color: #778196;
     }
 
-    .badge.normal {
-      background: #e7f8ee;
-      color: #168348;
-    }
-
-    .badge.update {
-      background: #fff0e0;
-      color: #be6500;
-    }
-
-    .last-check {
-      font-size: 11px;
-      color: #8993a5;
-      text-align: right;
-    }
-
-    .delete-btn {
-      position: absolute;
-      right: 13px;
-      top: 13px;
+    .delete-button {
+      margin-top: 12px;
+      border: none;
       background: transparent;
-      font-size: 18px;
-      color: #a1a9b8;
-      padding: 4px;
+      color: #c0392b;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 2px 0;
     }
 
     .empty {
       background: white;
-      border-radius: 18px;
-      padding: 35px 20px;
+      border-radius: 16px;
+      padding: 28px 15px;
       text-align: center;
-      color: #7d8798;
+      color: #778196;
     }
 
-    .empty-icon {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .footer-note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #778196;
+      text-align: center;
+      line-height: 1.5;
     }
 
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 1000;
-      background: rgba(10,20,35,.55);
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.48);
       align-items: flex-end;
+      justify-content: center;
+      padding: 12px;
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
     }
 
-    .modal.active {
+    .modal.open {
       display: flex;
     }
 
     .modal-content {
-      background: white;
       width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      border-radius: 25px 25px 0 0;
-      padding: 22px 18px;
-      padding-bottom: calc(25px + env(safe-area-inset-bottom));
-      animation: slideUp .25s ease;
+      max-width: 520px;
+      background: white;
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     }
 
-    @keyframes slideUp {
-      from {
-        transform: translateY(100%);
-      }
-      to {
-        transform: translateY(0);
-      }
+    .modal-content h3 {
+      font-size: 20px;
+      margin-bottom: 14px;
     }
 
-    .modal h2 {
-      font-size: 21px;
-      margin-bottom: 18px;
-    }
-
-    label {
+    .modal-content label {
       display: block;
       font-size: 13px;
-      font-weight: 650;
-      margin-bottom: 6px;
-      color: #465267;
+      font-weight: 700;
+      margin-bottom: 7px;
     }
 
-    input {
+    .modal-content input {
       width: 100%;
-      border: 1px solid #d9e0e9;
+      border: 1px solid #d7dce5;
       border-radius: 12px;
       padding: 13px;
       font-size: 16px;
       outline: none;
-      margin-bottom: 15px;
     }
 
-    input:focus {
+    .modal-content input:focus {
       border-color: #0b63ce;
-      box-shadow: 0 0 0 3px rgba(11,99,206,.1);
     }
 
     .modal-actions {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
+      margin-top: 16px;
     }
 
     .modal-actions button {
-      flex: 1;
-      padding: 14px;
-      border-radius: 13px;
-      font-size: 15px;
-      font-weight: 650;
+      border: none;
+      border-radius: 12px;
+      padding: 13px;
+      font-weight: 750;
+      font-size: 14px;
+      cursor: pointer;
     }
 
-    .btn-cancel {
-      background: #edf1f5;
-      color: #485366;
+    .cancel-button {
+      background: #edf1f6;
+      color: #394457;
     }
 
-    .btn-save {
+    .save-button {
       background: #0b63ce;
       color: white;
     }
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid #e5e9ef;
-      padding: 8px 15px;
-      padding-bottom: calc(8px + env(safe-area-inset-bottom));
-      z-index: 500;
-    }
-
-    .nav-content {
-      max-width: 800px;
-      margin: auto;
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .nav-item {
-      text-align: center;
-      color: #6f798b;
-      font-size: 11px;
-      min-width: 75px;
-    }
-
-    .nav-item.active {
-      color: #0b63ce;
-      font-weight: 650;
-    }
-
-    .nav-icon {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 2px;
-    }
-
-    @media (min-width: 650px) {
-      .cards {
+    @media (min-width: 700px) {
+      .metrics {
         grid-template-columns: repeat(4, 1fr);
+      }
+
+      .process-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .modal {
         align-items: center;
-        padding: 20px;
-      }
-
-      .modal-content {
-        border-radius: 25px;
       }
     }
   </style>
 </head>
 
 <body>
-
-<header>
-  <div class="header-content">
+  <header>
     <h1>Monitor SEFAZ-AM</h1>
-    <p>Acompanhamento automático de processos</p>
+    <p>Acompanhamento dos processos cadastrados</p>
+  </header>
 
-    <div class="status-online">
-      <span class="dot"></span>
-      Monitor ativo
-    </div>
-  </div>
-</header>
+  <main class="container">
 
-<main>
+    <section class="status-box">
+      <div class="status-title">Próxima consulta programada</div>
+      <div class="next-check" id="nextCheck">Calculando...</div>
 
-  <div class="cards">
+      <div class="schedule">
+        Consultas programadas a cada 3 horas durante o expediente:
+        <strong>08:00 • 11:00 • 14:00 • 17:00</strong><br />
+        Horário de Manaus/AM.
+      </div>
+    </section>
 
-    <div class="card">
-      <div class="label">Processos</div>
-      <div class="number" id="totalProcesses">0</div>
-    </div>
+    <section class="metrics">
+      <div class="metric">
+        <div class="metric-number" id="totalProcesses">0</div>
+        <div class="metric-label">Processos</div>
+      </div>
 
-    <div class="card alert">
-      <div class="label">Atualizações</div>
-      <div class="number" id="totalUpdates">0</div>
-    </div>
+      <div class="metric">
+        <div class="metric-number" id="activeProcesses">0</div>
+        <div class="metric-label">Monitorados</div>
+      </div>
 
-    <div class="card">
-      <div class="label">Monitorados</div>
-      <div class="number" id="monitoredProcesses">0</div>
-    </div>
+      <div class="metric">
+        <div class="metric-number">4</div>
+        <div class="metric-label">Consultas/dia</div>
+      </div>
 
-    <div class="card">
-      <div class="label">Consultas/dia</div>
-      <div class="number">4</div>
-    </div>
+      <div class="metric">
+        <div class="metric-number">3h</div>
+        <div class="metric-label">Intervalo</div>
+      </div>
+    </section>
 
-  </div>
+    <div class="section-header">
+      <h2>Todos os processos</h2>
 
-  <div class="schedule">
-    <div class="schedule-title">⏱ Monitoramento automático</div>
-
-    <p>
-      Consultas programadas a cada 3 horas durante o expediente da
-      SEFAZ/AM.
-    </p>
-
-    <p>
-      Horários: <strong>08:00 • 11:00 • 14:00 • 17:00</strong>
-    </p>
-
-    <div class="next-check" id="nextCheck">
-      Calculando próxima consulta...
-    </div>
-  </div>
-
-  <div class="section-title">
-    <h2>Todos os processos</h2>
-
-    <button class="btn-primary" onclick="openModal()">
-      + Adicionar
-    </button>
-  </div>
-
-  <div id="processList" class="process-list"></div>
-
-</main>
-
-<div class="bottom-nav">
-  <div class="nav-content">
-
-    <div class="nav-item active">
-      <span class="nav-icon">⌂</span>
-      Visão geral
-    </div>
-
-    <div class="nav-item">
-      <span class="nav-icon">◉</span>
-      Processos
-    </div>
-
-    <div class="nav-item">
-      <span class="nav-icon">🔔</span>
-      Alertas
-    </div>
-
-  </div>
-</div>
-
-<div class="modal" id="modal">
-
-  <div class="modal-content">
-
-    <h2>Adicionar processo</h2>
-
-    <label for="processNumber">
-      Número do processo
-    </label>
-
-    <input
-      type="text"
-      id="processNumber"
-      placeholder="Ex.: 01.01.014101.000000/2026-00"
-    >
-
-    <label for="processDescription">
-      Identificação / descrição
-    </label>
-
-    <input
-      type="text"
-      id="processDescription"
-      placeholder="Ex.: Processo Empresa ABC"
-    >
-
-    <div class="modal-actions">
-
-      <button
-        class="btn-cancel"
-        onclick="closeModal()"
-      >
-        Cancelar
+      <button class="add-button" onclick="openModal()">
+        + Adicionar
       </button>
-
-      <button
-        class="btn-save"
-        onclick="addProcess()"
-      >
-        Salvar processo
-      </button>
-
     </div>
 
+    <section class="process-list" id="processList"></section>
+
+    <div class="footer-note">
+      Monitor SEFAZ-AM • Consulta programada dentro do horário de expediente
+    </div>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3>Adicionar processo</h3>
+
+      <label for="newProcess">Número do processo</label>
+
+      <input
+        id="newProcess"
+        type="text"
+        placeholder="01.01.028101.000000/2026-00"
+        autocomplete="off"
+      />
+
+      <div class="modal-actions">
+        <button class="cancel-button" onclick="closeModal()">
+          Cancelar
+        </button>
+
+        <button class="save-button" onclick="addProcess()">
+          Salvar
+        </button>
+      </div>
+    </div>
   </div>
-</div>
 
-<script>
+  <script>
+    const defaultProcesses = [
+      "01.01.028101.030037/2026-43",
+      "01.01.028101.030087/2026-20",
+      "01.01.028101.030283/2026-03",
+      "01.01.028101.030287/2026-83",
+      "01.01.028101.030288/2026-28",
+      "01.01.028101.031074/2026-79",
+      "01.01.028101.031331/2026-72",
+      "01.01.028101.031373/2026-03",
+      "01.01.028101.031077/2026-02",
+      "01.01.028101.031217/2026-42",
+      "01.01.028101.031129/2026-40",
+      "01.01.028101.031393/2026-84",
+      "01.01.028101.031411/2026-28",
 
-  let processes =
-    JSON.parse(localStorage.getItem("sefazProcesses")) || [];
+      "01.01.028101.030117/2026-07",
+      "01.01.028101.030118/2026-43",
+      "01.01.028101.030125/2026-45",
+      "01.01.028101.030450/2026-08",
+      "01.01.028101.030453/2026-41",
+      "01.01.028101.030855/2026-46",
+      "01.01.028101.030858/2026-80",
+      "01.01.028101.030869/2026-60",
 
-  function saveProcesses() {
-    localStorage.setItem(
-      "sefazProcesses",
-      JSON.stringify(processes)
-    );
-  }
+      "01.01.013102.003068/2026-44",
 
-  function openModal() {
-    document
-      .getElementById("modal")
-      .classList.add("active");
+      "01.01.028101.000655/2026-69"
+    ];
 
-    setTimeout(() => {
-      document
-        .getElementById("processNumber")
-        .focus();
-    }, 300);
-  }
+    const STORAGE_KEY = "monitorSefazProcessesV2";
 
-  function closeModal() {
-    document
-      .getElementById("modal")
-      .classList.remove("active");
+    let processes = loadProcesses();
 
-    document.getElementById("processNumber").value = "";
-    document.getElementById("processDescription").value = "";
-  }
+    function loadProcesses() {
+      const saved = localStorage.getItem(STORAGE_KEY);
 
-  function addProcess() {
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
 
-    const number =
-      document
-        .getElementById("processNumber")
-        .value
-        .trim();
+          if (Array.isArray(parsed)) {
+            return parsed;
+          }
+        } catch (error) {
+          console.error("Erro ao carregar processos.", error);
+        }
+      }
 
-    const description =
-      document
-        .getElementById("processDescription")
-        .value
-        .trim();
-
-    if (!number) {
-      alert("Informe o número do processo.");
-      return;
-    }
-
-    const alreadyExists =
-      processes.some(
-        process =>
-          process.number.toLowerCase() === number.toLowerCase()
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(defaultProcesses)
       );
 
-    if (alreadyExists) {
-      alert("Este processo já está cadastrado.");
-      return;
+      return [...defaultProcesses];
     }
 
-    const process = {
-      id: Date.now(),
-      number: number,
-      description:
-        description || "Processo SEFAZ-AM",
-      status: "Monitorando",
-      update: false,
-      lastCheck: null
-    };
-
-    processes.unshift(process);
-
-    saveProcesses();
-    renderProcesses();
-    closeModal();
-  }
-
-  function deleteProcess(id) {
-
-    const confirmed =
-      confirm(
-        "Deseja remover este processo do monitoramento?"
+    function saveProcesses() {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(processes)
       );
-
-    if (!confirmed) return;
-
-    processes =
-      processes.filter(
-        process => process.id !== id
-      );
-
-    saveProcesses();
-    renderProcesses();
-  }
-
-  function renderProcesses() {
-
-    const list =
-      document.getElementById("processList");
-
-    const updates =
-      processes.filter(
-        process => process.update
-      ).length;
-
-    document.getElementById("totalProcesses").textContent =
-      processes.length;
-
-    document.getElementById("monitoredProcesses").textContent =
-      processes.length;
-
-    document.getElementById("totalUpdates").textContent =
-      updates;
-
-    if (processes.length === 0) {
-
-      list.innerHTML = `
-        <div class="empty">
-          <div class="empty-icon">📋</div>
-
-          <strong>
-            Nenhum processo cadastrado
-          </strong>
-
-          <p style="margin-top:7px;font-size:13px;">
-            Toque em “+ Adicionar” para começar o monitoramento.
-          </p>
-        </div>
-      `;
-
-      return;
     }
 
-    list.innerHTML =
-      processes.map(process => {
+    function escapeHTML(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
 
-        const badgeClass =
-          process.update
-            ? "update"
-            : "normal";
+    function renderProcesses() {
+      const list = document.getElementById("processList");
 
-        const badgeText =
-          process.update
-            ? "Nova atualização"
-            : "Monitorando";
+      document.getElementById("totalProcesses").textContent =
+        processes.length;
 
-        const lastCheck =
-          process.lastCheck ||
-          "Aguardando consulta";
+      document.getElementById("activeProcesses").textContent =
+        processes.length;
 
-        return `
-          <div class="process-card">
-
-            <button
-              class="delete-btn"
-              onclick="deleteProcess(${process.id})"
-            >
-              ×
-            </button>
-
-            <div class="process-number">
-              ${escapeHTML(process.number)}
-            </div>
-
-            <div class="process-description">
-              ${escapeHTML(process.description)}
-            </div>
-
-            <div class="process-info">
-
-              <span class="badge ${badgeClass}">
-                ${badgeText}
-              </span>
-
-              <div class="last-check">
-                Última consulta<br>
-                ${lastCheck}
-              </div>
-
-            </div>
-
+      if (!processes.length) {
+        list.innerHTML = `
+          <div class="empty">
+            Nenhum processo cadastrado.
           </div>
         `;
-      }).join("");
-  }
 
-  function escapeHTML(text) {
+        return;
+      }
 
-    const div =
-      document.createElement("div");
+      list.innerHTML = processes
+        .map((process, index) => {
+          return `
+            <article class="process-card">
 
-    div.textContent = text;
+              <div class="process-top">
+                <div class="process-number">
+                  ${escapeHTML(process)}
+                </div>
 
-    return div.innerHTML;
-  }
+                <span class="status">
+                  Monitorando
+                </span>
+              </div>
 
-  function getManausTime() {
+              <div class="process-info">
+                Consulta programada: 08h, 11h, 14h e 17h
+              </div>
 
-    const now =
-      new Date();
+              <button
+                class="delete-button"
+                onclick="removeProcess(${index})"
+              >
+                Remover processo
+              </button>
 
-    const formatter =
-      new Intl.DateTimeFormat(
-        "pt-BR",
-        {
-          timeZone: "America/Manaus",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false
-        }
+            </article>
+          `;
+        })
+        .join("");
+    }
+
+    function removeProcess(index) {
+      const process = processes[index];
+
+      const confirmed = confirm(
+        `Deseja remover o processo ${process}?`
       );
 
-    const parts =
-      formatter.formatToParts(now);
+      if (!confirmed) return;
 
-    const values = {};
+      processes.splice(index, 1);
 
-    parts.forEach(part => {
-      values[part.type] = part.value;
-    });
+      saveProcesses();
+      renderProcesses();
+    }
 
-    return {
-      day: Number(values.day),
-      month: Number(values.month),
-      year: Number(values.year),
-      hour: Number(values.hour),
-      minute: Number(values.minute)
-    };
-  }
+    function openModal() {
+      document.getElementById("modal").classList.add("open");
 
-  function updateNextCheck() {
+      setTimeout(() => {
+        document.getElementById("newProcess").focus();
+      }, 100);
+    }
 
-    const now =
-      getManausTime();
+    function closeModal() {
+      document.getElementById("modal").classList.remove("open");
+      document.getElementById("newProcess").value = "";
+    }
 
-    const hours =
-      [8, 11, 14, 17];
+    function addProcess() {
+      const input = document.getElementById("newProcess");
 
-    let nextHour =
-      hours.find(
+      const process = input.value.trim();
+
+      if (!process) {
+        alert("Digite o número do processo.");
+        return;
+      }
+
+      if (processes.includes(process)) {
+        alert("Esse processo já está cadastrado.");
+        return;
+      }
+
+      processes.push(process);
+
+      saveProcesses();
+      renderProcesses();
+
+      closeModal();
+    }
+
+    function getManausTime() {
+      const now = new Date();
+
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Manaus",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hourCycle: "h23"
+      }).formatToParts(now);
+
+      const values = {};
+
+      parts.forEach(part => {
+        values[part.type] = part.value;
+      });
+
+      return {
+        year: Number(values.year),
+        month: Number(values.month),
+        day: Number(values.day),
+        hour: Number(values.hour),
+        minute: Number(values.minute)
+      };
+    }
+
+    function calculateNextCheck() {
+      const manaus = getManausTime();
+
+      const schedule = [8, 11, 14, 17];
+
+      let nextHour = schedule.find(
         hour =>
-          hour > now.hour ||
-          (
-            hour === now.hour &&
-            now.minute === 0
-          )
+          hour > manaus.hour ||
+          (hour === manaus.hour && manaus.minute === 0)
       );
 
-    let text;
+      if (nextHour !== undefined) {
+        return `Hoje às ${String(nextHour).padStart(2, "0")}:00`;
+      }
 
-    if (nextHour !== undefined) {
+      return "Amanhã às 08:00";
+    }
 
-      text =
-        "Próxima consulta: hoje às " +
-        String(nextHour).padStart(2, "0") +
-        ":00";
-
-    } else {
-
-      text =
-        "Próxima consulta: amanhã às 08:00";
-
+    function updateNextCheck() {
+      document.getElementById("nextCheck").textContent =
+        calculateNextCheck();
     }
 
     document
-      .getElementById("nextCheck")
-      .textContent = text + " • Horário de Manaus";
-  }
-
-  document
-    .getElementById("modal")
-    .addEventListener(
-      "click",
-      function(event) {
-
-        if (event.target === this) {
+      .getElementById("modal")
+      .addEventListener("click", event => {
+        if (event.target.id === "modal") {
           closeModal();
         }
+      });
 
-      }
-    );
+    renderProcesses();
+    updateNextCheck();
 
-  renderProcesses();
-  updateNextCheck();
-
-  setInterval(
-    updateNextCheck,
-    60000
-  );
-
-</script>
-
+    setInterval(updateNextCheck, 60000);
+  </script>
 </body>
 </html>
