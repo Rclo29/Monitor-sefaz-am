@@ -42,7 +42,7 @@ jobs:
           echo "Quantidade de novos alertas: $NOVOS"
           echo "novos=$NOVOS" >> "$GITHUB_OUTPUT"
 
-      - name: Criar aviso de nova movimentação
+      - name: Criar notificação de nova movimentação
         if: steps.alertas.outputs.novos != '0'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -53,26 +53,56 @@ jobs:
           import os
           import subprocess
 
-          with open("dados.json", "r", encoding="utf-8") as f:
-              dados = json.load(f)
+          USUARIO_GITHUB = "Rclo29"
 
-          quantidade = int(dados.get("novos_alertas", 0))
+          with open("dados.json", "r", encoding="utf-8") as arquivo:
+              dados = json.load(arquivo)
+
+          quantidade = int(
+              dados.get("novos_alertas", 0)
+          )
 
           if quantidade <= 0:
+              print("Nenhuma nova movimentação.")
               raise SystemExit(0)
 
-          alertas = dados.get("alertas", [])[:quantidade]
+          alertas = dados.get(
+              "alertas",
+              []
+          )[:quantidade]
 
           for alerta in reversed(alertas):
-              numero = alerta.get("numero", "Processo não identificado")
-              data = alerta.get("data_movimentacao", "")
-              setor = alerta.get("setor", "")
-              evento = alerta.get("evento", "")
-              detectado = alerta.get("data", "")
 
-              titulo = f"SEFAZ-AM: nova movimentação — {numero}"
+              numero = alerta.get(
+                  "numero",
+                  "Processo não identificado"
+              )
 
-              corpo = f"""## Nova movimentação detectada
+              data = alerta.get(
+                  "data_movimentacao",
+                  ""
+              )
+
+              setor = alerta.get(
+                  "setor",
+                  ""
+              )
+
+              evento = alerta.get(
+                  "evento",
+                  ""
+              )
+
+              detectado = alerta.get(
+                  "data",
+                  ""
+              )
+
+              titulo = (
+                  f"🔔 SEFAZ-AM: nova movimentação — {numero}"
+              )
+
+              corpo = f"""## 🔔 Nova movimentação detectada
 
           **Processo:** {numero}
 
@@ -85,8 +115,15 @@ jobs:
           **Detectado pelo monitor:** {detectado}
 
           ---
+
+          Acesse o Monitor SEFAZ-AM para consultar os detalhes atualizados.
+
           Monitor automático SEFAZ-AM
           """
+
+              print(
+                  f"Criando notificação para {numero}"
+              )
 
               subprocess.run(
                   [
@@ -97,10 +134,16 @@ jobs:
                       titulo,
                       "--body",
                       corpo,
+                      "--assignee",
+                      USUARIO_GITHUB,
                   ],
                   check=True,
                   env=os.environ.copy(),
               )
+
+          print(
+              f"{quantidade} notificação(ões) criada(s)."
+          )
           PY
 
       - name: Salvar alterações
