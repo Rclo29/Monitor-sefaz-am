@@ -30,6 +30,9 @@
       --vermelho: #c93434;
       --vermelho-claro: #fff0f0;
 
+      --amarelo: #b77900;
+      --amarelo-claro: #fff8df;
+
       --cinza: #667085;
       --cinza-escuro: #344054;
       --cinza-claro: #f4f6f8;
@@ -85,7 +88,7 @@
 
       padding-bottom:
         calc(
-          92px +
+          94px +
           env(safe-area-inset-bottom)
         );
     }
@@ -203,8 +206,7 @@
     .schedule {
       margin-top: 20px;
 
-      padding:
-        13px 14px;
+      padding: 13px 14px;
 
       border-radius: 15px;
 
@@ -247,6 +249,17 @@
       font-weight: 800;
 
       color: var(--cinza-escuro);
+    }
+
+    .section-subtitle {
+      margin:
+        -5px 0
+        12px;
+
+      color: var(--cinza);
+
+      font-size: 12px;
+      line-height: 1.4;
     }
 
     .card {
@@ -449,7 +462,201 @@
 
 
     /* =====================================================
-       RESUMO / QUADRO GERAL
+       PROCESSO PRIORITÁRIO
+    ===================================================== */
+
+    .prioritario-card {
+      border:
+        1px solid
+        #e6c35d;
+
+      box-shadow:
+        0 5px 22px
+        rgba(183,121,0,.12);
+    }
+
+    .prioritario-faixa {
+      display: flex;
+      align-items: center;
+
+      gap: 6px;
+
+      padding:
+        8px 15px;
+
+      background:
+        var(--amarelo-claro);
+
+      color:
+        var(--amarelo);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      border-bottom:
+        1px solid
+        #f1dda4;
+    }
+
+    .btn-prioridade {
+      background:
+        var(--amarelo-claro);
+
+      color:
+        var(--amarelo);
+
+      border:
+        1px solid
+        #f0d994;
+    }
+
+    .btn-prioridade.ativo {
+      background:
+        #ffe9a4;
+
+      color:
+        #8c5d00;
+
+      border-color:
+        #e3bf54;
+    }
+
+
+    /* =====================================================
+       RESUMO EXECUTIVO
+    ===================================================== */
+
+    .resumo-kpis {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 8px;
+
+      margin-bottom: 14px;
+    }
+
+    .resumo-kpi {
+      padding: 12px 7px;
+
+      text-align: center;
+
+      border-radius: 13px;
+
+      background: #f8fafc;
+
+      border:
+        1px solid
+        #edf0f3;
+    }
+
+    .resumo-kpi strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: var(--azul);
+
+      font-size: 19px;
+    }
+
+    .resumo-kpi span {
+      color: var(--cinza);
+
+      font-size: 10px;
+    }
+
+    .grupo-resumo {
+      margin-bottom: 18px;
+    }
+
+    .grupo-titulo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 9px;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      color:
+        var(--cinza-escuro);
+    }
+
+    .grupo-contagem {
+      padding:
+        4px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        var(--cinza-claro);
+
+      color:
+        var(--cinza);
+
+      font-size: 10px;
+    }
+
+    .mini-processo {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding:
+        11px 0;
+
+      border-bottom:
+        1px solid
+        #edf0f3;
+    }
+
+    .mini-processo:last-child {
+      border-bottom: 0;
+    }
+
+    .mini-processo-main {
+      min-width: 0;
+
+      flex: 1;
+    }
+
+    .mini-numero {
+      margin-bottom: 4px;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      word-break: break-word;
+    }
+
+    .mini-evento {
+      color: var(--cinza);
+
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .mini-data {
+      flex: 0 0 auto;
+
+      color: var(--cinza);
+
+      font-size: 10px;
+
+      white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       QUADRO GERAL
     ===================================================== */
 
     .quadro-wrap {
@@ -463,7 +670,7 @@
 
     .quadro {
       width: 100%;
-      min-width: 760px;
+      min-width: 790px;
 
       border-collapse: collapse;
 
@@ -471,11 +678,6 @@
     }
 
     .quadro th {
-      position: sticky;
-      top: 0;
-
-      z-index: 2;
-
       padding:
         11px 10px;
 
@@ -483,7 +685,8 @@
 
       background: #f2f5f9;
 
-      color: var(--cinza-escuro);
+      color:
+        var(--cinza-escuro);
 
       border-bottom:
         1px solid
@@ -509,6 +712,11 @@
       border-bottom: 0;
     }
 
+    .linha-prioritaria {
+      background:
+        #fffdf5;
+    }
+
     .quadro-numero {
       font-weight: 700;
 
@@ -516,7 +724,7 @@
     }
 
     .quadro-evento {
-      max-width: 270px;
+      max-width: 280px;
     }
 
     .resumo-toolbar {
@@ -557,6 +765,15 @@
       word-break: break-word;
     }
 
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 5px;
+
+      margin-top: 7px;
+    }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -592,6 +809,14 @@
 
       background:
         var(--laranja-claro);
+    }
+
+    .badge-prioritario {
+      color:
+        var(--amarelo);
+
+      background:
+        var(--amarelo-claro);
     }
 
     .badge-outro {
@@ -759,7 +984,7 @@
       font-size: 12px;
     }
 
-    .filter-alert {
+    .filter-check {
       display: flex;
       align-items: center;
 
@@ -786,7 +1011,7 @@
       font-weight: 600;
     }
 
-    .filter-alert input {
+    .filter-check input {
       width: 18px;
       height: 18px;
     }
@@ -796,7 +1021,8 @@
         4px 0
         12px;
 
-      color: var(--cinza);
+      color:
+        var(--cinza);
 
       font-size: 11px;
     }
@@ -807,7 +1033,10 @@
     ===================================================== */
 
     .acoes {
-      display: flex;
+      display: grid;
+
+      grid-template-columns:
+        1fr auto;
 
       gap: 8px;
 
@@ -829,8 +1058,6 @@
     }
 
     .btn-primary {
-      flex: 1;
-
       background:
         var(--azul);
 
@@ -1116,6 +1343,11 @@
           repeat(2, 1fr);
       }
 
+      .resumo-kpis {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
       .destaque-grid {
         grid-template-columns:
           repeat(2, 1fr);
@@ -1128,6 +1360,15 @@
       .processo-numero {
         font-size: 13px;
       }
+
+      .acoes {
+        grid-template-columns:
+          1fr;
+      }
+
+      .btn-prioridade {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -1138,9 +1379,7 @@
 <div class="app">
 
 
-  <!-- ===================================================
-       CABEÇALHO
-  ==================================================== -->
+  <!-- CABEÇALHO -->
 
   <header class="header">
 
@@ -1169,12 +1408,10 @@
 
       <div class="status-online">
 
-        <div
-          class="bolinha"
-          id="bolinhaStatus">
+        <div class="bolinha">
         </div>
 
-        <span id="textoStatus">
+        <span>
           Ativo
         </span>
 
@@ -1191,7 +1428,8 @@
 
       <div
         class="schedule-next"
-        id="proximaConsulta">
+        id="proximaConsulta"
+      >
         Calculando...
       </div>
 
@@ -1201,14 +1439,12 @@
 
 
 
-  <!-- ===================================================
-       CONTEÚDO
-  ==================================================== -->
+  <!-- CONTEÚDO -->
 
   <main class="content">
 
 
-    <!-- INDICADORES -->
+    <!-- INDICADORES PRINCIPAIS -->
 
     <div class="summary">
 
@@ -1216,7 +1452,8 @@
 
         <div
           class="summary-number"
-          id="totalProcessos">
+          id="totalProcessos"
+        >
           —
         </div>
 
@@ -1231,7 +1468,8 @@
 
         <div
           class="summary-number numero-verde"
-          id="totalAbertos">
+          id="totalAbertos"
+        >
           —
         </div>
 
@@ -1246,7 +1484,8 @@
 
         <div
           class="summary-number numero-laranja"
-          id="totalAlertas">
+          id="totalAlertas"
+        >
           —
         </div>
 
@@ -1261,7 +1500,8 @@
 
         <div
           class="summary-number numero-vermelho"
-          id="totalErros">
+          id="totalErros"
+        >
           —
         </div>
 
@@ -1276,7 +1516,7 @@
 
 
     <!-- =================================================
-         1. VISÃO GERAL
+         VISÃO GERAL
     ================================================== -->
 
     <section id="view-geral">
@@ -1360,7 +1600,8 @@
 
             <div
               class="valor"
-              id="ultimaConsulta">
+              id="ultimaConsulta"
+            >
               Carregando...
             </div>
 
@@ -1370,12 +1611,13 @@
           <div class="linha-info">
 
             <span class="label">
-              Resultado da última consulta
+              Resultado
             </span>
 
             <div
               class="valor"
-              id="resultadoConsulta">
+              id="resultadoConsulta"
+            >
               Carregando...
             </div>
 
@@ -1411,7 +1653,8 @@
 
               <div
                 class="destaque-numero"
-                id="destaqueHoje">
+                id="destaqueHoje"
+              >
                 —
               </div>
 
@@ -1426,12 +1669,13 @@
 
               <div
                 class="destaque-numero"
-                id="destaqueSemana">
+                id="destaqueSemana"
+              >
                 —
               </div>
 
               <div class="destaque-label">
-                Movimentados em 7 dias
+                Últimos 7 dias
               </div>
 
             </div>
@@ -1441,12 +1685,13 @@
 
               <div
                 class="destaque-numero"
-                id="destaqueSemMovimento">
+                id="destaquePrioritarios"
+              >
                 —
               </div>
 
               <div class="destaque-label">
-                Sem data identificada
+                Prioritários
               </div>
 
             </div>
@@ -1456,7 +1701,8 @@
 
               <div
                 class="destaque-numero"
-                id="destaqueAlertas">
+                id="destaqueAlertas"
+              >
                 —
               </div>
 
@@ -1473,10 +1719,20 @@
       </div>
 
 
+      <div
+        class="section-title"
+        id="tituloPrioritarios"
+      >
+        Processos prioritários
+      </div>
+
+      <div id="listaPrioritarios">
+      </div>
+
+
       <div class="section-title">
         Movimentações mais recentes
       </div>
-
 
       <div id="listaGeral">
 
@@ -1500,15 +1756,184 @@
 
 
     <!-- =================================================
-         2. RESUMO
+         RESUMO
     ================================================== -->
 
     <section
       id="view-resumo"
-      class="hidden">
+      class="hidden"
+    >
 
       <div class="section-title">
-        Quadro geral resumido
+        Resumo executivo
+      </div>
+
+      <div class="section-subtitle">
+        Visão rápida da situação atual dos processos monitorados.
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-body">
+
+          <div class="resumo-kpis">
+
+            <div class="resumo-kpi">
+
+              <strong id="resumoTotal">
+                —
+              </strong>
+
+              <span>
+                Monitorados
+              </span>
+
+            </div>
+
+
+            <div class="resumo-kpi">
+
+              <strong id="resumoHoje">
+                —
+              </strong>
+
+              <span>
+                Hoje
+              </span>
+
+            </div>
+
+
+            <div class="resumo-kpi">
+
+              <strong id="resumoSemana">
+                —
+              </strong>
+
+              <span>
+                7 dias
+              </span>
+
+            </div>
+
+
+            <div class="resumo-kpi">
+
+              <strong id="resumoPrioritarios">
+                —
+              </strong>
+
+              <span>
+                Prioritários
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="grupo-resumo"
+            id="grupoPrioritariosResumo"
+          >
+
+            <div class="grupo-titulo">
+
+              <span>
+                ⭐ Processos prioritários
+              </span>
+
+              <span
+                class="grupo-contagem"
+                id="contPrioritarios"
+              >
+                0
+              </span>
+
+            </div>
+
+            <div id="resumoPrioritariosLista">
+            </div>
+
+          </div>
+
+
+          <div class="grupo-resumo">
+
+            <div class="grupo-titulo">
+
+              <span>
+                🟢 Movimentados hoje
+              </span>
+
+              <span
+                class="grupo-contagem"
+                id="contHoje"
+              >
+                0
+              </span>
+
+            </div>
+
+            <div id="resumoHojeLista">
+            </div>
+
+          </div>
+
+
+          <div class="grupo-resumo">
+
+            <div class="grupo-titulo">
+
+              <span>
+                🔵 Movimentados nos últimos 7 dias
+              </span>
+
+              <span
+                class="grupo-contagem"
+                id="contSemana"
+              >
+                0
+              </span>
+
+            </div>
+
+            <div id="resumoSemanaLista">
+            </div>
+
+          </div>
+
+
+          <div class="grupo-resumo">
+
+            <div class="grupo-titulo">
+
+              <span>
+                ⚪ Sem movimentação nos últimos 7 dias
+              </span>
+
+              <span
+                class="grupo-contagem"
+                id="contAntigos"
+              >
+                0
+              </span>
+
+            </div>
+
+            <div id="resumoAntigosLista">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-title">
+        Quadro geral
       </div>
 
 
@@ -1541,6 +1966,10 @@
                 <tr>
 
                   <th>
+                    Prioridade
+                  </th>
+
+                  <th>
                     Processo
                   </th>
 
@@ -1564,12 +1993,11 @@
 
               </thead>
 
-
               <tbody id="tabelaResumo">
 
                 <tr>
 
-                  <td colspan="5">
+                  <td colspan="6">
 
                     <div class="loading">
 
@@ -1599,12 +2027,13 @@
 
 
     <!-- =================================================
-         3. PROCESSOS
+         PROCESSOS
     ================================================== -->
 
     <section
       id="view-processos"
-      class="hidden">
+      class="hidden"
+    >
 
       <div class="section-title">
         Processos
@@ -1612,7 +2041,6 @@
 
 
       <div class="toolbar">
-
 
         <div class="search-box">
 
@@ -1672,7 +2100,7 @@
             </option>
 
             <option value="numero">
-              Número do processo
+              Número
             </option>
 
           </select>
@@ -1680,7 +2108,7 @@
         </div>
 
 
-        <label class="filter-alert">
+        <label class="filter-check">
 
           <input
             type="checkbox"
@@ -1692,12 +2120,26 @@
 
         </label>
 
+
+        <label class="filter-check">
+
+          <input
+            type="checkbox"
+            id="somentePrioritarios"
+            onchange="aplicarFiltros()"
+          >
+
+          Mostrar somente processos prioritários
+
+        </label>
+
       </div>
 
 
       <div
         class="resultado-filtro"
-        id="resultadoFiltro">
+        id="resultadoFiltro"
+      >
       </div>
 
 
@@ -1723,12 +2165,13 @@
 
 
     <!-- =================================================
-         4. ALERTAS
+         ALERTAS
     ================================================== -->
 
     <section
       id="view-alertas"
-      class="hidden">
+      class="hidden"
+    >
 
       <div class="section-title">
         Alertas de movimentação
@@ -1754,17 +2197,13 @@
 
     </section>
 
-
   </main>
 
 
 
-  <!-- ===================================================
-       MENU INFERIOR
-  ==================================================== -->
+  <!-- MENU INFERIOR -->
 
   <nav class="nav">
-
 
     <button
       class="nav-item active"
@@ -1833,7 +2272,8 @@
 
 <div
   class="toast"
-  id="toast">
+  id="toast"
+>
 </div>
 
 
@@ -1842,20 +2282,150 @@
 
   /*
   ==========================================================
-  MONITOR SEFAZ-AM
+  CONFIGURAÇÃO
   ==========================================================
   */
+
+  const STORAGE_PRIORIDADES =
+    "monitorSefazPrioridadesV1";
 
 
   let dadosMonitor = null;
 
   let timerToast = null;
 
+  let prioridades =
+    carregarPrioridades();
 
 
-  /* ========================================================
-     CARREGAR dados.json
-  ======================================================== */
+
+  /*
+  ==========================================================
+  PRIORIDADES
+  ==========================================================
+  */
+
+  function carregarPrioridades() {
+
+    try {
+
+      const salvo =
+        localStorage.getItem(
+          STORAGE_PRIORIDADES
+        );
+
+
+      if (!salvo) {
+        return [];
+      }
+
+
+      const lista =
+        JSON.parse(
+          salvo
+        );
+
+
+      if (!Array.isArray(lista)) {
+        return [];
+      }
+
+
+      return lista;
+
+    }
+
+    catch {
+
+      return [];
+
+    }
+
+  }
+
+
+  function salvarPrioridades() {
+
+    localStorage.setItem(
+      STORAGE_PRIORIDADES,
+      JSON.stringify(
+        prioridades
+      )
+    );
+
+  }
+
+
+  function ehPrioritario(
+    numero
+  ) {
+
+    return prioridades.includes(
+      String(numero)
+    );
+
+  }
+
+
+  function alternarPrioridade(
+    numero
+  ) {
+
+    numero =
+      String(numero);
+
+
+    if (
+      ehPrioritario(
+        numero
+      )
+    ) {
+
+      prioridades =
+        prioridades.filter(
+          item =>
+            item !== numero
+        );
+
+
+      mostrarToast(
+        "Processo removido dos prioritários."
+      );
+
+    }
+
+    else {
+
+      prioridades.push(
+        numero
+      );
+
+
+      mostrarToast(
+        "⭐ Processo marcado como prioritário."
+      );
+
+    }
+
+
+    salvarPrioridades();
+
+
+    if (dadosMonitor) {
+
+      renderizarTudo();
+
+    }
+
+  }
+
+
+
+  /*
+  ==========================================================
+  CARREGAR dados.json
+  ==========================================================
+  */
 
   async function carregarDados(
     mostrarMensagem = false
@@ -1871,7 +2441,8 @@
 
       if (botao) {
 
-        botao.disabled = true;
+        botao.disabled =
+          true;
 
         botao.textContent =
           "⏳ Atualizando...";
@@ -1881,10 +2452,12 @@
 
       const resposta =
         await fetch(
-          "dados.json?t=" +
+          "dados.json?t="
+          +
           Date.now(),
           {
-            cache: "no-store"
+            cache:
+              "no-store"
           }
         );
 
@@ -1892,7 +2465,8 @@
       if (!resposta.ok) {
 
         throw new Error(
-          "HTTP " +
+          "HTTP "
+          +
           resposta.status
         );
 
@@ -1901,6 +2475,9 @@
 
       dadosMonitor =
         await resposta.json();
+
+
+      limparPrioridadesInexistentes();
 
 
       renderizarTudo();
@@ -1919,7 +2496,6 @@
     catch (erro) {
 
       console.error(
-        "Erro ao carregar dados.json:",
         erro
       );
 
@@ -1941,7 +2517,8 @@
 
       if (botao) {
 
-        botao.disabled = false;
+        botao.disabled =
+          false;
 
         botao.textContent =
           "🔄 Atualizar painel";
@@ -1953,10 +2530,45 @@
   }
 
 
+  function limparPrioridadesInexistentes() {
 
-  /* ========================================================
-     RENDERIZAR
-  ======================================================== */
+    const numeros =
+      new Set(
+        (
+          dadosMonitor
+            ?.processos
+          ||
+          []
+        )
+        .map(
+          processo =>
+            String(
+              processo.numero
+            )
+        )
+      );
+
+
+    prioridades =
+      prioridades.filter(
+        numero =>
+          numeros.has(
+            numero
+          )
+      );
+
+
+    salvarPrioridades();
+
+  }
+
+
+
+  /*
+  ==========================================================
+  RENDERIZAÇÃO GERAL
+  ==========================================================
+  */
 
   function renderizarTudo() {
 
@@ -1966,9 +2578,13 @@
 
     renderizarDestaques();
 
+    renderizarPrioritariosGeral();
+
     renderizarGeral();
 
-    renderizarResumo();
+    renderizarResumoExecutivo();
+
+    renderizarTabelaResumo();
 
     aplicarFiltros();
 
@@ -1978,34 +2594,46 @@
 
 
 
-  /* ========================================================
-     INDICADORES
-  ======================================================== */
+  /*
+  ==========================================================
+  INDICADORES
+  ==========================================================
+  */
 
   function renderizarIndicadores() {
 
     const processos =
-      dadosMonitor?.processos || [];
+      dadosMonitor
+        ?.processos
+      ||
+      [];
 
 
     const alertas =
-      dadosMonitor?.alertas || [];
+      dadosMonitor
+        ?.alertas
+      ||
+      [];
 
 
     const erros =
       Number(
-        dadosMonitor?.erros || 0
+        dadosMonitor
+          ?.erros
+        ||
+        0
       );
 
 
     const abertos =
       processos.filter(
         processo =>
-          String(
-            processo.situacao || ""
+          normalizarTexto(
+            processo.situacao
           )
-          .toLowerCase()
-          .includes("aberto")
+          .includes(
+            "aberto"
+          )
       )
       .length;
 
@@ -2037,9 +2665,11 @@
 
 
 
-  /* ========================================================
-     INFORMAÇÕES GERAIS
-  ======================================================== */
+  /*
+  ==========================================================
+  INFORMAÇÕES GERAIS
+  ==========================================================
+  */
 
   function renderizarInformacoesGerais() {
 
@@ -2050,7 +2680,10 @@
 
     const erros =
       Number(
-        dadosMonitor?.erros || 0
+        dadosMonitor
+          ?.erros
+        ||
+        0
       );
 
 
@@ -2058,11 +2691,17 @@
       "ultimaConsulta"
     ).textContent =
       ultima
-        ? formatarDataHora(ultima)
-        : "Ainda não disponível";
+        ?
+        formatarDataHora(
+          ultima
+        )
+        :
+        "Ainda não disponível";
 
 
-    if (erros === 0) {
+    if (
+      erros === 0
+    ) {
 
       document.getElementById(
         "resultadoConsulta"
@@ -2076,12 +2715,16 @@
       document.getElementById(
         "resultadoConsulta"
       ).innerHTML =
-        "⚠️ " +
-        erros +
+        "⚠️ "
+        +
+        erros
+        +
         (
           erros === 1
-            ? " consulta apresentou erro."
-            : " consultas apresentaram erro."
+            ?
+            " consulta apresentou erro."
+            :
+            " consultas apresentaram erro."
         );
 
     }
@@ -2090,98 +2733,50 @@
 
 
 
-  /* ========================================================
-     DESTAQUES
-  ======================================================== */
+  /*
+  ==========================================================
+  DESTAQUES
+  ==========================================================
+  */
 
   function renderizarDestaques() {
 
     const processos =
-      dadosMonitor?.processos || [];
+      dadosMonitor
+        ?.processos
+      ||
+      [];
 
 
     const alertas =
-      dadosMonitor?.alertas || [];
+      dadosMonitor
+        ?.alertas
+      ||
+      [];
 
 
-    const hoje =
-      inicioHojeManaus();
-
-
-    const seteDias =
-      new Date(
-        hoje.getTime()
-        -
-        6 * 24 * 60 * 60 * 1000
+    const grupos =
+      classificarPorPeriodo(
+        processos
       );
-
-
-    let movimentadosHoje = 0;
-
-    let movimentadosSemana = 0;
-
-    let semData = 0;
-
-
-    processos.forEach(
-      processo => {
-
-        const data =
-          converterDataProcesso(
-            processo.dataMovimentacao
-          );
-
-
-        if (!data) {
-
-          semData++;
-
-          return;
-
-        }
-
-
-        if (
-          data.getTime()
-          ===
-          hoje.getTime()
-        ) {
-
-          movimentadosHoje++;
-
-        }
-
-
-        if (
-          data >= seteDias
-          &&
-          data <= hoje
-        ) {
-
-          movimentadosSemana++;
-
-        }
-
-      }
-    );
 
 
     document.getElementById(
       "destaqueHoje"
     ).textContent =
-      movimentadosHoje;
+      grupos.hoje.length;
 
 
     document.getElementById(
       "destaqueSemana"
     ).textContent =
-      movimentadosSemana;
+      grupos.semana.length;
 
 
     document.getElementById(
-      "destaqueSemMovimento"
+      "destaquePrioritarios"
     ).textContent =
-      semData;
+      prioridades.length;
 
 
     document.getElementById(
@@ -2193,45 +2788,256 @@
 
 
 
-  /* ========================================================
-     CARD PROCESSO
-  ======================================================== */
+  /*
+  ==========================================================
+  ORDENAÇÃO COM PRIORIDADE
+  ==========================================================
+  */
+
+  function compararPrioridade(
+    a,
+    b
+  ) {
+
+    const prioridadeA =
+      ehPrioritario(
+        a.numero
+      );
+
+
+    const prioridadeB =
+      ehPrioritario(
+        b.numero
+      );
+
+
+    if (
+      prioridadeA
+      &&
+      !prioridadeB
+    ) {
+
+      return -1;
+
+    }
+
+
+    if (
+      !prioridadeA
+      &&
+      prioridadeB
+    ) {
+
+      return 1;
+
+    }
+
+
+    return 0;
+
+  }
+
+
+  function ordenarMaisRecentes(
+    processos
+  ) {
+
+    return processos.sort(
+      (
+        a,
+        b
+      ) => {
+
+        const prioridade =
+          compararPrioridade(
+            a,
+            b
+          );
+
+
+        if (
+          prioridade !== 0
+        ) {
+
+          return prioridade;
+
+        }
+
+
+        const dataA =
+          converterDataProcesso(
+            a.dataMovimentacao
+          );
+
+
+        const dataB =
+          converterDataProcesso(
+            b.dataMovimentacao
+          );
+
+
+        if (
+          !dataA
+          &&
+          !dataB
+        ) {
+
+          return 0;
+
+        }
+
+
+        if (!dataA) {
+
+          return 1;
+
+        }
+
+
+        if (!dataB) {
+
+          return -1;
+
+        }
+
+
+        return (
+          dataB.getTime()
+          -
+          dataA.getTime()
+        );
+
+      }
+    );
+
+  }
+
+
+  function ordenarMaisAntigos(
+    processos
+  ) {
+
+    return processos.sort(
+      (
+        a,
+        b
+      ) => {
+
+        const prioridade =
+          compararPrioridade(
+            a,
+            b
+          );
+
+
+        if (
+          prioridade !== 0
+        ) {
+
+          return prioridade;
+
+        }
+
+
+        const dataA =
+          converterDataProcesso(
+            a.dataMovimentacao
+          );
+
+
+        const dataB =
+          converterDataProcesso(
+            b.dataMovimentacao
+          );
+
+
+        if (
+          !dataA
+          &&
+          !dataB
+        ) {
+
+          return 0;
+
+        }
+
+
+        if (!dataA) {
+
+          return 1;
+
+        }
+
+
+        if (!dataB) {
+
+          return -1;
+
+        }
+
+
+        return (
+          dataA.getTime()
+          -
+          dataB.getTime()
+        );
+
+      }
+    );
+
+  }
+
+
+
+  /*
+  ==========================================================
+  CARD DE PROCESSO
+  ==========================================================
+  */
 
   function criarCardProcesso(
     processo
   ) {
 
     const numero =
-      processo.numero || "—";
+      processo.numero
+      ||
+      "—";
 
 
     const situacao =
-      processo.situacao ||
+      processo.situacao
+      ||
       "Não identificada";
 
 
     const interessado =
-      processo.interessado ||
+      processo.interessado
+      ||
       "Não identificado";
 
 
     const assunto =
-      processo.assunto ||
+      processo.assunto
+      ||
       "Não identificado";
 
 
     const data =
-      processo.dataMovimentacao ||
+      processo.dataMovimentacao
+      ||
       "—";
 
 
     const setor =
-      processo.setor ||
+      processo.setor
+      ||
       "—";
 
 
     const evento =
-      processo.evento ||
+      processo.evento
+      ||
       "Nenhuma movimentação encontrada";
 
 
@@ -2245,6 +3051,12 @@
       );
 
 
+    const prioritario =
+      ehPrioritario(
+        numero
+      );
+
+
     const badge =
       classeBadge(
         situacao,
@@ -2253,14 +3065,36 @@
 
 
     const url =
-      processo.url ||
+      processo.url
+      ||
       criarUrlProcesso(
         numero
       );
 
 
     return `
-      <div class="card">
+      <div
+        class="card
+        ${
+          prioritario
+            ?
+            "prioritario-card"
+            :
+            ""
+        }"
+      >
+
+        ${
+          prioritario
+            ?
+            `
+              <div class="prioritario-faixa">
+                ⭐ PROCESSO PRIORITÁRIO
+              </div>
+            `
+            :
+            ""
+        }
 
         <div class="card-body">
 
@@ -2270,22 +3104,45 @@
 
               <div class="processo-numero">
 
-                ${escaparHTML(numero)}
+                ${escaparHTML(
+                  numero
+                )}
 
               </div>
 
-              ${
-                possuiAlerta
-                  ? `
-                    <span
-                      class="badge badge-alerta"
-                      style="margin-top:7px"
-                    >
-                      🔔 Com alerta
-                    </span>
-                  `
-                  : ""
-              }
+
+              <div class="badges">
+
+                ${
+                  prioritario
+                    ?
+                    `
+                      <span
+                        class="badge badge-prioritario"
+                      >
+                        ⭐ Prioritário
+                      </span>
+                    `
+                    :
+                    ""
+                }
+
+
+                ${
+                  possuiAlerta
+                    ?
+                    `
+                      <span
+                        class="badge badge-alerta"
+                      >
+                        🔔 Com alerta
+                      </span>
+                    `
+                    :
+                    ""
+                }
+
+              </div>
 
             </div>
 
@@ -2293,7 +3150,11 @@
             <span
               class="badge ${badge}"
             >
-              ${escaparHTML(situacao)}
+
+              ${escaparHTML(
+                situacao
+              )}
+
             </span>
 
           </div>
@@ -2307,7 +3168,9 @@
 
             <div class="valor">
 
-              ${escaparHTML(interessado)}
+              ${escaparHTML(
+                interessado
+              )}
 
             </div>
 
@@ -2322,7 +3185,9 @@
 
             <div class="valor">
 
-              ${escaparHTML(assunto)}
+              ${escaparHTML(
+                assunto
+              )}
 
             </div>
 
@@ -2333,8 +3198,10 @@
             class="movimentacao
             ${
               possuiAlerta
-                ? "alerta"
-                : ""
+                ?
+                "alerta"
+                :
+                ""
             }"
           >
 
@@ -2342,17 +3209,23 @@
 
               Última movimentação:
 
-              ${escaparHTML(data)}
+              ${escaparHTML(
+                data
+              )}
 
               •
 
-              ${escaparHTML(setor)}
+              ${escaparHTML(
+                setor
+              )}
 
             </div>
 
             <div class="mov-texto">
 
-              ${escaparHTML(evento)}
+              ${escaparHTML(
+                evento
+              )}
 
             </div>
 
@@ -2361,16 +3234,20 @@
 
           ${
             erro
-              ? `
+              ?
+              `
                 <div class="erro-consulta">
 
-                  ⚠️ Última tentativa apresentou erro:
+                  ⚠️ Última consulta apresentou erro:
 
-                  ${escaparHTML(erro)}
+                  ${escaparHTML(
+                    erro
+                  )}
 
                 </div>
               `
-              : ""
+              :
+              ""
           }
 
 
@@ -2382,8 +3259,31 @@
                 '${escaparJS(url)}'
               )"
             >
-
               Consultar na SEFAZ
+            </button>
+
+
+            <button
+              class="btn btn-prioridade
+              ${
+                prioritario
+                  ?
+                  "ativo"
+                  :
+                  ""
+              }"
+              onclick="alternarPrioridade(
+                '${escaparJS(numero)}'
+              )"
+            >
+
+              ${
+                prioritario
+                  ?
+                  "★ Remover destaque"
+                  :
+                  "☆ Destacar"
+              }
 
             </button>
 
@@ -2398,20 +3298,109 @@
 
 
 
-  /* ========================================================
-     VISÃO GERAL
-  ======================================================== */
+  /*
+  ==========================================================
+  PRIORITÁRIOS NA VISÃO GERAL
+  ==========================================================
+  */
+
+  function renderizarPrioritariosGeral() {
+
+    const processos =
+      (
+        dadosMonitor
+          ?.processos
+        ||
+        []
+      )
+      .filter(
+        processo =>
+          ehPrioritario(
+            processo.numero
+          )
+      );
+
+
+    const titulo =
+      document.getElementById(
+        "tituloPrioritarios"
+      );
+
+
+    const container =
+      document.getElementById(
+        "listaPrioritarios"
+      );
+
+
+    if (
+      !processos.length
+    ) {
+
+      titulo.classList.add(
+        "hidden"
+      );
+
+      container.innerHTML =
+        "";
+
+      return;
+
+    }
+
+
+    titulo.classList.remove(
+      "hidden"
+    );
+
+
+    container.innerHTML =
+      ordenarMaisRecentes(
+        [
+          ...processos
+        ]
+      )
+      .map(
+        criarCardProcesso
+      )
+      .join("");
+
+  }
+
+
+
+  /*
+  ==========================================================
+  VISÃO GERAL
+  ==========================================================
+  */
 
   function renderizarGeral() {
 
-    const processos =
+    let processos =
       ordenarMaisRecentes(
         [
           ...(
-            dadosMonitor?.processos
-            || []
+            dadosMonitor
+              ?.processos
+            ||
+            []
           )
         ]
+      );
+
+
+    /*
+    Evita repetir os prioritários na seção
+    de movimentações recentes.
+    */
+
+    processos =
+      processos.filter(
+        processo =>
+          !ehPrioritario(
+            processo.numero
+          )
       );
 
 
@@ -2421,7 +3410,9 @@
       );
 
 
-    if (!processos.length) {
+    if (
+      !processos.length
+    ) {
 
       container.innerHTML =
         criarVazio(
@@ -2436,28 +3427,414 @@
 
     container.innerHTML =
       processos
-        .slice(0, 5)
-        .map(
-          criarCardProcesso
-        )
-        .join("");
+      .slice(
+        0,
+        5
+      )
+      .map(
+        criarCardProcesso
+      )
+      .join("");
 
   }
 
 
 
-  /* ========================================================
-     RESUMO
-  ======================================================== */
+  /*
+  ==========================================================
+  CLASSIFICAÇÃO POR PERÍODO
+  ==========================================================
+  */
 
-  function renderizarResumo() {
+  function classificarPorPeriodo(
+    processos
+  ) {
+
+    const hoje =
+      inicioHojeManaus();
+
+
+    const limiteSemana =
+      new Date(
+        hoje.getTime()
+        -
+        6
+        *
+        24
+        *
+        60
+        *
+        60
+        *
+        1000
+      );
+
+
+    const resultado = {
+      hoje: [],
+      semana: [],
+      antigos: [],
+      semData: []
+    };
+
+
+    processos.forEach(
+      processo => {
+
+        const data =
+          converterDataProcesso(
+            processo.dataMovimentacao
+          );
+
+
+        if (!data) {
+
+          resultado.semData.push(
+            processo
+          );
+
+          resultado.antigos.push(
+            processo
+          );
+
+          return;
+
+        }
+
+
+        if (
+          data.getTime()
+          ===
+          hoje.getTime()
+        ) {
+
+          resultado.hoje.push(
+            processo
+          );
+
+        }
+
+
+        if (
+          data >= limiteSemana
+          &&
+          data <= hoje
+        ) {
+
+          resultado.semana.push(
+            processo
+          );
+
+        }
+
+        else {
+
+          resultado.antigos.push(
+            processo
+          );
+
+        }
+
+      }
+    );
+
+
+    return resultado;
+
+  }
+
+
+
+  /*
+  ==========================================================
+  MINI PROCESSO
+  ==========================================================
+  */
+
+  function miniProcessoHTML(
+    processo
+  ) {
+
+    const prioritario =
+      ehPrioritario(
+        processo.numero
+      );
+
+
+    return `
+      <div class="mini-processo">
+
+        <div class="mini-processo-main">
+
+          <div class="mini-numero">
+
+            ${
+              prioritario
+                ?
+                "⭐ "
+                :
+                ""
+            }
+
+            ${escaparHTML(
+              processo.numero
+              ||
+              "—"
+            )}
+
+          </div>
+
+          <div class="mini-evento">
+
+            ${escaparHTML(
+              processo.setor
+              ||
+              "—"
+            )}
+
+            —
+
+            ${escaparHTML(
+              processo.evento
+              ||
+              "Sem movimentação identificada"
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="mini-data">
+
+          ${escaparHTML(
+            processo.dataMovimentacao
+            ||
+            "—"
+          )}
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+
+  /*
+  ==========================================================
+  RESUMO EXECUTIVO
+  ==========================================================
+  */
+
+  function renderizarResumoExecutivo() {
+
+    const processos =
+      dadosMonitor
+        ?.processos
+      ||
+      [];
+
+
+    const grupos =
+      classificarPorPeriodo(
+        processos
+      );
+
+
+    const prioritarios =
+      ordenarMaisRecentes(
+        processos
+        .filter(
+          processo =>
+            ehPrioritario(
+              processo.numero
+            )
+        )
+      );
+
+
+    document.getElementById(
+      "resumoTotal"
+    ).textContent =
+      processos.length;
+
+
+    document.getElementById(
+      "resumoHoje"
+    ).textContent =
+      grupos.hoje.length;
+
+
+    document.getElementById(
+      "resumoSemana"
+    ).textContent =
+      grupos.semana.length;
+
+
+    document.getElementById(
+      "resumoPrioritarios"
+    ).textContent =
+      prioritarios.length;
+
+
+    document.getElementById(
+      "contPrioritarios"
+    ).textContent =
+      prioritarios.length;
+
+
+    document.getElementById(
+      "contHoje"
+    ).textContent =
+      grupos.hoje.length;
+
+
+    document.getElementById(
+      "contSemana"
+    ).textContent =
+      grupos.semana.length;
+
+
+    document.getElementById(
+      "contAntigos"
+    ).textContent =
+      grupos.antigos.length;
+
+
+    const grupoPrioritarios =
+      document.getElementById(
+        "grupoPrioritariosResumo"
+      );
+
+
+    if (
+      prioritarios.length
+    ) {
+
+      grupoPrioritarios.classList.remove(
+        "hidden"
+      );
+
+
+      document.getElementById(
+        "resumoPrioritariosLista"
+      ).innerHTML =
+        prioritarios
+        .map(
+          miniProcessoHTML
+        )
+        .join("");
+
+    }
+
+    else {
+
+      grupoPrioritarios.classList.add(
+        "hidden"
+      );
+
+    }
+
+
+    renderizarGrupoResumo(
+      "resumoHojeLista",
+      ordenarMaisRecentes(
+        [
+          ...grupos.hoje
+        ]
+      ),
+      "Nenhum processo movimentado hoje."
+    );
+
+
+    renderizarGrupoResumo(
+      "resumoSemanaLista",
+      ordenarMaisRecentes(
+        [
+          ...grupos.semana
+        ]
+      ),
+      "Nenhuma movimentação nos últimos 7 dias."
+    );
+
+
+    renderizarGrupoResumo(
+      "resumoAntigosLista",
+      ordenarMaisRecentes(
+        [
+          ...grupos.antigos
+        ]
+      ),
+      "Nenhum processo nesta categoria."
+    );
+
+  }
+
+
+  function renderizarGrupoResumo(
+    id,
+    processos,
+    mensagemVazia
+  ) {
+
+    const container =
+      document.getElementById(
+        id
+      );
+
+
+    if (
+      !processos.length
+    ) {
+
+      container.innerHTML = `
+        <div
+          style="
+            color:#667085;
+            font-size:11px;
+            padding:6px 0 10px;
+          "
+        >
+          ${escaparHTML(
+            mensagemVazia
+          )}
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      processos
+      .map(
+        miniProcessoHTML
+      )
+      .join("");
+
+  }
+
+
+
+  /*
+  ==========================================================
+  TABELA RESUMO
+  ==========================================================
+  */
+
+  function renderizarTabelaResumo() {
 
     const processos =
       ordenarMaisRecentes(
         [
           ...(
-            dadosMonitor?.processos
-            || []
+            dadosMonitor
+              ?.processos
+            ||
+            []
           )
         ]
       );
@@ -2466,11 +3843,14 @@
     document.getElementById(
       "resumoQuantidade"
     ).textContent =
-      processos.length +
+      processos.length
+      +
       (
         processos.length === 1
-          ? " processo monitorado"
-          : " processos monitorados"
+          ?
+          " processo monitorado"
+          :
+          " processos monitorados"
       );
 
 
@@ -2480,11 +3860,13 @@
       );
 
 
-    if (!processos.length) {
+    if (
+      !processos.length
+    ) {
 
       corpo.innerHTML = `
         <tr>
-          <td colspan="5">
+          <td colspan="6">
             Nenhum processo disponível.
           </td>
         </tr>
@@ -2497,92 +3879,135 @@
 
     corpo.innerHTML =
       processos
-        .map(
-          processo => {
+      .map(
+        processo => {
 
-            const badge =
-              classeBadge(
-                processo.situacao,
-                processo.erro
-              );
+          const prioritario =
+            ehPrioritario(
+              processo.numero
+            );
 
 
-            return `
-              <tr>
+          const badge =
+            classeBadge(
+              processo.situacao,
+              processo.erro
+            );
 
-                <td
-                  class="quadro-numero"
+
+          return `
+            <tr
+              class="
+                ${
+                  prioritario
+                    ?
+                    "linha-prioritaria"
+                    :
+                    ""
+                }
+              "
+            >
+
+              <td>
+
+                ${
+                  prioritario
+                    ?
+                    "⭐ Prioritário"
+                    :
+                    "—"
+                }
+
+              </td>
+
+
+              <td
+                class="quadro-numero"
+              >
+
+                ${escaparHTML(
+                  processo.numero
+                )}
+
+              </td>
+
+
+              <td>
+
+                <span
+                  class="badge ${badge}"
                 >
-                  ${escaparHTML(
-                    processo.numero
-                  )}
-                </td>
-
-                <td>
-
-                  <span
-                    class="badge ${badge}"
-                  >
-                    ${escaparHTML(
-                      processo.situacao
-                      ||
-                      "—"
-                    )}
-                  </span>
-
-                </td>
-
-                <td>
 
                   ${escaparHTML(
-                    processo.dataMovimentacao
+                    processo.situacao
                     ||
                     "—"
                   )}
 
-                </td>
+                </span>
 
-                <td>
+              </td>
 
-                  ${escaparHTML(
-                    processo.setor
-                    ||
-                    "—"
-                  )}
 
-                </td>
+              <td>
 
-                <td
-                  class="quadro-evento"
-                >
+                ${escaparHTML(
+                  processo.dataMovimentacao
+                  ||
+                  "—"
+                )}
 
-                  ${escaparHTML(
-                    processo.evento
-                    ||
-                    "—"
-                  )}
+              </td>
 
-                </td>
 
-              </tr>
-            `;
+              <td>
 
-          }
-        )
-        .join("");
+                ${escaparHTML(
+                  processo.setor
+                  ||
+                  "—"
+                )}
+
+              </td>
+
+
+              <td
+                class="quadro-evento"
+              >
+
+                ${escaparHTML(
+                  processo.evento
+                  ||
+                  "—"
+                )}
+
+              </td>
+
+            </tr>
+          `;
+
+        }
+      )
+      .join("");
 
   }
 
 
 
-  /* ========================================================
-     FILTROS
-  ======================================================== */
+  /*
+  ==========================================================
+  FILTROS
+  ==========================================================
+  */
 
   function aplicarFiltros() {
 
-    if (!dadosMonitor) {
+    if (
+      !dadosMonitor
+    ) {
+
       return;
+
     }
 
 
@@ -2612,16 +4037,26 @@
       ).checked;
 
 
+    const somentePrioritarios =
+      document.getElementById(
+        "somentePrioritarios"
+      ).checked;
+
+
     let processos =
       [
         ...(
-          dadosMonitor.processos
-          || []
+          dadosMonitor
+            .processos
+          ||
+          []
         )
       ];
 
 
-    if (busca) {
+    if (
+      busca
+    ) {
 
       processos =
         processos.filter(
@@ -2636,7 +4071,10 @@
                   processo.assunto,
                   processo.setor,
                   processo.evento
-                ].join(" ")
+                ]
+                .join(
+                  " "
+                )
               );
 
 
@@ -2660,7 +4098,9 @@
             normalizarTexto(
               processo.situacao
             )
-            .includes("aberto")
+            .includes(
+              "aberto"
+            )
         );
 
     }
@@ -2709,12 +4149,29 @@
     }
 
 
-    if (somenteAlertas) {
+    if (
+      somenteAlertas
+    ) {
 
       processos =
         processos.filter(
           processo =>
             processoPossuiAlerta(
+              processo.numero
+            )
+        );
+
+    }
+
+
+    if (
+      somentePrioritarios
+    ) {
+
+      processos =
+        processos.filter(
+          processo =>
+            ehPrioritario(
               processo.numero
             )
         );
@@ -2751,15 +4208,41 @@
     ) {
 
       processos.sort(
-        (a, b) =>
-          String(
-            a.numero || ""
+        (
+          a,
+          b
+        ) => {
+
+          const prioridade =
+            compararPrioridade(
+              a,
+              b
+            );
+
+
+          if (
+            prioridade !== 0
+          ) {
+
+            return prioridade;
+
+          }
+
+
+          return String(
+            a.numero
+            ||
+            ""
           )
           .localeCompare(
             String(
-              b.numero || ""
+              b.numero
+              ||
+              ""
             )
-          )
+          );
+
+        }
       );
 
     }
@@ -2768,11 +4251,14 @@
     document.getElementById(
       "resultadoFiltro"
     ).textContent =
-      processos.length +
+      processos.length
+      +
       (
         processos.length === 1
-          ? " processo encontrado"
-          : " processos encontrados"
+          ?
+          " processo encontrado"
+          :
+          " processos encontrados"
       );
 
 
@@ -2784,9 +4270,11 @@
 
 
 
-  /* ========================================================
-     LISTA PROCESSOS
-  ======================================================== */
+  /*
+  ==========================================================
+  LISTA DE PROCESSOS
+  ==========================================================
+  */
 
   function renderizarListaProcessos(
     processos
@@ -2798,7 +4286,9 @@
       );
 
 
-    if (!processos.length) {
+    if (
+      !processos.length
+    ) {
 
       container.innerHTML =
         criarVazio(
@@ -2813,23 +4303,28 @@
 
     container.innerHTML =
       processos
-        .map(
-          criarCardProcesso
-        )
-        .join("");
+      .map(
+        criarCardProcesso
+      )
+      .join("");
 
   }
 
 
 
-  /* ========================================================
-     ALERTAS
-  ======================================================== */
+  /*
+  ==========================================================
+  ALERTAS
+  ==========================================================
+  */
 
   function renderizarAlertas() {
 
     const alertas =
-      dadosMonitor?.alertas || [];
+      dadosMonitor
+        ?.alertas
+      ||
+      [];
 
 
     const container =
@@ -2838,7 +4333,9 @@
       );
 
 
-    if (!alertas.length) {
+    if (
+      !alertas.length
+    ) {
 
       container.innerHTML =
         criarVazio(
@@ -2853,131 +4350,171 @@
 
     container.innerHTML =
       alertas
-        .map(
-          alerta => {
+      .map(
+        alerta => {
 
-            return `
-              <div class="card">
+          const prioritario =
+            ehPrioritario(
+              alerta.numero
+            );
 
-                <div class="card-body">
 
-                  <div class="alerta-item">
+          return `
+            <div
+              class="card
+              ${
+                prioritario
+                  ?
+                  "prioritario-card"
+                  :
+                  ""
+              }"
+            >
 
-                    <div class="alerta-icon">
-                      🔔
+              ${
+                prioritario
+                  ?
+                  `
+                    <div class="prioritario-faixa">
+                      ⭐ PROCESSO PRIORITÁRIO
+                    </div>
+                  `
+                  :
+                  ""
+              }
+
+              <div class="card-body">
+
+                <div class="alerta-item">
+
+                  <div class="alerta-icon">
+                    🔔
+                  </div>
+
+                  <div class="alerta-texto">
+
+                    <strong>
+                      Nova movimentação
+                    </strong>
+
+
+                    <div
+                      class="alerta-processo"
+                    >
+
+                      ${escaparHTML(
+                        alerta.numero
+                        ||
+                        ""
+                      )}
+
                     </div>
 
-                    <div class="alerta-texto">
 
-                      <strong>
-                        Nova movimentação
-                      </strong>
+                    <span>
 
-
-                      <div
-                        class="alerta-processo"
-                      >
-
-                        ${escaparHTML(
-                          alerta.numero
-                          ||
+                      ${
+                        alerta.data_movimentacao
+                          ?
+                          `
+                            Data:
+                            ${escaparHTML(
+                              alerta.data_movimentacao
+                            )}
+                            <br>
+                          `
+                          :
                           ""
-                        )}
-
-                      </div>
+                      }
 
 
-                      <span>
+                      ${
+                        alerta.setor
+                          ?
+                          `
+                            Setor:
+                            ${escaparHTML(
+                              alerta.setor
+                            )}
+                            <br>
+                          `
+                          :
+                          ""
+                      }
 
-                        ${
-                          alerta.data_movimentacao
-                            ? `
-                              Data da movimentação:
-                              ${escaparHTML(
-                                alerta.data_movimentacao
-                              )}
-                              <br>
-                            `
-                            : ""
-                        }
 
-                        ${
-                          alerta.setor
-                            ? `
-                              Setor:
-                              ${escaparHTML(
-                                alerta.setor
-                              )}
-                              <br>
-                            `
-                            : ""
-                        }
+                      ${
+                        alerta.evento
+                          ?
+                          `
+                            Evento:
+                            ${escaparHTML(
+                              alerta.evento
+                            )}
+                            <br>
+                          `
+                          :
+                          ""
+                      }
 
-                        ${
-                          alerta.evento
-                            ? `
-                              Evento:
-                              ${escaparHTML(
-                                alerta.evento
-                              )}
-                              <br>
-                            `
-                            : escaparHTML(
-                                alerta.mensagem
-                                ||
-                                ""
-                              )
-                        }
+                      <br>
 
-                        <br>
+                      Detectado em:
 
-                        Detectado em:
+                      ${escaparHTML(
+                        formatarDataHora(
+                          alerta.data
+                        )
+                      )}
 
-                        ${escaparHTML(
-                          formatarDataHora(
-                            alerta.data
-                          )
-                        )}
-
-                      </span>
-
-                    </div>
+                    </span>
 
                   </div>
 
                 </div>
 
               </div>
-            `;
 
-          }
-        )
-        .join("");
+            </div>
+          `;
+
+        }
+      )
+      .join("");
 
   }
 
 
 
-  /* ========================================================
-     ALERTA POR PROCESSO
-  ======================================================== */
+  /*
+  ==========================================================
+  PROCESSO POSSUI ALERTA
+  ==========================================================
+  */
 
   function processoPossuiAlerta(
     numero
   ) {
 
     const alertas =
-      dadosMonitor?.alertas || [];
+      dadosMonitor
+        ?.alertas
+      ||
+      [];
 
 
     return alertas.some(
       alerta =>
         String(
-          alerta.numero || ""
+          alerta.numero
+          ||
+          ""
         )
         ===
         String(
-          numero || ""
+          numero
+          ||
+          ""
         )
     );
 
@@ -2985,158 +4522,55 @@
 
 
 
-  /* ========================================================
-     ORDENAÇÃO
-  ======================================================== */
-
-  function ordenarMaisRecentes(
-    processos
-  ) {
-
-    return processos.sort(
-      (a, b) => {
-
-        const dataA =
-          converterDataProcesso(
-            a.dataMovimentacao
-          );
-
-
-        const dataB =
-          converterDataProcesso(
-            b.dataMovimentacao
-          );
-
-
-        if (
-          !dataA
-          &&
-          !dataB
-        ) {
-          return 0;
-        }
-
-
-        if (!dataA) {
-          return 1;
-        }
-
-
-        if (!dataB) {
-          return -1;
-        }
-
-
-        return (
-          dataB.getTime()
-          -
-          dataA.getTime()
-        );
-
-      }
-    );
-
-  }
-
-
-  function ordenarMaisAntigos(
-    processos
-  ) {
-
-    return processos.sort(
-      (a, b) => {
-
-        const dataA =
-          converterDataProcesso(
-            a.dataMovimentacao
-          );
-
-
-        const dataB =
-          converterDataProcesso(
-            b.dataMovimentacao
-          );
-
-
-        if (
-          !dataA
-          &&
-          !dataB
-        ) {
-          return 0;
-        }
-
-
-        if (!dataA) {
-          return 1;
-        }
-
-
-        if (!dataB) {
-          return -1;
-        }
-
-
-        return (
-          dataA.getTime()
-          -
-          dataB.getTime()
-        );
-
-      }
-    );
-
-  }
-
-
-
-  /* ========================================================
-     DATAS DOS PROCESSOS
-  ======================================================== */
+  /*
+  ==========================================================
+  DATAS
+  ==========================================================
+  */
 
   function converterDataProcesso(
     valor
   ) {
 
-    if (!valor) {
+    if (
+      !valor
+    ) {
+
       return null;
+
     }
 
 
     const match =
-      String(valor)
+      String(
+        valor
+      )
       .match(
         /^(\d{2})\/(\d{2})\/(\d{4})$/
       );
 
 
-    if (!match) {
+    if (
+      !match
+    ) {
+
       return null;
+
     }
 
 
-    const dia =
-      Number(
-        match[1]
-      );
-
-
-    const mes =
-      Number(
-        match[2]
-      );
-
-
-    const ano =
+    return new Date(
       Number(
         match[3]
-      );
-
-
-    return new Date(
-      ano,
-      mes - 1,
-      dia
+      ),
+      Number(
+        match[2]
+      )
+      -
+      1,
+      Number(
+        match[1]
+      )
     );
 
   }
@@ -3166,7 +4600,7 @@
       );
 
 
-    const dados = {};
+    const obj = {};
 
 
     partes.forEach(
@@ -3178,7 +4612,7 @@
           "literal"
         ) {
 
-          dados[
+          obj[
             parte.type
           ] =
             parte.value;
@@ -3191,13 +4625,15 @@
 
     return new Date(
       Number(
-        dados.year
+        obj.year
       ),
       Number(
-        dados.month
-      ) - 1,
+        obj.month
+      )
+      -
+      1,
       Number(
-        dados.day
+        obj.day
       )
     );
 
@@ -3205,17 +4641,23 @@
 
 
 
-  /* ========================================================
-     BADGE
-  ======================================================== */
+  /*
+  ==========================================================
+  BADGES
+  ==========================================================
+  */
 
   function classeBadge(
     situacao,
     erro
   ) {
 
-    if (erro) {
+    if (
+      erro
+    ) {
+
       return "badge-erro";
+
     }
 
 
@@ -3242,9 +4684,11 @@
 
 
 
-  /* ========================================================
-     URL
-  ======================================================== */
+  /*
+  ==========================================================
+  URL SEFAZ
+  ==========================================================
+  */
 
   function criarUrlProcesso(
     numero
@@ -3275,9 +4719,11 @@
 
 
 
-  /* ========================================================
-     TROCAR ABAS
-  ======================================================== */
+  /*
+  ==========================================================
+  TROCAR TELA
+  ==========================================================
+  */
 
   function mudarTela(
     tela
@@ -3296,7 +4742,8 @@
 
         document
           .getElementById(
-            "view-" +
+            "view-"
+            +
             nome
           )
           .classList
@@ -3308,7 +4755,8 @@
 
         document
           .getElementById(
-            "nav-" +
+            "nav-"
+            +
             nome
           )
           .classList
@@ -3330,16 +4778,22 @@
 
 
 
-  /* ========================================================
-     FORMATAR DATA/HORA
-  ======================================================== */
+  /*
+  ==========================================================
+  FORMATAR DATA / HORA
+  ==========================================================
+  */
 
   function formatarDataHora(
     valor
   ) {
 
-    if (!valor) {
+    if (
+      !valor
+    ) {
+
       return "—";
+
     }
 
 
@@ -3400,9 +4854,11 @@
 
 
 
-  /* ========================================================
-     PRÓXIMA CONSULTA
-  ======================================================== */
+  /*
+  ==========================================================
+  PRÓXIMA CONSULTA
+  ==========================================================
+  */
 
   const horariosConsulta = [
     8,
@@ -3493,11 +4949,9 @@
 
 
     const fimDeSemana =
-      (
-        dia === "Sat"
-        ||
-        dia === "Sun"
-      );
+      dia === "Sat"
+      ||
+      dia === "Sun";
 
 
     let proximaHora =
@@ -3508,7 +4962,9 @@
       "Hoje";
 
 
-    if (!fimDeSemana) {
+    if (
+      !fimDeSemana
+    ) {
 
       for (
         const horario
@@ -3541,7 +4997,8 @@
       proximaHora === null
     ) {
 
-      proximaHora = 8;
+      proximaHora =
+        8;
 
 
       if (
@@ -3567,7 +5024,13 @@
     }
 
 
-    const horaTexto =
+    document.getElementById(
+      "proximaConsulta"
+    ).textContent =
+      textoDia
+      +
+      " às "
+      +
       String(
         proximaHora
       )
@@ -3578,28 +5041,24 @@
       +
       ":00";
 
-
-    document.getElementById(
-      "proximaConsulta"
-    ).textContent =
-      textoDia +
-      " às " +
-      horaTexto;
-
   }
 
 
 
-  /* ========================================================
-     TEXTO
-  ======================================================== */
+  /*
+  ==========================================================
+  TEXTO
+  ==========================================================
+  */
 
   function normalizarTexto(
     valor
   ) {
 
     return String(
-      valor || ""
+      valor
+      ||
+      ""
     )
     .normalize(
       "NFD"
@@ -3615,16 +5074,20 @@
 
 
 
-  /* ========================================================
-     SEGURANÇA
-  ======================================================== */
+  /*
+  ==========================================================
+  SEGURANÇA
+  ==========================================================
+  */
 
   function escaparHTML(
     valor
   ) {
 
     return String(
-      valor ?? ""
+      valor
+      ??
+      ""
     )
     .replaceAll(
       "&",
@@ -3655,7 +5118,9 @@
   ) {
 
     return String(
-      valor ?? ""
+      valor
+      ??
+      ""
     )
     .replaceAll(
       "\\",
@@ -3670,9 +5135,11 @@
 
 
 
-  /* ========================================================
-     EMPTY
-  ======================================================== */
+  /*
+  ==========================================================
+  ESTADO VAZIO
+  ==========================================================
+  */
 
   function criarVazio(
     icone,
@@ -3685,10 +5152,14 @@
         <div class="empty">
 
           <div class="empty-icon">
+
             ${icone}
+
           </div>
 
-          ${escaparHTML(texto)}
+          ${escaparHTML(
+            texto
+          )}
 
         </div>
 
@@ -3699,34 +5170,30 @@
 
 
 
-  /* ========================================================
-     ERRO
-  ======================================================== */
+  /*
+  ==========================================================
+  ERRO DE CARREGAMENTO
+  ==========================================================
+  */
 
   function mostrarErroCarregamento() {
 
-    document.getElementById(
-      "totalProcessos"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "totalAbertos"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "totalAlertas"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
+    [
+      "totalProcessos",
+      "totalAbertos",
+      "totalAlertas",
       "totalErros"
-    ).textContent =
-      "—";
+    ]
+    .forEach(
+      id => {
+
+        document.getElementById(
+          id
+        ).textContent =
+          "—";
+
+      }
+    );
 
 
     document.getElementById(
@@ -3770,9 +5237,13 @@
       "tabelaResumo"
     ).innerHTML = `
       <tr>
-        <td colspan="5">
+
+        <td colspan="6">
+
           Não foi possível carregar os dados.
+
         </td>
+
       </tr>
     `;
 
@@ -3780,9 +5251,11 @@
 
 
 
-  /* ========================================================
-     TOAST
-  ======================================================== */
+  /*
+  ==========================================================
+  TOAST
+  ==========================================================
+  */
 
   function mostrarToast(
     mensagem
@@ -3824,9 +5297,11 @@
 
 
 
-  /* ========================================================
-     INICIALIZAÇÃO
-  ======================================================== */
+  /*
+  ==========================================================
+  INICIALIZAÇÃO
+  ==========================================================
+  */
 
   calcularProximaConsulta();
 
@@ -3834,8 +5309,8 @@
 
 
   /*
-  Atualiza o painel a cada 5 minutos
-  enquanto estiver aberto.
+  Atualiza os dados do painel
+  a cada 5 minutos enquanto estiver aberto.
   */
 
   setInterval(
@@ -3846,18 +5321,24 @@
       );
 
     },
-    5 * 60 * 1000
+    5
+    *
+    60
+    *
+    1000
   );
 
 
   /*
-  Atualiza o horário da próxima
+  Atualiza a indicação da próxima
   consulta a cada minuto.
   */
 
   setInterval(
     calcularProximaConsulta,
-    60 * 1000
+    60
+    *
+    1000
   );
 
 </script>
