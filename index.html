@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b63ce" />
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+  <meta name="theme-color" content="#0b63ce">
 
   <title>Monitor SEFAZ-AM</title>
 
@@ -12,16 +15,25 @@
       --azul: #0b63ce;
       --azul-escuro: #074b9b;
       --azul-claro: #eaf3ff;
+
       --verde: #16883f;
       --verde-claro: #e9f8ef;
-      --laranja: #df8500;
+
+      --laranja: #d97706;
+      --laranja-claro: #fff7e8;
+
       --vermelho: #c93434;
+      --vermelho-claro: #fff0f0;
+
       --cinza: #667085;
       --cinza-claro: #f4f6f8;
+
       --borda: #e2e7ec;
       --texto: #17202a;
       --branco: #ffffff;
-      --sombra: 0 4px 18px rgba(0, 0, 0, 0.07);
+
+      --sombra:
+        0 4px 18px rgba(0, 0, 0, 0.07);
     }
 
     * {
@@ -29,37 +41,64 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      background: #f5f7fa;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
       background: #f5f7fa;
       color: var(--texto);
     }
 
-    button,
-    input {
-      font: inherit;
-    }
-
     button {
+      font: inherit;
       cursor: pointer;
     }
 
     .app {
+      width: 100%;
       max-width: 780px;
       margin: 0 auto;
+
       min-height: 100vh;
-      background: #f5f7fa;
-      padding-bottom: calc(95px + env(safe-area-inset-bottom));
+
+      padding-bottom:
+        calc(
+          88px +
+          env(safe-area-inset-bottom)
+        );
     }
 
-    /* CABEÇALHO */
+
+    /* =====================================================
+       CABEÇALHO
+    ===================================================== */
 
     .header {
-      background: linear-gradient(135deg, #0864ce, #074d9f);
+      background:
+        linear-gradient(
+          135deg,
+          #0864ce,
+          #074d9f
+        );
+
       color: white;
+
       padding:
-        calc(18px + env(safe-area-inset-top))
+        calc(
+          18px +
+          env(safe-area-inset-top)
+        )
         18px
         24px;
     }
@@ -68,6 +107,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 12px;
     }
 
@@ -78,69 +118,107 @@
     }
 
     .logo {
-      width: 44px;
-      height: 44px;
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 13px;
+      width: 45px;
+      height: 45px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.16);
+
+      border:
+        1px solid
+        rgba(255,255,255,.20);
+
       font-size: 23px;
     }
 
     .brand h1 {
       margin: 0;
+
       font-size: 20px;
       line-height: 1.15;
     }
 
     .brand small {
       display: block;
-      opacity: .8;
+
       margin-top: 3px;
+
       font-size: 12px;
+
+      opacity: .82;
     }
 
     .status-online {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      background: rgba(255,255,255,.15);
-      padding: 7px 10px;
+
+      gap: 7px;
+
+      padding:
+        7px 10px;
+
       border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.15);
+
+      font-size: 12px;
+
       white-space: nowrap;
     }
 
     .bolinha {
       width: 8px;
       height: 8px;
+
       border-radius: 50%;
+
       background: #4ee17b;
-      box-shadow: 0 0 0 3px rgba(78,225,123,.15);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(78,225,123,.15);
     }
 
     .schedule {
       margin-top: 20px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.15);
+
+      padding:
+        13px 14px;
+
       border-radius: 15px;
-      padding: 13px 14px;
+
+      background:
+        rgba(255,255,255,.12);
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
     }
 
     .schedule-title {
-      font-size: 12px;
-      opacity: .8;
       margin-bottom: 6px;
+
+      font-size: 12px;
+
+      opacity: .80;
     }
 
     .schedule-next {
-      font-weight: 700;
       font-size: 15px;
+      font-weight: 700;
     }
 
-    /* CONTEÚDO */
+
+    /* =====================================================
+       CONTEÚDO
+    ===================================================== */
 
     .content {
       padding: 16px;
@@ -148,375 +226,614 @@
 
     .summary {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 10px;
+
       margin-top: -10px;
-      margin-bottom: 16px;
+      margin-bottom: 17px;
     }
 
     .summary-card {
-      background: white;
-      border-radius: 15px;
-      padding: 14px 10px;
+      padding:
+        14px 8px;
+
       text-align: center;
-      box-shadow: var(--sombra);
-      border: 1px solid var(--borda);
+
+      background: white;
+
+      border-radius: 15px;
+
+      border:
+        1px solid
+        var(--borda);
+
+      box-shadow:
+        var(--sombra);
     }
 
     .summary-number {
       font-size: 23px;
       font-weight: 800;
+
       color: var(--azul);
     }
 
     .summary-label {
       margin-top: 4px;
-      color: var(--cinza);
+
       font-size: 11px;
+
+      color: var(--cinza);
+    }
+
+    .section-title {
+      margin:
+        6px 0
+        12px;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      color: #344054;
     }
 
     .card {
-      background: white;
-      border: 1px solid var(--borda);
-      border-radius: 17px;
-      box-shadow: var(--sombra);
       margin-bottom: 12px;
+
       overflow: hidden;
+
+      background: white;
+
+      border-radius: 17px;
+
+      border:
+        1px solid
+        var(--borda);
+
+      box-shadow:
+        var(--sombra);
     }
 
     .card-body {
       padding: 16px;
     }
 
-    .section-title {
-      margin: 5px 0 12px;
-      font-size: 15px;
-      color: #344054;
-      font-weight: 700;
+
+    /* =====================================================
+       INFORMAÇÕES GERAIS
+    ===================================================== */
+
+    .status-monitor {
+      display: flex;
+
+      align-items:
+        flex-start;
+
+      gap: 11px;
     }
+
+    .status-icon {
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 auto;
+
+      border-radius: 12px;
+
+      background:
+        var(--verde-claro);
+
+      font-size: 20px;
+    }
+
+    .status-monitor strong {
+      display: block;
+
+      margin-bottom: 4px;
+
+      font-size: 14px;
+    }
+
+    .status-monitor span {
+      display: block;
+
+      font-size: 12px;
+      line-height: 1.45;
+
+      color: var(--cinza);
+    }
+
+    .linha-info {
+      margin-top: 14px;
+
+      padding-top: 13px;
+
+      border-top:
+        1px solid
+        #eef0f3;
+    }
+
+    .label {
+      display: block;
+
+      margin-bottom: 4px;
+
+      font-size: 11px;
+
+      color: var(--cinza);
+    }
+
+    .valor {
+      font-size: 13px;
+      font-weight: 600;
+
+      line-height: 1.45;
+    }
+
+
+    /* =====================================================
+       PROCESSOS
+    ===================================================== */
 
     .processo-top {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+
+      align-items:
+        flex-start;
+
+      justify-content:
+        space-between;
+
       gap: 10px;
     }
 
     .processo-numero {
       font-size: 14px;
       font-weight: 800;
-      color: #1d2939;
-      word-break: break-word;
+
       line-height: 1.4;
+
+      word-break:
+        break-word;
     }
 
     .badge {
-      padding: 5px 9px;
-      border-radius: 999px;
+      padding:
+        5px 9px;
+
+      border-radius:
+        999px;
+
       font-size: 11px;
       font-weight: 700;
-      white-space: nowrap;
+
+      white-space:
+        nowrap;
     }
 
     .badge-aberto {
-      color: var(--verde);
-      background: var(--verde-claro);
+      color:
+        var(--verde);
+
+      background:
+        var(--verde-claro);
     }
 
-    .badge-monitorando {
-      color: var(--azul);
-      background: var(--azul-claro);
+    .badge-erro {
+      color:
+        var(--vermelho);
+
+      background:
+        var(--vermelho-claro);
+    }
+
+    .badge-outro {
+      color:
+        var(--azul);
+
+      background:
+        var(--azul-claro);
     }
 
     .info {
       margin-top: 13px;
+
       padding-top: 12px;
-      border-top: 1px solid #eef0f3;
-    }
 
-    .label {
-      display: block;
-      font-size: 11px;
-      color: var(--cinza);
-      margin-bottom: 4px;
-    }
-
-    .valor {
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.4;
+      border-top:
+        1px solid
+        #eef0f3;
     }
 
     .movimentacao {
-      margin-top: 12px;
-      background: #f7faff;
+      margin-top: 13px;
+
+      padding: 12px;
+
       border-radius: 12px;
-      padding: 11px;
-      border: 1px solid #e4efff;
+
+      background:
+        #f7faff;
+
+      border:
+        1px solid
+        #e4efff;
     }
 
     .mov-data {
+      margin-bottom: 5px;
+
       font-size: 11px;
-      color: var(--cinza);
-      margin-bottom: 4px;
+
+      color:
+        var(--cinza);
     }
 
     .mov-texto {
       font-size: 12px;
       font-weight: 700;
+
+      line-height: 1.45;
+    }
+
+    .erro-consulta {
+      margin-top: 12px;
+
+      padding: 11px;
+
+      border-radius: 11px;
+
+      background:
+        var(--vermelho-claro);
+
+      color:
+        var(--vermelho);
+
+      font-size: 11px;
+
       line-height: 1.4;
     }
 
+
+    /* =====================================================
+       BOTÕES
+    ===================================================== */
+
     .acoes {
       display: flex;
+
       gap: 8px;
-      margin-top: 13px;
+
+      margin-top: 14px;
     }
 
     .btn {
-      border: 0;
-      border-radius: 11px;
       min-height: 43px;
-      padding: 10px 13px;
-      font-weight: 700;
+
+      padding:
+        10px 13px;
+
+      border: 0;
+
+      border-radius:
+        11px;
+
       font-size: 13px;
+      font-weight: 700;
     }
 
     .btn-primary {
       flex: 1;
-      background: var(--azul);
+
+      background:
+        var(--azul);
+
       color: white;
     }
 
     .btn-secondary {
-      background: #eef2f6;
-      color: #344054;
-    }
+      background:
+        #eef2f6;
 
-    .btn-danger {
-      background: #fff0f0;
-      color: var(--vermelho);
+      color:
+        #344054;
     }
 
     .btn-full {
       width: 100%;
     }
 
-    /* ALERTAS */
+    .btn:disabled {
+      opacity: .55;
+
+      cursor:
+        not-allowed;
+    }
+
+
+    /* =====================================================
+       ALERTAS
+    ===================================================== */
 
     .alerta {
       display: flex;
+
       gap: 11px;
-      align-items: flex-start;
+
+      align-items:
+        flex-start;
     }
 
     .alerta-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      background: #fff3df;
+      width: 39px;
+      height: 39px;
+
+      flex:
+        0 0 auto;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      flex: 0 0 auto;
+
+      border-radius:
+        11px;
+
+      background:
+        var(--laranja-claro);
     }
 
     .alerta-texto strong {
-      font-size: 13px;
       display: block;
-      margin-bottom: 4px;
+
+      margin-bottom: 5px;
+
+      font-size: 13px;
     }
 
     .alerta-texto span {
-      color: var(--cinza);
+      display: block;
+
       font-size: 12px;
+
       line-height: 1.45;
+
+      color:
+        var(--cinza);
     }
 
+
+    /* =====================================================
+       ESTADOS
+    ===================================================== */
+
     .empty {
+      padding:
+        35px 20px;
+
       text-align: center;
-      padding: 35px 20px;
-      color: var(--cinza);
+
+      color:
+        var(--cinza);
     }
 
     .empty-icon {
-      font-size: 36px;
       margin-bottom: 10px;
+
+      font-size: 36px;
     }
 
-    /* BOTÃO ADICIONAR */
+    .loading {
+      padding:
+        30px 20px;
 
-    .add-button {
-      position: fixed;
-      right: max(18px, calc((100vw - 780px) / 2 + 18px));
-      bottom: calc(83px + env(safe-area-inset-bottom));
-      z-index: 20;
-      border: 0;
-      color: white;
-      background: var(--azul);
-      padding: 14px 17px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      box-shadow: 0 8px 25px rgba(11,99,206,.32);
+      text-align:
+        center;
+
+      color:
+        var(--cinza);
+
+      font-size: 13px;
     }
 
-    /* NAVEGAÇÃO */
+    .spinner {
+      width: 30px;
+      height: 30px;
+
+      margin:
+        0 auto
+        12px;
+
+      border:
+        3px solid
+        #dfe7ef;
+
+      border-top-color:
+        var(--azul);
+
+      border-radius:
+        50%;
+
+      animation:
+        girar .8s
+        linear infinite;
+    }
+
+    @keyframes girar {
+      to {
+        transform:
+          rotate(360deg);
+      }
+    }
+
+
+    /* =====================================================
+       MENU INFERIOR
+    ===================================================== */
 
     .nav {
       position: fixed;
+
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%);
+
+      transform:
+        translateX(-50%);
+
+      z-index: 20;
+
       width: 100%;
       max-width: 780px;
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-top: 1px solid var(--borda);
-      padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
-      z-index: 15;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      padding:
+        8px 4px
+        calc(
+          8px +
+          env(safe-area-inset-bottom)
+        );
+
+      background:
+        rgba(255,255,255,.96);
+
+      backdrop-filter:
+        blur(15px);
+
+      -webkit-backdrop-filter:
+        blur(15px);
+
+      border-top:
+        1px solid
+        var(--borda);
     }
 
     .nav-item {
-      border: 0;
-      background: transparent;
-      color: #88909a;
       padding: 5px;
+
+      border: 0;
+
+      background:
+        transparent;
+
+      color:
+        #88909a;
+
       font-size: 10px;
       font-weight: 600;
     }
 
     .nav-icon {
       display: block;
-      font-size: 21px;
+
       margin-bottom: 2px;
+
+      font-size: 21px;
     }
 
     .nav-item.active {
-      color: var(--azul);
+      color:
+        var(--azul);
     }
 
-    /* MODAL */
 
-    .modal-bg {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: rgba(0,0,0,.45);
-      padding: 18px;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .modal-bg.show {
-      display: flex;
-    }
-
-    .modal {
-      background: white;
-      width: 100%;
-      max-width: 600px;
-      border-radius: 22px;
-      padding: 20px;
-      margin-bottom: env(safe-area-inset-bottom);
-      animation: subir .22s ease;
-    }
-
-    @keyframes subir {
-      from {
-        transform: translateY(25px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .modal h2 {
-      margin: 0 0 6px;
-      font-size: 19px;
-    }
-
-    .modal p {
-      margin: 0 0 17px;
-      font-size: 13px;
-      color: var(--cinza);
-      line-height: 1.5;
-    }
-
-    .input-label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .input {
-      width: 100%;
-      border: 1px solid #ccd3dc;
-      border-radius: 12px;
-      padding: 13px;
-      outline: none;
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
-
-    .input:focus {
-      border-color: var(--azul);
-      box-shadow: 0 0 0 3px rgba(11,99,206,.1);
-    }
-
-    .modal-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      margin-top: 6px;
-    }
-
-    /* MENSAGEM */
+    /* =====================================================
+       TOAST
+    ===================================================== */
 
     .toast {
-      visibility: hidden;
+      visibility:
+        hidden;
+
       opacity: 0;
+
       position: fixed;
+
       z-index: 200;
+
       left: 50%;
-      transform: translateX(-50%);
-      bottom: calc(100px + env(safe-area-inset-bottom));
-      width: calc(100% - 35px);
-      max-width: 500px;
-      padding: 13px 15px;
-      border-radius: 13px;
-      background: #202832;
-      color: white;
+      bottom:
+        calc(
+          100px +
+          env(safe-area-inset-bottom)
+        );
+
+      transform:
+        translateX(-50%);
+
+      width:
+        calc(
+          100% -
+          35px
+        );
+
+      max-width:
+        500px;
+
+      padding:
+        13px 15px;
+
+      border-radius:
+        13px;
+
+      background:
+        #202832;
+
+      color:
+        white;
+
       font-size: 13px;
+
       line-height: 1.4;
-      text-align: center;
-      transition: .2s;
-      box-shadow: 0 7px 25px rgba(0,0,0,.22);
+
+      text-align:
+        center;
+
+      box-shadow:
+        0 7px 25px
+        rgba(0,0,0,.22);
+
+      transition:
+        .2s;
     }
 
     .toast.show {
-      visibility: visible;
+      visibility:
+        visible;
+
       opacity: 1;
     }
 
     .hidden {
-      display: none !important;
+      display:
+        none !important;
     }
 
-    @media (max-width: 400px) {
-      .status-online span:last-child {
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media
+      (max-width: 400px) {
+
+      .status-online
+      span:last-child {
         display: none;
       }
 
       .summary-card {
-        padding: 12px 5px;
+        padding:
+          12px 5px;
       }
 
       .summary-number {
@@ -530,178 +847,393 @@
   </style>
 </head>
 
+
 <body>
 
 <div class="app">
 
-  <!-- CABEÇALHO -->
+
+  <!-- ===================================================
+       CABEÇALHO
+  ==================================================== -->
+
   <header class="header">
 
     <div class="header-top">
+
       <div class="brand">
-        <div class="logo">🔎</div>
+
+        <div class="logo">
+          🔎
+        </div>
 
         <div>
-          <h1>Monitor SEFAZ-AM</h1>
-          <small>Monitoramento de processos</small>
+
+          <h1>
+            Monitor SEFAZ-AM
+          </h1>
+
+          <small>
+            Monitoramento automático
+          </small>
+
         </div>
+
       </div>
+
 
       <div class="status-online">
-        <div class="bolinha"></div>
-        <span>Ativo</span>
+
+        <div
+          class="bolinha"
+          id="bolinhaStatus">
+        </div>
+
+        <span
+          id="textoStatus">
+          Ativo
+        </span>
+
       </div>
+
     </div>
 
+
     <div class="schedule">
-      <div class="schedule-title">
-        Próxima verificação programada
+
+      <div
+        class="schedule-title">
+        Próxima consulta automática
       </div>
 
-      <div class="schedule-next" id="proximaConsulta">
+      <div
+        class="schedule-next"
+        id="proximaConsulta">
         Calculando...
       </div>
+
     </div>
 
   </header>
 
-  <!-- CONTEÚDO -->
+
+  <!-- ===================================================
+       CONTEÚDO
+  ==================================================== -->
+
   <main class="content">
+
+
+    <!-- RESUMO -->
 
     <div class="summary">
 
       <div class="summary-card">
-        <div class="summary-number" id="totalProcessos">0</div>
-        <div class="summary-label">Processos</div>
+
+        <div
+          class="summary-number"
+          id="totalProcessos">
+          —
+        </div>
+
+        <div
+          class="summary-label">
+          Processos
+        </div>
+
       </div>
 
-      <div class="summary-card">
-        <div class="summary-number" id="totalAbertos">0</div>
-        <div class="summary-label">Abertos</div>
-      </div>
 
       <div class="summary-card">
-        <div class="summary-number" id="totalAlertas">0</div>
-        <div class="summary-label">Alertas</div>
+
+        <div
+          class="summary-number"
+          id="totalAbertos">
+          —
+        </div>
+
+        <div
+          class="summary-label">
+          Abertos
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div
+          class="summary-number"
+          id="totalAlertas">
+          —
+        </div>
+
+        <div
+          class="summary-label">
+          Alertas
+        </div>
+
       </div>
 
     </div>
 
-    <!-- VISÃO GERAL -->
+
+
+    <!-- =================================================
+         VISÃO GERAL
+    ================================================== -->
+
     <section id="view-geral">
-      <div class="section-title">Visão geral</div>
+
+      <div class="section-title">
+        Visão geral
+      </div>
+
 
       <div class="card">
+
         <div class="card-body">
 
-          <span class="label">
-            Consultas automáticas
-          </span>
+          <div class="status-monitor">
 
-          <div class="valor">
-            08:00 • 11:00 • 14:00 • 17:00
+            <div class="status-icon">
+              ⚙️
+            </div>
+
+            <div>
+
+              <strong>
+                Monitor automático
+              </strong>
+
+              <span>
+                O GitHub consulta a SEFAZ-AM
+                automaticamente e atualiza
+                este painel.
+              </span>
+
+            </div>
+
           </div>
 
-          <div style="height:10px"></div>
 
-          <span class="label">
-            Horário
-          </span>
+          <div class="linha-info">
 
-          <div class="valor">
-            Manaus / Amazonas
+            <span class="label">
+              Horários programados
+            </span>
+
+            <div class="valor">
+              08:00 • 11:00 • 14:00 • 17:00
+            </div>
+
           </div>
 
-          <div style="height:10px"></div>
 
-          <span class="label">
-            Última verificação do monitor
-          </span>
+          <div class="linha-info">
 
-          <div class="valor" id="ultimaConsulta">
-            Ainda não realizada neste aparelho
+            <span class="label">
+              Fuso horário
+            </span>
+
+            <div class="valor">
+              Manaus / Amazonas
+            </div>
+
           </div>
+
+
+          <div class="linha-info">
+
+            <span class="label">
+              Última consulta à SEFAZ
+            </span>
+
+            <div
+              class="valor"
+              id="ultimaConsulta">
+              Carregando...
+            </div>
+
+          </div>
+
+
+          <div class="linha-info">
+
+            <span class="label">
+              Resultado da última consulta
+            </span>
+
+            <div
+              class="valor"
+              id="resultadoConsulta">
+              Carregando...
+            </div>
+
+          </div>
+
 
           <button
-            class="btn btn-primary btn-full"
-            style="margin-top:15px"
-            onclick="verificarTodos()"
+            class="btn
+                   btn-primary
+                   btn-full"
+            id="btnAtualizar"
+            style="margin-top:16px"
+            onclick="carregarDados(true)"
           >
-            🔄 Verificar processos agora
+            🔄 Atualizar painel
           </button>
 
         </div>
+
       </div>
+
 
       <div class="section-title">
         Últimos processos
       </div>
 
-      <div id="listaGeral"></div>
+
+      <div
+        id="listaGeral">
+
+        <div class="card">
+
+          <div class="loading">
+
+            <div class="spinner">
+            </div>
+
+            Carregando dados...
+
+          </div>
+
+        </div>
+
+      </div>
 
     </section>
 
-    <!-- PROCESSOS -->
-    <section id="view-processos" class="hidden">
+
+
+    <!-- =================================================
+         TODOS OS PROCESSOS
+    ================================================== -->
+
+    <section
+      id="view-processos"
+      class="hidden">
 
       <div class="section-title">
         Todos os processos
       </div>
 
-      <div id="listaProcessos"></div>
 
-    </section>
+      <div
+        id="listaProcessos">
 
-    <!-- ALERTAS -->
-    <section id="view-alertas" class="hidden">
+        <div class="card">
 
-      <div class="section-title">
-        Alertas
+          <div class="loading">
+
+            <div class="spinner">
+            </div>
+
+            Carregando processos...
+
+          </div>
+
+        </div>
+
       </div>
 
-      <div id="listaAlertas"></div>
+    </section>
+
+
+
+    <!-- =================================================
+         ALERTAS
+    ================================================== -->
+
+    <section
+      id="view-alertas"
+      class="hidden">
+
+      <div class="section-title">
+        Novas movimentações
+      </div>
+
+
+      <div
+        id="listaAlertas">
+
+        <div class="card">
+
+          <div class="loading">
+
+            <div class="spinner">
+            </div>
+
+            Carregando alertas...
+
+          </div>
+
+        </div>
+
+      </div>
 
     </section>
+
 
   </main>
 
-  <!-- ADICIONAR -->
-  <button
-    class="add-button"
-    onclick="abrirModal()"
-    aria-label="Adicionar processo"
-  >
-    ＋ Adicionar
-  </button>
 
-  <!-- MENU -->
+
+  <!-- ===================================================
+       MENU
+  ==================================================== -->
+
   <nav class="nav">
 
     <button
       class="nav-item active"
       id="nav-geral"
-      onclick="mudarTela('geral')"
-    >
-      <span class="nav-icon">⌂</span>
+      onclick="mudarTela('geral')">
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
       Visão geral
+
     </button>
+
 
     <button
       class="nav-item"
       id="nav-processos"
-      onclick="mudarTela('processos')"
-    >
-      <span class="nav-icon">📄</span>
+      onclick="mudarTela('processos')">
+
+      <span class="nav-icon">
+        📄
+      </span>
+
       Processos
+
     </button>
+
 
     <button
       class="nav-item"
       id="nav-alertas"
-      onclick="mudarTela('alertas')"
-    >
-      <span class="nav-icon">🔔</span>
+      onclick="mudarTela('alertas')">
+
+      <span class="nav-icon">
+        🔔
+      </span>
+
       Alertas
+
     </button>
 
   </nav>
@@ -709,54 +1241,11 @@
 </div>
 
 
-<!-- MODAL ADICIONAR -->
-<div class="modal-bg" id="modalAdicionar">
-
-  <div class="modal">
-
-    <h2>Adicionar processo</h2>
-
-    <p>
-      Informe o número completo do processo da SEFAZ-AM.
-    </p>
-
-    <label class="input-label">
-      Número do processo
-    </label>
-
-    <input
-      class="input"
-      id="numeroProcesso"
-      placeholder="01.01.000000.000000/2026-00"
-      autocomplete="off"
-      inputmode="text"
-    />
-
-    <div class="modal-actions">
-
-      <button
-        class="btn btn-secondary"
-        onclick="fecharModal()"
-      >
-        Cancelar
-      </button>
-
-      <button
-        class="btn btn-primary"
-        onclick="adicionarProcesso()"
-      >
-        Adicionar
-      </button>
-
-    </div>
-
-  </div>
-
+<div
+  class="toast"
+  id="toast">
 </div>
 
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
 
 
 <script>
@@ -764,191 +1253,328 @@
   /*
   ==========================================================
   MONITOR SEFAZ-AM
+  PAINEL CONECTADO AO dados.json
   ==========================================================
   */
 
-  const STORAGE_PROCESSOS = "monitorSefazProcessosV4";
-  const STORAGE_ALERTAS = "monitorSefazAlertasV4";
-  const STORAGE_ULTIMA = "monitorSefazUltimaConsultaV4";
 
-  /*
-  ----------------------------------------------------------
-  PROCESSOS INICIAIS
-  ----------------------------------------------------------
-  */
+  let dadosMonitor = null;
 
-  const processosIniciais = [
+  let timerToast = null;
 
-    {
-      numero: "01.01.028101.030037/2026-43",
-      situacao: "Aberto",
-      interessado: "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      assunto: "137 - PAGAMENTO DE FORNECEDORES",
-      dataMovimentacao: "17/08/2026",
-      setor: "GEFIN",
-      evento: "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-
-    {
-      numero: "01.01.013102.003068/2026-44",
-      situacao: "Monitorando",
-      interessado: "",
-      assunto: "",
-      dataMovimentacao: "",
-      setor: "",
-      evento: "Aguardando primeira verificação"
-    }
-
-  ];
 
 
   /*
-  ----------------------------------------------------------
-  CARREGAR DADOS
-  ----------------------------------------------------------
+  ==========================================================
+  CARREGAR dados.json
+  ==========================================================
   */
 
-  let processos = carregarProcessos();
-  let alertas = carregarAlertas();
+  async function carregarDados(
+    mostrarMensagem = false
+  ) {
 
+    const botao =
+      document.getElementById(
+        "btnAtualizar"
+      );
 
-  function carregarProcessos() {
-
-    const salvo = localStorage.getItem(STORAGE_PROCESSOS);
-
-    if (salvo) {
-      try {
-        return JSON.parse(salvo);
-      } catch (erro) {
-        console.log(erro);
-      }
-    }
-
-    localStorage.setItem(
-      STORAGE_PROCESSOS,
-      JSON.stringify(processosIniciais)
-    );
-
-    return [...processosIniciais];
-  }
-
-
-  function carregarAlertas() {
-
-    const salvo = localStorage.getItem(STORAGE_ALERTAS);
-
-    if (!salvo) return [];
 
     try {
-      return JSON.parse(salvo);
-    } catch {
-      return [];
+
+      if (botao) {
+
+        botao.disabled = true;
+
+        botao.textContent =
+          "⏳ Atualizando...";
+
+      }
+
+
+      /*
+      O parâmetro ?t= evita que o Safari
+      mostre uma versão antiga em cache.
+      */
+
+      const resposta =
+        await fetch(
+          "dados.json?t=" +
+          Date.now(),
+          {
+            cache: "no-store"
+          }
+        );
+
+
+      if (!resposta.ok) {
+
+        throw new Error(
+          "HTTP " +
+          resposta.status
+        );
+
+      }
+
+
+      const dados =
+        await resposta.json();
+
+
+      dadosMonitor =
+        dados;
+
+
+      renderizarTudo();
+
+
+      if (mostrarMensagem) {
+
+        mostrarToast(
+          "Painel atualizado com os dados mais recentes."
+        );
+
+      }
+
+
+    } catch (erro) {
+
+      console.error(
+        "Erro ao carregar dados.json:",
+        erro
+      );
+
+
+      mostrarErroCarregamento(
+        erro
+      );
+
+
+      if (mostrarMensagem) {
+
+        mostrarToast(
+          "Não foi possível atualizar o painel."
+        );
+
+      }
+
+    } finally {
+
+      if (botao) {
+
+        botao.disabled = false;
+
+        botao.textContent =
+          "🔄 Atualizar painel";
+
+      }
+
     }
+
   }
 
-
-  function salvar() {
-
-    localStorage.setItem(
-      STORAGE_PROCESSOS,
-      JSON.stringify(processos)
-    );
-
-    localStorage.setItem(
-      STORAGE_ALERTAS,
-      JSON.stringify(alertas)
-    );
-  }
 
 
   /*
-  ----------------------------------------------------------
-  URL SEFAZ
-  ----------------------------------------------------------
+  ==========================================================
+  RENDERIZAÇÃO COMPLETA
+  ==========================================================
   */
 
-  function urlProcesso(numero) {
-
-    return (
-      "https://online.sefaz.am.gov.br/processo/" +
-      encodeURIComponent(numero)
-    );
-  }
-
-
-  /*
-  ----------------------------------------------------------
-  ABRIR PROCESSO
-  ----------------------------------------------------------
-  */
-
-  function abrirProcesso(numero) {
-
-    window.open(
-      urlProcesso(numero),
-      "_blank",
-      "noopener,noreferrer"
-    );
-  }
-
-
-  /*
-  ----------------------------------------------------------
-  RENDERIZAÇÃO
-  ----------------------------------------------------------
-  */
-
-  function renderizar() {
+  function renderizarTudo() {
 
     renderizarResumo();
+
+    renderizarInformacoesGerais();
+
     renderizarGeral();
+
     renderizarProcessos();
+
     renderizarAlertas();
-    atualizarUltimaConsulta();
+
   }
 
+
+
+  /*
+  ==========================================================
+  RESUMO
+  ==========================================================
+  */
 
   function renderizarResumo() {
 
-    document.getElementById("totalProcessos").textContent =
-      processos.length;
+    const processos =
+      dadosMonitor?.processos || [];
 
-    const abertos = processos.filter(
-      p =>
-        String(p.situacao)
+
+    const alertas =
+      dadosMonitor?.alertas || [];
+
+
+    const abertos =
+      processos.filter(
+        processo =>
+          String(
+            processo.situacao || ""
+          )
           .toLowerCase()
           .includes("aberto")
-    ).length;
+      )
+      .length;
 
-    document.getElementById("totalAbertos").textContent =
+
+    document.getElementById(
+      "totalProcessos"
+    ).textContent =
+      processos.length;
+
+
+    document.getElementById(
+      "totalAbertos"
+    ).textContent =
       abertos;
 
-    document.getElementById("totalAlertas").textContent =
+
+    document.getElementById(
+      "totalAlertas"
+    ).textContent =
       alertas.length;
+
   }
 
 
-  function criarCardProcesso(processo, permitirExcluir = false) {
+
+  /*
+  ==========================================================
+  INFORMAÇÕES GERAIS
+  ==========================================================
+  */
+
+  function renderizarInformacoesGerais() {
+
+    const ultima =
+      dadosMonitor
+        ?.ultima_verificacao;
+
+
+    const erros =
+      Number(
+        dadosMonitor?.erros || 0
+      );
+
+
+    const ultimaElemento =
+      document.getElementById(
+        "ultimaConsulta"
+      );
+
+
+    const resultadoElemento =
+      document.getElementById(
+        "resultadoConsulta"
+      );
+
+
+    if (ultima) {
+
+      ultimaElemento.textContent =
+        formatarDataHora(
+          ultima
+        );
+
+    } else {
+
+      ultimaElemento.textContent =
+        "Ainda não disponível";
+
+    }
+
+
+    if (erros === 0) {
+
+      resultadoElemento.innerHTML =
+        "✅ Todas as consultas realizadas com sucesso.";
+
+    } else {
+
+      resultadoElemento.innerHTML =
+        "⚠️ " +
+        erros +
+        (
+          erros === 1
+            ? " consulta apresentou erro."
+            : " consultas apresentaram erro."
+        );
+
+    }
+
+  }
+
+
+
+  /*
+  ==========================================================
+  CARD DO PROCESSO
+  ==========================================================
+  */
+
+  function criarCardProcesso(
+    processo
+  ) {
+
+    const numero =
+      processo.numero || "—";
+
+
+    const situacao =
+      processo.situacao ||
+      "Não identificada";
+
 
     const interessado =
       processo.interessado ||
-      "Dados serão atualizados após a consulta";
+      "Não identificado";
+
 
     const assunto =
       processo.assunto ||
-      "Aguardando consulta";
+      "Não identificado";
 
-    const movimentacao =
-      processo.evento ||
-      "Aguardando primeira verificação";
 
     const data =
-      processo.dataMovimentacao || "—";
+      processo.dataMovimentacao ||
+      "—";
+
 
     const setor =
-      processo.setor
-        ? " • " + escaparHTML(processo.setor)
-        : "";
+      processo.setor ||
+      "—";
+
+
+    const evento =
+      processo.evento ||
+      "Nenhuma movimentação encontrada";
+
+
+    const erro =
+      processo.erro;
+
+
+    const badge =
+      classeBadge(
+        situacao,
+        erro
+      );
+
+
+    const url =
+      processo.url ||
+      criarUrlProcesso(
+        numero
+      );
+
 
     return `
       <div class="card">
@@ -958,20 +1584,16 @@
           <div class="processo-top">
 
             <div class="processo-numero">
-              ${escaparHTML(processo.numero)}
+              ${escaparHTML(numero)}
             </div>
 
-            <span class="badge ${
-              String(processo.situacao)
-                .toLowerCase()
-                .includes("aberto")
-                ? "badge-aberto"
-                : "badge-monitorando"
-            }">
-              ${escaparHTML(processo.situacao || "Monitorando")}
+            <span
+              class="badge ${badge}">
+              ${escaparHTML(situacao)}
             </span>
 
           </div>
+
 
           <div class="info">
 
@@ -985,6 +1607,7 @@
 
           </div>
 
+
           <div class="info">
 
             <span class="label">
@@ -997,41 +1620,54 @@
 
           </div>
 
+
           <div class="movimentacao">
 
             <div class="mov-data">
+
               Última movimentação:
+
               ${escaparHTML(data)}
-              ${setor}
+
+              •
+
+              ${escaparHTML(setor)}
+
             </div>
 
             <div class="mov-texto">
-              ${escaparHTML(movimentacao)}
+              ${escaparHTML(evento)}
             </div>
 
           </div>
+
+
+          ${
+            erro
+              ? `
+              <div class="erro-consulta">
+
+                ⚠️ Última tentativa apresentou erro:
+
+                ${escaparHTML(erro)}
+
+              </div>
+              `
+              : ""
+          }
+
 
           <div class="acoes">
 
             <button
               class="btn btn-primary"
-              onclick="abrirProcesso('${escaparJS(processo.numero)}')"
-            >
-              Consultar na SEFAZ
-            </button>
+              onclick="abrirProcesso(
+                '${escaparJS(url)}'
+              )">
 
-            ${
-              permitirExcluir
-                ? `
-                <button
-                  class="btn btn-danger"
-                  onclick="removerProcesso('${escaparJS(processo.numero)}')"
-                >
-                  Excluir
-                </button>
-                `
-                : ""
-            }
+              Consultar na SEFAZ
+
+            </button>
 
           </div>
 
@@ -1039,334 +1675,527 @@
 
       </div>
     `;
+
   }
 
 
+
+  /*
+  ==========================================================
+  VISÃO GERAL
+  ==========================================================
+  */
+
   function renderizarGeral() {
 
+    const processos =
+      dadosMonitor?.processos || [];
+
+
     const container =
-      document.getElementById("listaGeral");
+      document.getElementById(
+        "listaGeral"
+      );
+
 
     if (!processos.length) {
 
       container.innerHTML = `
         <div class="card">
+
           <div class="empty">
-            <div class="empty-icon">📄</div>
-            Nenhum processo cadastrado.
+
+            <div class="empty-icon">
+              📄
+            </div>
+
+            Nenhum processo disponível.
+
           </div>
+
         </div>
       `;
 
       return;
+
     }
+
 
     container.innerHTML =
       processos
         .slice(0, 3)
-        .map(p => criarCardProcesso(p, false))
+        .map(
+          processo =>
+            criarCardProcesso(
+              processo
+            )
+        )
         .join("");
+
   }
 
 
+
+  /*
+  ==========================================================
+  TODOS OS PROCESSOS
+  ==========================================================
+  */
+
   function renderizarProcessos() {
 
+    const processos =
+      dadosMonitor?.processos || [];
+
+
     const container =
-      document.getElementById("listaProcessos");
+      document.getElementById(
+        "listaProcessos"
+      );
+
 
     if (!processos.length) {
 
       container.innerHTML = `
         <div class="card">
+
           <div class="empty">
-            <div class="empty-icon">📄</div>
-            Nenhum processo cadastrado.<br><br>
-            Toque em <strong>+ Adicionar</strong>.
+
+            <div class="empty-icon">
+              📄
+            </div>
+
+            Nenhum processo monitorado.
+
           </div>
+
         </div>
       `;
 
       return;
+
     }
+
 
     container.innerHTML =
       processos
-        .map(p => criarCardProcesso(p, true))
+        .map(
+          processo =>
+            criarCardProcesso(
+              processo
+            )
+        )
         .join("");
+
   }
 
 
+
+  /*
+  ==========================================================
+  ALERTAS
+  ==========================================================
+  */
+
   function renderizarAlertas() {
 
+    const alertas =
+      dadosMonitor?.alertas || [];
+
+
     const container =
-      document.getElementById("listaAlertas");
+      document.getElementById(
+        "listaAlertas"
+      );
+
 
     if (!alertas.length) {
 
       container.innerHTML = `
         <div class="card">
+
           <div class="empty">
-            <div class="empty-icon">🔔</div>
-            Nenhuma nova movimentação detectada.
+
+            <div class="empty-icon">
+              🔔
+            </div>
+
+            Nenhuma nova movimentação registrada.
+
           </div>
+
         </div>
       `;
 
       return;
+
     }
 
+
     container.innerHTML =
-      alertas.map(alerta => `
-        <div class="card">
-          <div class="card-body">
+      alertas.map(
+        alerta => {
 
-            <div class="alerta">
+          return `
+            <div class="card">
 
-              <div class="alerta-icon">
-                🔔
-              </div>
+              <div class="card-body">
 
-              <div class="alerta-texto">
+                <div class="alerta">
 
-                <strong>
-                  Nova movimentação
-                </strong>
+                  <div class="alerta-icon">
+                    🔔
+                  </div>
 
-                <span>
-                  ${escaparHTML(alerta.numero)}
-                  <br>
-                  ${escaparHTML(alerta.mensagem)}
-                  <br>
-                  ${escaparHTML(alerta.data)}
-                </span>
+                  <div class="alerta-texto">
+
+                    <strong>
+                      Nova movimentação
+                    </strong>
+
+                    <span>
+
+                      ${escaparHTML(
+                        alerta.numero || ""
+                      )}
+
+                      <br><br>
+
+                      ${escaparHTML(
+                        alerta.mensagem || ""
+                      )}
+
+                      <br><br>
+
+                      Detectada em:
+
+                      ${escaparHTML(
+                        formatarDataHora(
+                          alerta.data
+                        )
+                      )}
+
+                    </span>
+
+                  </div>
+
+                </div>
 
               </div>
 
             </div>
+          `;
 
-          </div>
-        </div>
-      `).join("");
+        }
+      )
+      .join("");
+
   }
+
 
 
   /*
-  ----------------------------------------------------------
-  ADICIONAR PROCESSO
-  ----------------------------------------------------------
+  ==========================================================
+  ERRO DE CARREGAMENTO
+  ==========================================================
   */
 
-  function abrirModal() {
+  function mostrarErroCarregamento(
+    erro
+  ) {
 
-    document
-      .getElementById("modalAdicionar")
-      .classList.add("show");
+    document.getElementById(
+      "ultimaConsulta"
+    ).textContent =
+      "Não foi possível carregar";
 
-    setTimeout(() => {
-      document
-        .getElementById("numeroProcesso")
-        .focus();
-    }, 150);
+
+    document.getElementById(
+      "resultadoConsulta"
+    ).textContent =
+      "Erro ao acessar dados.json";
+
+
+    document.getElementById(
+      "totalProcessos"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "totalAbertos"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "totalAlertas"
+    ).textContent =
+      "—";
+
+
+    const mensagem = `
+      <div class="card">
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            ⚠️
+          </div>
+
+          Não foi possível carregar os dados
+          do monitor.
+
+          <br><br>
+
+          Atualize a página novamente
+          em alguns segundos.
+
+        </div>
+
+      </div>
+    `;
+
+
+    document.getElementById(
+      "listaGeral"
+    ).innerHTML =
+      mensagem;
+
+
+    document.getElementById(
+      "listaProcessos"
+    ).innerHTML =
+      mensagem;
+
+
+    document.getElementById(
+      "listaAlertas"
+    ).innerHTML =
+      mensagem;
+
   }
 
 
-  function fecharModal() {
 
-    document
-      .getElementById("modalAdicionar")
-      .classList.remove("show");
+  /*
+  ==========================================================
+  URL SEFAZ
+  ==========================================================
+  */
 
-    document.getElementById("numeroProcesso").value = "";
-  }
-
-
-  function adicionarProcesso() {
-
-    const input =
-      document.getElementById("numeroProcesso");
-
-    const numero =
-      input.value.trim();
-
-    if (!numero) {
-
-      mostrarToast(
-        "Digite o número do processo."
-      );
-
-      return;
-    }
+  function criarUrlProcesso(
+    numero
+  ) {
 
     /*
-    Formato:
-    01.01.028101.030037/2026-43
+    encodeURI preserva a barra existente
+    no número do processo.
     */
 
-    const regex =
-      /^\d{2}\.\d{2}\.\d{6}\.\d{6}\/\d{4}-\d{2}$/;
+    return (
+      "https://online.sefaz.am.gov.br/processo/"
+      +
+      encodeURI(
+        numero
+      )
+    );
 
-    if (!regex.test(numero)) {
+  }
 
-      mostrarToast(
-        "Confira o número. Exemplo: 01.01.028101.030037/2026-43"
-      );
 
-      return;
+  function abrirProcesso(
+    url
+  ) {
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  }
+
+
+
+  /*
+  ==========================================================
+  BADGES
+  ==========================================================
+  */
+
+  function classeBadge(
+    situacao,
+    erro
+  ) {
+
+    if (erro) {
+
+      return "badge-erro";
+
     }
 
-    const existe =
-      processos.some(
-        p => p.numero === numero
-      );
 
-    if (existe) {
+    const texto =
+      String(
+        situacao || ""
+      )
+      .toLowerCase();
 
-      mostrarToast(
-        "Este processo já está cadastrado."
-      );
 
-      return;
+    if (
+      texto.includes(
+        "aberto"
+      )
+    ) {
+
+      return "badge-aberto";
+
     }
 
-    processos.unshift({
 
-      numero: numero,
-      situacao: "Monitorando",
-      interessado: "",
-      assunto: "",
-      dataMovimentacao: "",
-      setor: "",
-      evento: "Aguardando primeira verificação"
+    return "badge-outro";
 
+  }
+
+
+
+  /*
+  ==========================================================
+  TROCAR TELAS
+  ==========================================================
+  */
+
+  function mudarTela(
+    tela
+  ) {
+
+    const telas = [
+      "geral",
+      "processos",
+      "alertas"
+    ];
+
+
+    telas.forEach(
+      nome => {
+
+        document
+          .getElementById(
+            "view-" +
+            nome
+          )
+          .classList
+          .toggle(
+            "hidden",
+            nome !== tela
+          );
+
+
+        document
+          .getElementById(
+            "nav-" +
+            nome
+          )
+          .classList
+          .toggle(
+            "active",
+            nome === tela
+          );
+
+      }
+    );
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
 
-    salvar();
-    renderizar();
-    fecharModal();
-
-    mostrarToast(
-      "Processo adicionado ao monitor."
-    );
   }
 
 
-  /*
-  ----------------------------------------------------------
-  REMOVER PROCESSO
-  ----------------------------------------------------------
-  */
-
-  function removerProcesso(numero) {
-
-    const confirmar =
-      window.confirm(
-        "Deseja remover este processo do monitoramento?\n\n" +
-        numero
-      );
-
-    if (!confirmar) return;
-
-    processos =
-      processos.filter(
-        p => p.numero !== numero
-      );
-
-    salvar();
-    renderizar();
-
-    mostrarToast(
-      "Processo removido."
-    );
-  }
-
 
   /*
-  ----------------------------------------------------------
-  VERIFICAR TODOS
-  ----------------------------------------------------------
-
-  IMPORTANTE:
-  Um site hospedado no GitHub Pages funciona apenas no
-  navegador.
-
-  A SEFAZ pode impedir que outro domínio leia automaticamente
-  o conteúdo da página por segurança (CORS).
-
-  Por isso, esta versão registra o horário da verificação e
-  permite abrir imediatamente cada processo na fonte oficial.
-
-  A consulta 100% automática, mesmo com o celular fechado,
-  será implementada na próxima etapa com um serviço de
-  execução automática.
-  ----------------------------------------------------------
+  ==========================================================
+  FORMATAR DATA / HORA
+  ==========================================================
   */
 
-  function verificarTodos() {
+  function formatarDataHora(
+    valor
+  ) {
 
-    if (!processos.length) {
+    if (!valor) {
 
-      mostrarToast(
-        "Não há processos cadastrados."
-      );
+      return "—";
 
-      return;
     }
 
-    const agora = new Date();
 
-    localStorage.setItem(
-      STORAGE_ULTIMA,
-      agora.toISOString()
-    );
+    try {
 
-    atualizarUltimaConsulta();
-    calcularProximaConsulta();
-
-    mostrarToast(
-      "Verificação registrada. Os processos continuam sendo monitorados."
-    );
-  }
+      const data =
+        new Date(
+          valor
+        );
 
 
-  /*
-  ----------------------------------------------------------
-  ÚLTIMA CONSULTA
-  ----------------------------------------------------------
-  */
+      if (
+        Number.isNaN(
+          data.getTime()
+        )
+      ) {
 
-  function atualizarUltimaConsulta() {
+        return valor;
 
-    const salvo =
-      localStorage.getItem(STORAGE_ULTIMA);
+      }
 
-    const elemento =
-      document.getElementById("ultimaConsulta");
 
-    if (!salvo) {
+      return new Intl.DateTimeFormat(
+        "pt-BR",
+        {
+          timeZone:
+            "America/Manaus",
 
-      elemento.textContent =
-        "Ainda não realizada neste aparelho";
+          day:
+            "2-digit",
 
-      return;
+          month:
+            "2-digit",
+
+          year:
+            "numeric",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit"
+        }
+      )
+      .format(
+        data
+      );
+
+
+    } catch {
+
+      return valor;
+
     }
 
-    const data = new Date(salvo);
-
-    elemento.textContent =
-      formatarDataHoraManaus(data);
   }
 
 
-  /*
-  ----------------------------------------------------------
-  HORÁRIOS AUTOMÁTICOS
-  08:00
-  11:00
-  14:00
-  17:00
 
-  Horário de Manaus
-  ----------------------------------------------------------
+  /*
+  ==========================================================
+  PRÓXIMA CONSULTA
+  Segunda a sexta
+  08:00 / 11:00 / 14:00 / 17:00
+  Manaus
+  ==========================================================
   */
 
   const horariosConsulta = [
@@ -1377,232 +2206,334 @@
   ];
 
 
-  function agoraManausPartes() {
+  function partesManaus() {
 
     const formatter =
       new Intl.DateTimeFormat(
-        "en-CA",
+        "en-US",
         {
-          timeZone: "America/Manaus",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-          weekday: "short"
+          timeZone:
+            "America/Manaus",
+
+          weekday:
+            "short",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit",
+
+          hour12:
+            false
         }
       );
 
-    const parts =
-      formatter.formatToParts(new Date());
 
-    const obj = {};
-
-    parts.forEach(part => {
-
-      if (part.type !== "literal") {
-        obj[part.type] = part.value;
-      }
-
-    });
-
-    return obj;
-  }
+    const partes =
+      formatter.formatToParts(
+        new Date()
+      );
 
 
-  function calcularProximaConsulta() {
-
-    const p = agoraManausPartes();
-
-    const hora =
-      Number(p.hour);
-
-    const minuto =
-      Number(p.minute);
-
-    let proximaHora = null;
-    let amanha = false;
-
-    for (const h of horariosConsulta) {
-
-      if (
-        h > hora ||
-        (h === hora && minuto < 1)
-      ) {
-        proximaHora = h;
-        break;
-      }
-    }
-
-    if (proximaHora === null) {
-      proximaHora = 8;
-      amanha = true;
-    }
-
-    const textoHora =
-      String(proximaHora)
-        .padStart(2, "0") + ":00";
-
-    document
-      .getElementById("proximaConsulta")
-      .textContent =
-        amanha
-          ? "Amanhã às " + textoHora
-          : "Hoje às " + textoHora;
-  }
+    const objeto = {};
 
 
-  /*
-  ----------------------------------------------------------
-  TROCAR TELAS
-  ----------------------------------------------------------
-  */
+    partes.forEach(
+      parte => {
 
-  function mudarTela(tela) {
+        if (
+          parte.type !==
+          "literal"
+        ) {
 
-    const telas = [
-      "geral",
-      "processos",
-      "alertas"
-    ];
+          objeto[
+            parte.type
+          ] =
+            parte.value;
 
-    telas.forEach(nome => {
-
-      document
-        .getElementById("view-" + nome)
-        .classList.toggle(
-          "hidden",
-          nome !== tela
-        );
-
-      document
-        .getElementById("nav-" + nome)
-        .classList.toggle(
-          "active",
-          nome === tela
-        );
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
-
-
-  /*
-  ----------------------------------------------------------
-  FORMATAR DATA / HORA
-  ----------------------------------------------------------
-  */
-
-  function formatarDataHoraManaus(data) {
-
-    return new Intl.DateTimeFormat(
-      "pt-BR",
-      {
-        timeZone: "America/Manaus",
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit"
-      }
-    ).format(data);
-  }
-
-
-  /*
-  ----------------------------------------------------------
-  SEGURANÇA HTML
-  ----------------------------------------------------------
-  */
-
-  function escaparHTML(valor) {
-
-    return String(valor ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-
-  function escaparJS(valor) {
-
-    return String(valor ?? "")
-      .replaceAll("\\", "\\\\")
-      .replaceAll("'", "\\'");
-  }
-
-
-  /*
-  ----------------------------------------------------------
-  TOAST
-  ----------------------------------------------------------
-  */
-
-  let timerToast = null;
-
-
-  function mostrarToast(mensagem) {
-
-    const toast =
-      document.getElementById("toast");
-
-    toast.textContent =
-      mensagem;
-
-    toast.classList.add("show");
-
-    clearTimeout(timerToast);
-
-    timerToast =
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 3000);
-  }
-
-
-  /*
-  ----------------------------------------------------------
-  FECHAR MODAL AO TOCAR FORA
-  ----------------------------------------------------------
-  */
-
-  document
-    .getElementById("modalAdicionar")
-    .addEventListener(
-      "click",
-      function(event) {
-
-        if (event.target === this) {
-          fecharModal();
         }
 
       }
     );
 
 
+    return objeto;
+
+  }
+
+
+
+  function calcularProximaConsulta() {
+
+    const partes =
+      partesManaus();
+
+
+    const hora =
+      Number(
+        partes.hour
+      );
+
+
+    const minuto =
+      Number(
+        partes.minute
+      );
+
+
+    const dia =
+      partes.weekday;
+
+
+    const fimDeSemana =
+      (
+        dia === "Sat"
+        ||
+        dia === "Sun"
+      );
+
+
+    let proximaHora =
+      null;
+
+
+    let textoDia =
+      "Hoje";
+
+
+    if (!fimDeSemana) {
+
+      for (
+        const horario
+        of horariosConsulta
+      ) {
+
+        if (
+          horario > hora
+          ||
+          (
+            horario === hora
+            &&
+            minuto < 1
+          )
+        ) {
+
+          proximaHora =
+            horario;
+
+          break;
+
+        }
+
+      }
+
+    }
+
+
+    if (
+      proximaHora === null
+    ) {
+
+      proximaHora = 8;
+
+
+      if (
+        dia === "Fri"
+      ) {
+
+        textoDia =
+          "Segunda-feira";
+
+      } else if (
+        dia === "Sat"
+      ) {
+
+        textoDia =
+          "Segunda-feira";
+
+      } else if (
+        dia === "Sun"
+      ) {
+
+        textoDia =
+          "Segunda-feira";
+
+      } else {
+
+        textoDia =
+          "Amanhã";
+
+      }
+
+    }
+
+
+    const horaTexto =
+      String(
+        proximaHora
+      )
+      .padStart(
+        2,
+        "0"
+      )
+      +
+      ":00";
+
+
+    document
+      .getElementById(
+        "proximaConsulta"
+      )
+      .textContent =
+        textoDia +
+        " às " +
+        horaTexto;
+
+  }
+
+
+
   /*
-  ----------------------------------------------------------
-  INICIALIZAÇÃO
-  ----------------------------------------------------------
+  ==========================================================
+  SEGURANÇA
+  ==========================================================
   */
 
-  renderizar();
-  calcularProximaConsulta();
+  function escaparHTML(
+    valor
+  ) {
+
+    return String(
+      valor ?? ""
+    )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+  }
+
+
+  function escaparJS(
+    valor
+  ) {
+
+    return String(
+      valor ?? ""
+    )
+    .replaceAll(
+      "\\",
+      "\\\\"
+    )
+    .replaceAll(
+      "'",
+      "\\'"
+    );
+
+  }
+
+
 
   /*
-  Atualiza o contador da próxima consulta a cada minuto.
+  ==========================================================
+  TOAST
+  ==========================================================
+  */
+
+  function mostrarToast(
+    mensagem
+  ) {
+
+    const toast =
+      document.getElementById(
+        "toast"
+      );
+
+
+    toast.textContent =
+      mensagem;
+
+
+    toast.classList.add(
+      "show"
+    );
+
+
+    clearTimeout(
+      timerToast
+    );
+
+
+    timerToast =
+      setTimeout(
+        () => {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+        3000
+      );
+
+  }
+
+
+
+  /*
+  ==========================================================
+  INICIALIZAÇÃO
+  ==========================================================
+  */
+
+  calcularProximaConsulta();
+
+  carregarDados();
+
+
+  /*
+  Atualiza automaticamente o conteúdo
+  do painel a cada 5 minutos enquanto
+  ele estiver aberto.
+  */
+
+  setInterval(
+    () => {
+
+      carregarDados(
+        false
+      );
+
+    },
+    5 * 60 * 1000
+  );
+
+
+  /*
+  Recalcula o próximo horário
+  a cada minuto.
   */
 
   setInterval(
     calcularProximaConsulta,
-    60000
+    60 * 1000
   );
 
 </script>
