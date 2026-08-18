@@ -40,7 +40,7 @@ HEADERS = {
 
 
 # ============================================================
-# DATA / HORA DE MANAUS
+# DATA / HORA
 # ============================================================
 
 def agora_manaus():
@@ -71,43 +71,34 @@ def texto_limpo(valor):
 
 
 def url_processo(numero):
-    """
-    IMPORTANTE:
-
-    A barra "/" existente no número do processo
-    precisa permanecer na URL.
-
-    Exemplo correto:
-
-    .../030037/2026-43
-
-    e NÃO:
-
-    .../030037%2F2026-43
-    """
-
-    numero_codificado = quote(
+    # Mantém a barra "/" no número do processo.
+    return BASE_URL + quote(
         numero,
         safe="/"
     )
 
-    return BASE_URL + numero_codificado
-
 
 # ============================================================
-# ARQUIVO dados.json
+# dados.json
 # ============================================================
+
+def estrutura_vazia():
+    return {
+        "ultima_verificacao": None,
+        "timezone": "America/Manaus",
+        "total_processos": 0,
+        "erros": 0,
+        "processos": [],
+        "alertas": [],
+    }
+
 
 def carregar_dados():
 
     if not os.path.exists(
         ARQUIVO_DADOS
     ):
-        return {
-            "ultima_verificacao": None,
-            "processos": [],
-            "alertas": [],
-        }
+        return estrutura_vazia()
 
     try:
 
@@ -125,14 +116,7 @@ def carregar_dados():
             dados,
             dict
         ):
-            raise ValueError(
-                "Formato inválido"
-            )
-
-        dados.setdefault(
-            "ultima_verificacao",
-            None
-        )
+            return estrutura_vazia()
 
         dados.setdefault(
             "processos",
@@ -149,16 +133,11 @@ def carregar_dados():
     except Exception as erro:
 
         print(
-            "Aviso: não foi possível "
-            f"ler {ARQUIVO_DADOS}: "
-            f"{erro}"
+            "Aviso ao ler dados.json:",
+            erro
         )
 
-        return {
-            "ultima_verificacao": None,
-            "processos": [],
-            "alertas": [],
-        }
+        return estrutura_vazia()
 
 
 def salvar_dados(dados):
@@ -180,7 +159,7 @@ def salvar_dados(dados):
 
 
 # ============================================================
-# CONSULTA À SEFAZ-AM
+# CONSULTA À SEFAZ
 # ============================================================
 
 def baixar_pagina(numero):
@@ -214,10 +193,7 @@ def baixar_pagina(numero):
 
     resposta.raise_for_status()
 
-    # Tenta respeitar o encoding
-    # informado pelo servidor.
     if resposta.encoding is None:
-
         resposta.encoding = (
             resposta.apparent_encoding
             or "utf-8"
@@ -230,7 +206,7 @@ def baixar_pagina(numero):
 
 
 # ============================================================
-# EXTRAÇÃO DOS DADOS PRINCIPAIS
+# CABEÇALHO
 # ============================================================
 
 def extrair_cabecalho(soup):
@@ -245,10 +221,6 @@ def extrair_cabecalho(soup):
     situacao = ""
     assunto = ""
     interessado = ""
-
-    # --------------------------------------------------------
-    # SITUAÇÃO
-    # --------------------------------------------------------
 
     match = re.search(
         r"Situação\s*:\s*"
@@ -265,10 +237,6 @@ def extrair_cabecalho(soup):
             match.group(1)
         )
 
-    # --------------------------------------------------------
-    # ASSUNTO
-    # --------------------------------------------------------
-
     match = re.search(
         r"Assunto\s*:\s*"
         r"(.*?)"
@@ -283,10 +251,6 @@ def extrair_cabecalho(soup):
         assunto = texto_limpo(
             match.group(1)
         )
-
-    # --------------------------------------------------------
-    # INTERESSADO
-    # --------------------------------------------------------
 
     match = re.search(
         r"Interessado\s*:\s*"
@@ -311,18 +275,16 @@ def extrair_cabecalho(soup):
 
 
 # ============================================================
-# LOCALIZAR TABELA DE MOVIMENTAÇÕES
+# MOVIMENTAÇÕES
 # ============================================================
 
 def encontrar_tabela_movimentacoes(
     soup
 ):
 
-    tabelas = soup.find_all(
+    for tabela in soup.find_all(
         "table"
-    )
-
-    for tabela in tabelas:
+    ):
 
         texto = texto_limpo(
             tabela.get_text(
@@ -333,26 +295,22 @@ def encontrar_tabela_movimentacoes(
 
         if (
             "data" in texto
-            and "setor" in texto
-            and "evento" in texto
+            and
+            "setor" in texto
+            and
+            "evento" in texto
         ):
             return tabela
 
     return None
 
 
-# ============================================================
-# EXTRAIR MOVIMENTAÇÕES
-# ============================================================
-
 def extrair_movimentacoes(
     soup
 ):
 
-    tabela = (
-        encontrar_tabela_movimentacoes(
-            soup
-        )
+    tabela = encontrar_tabela_movimentacoes(
+        soup
     )
 
     movimentacoes = []
@@ -360,17 +318,15 @@ def extrair_movimentacoes(
     if tabela is None:
 
         print(
-            "Aviso: tabela de "
-            "movimentações não encontrada."
+            "Aviso: tabela de movimentações "
+            "não encontrada."
         )
 
         return movimentacoes
 
-    linhas = tabela.find_all(
+    for linha in tabela.find_all(
         "tr"
-    )
-
-    for linha in linhas:
+    ):
 
         celulas = linha.find_all(
             ["td", "th"]
@@ -389,11 +345,11 @@ def extrair_movimentacoes(
         if len(valores) < 3:
             continue
 
-        # Ignora cabeçalho
         if (
             valores[0].lower()
             == "data"
-            and valores[1].lower()
+            and
+            valores[1].lower()
             == "setor"
         ):
             continue
@@ -407,8 +363,6 @@ def extrair_movimentacoes(
             )
         )
 
-        # Confirma que a primeira
-        # coluna contém uma data.
         if not re.match(
             r"^\d{2}/\d{2}/\d{4}$",
             data
@@ -425,17 +379,15 @@ def extrair_movimentacoes(
 
 
 # ============================================================
-# CONSULTAR UM PROCESSO
+# CONSULTAR PROCESSO
 # ============================================================
 
 def consultar_processo(
     numero
 ):
 
-    html, url_final = (
-        baixar_pagina(
-            numero
-        )
+    html, url_final = baixar_pagina(
+        numero
     )
 
     soup = BeautifulSoup(
@@ -443,108 +395,100 @@ def consultar_processo(
         "html.parser"
     )
 
-    cabecalho = (
-        extrair_cabecalho(
-            soup
-        )
+    cabecalho = extrair_cabecalho(
+        soup
     )
 
-    movimentacoes = (
-        extrair_movimentacoes(
-            soup
-        )
+    movimentacoes = extrair_movimentacoes(
+        soup
     )
 
     if movimentacoes:
-
-        ultima = (
-            movimentacoes[0]
-        )
-
+        ultima = movimentacoes[0]
     else:
-
         ultima = {
             "data": "",
             "setor": "",
             "evento": "",
         }
 
-    resultado = {
-
+    return {
         "numero": numero,
 
         "situacao": (
-            cabecalho[
-                "situacao"
-            ]
+            cabecalho["situacao"]
             or "Não identificada"
         ),
 
-        "interessado": (
-            cabecalho[
-                "interessado"
-            ]
-        ),
+        "interessado":
+            cabecalho["interessado"],
 
-        "assunto": (
-            cabecalho[
-                "assunto"
-            ]
-        ),
+        "assunto":
+            cabecalho["assunto"],
 
-        "dataMovimentacao": (
-            ultima["data"]
-        ),
+        "dataMovimentacao":
+            ultima["data"],
 
-        "setor": (
-            ultima["setor"]
-        ),
+        "setor":
+            ultima["setor"],
 
-        "evento": (
-            ultima["evento"]
-        ),
+        "evento":
+            ultima["evento"],
 
-        "url": url_final,
+        "url":
+            url_final,
 
-        "consultado_em": (
-            agora_iso()
-        ),
+        "consultado_em":
+            agora_iso(),
 
-        "erro": None,
+        "erro":
+            None,
     }
-
-    return resultado
 
 
 # ============================================================
-# COMPARAR MOVIMENTAÇÕES
+# COMPARAÇÃO
 # ============================================================
 
 def assinatura_movimentacao(
     processo
 ):
 
+    if not processo:
+        return ""
+
+    data = texto_limpo(
+        processo.get(
+            "dataMovimentacao",
+            ""
+        )
+    )
+
+    setor = texto_limpo(
+        processo.get(
+            "setor",
+            ""
+        )
+    )
+
+    evento = texto_limpo(
+        processo.get(
+            "evento",
+            ""
+        )
+    )
+
+    if not (
+        data
+        or setor
+        or evento
+    ):
+        return ""
+
     return "|".join([
-        texto_limpo(
-            processo.get(
-                "dataMovimentacao",
-                ""
-            )
-        ),
-
-        texto_limpo(
-            processo.get(
-                "setor",
-                ""
-            )
-        ),
-
-        texto_limpo(
-            processo.get(
-                "evento",
-                ""
-            )
-        ),
+        data,
+        setor,
+        evento,
     ])
 
 
@@ -570,50 +514,134 @@ def localizar_anterior(
 
 
 # ============================================================
+# CONSULTA ANTERIOR VÁLIDA
+# ============================================================
+
+def anterior_e_valido(
+    anterior
+):
+
+    if not anterior:
+        return False
+
+    # Se a consulta anterior teve erro,
+    # NÃO deve servir como base para alerta.
+    if anterior.get(
+        "erro"
+    ):
+        return False
+
+    # Situação de erro usada nas primeiras
+    # versões do monitor.
+    situacao = texto_limpo(
+        anterior.get(
+            "situacao",
+            ""
+        )
+    ).lower()
+
+    if (
+        "erro" in situacao
+    ):
+        return False
+
+    # Só compara quando havia uma
+    # movimentação real armazenada.
+    assinatura = assinatura_movimentacao(
+        anterior
+    )
+
+    if not assinatura:
+        return False
+
+    return True
+
+
+# ============================================================
 # ALERTAS
 # ============================================================
 
 def criar_alerta(
     numero,
-    processo_novo,
-    processo_anterior
+    novo,
+    anterior
 ):
 
     return {
+        "numero":
+            numero,
 
-        "numero": numero,
+        "data":
+            agora_iso(),
 
-        "data": agora_iso(),
-
-        "mensagem": (
-            "Nova movimentação: "
-            + (
-                processo_novo.get(
-                    "evento"
+        "mensagem":
+            (
+                "Nova movimentação: "
+                + (
+                    novo.get(
+                        "evento"
+                    )
+                    or
+                    "movimentação atualizada"
                 )
-                or
-                "movimentação atualizada"
-            )
-        ),
+            ),
 
-        "movimentacao_anterior": (
+        "movimentacao_anterior":
             assinatura_movimentacao(
-                processo_anterior
-            )
-            if processo_anterior
-            else None
-        ),
+                anterior
+            ),
 
-        "movimentacao_atual": (
+        "movimentacao_atual":
             assinatura_movimentacao(
-                processo_novo
-            )
-        ),
+                novo
+            ),
+
+        "data_movimentacao":
+            novo.get(
+                "dataMovimentacao",
+                ""
+            ),
+
+        "setor":
+            novo.get(
+                "setor",
+                ""
+            ),
+
+        "evento":
+            novo.get(
+                "evento",
+                ""
+            ),
     }
 
 
+def alerta_ja_existe(
+    alertas,
+    numero,
+    assinatura
+):
+
+    for alerta in alertas:
+
+        if (
+            alerta.get(
+                "numero"
+            )
+            == numero
+            and
+            alerta.get(
+                "movimentacao_atual"
+            )
+            == assinatura
+        ):
+            return True
+
+    return False
+
+
 # ============================================================
-# EXECUÇÃO PRINCIPAL
+# EXECUÇÃO
 # ============================================================
 
 def main():
@@ -637,9 +665,7 @@ def main():
         "=" * 60
     )
 
-    dados_anteriores = (
-        carregar_dados()
-    )
+    dados_anteriores = carregar_dados()
 
     novos_processos = []
 
@@ -652,63 +678,61 @@ def main():
 
     erros = 0
 
+    novos_alertas_detectados = 0
+
+
     for numero in PROCESSOS:
 
-        anterior = (
-            localizar_anterior(
-                dados_anteriores,
-                numero
-            )
+        anterior = localizar_anterior(
+            dados_anteriores,
+            numero
         )
 
         try:
 
-            atual = (
-                consultar_processo(
-                    numero
-                )
+            atual = consultar_processo(
+                numero
             )
 
             print(
                 "Situação:",
-                atual[
-                    "situacao"
-                ]
+                atual["situacao"]
             )
 
             print(
                 "Interessado:",
-                atual[
-                    "interessado"
-                ]
+                atual["interessado"]
             )
 
             print(
                 "Assunto:",
-                atual[
-                    "assunto"
-                ]
+                atual["assunto"]
             )
 
             print(
                 "Última movimentação:",
-                atual[
-                    "dataMovimentacao"
-                ],
-                atual[
-                    "setor"
-                ],
-                atual[
-                    "evento"
-                ]
+                atual["dataMovimentacao"],
+                atual["setor"],
+                atual["evento"]
             )
 
-            # -----------------------------------------------
-            # Só cria alerta quando já existe
-            # uma consulta anterior válida.
-            # -----------------------------------------------
 
-            if anterior:
+            # =================================================
+            # NOVA LÓGICA DE ALERTA
+            # =================================================
+            #
+            # Só compara se:
+            #
+            # 1. já existia consulta anterior;
+            # 2. consulta anterior foi válida;
+            # 3. consulta atual tem movimentação;
+            # 4. movimentação realmente mudou;
+            # 5. o mesmo alerta ainda não existe.
+            # =================================================
+
+            if anterior_e_valido(
+                anterior
+            ):
 
                 assinatura_anterior = (
                     assinatura_movimentacao(
@@ -729,23 +753,60 @@ def main():
                     != assinatura_anterior
                 ):
 
-                    novos_alertas.insert(
-                        0,
-                        criar_alerta(
+                    if not alerta_ja_existe(
+                        novos_alertas,
+                        numero,
+                        assinatura_atual
+                    ):
+
+                        alerta = criar_alerta(
                             numero,
                             atual,
                             anterior
                         )
-                    )
+
+                        novos_alertas.insert(
+                            0,
+                            alerta
+                        )
+
+                        novos_alertas_detectados += 1
+
+                        print(
+                            "NOVA MOVIMENTAÇÃO "
+                            "DETECTADA!"
+                        )
+
+                    else:
+
+                        print(
+                            "Movimentação já possui "
+                            "alerta registrado."
+                        )
+
+                else:
 
                     print(
-                        "NOVA MOVIMENTAÇÃO "
-                        "DETECTADA!"
+                        "Nenhuma nova movimentação."
                     )
+
+            else:
+
+                print(
+                    "Sem consulta anterior válida "
+                    "para comparação."
+                )
+
+                print(
+                    "Estado atual salvo como "
+                    "referência inicial."
+                )
+
 
             novos_processos.append(
                 atual
             )
+
 
         except Exception as erro:
 
@@ -756,11 +817,7 @@ def main():
                 f"{numero}: {erro}"
             )
 
-            # -----------------------------------------------
-            # Se já temos dados anteriores,
-            # preservamos esses dados.
-            # -----------------------------------------------
-
+            # Preserva os dados válidos anteriores.
             if anterior:
 
                 copia = dict(
@@ -784,7 +841,6 @@ def main():
             else:
 
                 novos_processos.append({
-
                     "numero":
                         numero,
 
@@ -820,16 +876,14 @@ def main():
                         ),
                 })
 
-    # ========================================================
-    # Mantém os últimos 100 alertas
-    # ========================================================
 
+    # Mantém no máximo 100 alertas.
     novos_alertas = (
         novos_alertas[:100]
     )
 
-    saida = {
 
+    saida = {
         "ultima_verificacao":
             agora_iso(),
 
@@ -844,6 +898,9 @@ def main():
         "erros":
             erros,
 
+        "novos_alertas":
+            novos_alertas_detectados,
+
         "processos":
             novos_processos,
 
@@ -851,17 +908,18 @@ def main():
             novos_alertas,
     }
 
+
     salvar_dados(
         saida
     )
+
 
     print(
         "=" * 60
     )
 
     print(
-        f"{ARQUIVO_DADOS} "
-        "atualizado."
+        "dados.json atualizado."
     )
 
     print(
@@ -874,6 +932,11 @@ def main():
     print(
         "Erros:",
         erros
+    )
+
+    print(
+        "Novos alertas:",
+        novos_alertas_detectados
     )
 
     print(
