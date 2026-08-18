@@ -1,8 +1,9 @@
 {
-  "ultima_verificacao": "2026-08-18T13:57:28-04:00",
+  "ultima_verificacao": "2026-08-18T14:07:50-04:00",
   "timezone": "America/Manaus",
   "total_processos": 2,
   "erros": 0,
+  "novos_alertas": 0,
   "processos": [
     {
       "numero": "01.01.028101.030037/2026-43",
@@ -13,7 +14,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030037/2026-43",
-      "consultado_em": "2026-08-18T13:57:26-04:00",
+      "consultado_em": "2026-08-18T14:07:49-04:00",
       "erro": null
     },
     {
@@ -25,7 +26,7 @@
       "setor": "G258331",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.013102.003068/2026-44",
-      "consultado_em": "2026-08-18T13:57:28-04:00",
+      "consultado_em": "2026-08-18T14:07:50-04:00",
       "erro": null
     }
   ],
