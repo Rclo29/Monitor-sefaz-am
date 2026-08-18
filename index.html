@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
 
@@ -8,11 +9,39 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <meta name="theme-color" content="#0b63ce">
-
   <title>Monitor SEFAZ-AM</title>
 
+  <!-- ======================================================
+       PWA / IPHONE
+       ====================================================== -->
+
+  <link rel="manifest" href="./manifest.json">
+
+  <meta name="theme-color" content="#0b63ce">
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Monitor SEFAZ-AM"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="./icon-192.png"
+  >
+
+
   <style>
+
     :root {
       --azul: #0b63ce;
       --azul2: #1480e8;
@@ -32,6 +61,7 @@
 
       --cinza: #667085;
       --cinza2: #98a2b3;
+
       --fundo: #f5f7fa;
       --borda: #e2e7ec;
       --texto: #17202a;
@@ -43,14 +73,17 @@
         0 4px 18px rgba(0,0,0,.07);
     }
 
+
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
+
     html {
       background: var(--fundo);
     }
+
 
     body {
       margin: 0;
@@ -78,19 +111,24 @@
       padding-bottom:
         calc(
           var(--menu-height)
-          + env(safe-area-inset-bottom)
-          + 18px
+          +
+          env(safe-area-inset-bottom)
+          +
+          18px
         );
     }
+
 
     button,
     input {
       font: inherit;
     }
 
+
     button {
       cursor: pointer;
     }
+
 
     .app {
       width: 100%;
@@ -98,9 +136,10 @@
       margin: 0 auto;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        CABEÇALHO
-       ======================================================= */
+       ====================================================== */
 
     .header {
       padding:
@@ -124,12 +163,15 @@
         0 9px 26px rgba(11,99,206,.18);
     }
 
+
     .header-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       gap: 15px;
     }
+
 
     .header-small {
       font-size: 16px;
@@ -137,12 +179,16 @@
       margin-bottom: 5px;
     }
 
+
     .header-title {
       margin: 0;
+
       font-size: 31px;
       line-height: 1.05;
+
       font-weight: 850;
     }
+
 
     .online-pill {
       border:
@@ -161,15 +207,18 @@
       white-space: nowrap;
     }
 
+
     .header-cards {
       margin-top: 27px;
 
       display: grid;
+
       grid-template-columns:
         repeat(2,minmax(0,1fr));
 
       gap: 15px;
     }
+
 
     .header-card {
       background:
@@ -183,6 +232,7 @@
       padding: 15px 18px;
     }
 
+
     .header-card-label {
       display: block;
 
@@ -192,6 +242,7 @@
       margin-bottom: 5px;
     }
 
+
     .header-card-value {
       display: block;
 
@@ -199,21 +250,26 @@
       font-weight: 850;
 
       overflow: hidden;
+
       text-overflow: ellipsis;
+
       white-space: nowrap;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        CONTEÚDO
-       ======================================================= */
+       ====================================================== */
 
     main {
       padding: 23px 22px 0;
     }
 
+
     .page {
       display: none;
     }
+
 
     .page.active {
       display: block;
@@ -221,6 +277,7 @@
       animation:
         fade .16s ease;
     }
+
 
     @keyframes fade {
       from {
@@ -232,11 +289,13 @@
       }
     }
 
+
     .section-header {
       margin:
         0 5px
         16px;
     }
+
 
     .section-header h2 {
       margin: 0;
@@ -245,21 +304,25 @@
       line-height: 1.1;
     }
 
+
     .section-subtitle {
       margin-top: 6px;
 
       color: var(--cinza);
 
       font-size: 14px;
+
       line-height: 1.35;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        CARDS INÍCIO
-       ======================================================= */
+       ====================================================== */
 
     .metrics {
       display: grid;
+
       grid-template-columns:
         repeat(2,minmax(0,1fr));
 
@@ -267,6 +330,7 @@
 
       margin-bottom: 24px;
     }
+
 
     .metric {
       background: #fff;
@@ -281,36 +345,44 @@
       min-height: 170px;
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: space-between;
 
       box-shadow:
         0 3px 12px rgba(0,0,0,.035);
     }
 
+
     .metric-icon {
       font-size: 30px;
     }
+
 
     .metric-number {
       margin-top: 22px;
 
       font-size: 41px;
+
       font-weight: 850;
 
       line-height: .9;
     }
 
+
     .metric-label {
       margin-top: 8px;
 
       font-size: 15px;
+
       color: var(--cinza);
     }
 
-    /* =======================================================
+
+    /* ======================================================
        ATUALIZAÇÃO
-       ======================================================= */
+       ====================================================== */
 
     .update-box {
       background: #fff;
@@ -326,6 +398,7 @@
 
       margin-bottom: 28px;
     }
+
 
     .primary-button {
       width: 100%;
@@ -348,15 +421,18 @@
       padding: 14px 18px;
 
       font-size: 17px;
+
       font-weight: 850;
 
       box-shadow:
         0 5px 15px rgba(11,99,206,.20);
     }
 
+
     .primary-button:disabled {
       opacity: .6;
     }
+
 
     .update-message {
       display: none;
@@ -368,31 +444,43 @@
       border-radius: 13px;
 
       font-size: 12px;
+
       line-height: 1.4;
     }
+
 
     .update-message.show {
       display: block;
     }
 
+
     .update-message.info {
       color: #084f9f;
-      background: var(--azul-claro);
+
+      background:
+        var(--azul-claro);
     }
+
 
     .update-message.success {
       color: #116b34;
-      background: var(--verde-claro);
+
+      background:
+        var(--verde-claro);
     }
+
 
     .update-message.error {
       color: #a52d2d;
-      background: var(--vermelho-claro);
+
+      background:
+        var(--vermelho-claro);
     }
 
-    /* =======================================================
-       PROCESSOS EM DESTAQUE
-       ======================================================= */
+
+    /* ======================================================
+       DESTAQUES
+       ====================================================== */
 
     .subsection-title {
       margin:
@@ -400,11 +488,13 @@
         14px;
     }
 
+
     .subsection-title strong {
       display: block;
 
       font-size: 20px;
     }
+
 
     .subsection-title span {
       display: block;
@@ -412,18 +502,23 @@
       margin-top: 4px;
 
       font-size: 13px;
+
       color: var(--cinza);
     }
 
-    /* =======================================================
-       PROCESS CARD
-       ======================================================= */
+
+    /* ======================================================
+       CARD PROCESSO
+       ====================================================== */
 
     .process-list {
       display: flex;
+
       flex-direction: column;
+
       gap: 13px;
     }
+
 
     .process-card {
       background: #fff;
@@ -439,10 +534,11 @@
         0 2px 9px rgba(0,0,0,.035);
     }
 
+
     .process-card.priority {
-      border-color:
-        #f0cf63;
+      border-color: #f0cf63;
     }
+
 
     .priority-strip {
       display: none;
@@ -450,42 +546,53 @@
       background:
         var(--amarelo-claro);
 
-      color:
-        #8b6500;
+      color: #8b6500;
 
       padding: 7px 15px;
 
       font-size: 10px;
+
       font-weight: 850;
     }
+
 
     .process-card.priority
     .priority-strip {
       display: block;
     }
 
+
     .process-body {
       padding: 16px;
     }
 
+
     .process-top {
       display: flex;
+
       align-items: flex-start;
+
       gap: 12px;
     }
 
+
     .process-title-area {
       flex: 1;
+
       min-width: 0;
     }
 
+
     .process-number {
       font-size: 14px;
+
       font-weight: 850;
+
       line-height: 1.35;
 
       word-break: break-word;
     }
+
 
     .process-subject {
       margin-top: 5px;
@@ -493,13 +600,16 @@
       color: var(--cinza);
 
       font-size: 12px;
+
       line-height: 1.4;
     }
+
 
     .star-button {
       flex: 0 0 42px;
 
       width: 42px;
+
       height: 42px;
 
       border:
@@ -510,25 +620,30 @@
       background: #fff;
 
       display: grid;
+
       place-items: center;
 
       font-size: 23px;
     }
+
 
     .star-button.active {
       background:
         var(--amarelo-claro);
     }
 
+
     .process-info-grid {
       margin-top: 14px;
 
       display: grid;
+
       grid-template-columns:
         repeat(2,minmax(0,1fr));
 
       gap: 9px;
     }
+
 
     .process-info {
       background: #f5f7f9;
@@ -540,9 +655,12 @@
       min-width: 0;
     }
 
+
     .process-info.wide {
-      grid-column: 1 / -1;
+      grid-column:
+        1 / -1;
     }
+
 
     .info-label {
       display: block;
@@ -550,6 +668,7 @@
       font-size: 9px;
 
       text-transform: uppercase;
+
       letter-spacing: .3px;
 
       color: var(--cinza);
@@ -557,15 +676,19 @@
       margin-bottom: 4px;
     }
 
+
     .info-value {
       display: block;
 
       font-size: 12px;
+
       font-weight: 750;
+
       line-height: 1.35;
 
       word-break: break-word;
     }
+
 
     .movement {
       margin-top: 13px;
@@ -575,6 +698,7 @@
       border-top:
         1px solid var(--borda);
     }
+
 
     .movement-label {
       font-size: 10px;
@@ -588,11 +712,15 @@
       margin-bottom: 5px;
     }
 
+
     .movement-value {
       font-size: 12px;
+
       font-weight: 650;
+
       line-height: 1.45;
     }
+
 
     .new-badge {
       display: inline-block;
@@ -610,8 +738,10 @@
         var(--laranja);
 
       font-size: 9px;
+
       font-weight: 850;
     }
+
 
     .card-actions {
       display: grid;
@@ -623,6 +753,7 @@
 
       margin-top: 15px;
     }
+
 
     .sefaz-button {
       border: 0;
@@ -638,8 +769,10 @@
         var(--azul);
 
       font-size: 12px;
+
       font-weight: 850;
     }
+
 
     .delete-button {
       width: 45px;
@@ -658,9 +791,10 @@
       font-size: 18px;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        QUADRO GERAL
-       ======================================================= */
+       ====================================================== */
 
     .general-table-wrapper {
       overflow-x: auto;
@@ -676,6 +810,7 @@
         0 2px 9px rgba(0,0,0,.035);
     }
 
+
     .general-table {
       width: 100%;
 
@@ -684,24 +819,23 @@
       border-collapse: collapse;
     }
 
+
     .general-table th {
-      position: sticky;
-      top: 0;
+      background: #eef5ff;
 
-      background:
-        #eef5ff;
-
-      color:
-        #315271;
+      color: #315271;
 
       text-align: left;
 
       padding: 12px 13px;
 
       font-size: 11px;
+
       text-transform: uppercase;
+
       letter-spacing: .3px;
     }
+
 
     .general-table td {
       border-top:
@@ -710,31 +844,37 @@
       padding: 12px 13px;
 
       font-size: 12px;
+
       line-height: 1.35;
 
       vertical-align: top;
     }
 
+
     .general-table
     .process-col {
       width: 220px;
+
       font-weight: 800;
     }
+
 
     .general-table
     .sector-col {
       width: 130px;
+
       font-weight: 700;
     }
 
+
     .row-priority {
-      background:
-        #fffdf2;
+      background: #fffdf2;
     }
 
-    /* =======================================================
-       GERENCIAR PROCESSOS
-       ======================================================= */
+
+    /* ======================================================
+       ADICIONAR
+       ====================================================== */
 
     .add-box {
       background: #fff;
@@ -752,20 +892,26 @@
         0 2px 9px rgba(0,0,0,.035);
     }
 
+
     .add-title {
       font-size: 14px;
+
       font-weight: 850;
 
       margin-bottom: 10px;
     }
 
+
     .add-form {
       display: flex;
+
       gap: 8px;
     }
 
+
     .add-form input {
       flex: 1;
+
       min-width: 0;
 
       border:
@@ -773,64 +919,81 @@
 
       border-radius: 13px;
 
-      padding:
-        12px 12px;
+      padding: 12px;
 
       outline: none;
 
       font-size: 13px;
     }
 
+
     .add-form input:focus {
-      border-color:
-        var(--azul);
+      border-color: var(--azul);
     }
+
 
     .add-button {
       border: 0;
 
       border-radius: 13px;
 
-      background:
-        var(--azul);
+      background: var(--azul);
 
       color: #fff;
 
       padding: 0 16px;
 
       font-weight: 850;
+
       font-size: 13px;
     }
+
 
     .management-message {
       display: none;
 
       margin-top: 9px;
 
-      font-size: 12px;
-      line-height: 1.4;
-
       padding: 9px 11px;
 
       border-radius: 11px;
+
+      font-size: 12px;
+
+      line-height: 1.4;
     }
+
 
     .management-message.show {
       display: block;
     }
 
+
     .management-message.success {
-      background: var(--verde-claro);
-      color: var(--verde);
+      background:
+        var(--verde-claro);
+
+      color:
+        var(--verde);
     }
 
+
     .management-message.error {
-      background: var(--vermelho-claro);
-      color: var(--vermelho);
+      background:
+        var(--vermelho-claro);
+
+      color:
+        var(--vermelho);
     }
+
+
+    /* ======================================================
+       BUSCA
+       ====================================================== */
 
     .search-box {
       display: flex;
+
       align-items: center;
 
       gap: 8px;
@@ -848,10 +1011,12 @@
       margin-bottom: 14px;
     }
 
+
     .search-box input {
       width: 100%;
 
       border: 0;
+
       outline: 0;
 
       background: transparent;
@@ -861,9 +1026,10 @@
       font-size: 13px;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        ALERTAS
-       ======================================================= */
+       ====================================================== */
 
     .alert {
       background: #fff;
@@ -878,20 +1044,25 @@
       margin-bottom: 10px;
     }
 
+
     .alert.new {
       border-left:
         4px solid var(--laranja);
     }
+
 
     .alert.error {
       border-left:
         4px solid var(--vermelho);
     }
 
+
     .alert-title {
       font-size: 13px;
+
       font-weight: 850;
     }
+
 
     .alert-text {
       margin-top: 5px;
@@ -899,8 +1070,10 @@
       color: var(--cinza);
 
       font-size: 12px;
+
       line-height: 1.4;
     }
+
 
     .empty {
       text-align: center;
@@ -917,14 +1090,17 @@
       color: var(--cinza);
     }
 
+
     .empty-icon {
       font-size: 32px;
+
       margin-bottom: 7px;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        MENU INFERIOR
-       ======================================================= */
+       ====================================================== */
 
     .bottom-nav {
       position: fixed;
@@ -932,6 +1108,7 @@
       z-index: 1000;
 
       left: 50%;
+
       bottom: 0;
 
       transform:
@@ -952,7 +1129,8 @@
         8px
         7px
         calc(
-          8px +
+          8px
+          +
           env(safe-area-inset-bottom)
         );
 
@@ -969,6 +1147,7 @@
         0 -6px 24px rgba(0,0,0,.07);
     }
 
+
     .nav-button {
       border: 0;
 
@@ -976,13 +1155,14 @@
 
       border-radius: 16px;
 
-      color:
-        #717986;
+      color: #717986;
 
       display: flex;
+
       flex-direction: column;
 
       align-items: center;
+
       justify-content: center;
 
       gap: 4px;
@@ -990,25 +1170,29 @@
       padding: 7px 2px;
 
       font-size: 10px;
+
       font-weight: 800;
     }
+
 
     .nav-button.active {
       background:
         var(--azul-claro);
 
-      color:
-        var(--azul);
+      color: var(--azul);
     }
+
 
     .nav-icon {
       font-size: 21px;
+
       line-height: 1;
     }
 
-    /* =======================================================
+
+    /* ======================================================
        TOAST
-       ======================================================= */
+       ====================================================== */
 
     .toast {
       position: fixed;
@@ -1020,8 +1204,10 @@
       bottom:
         calc(
           var(--menu-height)
-          + env(safe-area-inset-bottom)
-          + 14px
+          +
+          env(safe-area-inset-bottom)
+          +
+          14px
         );
 
       transform:
@@ -1033,8 +1219,7 @@
           560px
         );
 
-      background:
-        #17202a;
+      background: #17202a;
 
       color: #fff;
 
@@ -1043,30 +1228,37 @@
       padding: 12px 14px;
 
       font-size: 12px;
+
       text-align: center;
 
       box-shadow: var(--sombra);
 
       opacity: 0;
+
       visibility: hidden;
 
       transition:
         all .2s ease;
     }
 
+
     .toast.show {
       opacity: 1;
+
       visibility: visible;
 
       transform:
         translate(-50%,0);
     }
 
+
     @media(min-width:640px) {
+
       .metrics {
         grid-template-columns:
           repeat(4,1fr);
       }
+
 
       .process-list {
         display: grid;
@@ -1076,17 +1268,29 @@
 
         align-items: start;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
+
+
+  <!-- ======================================================
+       CABEÇALHO
+       ====================================================== -->
 
   <header class="header">
 
+
     <div class="header-top">
+
 
       <div>
 
@@ -1100,6 +1304,7 @@
 
       </div>
 
+
       <div
         class="online-pill"
         id="systemStatus"
@@ -1107,9 +1312,12 @@
         ● Online
       </div>
 
+
     </div>
 
+
     <div class="header-cards">
+
 
       <div class="header-card">
 
@@ -1126,6 +1334,7 @@
 
       </div>
 
+
       <div class="header-card">
 
         <span class="header-card-label">
@@ -1141,21 +1350,26 @@
 
       </div>
 
+
     </div>
+
 
   </header>
 
 
+
   <main>
 
-    <!-- ===================================================
+
+    <!-- ====================================================
          INÍCIO
-         =================================================== -->
+         ==================================================== -->
 
     <section
       id="page-home"
       class="page active"
     >
+
 
       <div class="section-header">
 
@@ -1170,7 +1384,9 @@
       </div>
 
 
+
       <div class="metrics">
+
 
         <div class="metric">
 
@@ -1194,6 +1410,7 @@
           </div>
 
         </div>
+
 
 
         <div class="metric">
@@ -1220,6 +1437,7 @@
         </div>
 
 
+
         <div class="metric">
 
           <div class="metric-icon">
@@ -1242,6 +1460,7 @@
           </div>
 
         </div>
+
 
 
         <div class="metric">
@@ -1267,7 +1486,9 @@
 
         </div>
 
+
       </div>
+
 
 
       <div class="update-box">
@@ -1288,6 +1509,7 @@
       </div>
 
 
+
       <div class="subsection-title">
 
         <strong>
@@ -1301,22 +1523,26 @@
       </div>
 
 
+
       <div
         id="highlightProcesses"
         class="process-list"
       ></div>
 
+
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- ====================================================
          QUADRO GERAL
-         =================================================== -->
+         ==================================================== -->
 
     <section
       id="page-general"
       class="page"
     >
+
 
       <div class="section-header">
 
@@ -1329,6 +1555,7 @@
         </div>
 
       </div>
+
 
 
       <div class="general-table-wrapper">
@@ -1355,25 +1582,30 @@
 
           </thead>
 
+
           <tbody
             id="generalTableBody"
           ></tbody>
+
 
         </table>
 
       </div>
 
+
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- ====================================================
          PROCESSOS
-         =================================================== -->
+         ==================================================== -->
 
     <section
       id="page-processes"
       class="page"
     >
+
 
       <div class="section-header">
 
@@ -1388,11 +1620,13 @@
       </div>
 
 
+
       <div class="add-box">
 
         <div class="add-title">
           ＋ Adicionar processo
         </div>
+
 
         <div class="add-form">
 
@@ -1413,12 +1647,14 @@
 
         </div>
 
+
         <div
           class="management-message"
           id="managementMessage"
         ></div>
 
       </div>
+
 
 
       <div class="search-box">
@@ -1437,22 +1673,26 @@
       </div>
 
 
+
       <div
         id="processList"
         class="process-list"
       ></div>
 
+
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- ====================================================
          ALERTAS
-         =================================================== -->
+         ==================================================== -->
 
     <section
       id="page-alerts"
       class="page"
     >
+
 
       <div class="section-header">
 
@@ -1466,22 +1706,28 @@
 
       </div>
 
+
       <div
         id="alertsList"
       ></div>
 
+
     </section>
 
+
   </main>
+
 
 </div>
 
 
-<!-- =======================================================
+
+<!-- ========================================================
      MENU INFERIOR
-     ======================================================= -->
+     ======================================================== -->
 
 <nav class="bottom-nav">
+
 
   <button
     class="nav-button active"
@@ -1497,6 +1743,7 @@
     </span>
 
   </button>
+
 
 
   <button
@@ -1515,6 +1762,7 @@
   </button>
 
 
+
   <button
     class="nav-button"
     onclick="openPage('processes',this)"
@@ -1529,6 +1777,7 @@
     </span>
 
   </button>
+
 
 
   <button
@@ -1546,7 +1795,9 @@
 
   </button>
 
+
 </nav>
+
 
 
 <div
@@ -1555,34 +1806,41 @@
 ></div>
 
 
+
 <script>
 
-  /* =======================================================
+  /* ========================================================
      CONFIGURAÇÃO
-     ======================================================= */
+     ======================================================== */
 
   const WORKER_URL =
     "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
+
   const DATA_URL =
     "./dados.json";
+
 
   const PROCESS_LIST_URL =
     "./processos.json";
 
+
   const SEFAZ_BASE_URL =
     "https://online.sefaz.am.gov.br/processo/";
 
+
   const UPDATE_TIMEOUT =
     120000;
+
 
   const POLL_INTERVAL =
     5000;
 
 
-  /* =======================================================
+
+  /* ========================================================
      ESTADO
-     ======================================================= */
+     ======================================================== */
 
   let processNumbers = [];
 
@@ -1595,9 +1853,10 @@
   let updating = false;
 
 
-  /* =======================================================
+
+  /* ========================================================
      PRIORIDADES
-     ======================================================= */
+     ======================================================== */
 
   function getPriorities() {
 
@@ -1618,6 +1877,7 @@
   }
 
 
+
   function savePriorities(list) {
 
     localStorage.setItem(
@@ -1628,6 +1888,7 @@
   }
 
 
+
   function isPriority(number) {
 
     return getPriorities()
@@ -1636,10 +1897,12 @@
   }
 
 
+
   function togglePriority(number) {
 
     let list =
       getPriorities();
+
 
     if (
       list.includes(number)
@@ -1657,6 +1920,7 @@
 
     }
 
+
     savePriorities(list);
 
     renderAll();
@@ -1664,9 +1928,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      UTILIDADES
-     ======================================================= */
+     ======================================================== */
 
   function escapeHtml(value) {
 
@@ -1682,6 +1947,7 @@
   }
 
 
+
   function firstValue(
     obj,
     keys,
@@ -1693,9 +1959,12 @@
     ) {
 
       if (
-        obj &&
-        obj[key] !== undefined &&
-        obj[key] !== null &&
+        obj
+        &&
+        obj[key] !== undefined
+        &&
+        obj[key] !== null
+        &&
         obj[key] !== ""
       ) {
 
@@ -1705,9 +1974,11 @@
 
     }
 
+
     return fallback;
 
   }
+
 
 
   function normalizeProcess(
@@ -1727,6 +1998,7 @@
           number
         ),
 
+
       situacao:
         firstValue(
           item,
@@ -1737,6 +2009,7 @@
           "Aguardando dados"
         ),
 
+
       interessado:
         firstValue(
           item,
@@ -1745,6 +2018,7 @@
           ],
           ""
         ),
+
 
       assunto:
         firstValue(
@@ -1755,6 +2029,7 @@
           ""
         ),
 
+
       setor:
         firstValue(
           item,
@@ -1764,6 +2039,7 @@
           ""
         ),
 
+
       evento:
         firstValue(
           item,
@@ -1772,6 +2048,7 @@
           ],
           ""
         ),
+
 
       dataMovimentacao:
         firstValue(
@@ -1783,6 +2060,7 @@
           ""
         ),
 
+
       erro:
         firstValue(
           item,
@@ -1791,6 +2069,7 @@
           ],
           ""
         ),
+
 
       consultadoEm:
         firstValue(
@@ -1806,9 +2085,10 @@
   }
 
 
-  /* =======================================================
-     DATA
-     ======================================================= */
+
+  /* ========================================================
+     DATAS
+     ======================================================== */
 
   function parseBrazilDate(value) {
 
@@ -1816,29 +2096,23 @@
       return null;
     }
 
+
     const match =
       String(value)
         .match(
           /^(\d{2})\/(\d{2})\/(\d{4})$/
         );
 
+
     if (!match) {
       return null;
     }
 
-    const day =
-      Number(match[1]);
-
-    const month =
-      Number(match[2]) - 1;
-
-    const year =
-      Number(match[3]);
 
     return new Date(
-      year,
-      month,
-      day,
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1]),
       12,
       0,
       0
@@ -1847,10 +2121,12 @@
   }
 
 
+
   function startOfToday() {
 
     const now =
       new Date();
+
 
     return new Date(
       now.getFullYear(),
@@ -1861,6 +2137,7 @@
   }
 
 
+
   function daysSinceMovement(process) {
 
     const movementDate =
@@ -1868,12 +2145,15 @@
         process.dataMovimentacao
       );
 
+
     if (!movementDate) {
       return null;
     }
 
+
     const today =
       startOfToday();
+
 
     const movementDay =
       new Date(
@@ -1881,6 +2161,7 @@
         movementDate.getMonth(),
         movementDate.getDate()
       );
+
 
     return Math.floor(
       (
@@ -1895,12 +2176,14 @@
   }
 
 
+
   function isStopped(process) {
 
     const days =
       daysSinceMovement(
         process
       );
+
 
     return (
       days !== null
@@ -1911,6 +2194,7 @@
   }
 
 
+
   function hasMovementToday(process) {
 
     const days =
@@ -1918,9 +2202,11 @@
         process
       );
 
+
     return days === 0;
 
   }
+
 
 
   function isActive(process) {
@@ -1933,14 +2219,16 @@
 
     }
 
+
     return !isStopped(process);
 
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      CARREGAMENTO
-     ======================================================= */
+     ======================================================== */
 
   async function fetchJson(url) {
 
@@ -1952,6 +2240,7 @@
         }
       );
 
+
     if (!response.ok) {
 
       throw new Error(
@@ -1960,9 +2249,11 @@
 
     }
 
+
     return response.json();
 
   }
+
 
 
   async function loadAll() {
@@ -1974,13 +2265,17 @@
         dataFile
       ] =
         await Promise.all([
+
           fetchJson(
             PROCESS_LIST_URL
           ),
+
           fetchJson(
             DATA_URL
           )
+
         ]);
+
 
 
       processNumbers =
@@ -1993,8 +2288,10 @@
         [];
 
 
+
       rawData =
         dataFile || {};
+
 
 
       const dataProcesses =
@@ -2007,8 +2304,10 @@
         [];
 
 
+
       const map =
         new Map();
+
 
 
       dataProcesses
@@ -2024,6 +2323,7 @@
               ""
             );
 
+
           if (
             number
           ) {
@@ -2038,6 +2338,7 @@
         });
 
 
+
       processes =
         processNumbers
           .map(number => {
@@ -2050,15 +2351,18 @@
           });
 
 
+
       currentFingerprint =
         JSON.stringify(
           rawData
         );
 
 
+
       updateHeader();
 
       renderAll();
+
 
 
       document
@@ -2069,7 +2373,7 @@
           "● Online";
 
 
-    } catch (error) {
+    } catch(error) {
 
       console.error(error);
 
@@ -2086,9 +2390,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      HEADER
-     ======================================================= */
+     ======================================================== */
 
   function updateHeader() {
 
@@ -2098,6 +2403,7 @@
       )
       .textContent =
         processNumbers.length;
+
 
 
     const updated =
@@ -2112,6 +2418,7 @@
       );
 
 
+
     document
       .getElementById(
         "headerUpdated"
@@ -2124,6 +2431,7 @@
   }
 
 
+
   function formatDateTime(value) {
 
     if (!value) {
@@ -2132,8 +2440,10 @@
 
     }
 
+
     const date =
       new Date(value);
+
 
     if (
       Number.isNaN(
@@ -2144,6 +2454,7 @@
       return value;
 
     }
+
 
     return date.toLocaleString(
       "pt-BR",
@@ -2158,9 +2469,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      ORDENAÇÃO
-     ======================================================= */
+     ======================================================== */
 
   function sortedProcesses() {
 
@@ -2174,15 +2486,21 @@
             isPriority(
               a.numero
             )
-            ? 1
-            : 0;
+            ?
+            1
+            :
+            0;
+
 
           const pb =
             isPriority(
               b.numero
             )
-            ? 1
-            : 0;
+            ?
+            1
+            :
+            0;
+
 
 
           if (
@@ -2192,6 +2510,7 @@
             return pb - pa;
 
           }
+
 
 
           return (
@@ -2212,37 +2531,50 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      MÉTRICAS
-     ======================================================= */
+     ======================================================== */
 
   function renderMetrics() {
 
     const active =
-      processes.filter(
-        isActive
-      ).length;
+      processes
+        .filter(
+          isActive
+        )
+        .length;
+
 
 
     const stopped =
-      processes.filter(
-        isStopped
-      ).length;
+      processes
+        .filter(
+          isStopped
+        )
+        .length;
+
 
 
     const priorities =
-      processes.filter(
-        item =>
-          isPriority(
-            item.numero
-          )
-      ).length;
+      processes
+        .filter(
+          item =>
+            isPriority(
+              item.numero
+            )
+        )
+        .length;
+
 
 
     const news =
-      processes.filter(
-        hasMovementToday
-      ).length;
+      processes
+        .filter(
+          hasMovementToday
+        )
+        .length;
+
 
 
     document
@@ -2253,6 +2585,7 @@
         active;
 
 
+
     document
       .getElementById(
         "metricStopped"
@@ -2261,12 +2594,14 @@
         stopped;
 
 
+
     document
       .getElementById(
         "metricPriority"
       )
       .textContent =
         priorities;
+
 
 
     document
@@ -2279,9 +2614,10 @@
   }
 
 
-  /* =======================================================
-     CARD PROCESSO
-     ======================================================= */
+
+  /* ========================================================
+     CARD
+     ======================================================== */
 
   function processCard(process) {
 
@@ -2297,12 +2633,14 @@
       );
 
 
-    const movementText = [
-      process.dataMovimentacao,
-      process.evento
-    ]
-      .filter(Boolean)
-      .join(" — ");
+    const movementText =
+      [
+        process.dataMovimentacao,
+        process.evento
+      ]
+        .filter(Boolean)
+        .join(" — ");
+
 
 
     return `
@@ -2314,33 +2652,42 @@
         "
       >
 
+
         <div class="priority-strip">
           ⭐ PROCESSO PRIORITÁRIO
         </div>
 
 
+
         <div class="process-body">
+
 
           <div class="process-top">
 
+
             <div class="process-title-area">
+
 
               <div class="process-number">
                 ${escapeHtml(process.numero)}
               </div>
 
+
               <div class="process-subject">
 
                 ${
                   escapeHtml(
-                    process.assunto ||
+                    process.assunto
+                    ||
                     "Assunto não informado"
                   )
                 }
 
               </div>
 
+
             </div>
+
 
 
             <button
@@ -2354,13 +2701,18 @@
                 )
               "
             >
+
               ${priority ? "⭐" : "☆"}
+
             </button>
+
 
           </div>
 
 
+
           <div class="process-info-grid">
+
 
             <div class="process-info">
 
@@ -2372,7 +2724,8 @@
 
                 ${
                   stopped
-                  ? "⏸️ Parado"
+                  ?
+                  "⏸️ Parado"
                   :
                   escapeHtml(
                     process.situacao
@@ -2382,6 +2735,7 @@
               </span>
 
             </div>
+
 
 
             <div class="process-info">
@@ -2394,7 +2748,8 @@
 
                 ${
                   escapeHtml(
-                    process.setor ||
+                    process.setor
+                    ||
                     "—"
                   )
                 }
@@ -2404,7 +2759,13 @@
             </div>
 
 
-            <div class="process-info wide">
+
+            <div
+              class="
+                process-info
+                wide
+              "
+            >
 
               <span class="info-label">
                 Interessado
@@ -2414,7 +2775,8 @@
 
                 ${
                   escapeHtml(
-                    process.interessado ||
+                    process.interessado
+                    ||
                     "—"
                   )
                 }
@@ -2423,23 +2785,29 @@
 
             </div>
 
+
           </div>
 
 
+
           <div class="movement">
+
 
             <div class="movement-label">
               Última movimentação
             </div>
 
+
             <div class="movement-value">
 
               ${
                 escapeHtml(
-                  movementText ||
+                  movementText
+                  ||
                   "Não informada"
                 )
               }
+
 
               ${
                 hasMovementToday(process)
@@ -2455,10 +2823,13 @@
 
             </div>
 
+
           </div>
 
 
+
           <div class="card-actions">
+
 
             <button
               class="sefaz-button"
@@ -2470,6 +2841,7 @@
             >
               🔎 Consultar na SEFAZ
             </button>
+
 
 
             <button
@@ -2484,9 +2856,12 @@
               🗑
             </button>
 
+
           </div>
 
+
         </div>
+
 
       </article>
 
@@ -2495,9 +2870,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      DESTAQUES
-     ======================================================= */
+     ======================================================== */
 
   function renderHighlights() {
 
@@ -2506,12 +2882,13 @@
 
 
     const priorities =
-      sorted.filter(
-        item =>
-          isPriority(
-            item.numero
-          )
-      );
+      sorted
+        .filter(
+          item =>
+            isPriority(
+              item.numero
+            )
+        );
 
 
     let selected;
@@ -2538,6 +2915,7 @@
     }
 
 
+
     document
       .getElementById(
         "highlightProcesses"
@@ -2560,28 +2938,34 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      QUADRO GERAL
-     ======================================================= */
+     ======================================================== */
 
   function renderGeneralTable() {
 
     const tbody =
-      document.getElementById(
-        "generalTableBody"
-      );
+      document
+        .getElementById(
+          "generalTableBody"
+        );
+
 
 
     tbody.innerHTML =
       sortedProcesses()
         .map(process => {
 
-          const movement = [
-            process.dataMovimentacao,
-            process.evento
-          ]
-            .filter(Boolean)
-            .join(" — ");
+
+          const movement =
+            [
+              process.dataMovimentacao,
+              process.evento
+            ]
+              .filter(Boolean)
+              .join(" — ");
+
 
 
           return `
@@ -2600,6 +2984,7 @@
               "
             >
 
+
               <td class="process-col">
 
                 ${
@@ -2617,28 +3002,33 @@
               </td>
 
 
+
               <td class="sector-col">
 
                 ${
                   escapeHtml(
-                    process.setor ||
+                    process.setor
+                    ||
                     "—"
                   )
                 }
 
               </td>
+
 
 
               <td>
 
                 ${
                   escapeHtml(
-                    movement ||
+                    movement
+                    ||
                     "—"
                   )
                 }
 
               </td>
+
 
             </tr>
 
@@ -2650,9 +3040,10 @@
   }
 
 
-  /* =======================================================
-     LISTA PROCESSOS
-     ======================================================= */
+
+  /* ========================================================
+     LISTA DE PROCESSOS
+     ======================================================== */
 
   function renderProcesses() {
 
@@ -2662,33 +3053,35 @@
           .getElementById(
             "processSearch"
           )
-          ?.value ||
+          ?.value
+        ||
         ""
       )
         .trim()
         .toLowerCase();
 
 
+
     const filtered =
       sortedProcesses()
         .filter(process => {
+
 
           if (!search) {
             return true;
           }
 
 
-          const text = [
-
-            process.numero,
-            process.interessado,
-            process.assunto,
-            process.setor,
-            process.evento
-
-          ]
-            .join(" ")
-            .toLowerCase();
+          const text =
+            [
+              process.numero,
+              process.interessado,
+              process.assunto,
+              process.setor,
+              process.evento
+            ]
+              .join(" ")
+              .toLowerCase();
 
 
           return text.includes(
@@ -2696,6 +3089,7 @@
           );
 
         });
+
 
 
     document
@@ -2726,9 +3120,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      ALERTAS
-     ======================================================= */
+     ======================================================== */
 
   function renderAlerts() {
 
@@ -2737,6 +3132,7 @@
 
     sortedProcesses()
       .forEach(process => {
+
 
         if (
           hasMovementToday(
@@ -2759,12 +3155,13 @@
               ]
                 .filter(Boolean)
                 .join(" — ")
-                ||
-                "Movimentação registrada hoje."
+              ||
+              "Movimentação registrada hoje."
 
           });
 
         }
+
 
 
         if (
@@ -2786,7 +3183,9 @@
 
         }
 
+
       });
+
 
 
     const container =
@@ -2794,6 +3193,7 @@
         .getElementById(
           "alertsList"
         );
+
 
 
     if (
@@ -2819,6 +3219,7 @@
       return;
 
     }
+
 
 
     container.innerHTML =
@@ -2850,9 +3251,10 @@
   }
 
 
-  /* =======================================================
-     RENDER
-     ======================================================= */
+
+  /* ========================================================
+     RENDER GERAL
+     ======================================================== */
 
   function renderAll() {
 
@@ -2869,9 +3271,10 @@
   }
 
 
-  /* =======================================================
-     CONSULTAR SEFAZ
-     ======================================================= */
+
+  /* ========================================================
+     CONSULTAR NA SEFAZ
+     ======================================================== */
 
   function consultOnSefaz(number) {
 
@@ -2889,9 +3292,10 @@
   }
 
 
-  /* =======================================================
-     ADICIONAR
-     ======================================================= */
+
+  /* ========================================================
+     ADICIONAR PROCESSO
+     ======================================================== */
 
   async function addProcess() {
 
@@ -2917,6 +3321,7 @@
         .replace(/\s+/g,"");
 
 
+
     if (!number) {
 
       showManagementMessage(
@@ -2929,8 +3334,10 @@
     }
 
 
+
     const regex =
       /^\d{2}\.\d{2}\.\d{6}\.\d{6}\/\d{4}-\d{2}$/;
+
 
 
     if (
@@ -2945,6 +3352,7 @@
       return;
 
     }
+
 
 
     if (
@@ -2963,6 +3371,7 @@
     }
 
 
+
     if (
       !confirm(
         `Adicionar o processo ${number} ao monitoramento?`
@@ -2974,40 +3383,53 @@
     }
 
 
+
     button.disabled =
       true;
+
 
     button.textContent =
       "Adicionando...";
 
 
+
     try {
+
 
       const response =
         await fetch(
           WORKER_URL,
           {
+
             method:
               "POST",
 
             headers: {
+
               "Content-Type":
                 "application/json"
+
             },
 
             body:
               JSON.stringify({
+
                 acao:
                   "adicionar",
+
                 numero:
                   number
+
               })
+
           }
         );
 
 
+
       const result =
         await response.json();
+
 
 
       if (
@@ -3025,8 +3447,10 @@
       }
 
 
+
       input.value =
         "";
+
 
 
       showManagementMessage(
@@ -3035,9 +3459,11 @@
       );
 
 
+
       showToast(
         "Processo adicionado com sucesso."
       );
+
 
 
       await waitForProcessListChange(
@@ -3046,12 +3472,15 @@
       );
 
 
+
       await loadAll();
 
 
     } catch(error) {
 
+
       console.error(error);
+
 
 
       showManagementMessage(
@@ -3061,10 +3490,13 @@
         error.message
       );
 
+
     } finally {
+
 
       button.disabled =
         false;
+
 
       button.textContent =
         "Adicionar";
@@ -3074,9 +3506,10 @@
   }
 
 
-  /* =======================================================
-     EXCLUIR
-     ======================================================= */
+
+  /* ========================================================
+     EXCLUIR PROCESSO
+     ======================================================== */
 
   async function deleteProcess(number) {
 
@@ -3091,38 +3524,50 @@
     }
 
 
+
     try {
+
 
       showToast(
         "Excluindo processo..."
       );
 
 
+
       const response =
         await fetch(
           WORKER_URL,
           {
+
             method:
               "POST",
 
             headers: {
+
               "Content-Type":
                 "application/json"
+
             },
 
             body:
               JSON.stringify({
+
                 acao:
                   "excluir",
+
                 numero:
                   number
+
               })
+
           }
         );
 
 
+
       const result =
         await response.json();
+
 
 
       if (
@@ -3140,9 +3585,11 @@
       }
 
 
+
       removePriority(
         number
       );
+
 
 
       await waitForProcessListChange(
@@ -3151,7 +3598,9 @@
       );
 
 
+
       await loadAll();
+
 
 
       showToast(
@@ -3160,6 +3609,7 @@
 
 
     } catch(error) {
+
 
       console.error(error);
 
@@ -3173,6 +3623,7 @@
     }
 
   }
+
 
 
   function removePriority(number) {
@@ -3192,6 +3643,7 @@
   }
 
 
+
   async function waitForProcessListChange(
     number,
     shouldExist
@@ -3201,23 +3653,28 @@
       Date.now();
 
 
+
     while (
       Date.now() - start
       <
       60000
     ) {
 
+
       await sleep(
         3000
       );
 
 
+
       try {
+
 
         const file =
           await fetchJson(
             PROCESS_LIST_URL
           );
+
 
 
         const list =
@@ -3230,6 +3687,7 @@
           [];
 
 
+
         if (
           list.includes(number)
           ===
@@ -3240,11 +3698,16 @@
 
         }
 
+
       } catch {
+
         /* continua tentando */
+
       }
 
+
     }
+
 
 
     return false;
@@ -3252,9 +3715,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      ATUALIZAR PROCESSOS
-     ======================================================= */
+     ======================================================== */
 
   async function updateProcesses() {
 
@@ -3267,8 +3731,10 @@
     }
 
 
+
     updating =
       true;
+
 
 
     const button =
@@ -3278,11 +3744,15 @@
         );
 
 
+
     button.disabled =
       true;
 
+
+
     button.textContent =
       "⏳ Iniciando atualização...";
+
 
 
     setUpdateMessage(
@@ -3291,35 +3761,46 @@
     );
 
 
-    let oldFingerprint =
+
+    const oldFingerprint =
       currentFingerprint;
 
 
+
     try {
+
 
       const response =
         await fetch(
           WORKER_URL,
           {
+
             method:
               "POST",
 
             headers: {
+
               "Content-Type":
                 "application/json"
+
             },
 
             body:
               JSON.stringify({
+
                 acao:
                   "atualizar"
+
               })
+
           }
         );
 
 
+
       const result =
         await response.json();
+
 
 
       if (
@@ -3337,8 +3818,10 @@
       }
 
 
+
       button.textContent =
         "⏳ Consultando processos...";
+
 
 
       setUpdateMessage(
@@ -3347,17 +3830,21 @@
       );
 
 
+
       const changed =
         await waitForNewData(
           oldFingerprint
         );
 
 
+
       if (
         changed
       ) {
 
+
         await loadAll();
+
 
 
         setUpdateMessage(
@@ -3366,23 +3853,29 @@
         );
 
 
+
         showToast(
           "Atualização concluída."
         );
 
+
       } else {
+
 
         setUpdateMessage(
           "success",
-          "Consulta iniciada com sucesso. A publicação dos novos dados ainda pode levar alguns instantes."
+          "Consulta iniciada com sucesso. A publicação dos dados ainda pode levar alguns instantes."
         );
+
 
       }
 
 
     } catch(error) {
 
+
       console.error(error);
+
 
 
       setUpdateMessage(
@@ -3392,13 +3885,19 @@
         error.message
       );
 
+
     } finally {
+
 
       button.disabled =
         false;
 
+
+
       button.textContent =
         "🔄 Atualizar processos";
+
+
 
       updating =
         false;
@@ -3406,6 +3905,7 @@
     }
 
   }
+
 
 
   async function waitForNewData(
@@ -3416,18 +3916,22 @@
       Date.now();
 
 
+
     while (
       Date.now() - start
       <
       UPDATE_TIMEOUT
     ) {
 
+
       await sleep(
         POLL_INTERVAL
       );
 
 
+
       try {
+
 
         const newest =
           await fetchJson(
@@ -3435,10 +3939,12 @@
           );
 
 
+
         const fingerprint =
           JSON.stringify(
             newest
           );
+
 
 
         if (
@@ -3454,11 +3960,16 @@
 
         }
 
+
       } catch {
+
         /* continua aguardando */
+
       }
 
+
     }
+
 
 
     return false;
@@ -3466,9 +3977,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      MENSAGENS
-     ======================================================= */
+     ======================================================== */
 
   function setUpdateMessage(
     type,
@@ -3490,6 +4002,7 @@
       text;
 
   }
+
 
 
   function showManagementMessage(
@@ -3514,6 +4027,7 @@
   }
 
 
+
   function sleep(ms) {
 
     return new Promise(
@@ -3527,9 +4041,10 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      ABAS
-     ======================================================= */
+     ======================================================== */
 
   function openPage(
     pageName,
@@ -3550,6 +4065,7 @@
       });
 
 
+
     document
       .getElementById(
         `page-${pageName}`
@@ -3558,6 +4074,7 @@
       .add(
         "active"
       );
+
 
 
     document
@@ -3574,11 +4091,13 @@
       });
 
 
+
     button
       .classList
       .add(
         "active"
       );
+
 
 
     window.scrollTo(
@@ -3591,11 +4110,13 @@
   }
 
 
-  /* =======================================================
+
+  /* ========================================================
      TOAST
-     ======================================================= */
+     ======================================================== */
 
   let toastTimer;
+
 
 
   function showToast(text) {
@@ -3638,12 +4159,11 @@
   }
 
 
-  /* =======================================================
-     INICIALIZAÇÃO
 
-     IMPORTANTE:
-     Sempre abre em INÍCIO.
-     ======================================================= */
+  /* ========================================================
+     INICIALIZAÇÃO
+     SEMPRE ABRE EM INÍCIO
+     ======================================================== */
 
   async function initialize() {
 
@@ -3661,6 +4181,7 @@
       });
 
 
+
     document
       .getElementById(
         "page-home"
@@ -3671,11 +4192,13 @@
       );
 
 
+
     const navButtons =
       document
         .querySelectorAll(
           ".nav-button"
         );
+
 
 
     navButtons
@@ -3686,6 +4209,7 @@
               "active"
             )
       );
+
 
 
     if (
@@ -3701,14 +4225,16 @@
     }
 
 
+
     await loadAll();
 
 
-    /*
-      Atualiza silenciosamente
-      os dados exibidos a cada 5 minutos.
 
-      Isso NÃO dispara nova consulta.
+    /*
+      Atualiza somente a interface
+      a cada 5 minutos.
+
+      Não dispara consulta nova.
     */
 
     setInterval(
@@ -3732,9 +4258,62 @@
   }
 
 
+
   initialize();
 
 </script>
 
+
+
+<!-- ========================================================
+     REGISTRO DO SERVICE WORKER
+     ======================================================== -->
+
+<script>
+
+  if (
+    "serviceWorker"
+    in navigator
+  ) {
+
+    window.addEventListener(
+      "load",
+      () => {
+
+        navigator
+          .serviceWorker
+          .register(
+            "./service-worker.js"
+          )
+          .then(
+            registration => {
+
+              console.log(
+                "Monitor SEFAZ-AM: Service Worker ativo",
+                registration.scope
+              );
+
+            }
+          )
+          .catch(
+            error => {
+
+              console.error(
+                "Erro ao registrar Service Worker:",
+                error
+              );
+
+            }
+          );
+
+      }
+    );
+
+  }
+
+</script>
+
+
 </body>
+
 </html>
