@@ -4,10 +4,14 @@ on:
   workflow_dispatch:
 
   schedule:
+    # Manaus = UTC-4
+    # 08:00, 11:00, 14:00 e 17:00 em Manaus
+    # Segunda a sexta-feira
     - cron: "0 12,15,18,21 * * 1-5"
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   monitorar:
@@ -30,7 +34,77 @@ jobs:
       - name: Executar monitor SEFAZ-AM
         run: python monitor.py
 
+      - name: Verificar novos alertas
+        id: alertas
+        shell: bash
+        run: |
+          NOVOS=$(python -c "import json; d=json.load(open('dados.json', encoding='utf-8')); print(d.get('novos_alertas', 0))")
+          echo "Quantidade de novos alertas: $NOVOS"
+          echo "novos=$NOVOS" >> "$GITHUB_OUTPUT"
+
+      - name: Criar aviso de nova movimentação
+        if: steps.alertas.outputs.novos != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python <<'PY'
+          import json
+          import os
+          import subprocess
+
+          with open("dados.json", "r", encoding="utf-8") as f:
+              dados = json.load(f)
+
+          quantidade = int(dados.get("novos_alertas", 0))
+
+          if quantidade <= 0:
+              raise SystemExit(0)
+
+          alertas = dados.get("alertas", [])[:quantidade]
+
+          for alerta in reversed(alertas):
+              numero = alerta.get("numero", "Processo não identificado")
+              data = alerta.get("data_movimentacao", "")
+              setor = alerta.get("setor", "")
+              evento = alerta.get("evento", "")
+              detectado = alerta.get("data", "")
+
+              titulo = f"SEFAZ-AM: nova movimentação — {numero}"
+
+              corpo = f"""## Nova movimentação detectada
+
+          **Processo:** {numero}
+
+          **Data da movimentação:** {data}
+
+          **Setor:** {setor}
+
+          **Evento:** {evento}
+
+          **Detectado pelo monitor:** {detectado}
+
+          ---
+          Monitor automático SEFAZ-AM
+          """
+
+              subprocess.run(
+                  [
+                      "gh",
+                      "issue",
+                      "create",
+                      "--title",
+                      titulo,
+                      "--body",
+                      corpo,
+                  ],
+                  check=True,
+                  env=os.environ.copy(),
+              )
+          PY
+
       - name: Salvar alterações
+        shell: bash
         run: |
           git config user.name "sefaz-monitor-bot"
           git config user.email "actions@github.com"
@@ -38,7 +112,7 @@ jobs:
           git add dados.json
 
           if git diff --cached --quiet; then
-            echo "Nenhuma alteração encontrada."
+            echo "Nenhuma alteração para salvar."
           else
             git commit -m "Atualiza dados dos processos SEFAZ-AM"
             git push
