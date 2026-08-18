@@ -1,7 +1,7 @@
 {
-  "ultima_verificacao": "2026-08-18T18:14:43-04:00",
+  "ultima_verificacao": "2026-08-18T19:14:58-04:00",
   "timezone": "America/Manaus",
-  "total_processos": 23,
+  "total_processos": 24,
   "erros": 0,
   "novos_alertas": 0,
   "processos": [
@@ -14,7 +14,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030037/2026-43",
-      "consultado_em": "2026-08-18T18:14:12-04:00",
+      "consultado_em": "2026-08-18T19:14:27-04:00",
       "erro": null
     },
     {
@@ -26,7 +26,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030087/2026-20",
-      "consultado_em": "2026-08-18T18:14:13-04:00",
+      "consultado_em": "2026-08-18T19:14:28-04:00",
       "erro": null
     },
     {
@@ -38,7 +38,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030283/2026-03",
-      "consultado_em": "2026-08-18T18:14:15-04:00",
+      "consultado_em": "2026-08-18T19:14:30-04:00",
       "erro": null
     },
     {
@@ -50,7 +50,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030287/2026-83",
-      "consultado_em": "2026-08-18T18:14:16-04:00",
+      "consultado_em": "2026-08-18T19:14:31-04:00",
       "erro": null
     },
     {
@@ -62,7 +62,7 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030288/2026-28",
-      "consultado_em": "2026-08-18T18:14:18-04:00",
+      "consultado_em": "2026-08-18T19:14:32-04:00",
       "erro": null
     },
     {
@@ -74,7 +74,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031074/2026-79",
-      "consultado_em": "2026-08-18T18:14:19-04:00",
+      "consultado_em": "2026-08-18T19:14:33-04:00",
       "erro": null
     },
     {
@@ -86,7 +86,7 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031331/2026-72",
-      "consultado_em": "2026-08-18T18:14:21-04:00",
+      "consultado_em": "2026-08-18T19:14:35-04:00",
       "erro": null
     },
     {
@@ -98,7 +98,7 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031373/2026-03",
-      "consultado_em": "2026-08-18T18:14:23-04:00",
+      "consultado_em": "2026-08-18T19:14:36-04:00",
       "erro": null
     },
     {
@@ -110,7 +110,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031077/2026-02",
-      "consultado_em": "2026-08-18T18:14:24-04:00",
+      "consultado_em": "2026-08-18T19:14:37-04:00",
       "erro": null
     },
     {
@@ -122,7 +122,7 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031217/2026-42",
-      "consultado_em": "2026-08-18T18:14:26-04:00",
+      "consultado_em": "2026-08-18T19:14:38-04:00",
       "erro": null
     },
     {
@@ -134,7 +134,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031129/2026-40",
-      "consultado_em": "2026-08-18T18:14:27-04:00",
+      "consultado_em": "2026-08-18T19:14:40-04:00",
       "erro": null
     },
     {
@@ -146,7 +146,7 @@
       "setor": "GECC",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031393/2026-84",
-      "consultado_em": "2026-08-18T18:14:28-04:00",
+      "consultado_em": "2026-08-18T19:14:41-04:00",
       "erro": null
     },
     {
@@ -158,7 +158,7 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031411/2026-28",
-      "consultado_em": "2026-08-18T18:14:29-04:00",
+      "consultado_em": "2026-08-18T19:14:42-04:00",
       "erro": null
     },
     {
@@ -170,7 +170,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030117/2026-07",
-      "consultado_em": "2026-08-18T18:14:32-04:00",
+      "consultado_em": "2026-08-18T19:14:43-04:00",
       "erro": null
     },
     {
@@ -182,7 +182,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030118/2026-43",
-      "consultado_em": "2026-08-18T18:14:33-04:00",
+      "consultado_em": "2026-08-18T19:14:44-04:00",
       "erro": null
     },
     {
@@ -194,7 +194,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030125/2026-45",
-      "consultado_em": "2026-08-18T18:14:34-04:00",
+      "consultado_em": "2026-08-18T19:14:46-04:00",
       "erro": null
     },
     {
@@ -206,7 +206,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030450/2026-08",
-      "consultado_em": "2026-08-18T18:14:36-04:00",
+      "consultado_em": "2026-08-18T19:14:47-04:00",
       "erro": null
     },
     {
@@ -218,7 +218,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030453/2026-41",
-      "consultado_em": "2026-08-18T18:14:37-04:00",
+      "consultado_em": "2026-08-18T19:14:48-04:00",
       "erro": null
     },
     {
@@ -230,7 +230,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030855/2026-46",
-      "consultado_em": "2026-08-18T18:14:38-04:00",
+      "consultado_em": "2026-08-18T19:14:51-04:00",
       "erro": null
     },
     {
@@ -242,7 +242,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030858/2026-80",
-      "consultado_em": "2026-08-18T18:14:39-04:00",
+      "consultado_em": "2026-08-18T19:14:53-04:00",
       "erro": null
     },
     {
@@ -254,7 +254,7 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030869/2026-60",
-      "consultado_em": "2026-08-18T18:14:40-04:00",
+      "consultado_em": "2026-08-18T19:14:55-04:00",
       "erro": null
     },
     {
@@ -266,7 +266,7 @@
       "setor": "G258331",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.013102.003068/2026-44",
-      "consultado_em": "2026-08-18T18:14:42-04:00",
+      "consultado_em": "2026-08-18T19:14:56-04:00",
       "erro": null
     },
     {
@@ -278,7 +278,19 @@
       "setor": "GSEAG",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.000655/2026-69",
-      "consultado_em": "2026-08-18T18:14:43-04:00",
+      "consultado_em": "2026-08-18T19:14:57-04:00",
+      "erro": null
+    },
+    {
+      "numero": "01.01.028101.026880/2026-25",
+      "situacao": "Aberto",
+      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
+      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
+      "dataMovimentacao": "28/07/2026",
+      "setor": "GEFIN",
+      "evento": "68 - SOBRESTADO",
+      "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.026880/2026-25",
+      "consultado_em": "2026-08-18T19:14:58-04:00",
       "erro": null
     }
   ],
