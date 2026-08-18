@@ -18,7 +18,28 @@ ARQUIVO_DADOS = "dados.json"
 
 PROCESSOS = [
     "01.01.028101.030037/2026-43",
+    "01.01.028101.030087/2026-20",
+    "01.01.028101.030283/2026-03",
+    "01.01.028101.030287/2026-83",
+    "01.01.028101.030288/2026-28",
+    "01.01.028101.031074/2026-79",
+    "01.01.028101.031331/2026-72",
+    "01.01.028101.031373/2026-03",
+    "01.01.028101.031077/2026-02",
+    "01.01.028101.031217/2026-42",
+    "01.01.028101.031129/2026-40",
+    "01.01.028101.031393/2026-84",
+    "01.01.028101.031411/2026-28",
+    "01.01.028101.030117/2026-07",
+    "01.01.028101.030118/2026-43",
+    "01.01.028101.030125/2026-45",
+    "01.01.028101.030450/2026-08",
+    "01.01.028101.030453/2026-41",
+    "01.01.028101.030855/2026-46",
+    "01.01.028101.030858/2026-80",
+    "01.01.028101.030869/2026-60",
     "01.01.013102.003068/2026-44",
+    "01.01.028101.000655/2026-69",
 ]
 
 BASE_URL = "https://online.sefaz.am.gov.br/processo/"
@@ -71,7 +92,6 @@ def texto_limpo(valor):
 
 
 def url_processo(numero):
-    # Mantém a barra "/" no número do processo.
     return BASE_URL + quote(
         numero,
         safe="/"
@@ -88,6 +108,7 @@ def estrutura_vazia():
         "timezone": "America/Manaus",
         "total_processos": 0,
         "erros": 0,
+        "novos_alertas": 0,
         "processos": [],
         "alertas": [],
     }
@@ -278,9 +299,7 @@ def extrair_cabecalho(soup):
 # MOVIMENTAÇÕES
 # ============================================================
 
-def encontrar_tabela_movimentacoes(
-    soup
-):
+def encontrar_tabela_movimentacoes(soup):
 
     for tabela in soup.find_all(
         "table"
@@ -295,19 +314,15 @@ def encontrar_tabela_movimentacoes(
 
         if (
             "data" in texto
-            and
-            "setor" in texto
-            and
-            "evento" in texto
+            and "setor" in texto
+            and "evento" in texto
         ):
             return tabela
 
     return None
 
 
-def extrair_movimentacoes(
-    soup
-):
+def extrair_movimentacoes(soup):
 
     tabela = encontrar_tabela_movimentacoes(
         soup
@@ -346,11 +361,9 @@ def extrair_movimentacoes(
             continue
 
         if (
-            valores[0].lower()
-            == "data"
+            valores[0].lower() == "data"
             and
-            valores[1].lower()
-            == "setor"
+            valores[1].lower() == "setor"
         ):
             continue
 
@@ -382,9 +395,7 @@ def extrair_movimentacoes(
 # CONSULTAR PROCESSO
 # ============================================================
 
-def consultar_processo(
-    numero
-):
+def consultar_processo(numero):
 
     html, url_final = baixar_pagina(
         numero
@@ -414,33 +425,24 @@ def consultar_processo(
 
     return {
         "numero": numero,
-
         "situacao": (
             cabecalho["situacao"]
             or "Não identificada"
         ),
-
         "interessado":
             cabecalho["interessado"],
-
         "assunto":
             cabecalho["assunto"],
-
         "dataMovimentacao":
             ultima["data"],
-
         "setor":
             ultima["setor"],
-
         "evento":
             ultima["evento"],
-
         "url":
             url_final,
-
         "consultado_em":
             agora_iso(),
-
         "erro":
             None,
     }
@@ -450,9 +452,7 @@ def consultar_processo(
 # COMPARAÇÃO
 # ============================================================
 
-def assinatura_movimentacao(
-    processo
-):
+def assinatura_movimentacao(processo):
 
     if not processo:
         return ""
@@ -492,10 +492,7 @@ def assinatura_movimentacao(
     ])
 
 
-def localizar_anterior(
-    dados,
-    numero
-):
+def localizar_anterior(dados, numero):
 
     for processo in dados.get(
         "processos",
@@ -517,22 +514,16 @@ def localizar_anterior(
 # CONSULTA ANTERIOR VÁLIDA
 # ============================================================
 
-def anterior_e_valido(
-    anterior
-):
+def anterior_e_valido(anterior):
 
     if not anterior:
         return False
 
-    # Se a consulta anterior teve erro,
-    # NÃO deve servir como base para alerta.
     if anterior.get(
         "erro"
     ):
         return False
 
-    # Situação de erro usada nas primeiras
-    # versões do monitor.
     situacao = texto_limpo(
         anterior.get(
             "situacao",
@@ -540,13 +531,9 @@ def anterior_e_valido(
         )
     ).lower()
 
-    if (
-        "erro" in situacao
-    ):
+    if "erro" in situacao:
         return False
 
-    # Só compara quando havia uma
-    # movimentação real armazenada.
     assinatura = assinatura_movimentacao(
         anterior
     )
@@ -716,20 +703,6 @@ def main():
                 atual["evento"]
             )
 
-
-            # =================================================
-            # NOVA LÓGICA DE ALERTA
-            # =================================================
-            #
-            # Só compara se:
-            #
-            # 1. já existia consulta anterior;
-            # 2. consulta anterior foi válida;
-            # 3. consulta atual tem movimentação;
-            # 4. movimentação realmente mudou;
-            # 5. o mesmo alerta ainda não existe.
-            # =================================================
-
             if anterior_e_valido(
                 anterior
             ):
@@ -817,7 +790,6 @@ def main():
                 f"{numero}: {erro}"
             )
 
-            # Preserva os dados válidos anteriores.
             if anterior:
 
                 copia = dict(
@@ -877,10 +849,7 @@ def main():
                 })
 
 
-    # Mantém no máximo 100 alertas.
-    novos_alertas = (
-        novos_alertas[:100]
-    )
+    novos_alertas = novos_alertas[:100]
 
 
     saida = {
