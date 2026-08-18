@@ -15,11 +15,14 @@
   <style>
     :root {
       --azul: #0b63ce;
-      --azul-escuro: #074b9b;
+      --azul2: #1480e8;
       --azul-claro: #eaf3ff;
 
       --verde: #16883f;
       --verde-claro: #e9f8ef;
+
+      --amarelo: #f4b400;
+      --amarelo-claro: #fff8dc;
 
       --laranja: #d97706;
       --laranja-claro: #fff7e8;
@@ -27,21 +30,17 @@
       --vermelho: #c93434;
       --vermelho-claro: #fff0f0;
 
-      --amarelo: #f4b400;
-      --amarelo-claro: #fff8dc;
-
       --cinza: #667085;
-      --cinza-2: #98a2b3;
-      --cinza-claro: #f4f6f8;
-
+      --cinza2: #98a2b3;
+      --fundo: #f5f7fa;
+      --borda: #e2e7ec;
       --texto: #17202a;
       --branco: #ffffff;
-      --borda: #e2e7ec;
+
+      --menu-height: 84px;
 
       --sombra:
-        0 4px 18px rgba(0, 0, 0, 0.07);
-
-      --menu-height: 82px;
+        0 4px 18px rgba(0,0,0,.07);
     }
 
     * {
@@ -50,11 +49,12 @@
     }
 
     html {
-      background: #f5f7fa;
+      background: var(--fundo);
     }
 
     body {
       margin: 0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -67,9 +67,8 @@
       background:
         linear-gradient(
           180deg,
-          #eef5ff 0,
-          #f7f9fc 190px,
-          #f5f7fa 100%
+          #edf5ff 0,
+          #f5f7fa 240px
         );
 
       color: var(--texto);
@@ -80,13 +79,12 @@
         calc(
           var(--menu-height)
           + env(safe-area-inset-bottom)
-          + 20px
+          + 18px
         );
     }
 
     button,
-    input,
-    select {
+    input {
       font: inherit;
     }
 
@@ -100,123 +98,117 @@
       margin: 0 auto;
     }
 
-    /* =========================================================
+    /* =======================================================
        CABEÇALHO
-       ========================================================= */
+       ======================================================= */
 
     .header {
       padding:
-        calc(18px + env(safe-area-inset-top))
-        18px
-        22px;
+        calc(24px + env(safe-area-inset-top))
+        28px
+        34px;
 
       background:
         linear-gradient(
           135deg,
-          #075dbf,
-          #0b73de
+          #0961c4,
+          #147fe2
         );
 
       color: #fff;
 
       border-radius:
-        0 0 26px 26px;
+        0 0 34px 34px;
 
       box-shadow:
-        0 8px 24px rgba(11, 99, 206, 0.20);
+        0 9px 26px rgba(11,99,206,.18);
     }
 
     .header-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      align-items: center;
+      gap: 15px;
     }
 
-    .brand {
-      min-width: 0;
+    .header-small {
+      font-size: 16px;
+      opacity: .82;
+      margin-bottom: 5px;
     }
 
-    .brand-small {
-      font-size: 13px;
-      opacity: .85;
-      margin-bottom: 4px;
-    }
-
-    .brand-title {
+    .header-title {
       margin: 0;
-      font-size: 25px;
-      line-height: 1.1;
-      font-weight: 800;
+      font-size: 31px;
+      line-height: 1.05;
+      font-weight: 850;
     }
 
-    .status-pill {
-      flex: 0 0 auto;
+    .online-pill {
+      border:
+        1px solid rgba(255,255,255,.28);
 
       background:
-        rgba(255,255,255,.15);
-
-      border:
-        1px solid rgba(255,255,255,.20);
+        rgba(255,255,255,.12);
 
       border-radius: 999px;
 
-      padding: 8px 11px;
+      padding: 10px 14px;
 
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
 
-      backdrop-filter: blur(8px);
+      white-space: nowrap;
     }
 
-    .header-info {
-      margin-top: 17px;
+    .header-cards {
+      margin-top: 27px;
 
       display: grid;
       grid-template-columns:
-        repeat(2, minmax(0,1fr));
+        repeat(2,minmax(0,1fr));
 
-      gap: 10px;
+      gap: 15px;
     }
 
-    .header-info-card {
+    .header-card {
       background:
         rgba(255,255,255,.12);
 
       border:
-        1px solid rgba(255,255,255,.15);
+        1px solid rgba(255,255,255,.19);
 
-      border-radius: 15px;
+      border-radius: 22px;
 
-      padding: 11px 12px;
+      padding: 15px 18px;
     }
 
-    .header-info-label {
-      display: block;
-      font-size: 11px;
-      opacity: .78;
-      margin-bottom: 3px;
-    }
-
-    .header-info-value {
+    .header-card-label {
       display: block;
 
       font-size: 13px;
-      font-weight: 700;
+      opacity: .8;
+
+      margin-bottom: 5px;
+    }
+
+    .header-card-value {
+      display: block;
+
+      font-size: 16px;
+      font-weight: 850;
 
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    /* =========================================================
+    /* =======================================================
        CONTEÚDO
-       ========================================================= */
+       ======================================================= */
 
     main {
-      padding:
-        18px 15px
-        0;
+      padding: 23px 22px 0;
     }
 
     .page {
@@ -225,155 +217,145 @@
 
     .page.active {
       display: block;
-      animation: fade .18s ease;
+
+      animation:
+        fade .16s ease;
     }
 
     @keyframes fade {
       from {
-        opacity: .3;
-        transform: translateY(3px);
+        opacity: .35;
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
       }
     }
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 12px;
-
+    .section-header {
       margin:
-        3px 3px
-        13px;
+        0 5px
+        16px;
     }
 
-    .section-title h2 {
+    .section-header h2 {
       margin: 0;
-      font-size: 21px;
+
+      font-size: 25px;
+      line-height: 1.1;
     }
 
-    .section-sub {
+    .section-subtitle {
+      margin-top: 6px;
+
       color: var(--cinza);
-      font-size: 12px;
-      margin-top: 3px;
+
+      font-size: 14px;
+      line-height: 1.35;
     }
 
-    /* =========================================================
-       CARDS RESUMO
-       ========================================================= */
+    /* =======================================================
+       CARDS INÍCIO
+       ======================================================= */
 
     .metrics {
       display: grid;
-
       grid-template-columns:
-        repeat(2, minmax(0,1fr));
+        repeat(2,minmax(0,1fr));
 
-      gap: 11px;
+      gap: 15px;
 
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .metric {
-      background: var(--branco);
+      background: #fff;
 
       border:
         1px solid var(--borda);
 
-      border-radius: 18px;
+      border-radius: 23px;
 
-      padding: 15px;
+      padding: 20px;
+
+      min-height: 170px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       box-shadow:
-        0 2px 9px rgba(0,0,0,.035);
+        0 3px 12px rgba(0,0,0,.035);
     }
 
     .metric-icon {
-      font-size: 21px;
-      margin-bottom: 9px;
+      font-size: 30px;
     }
 
     .metric-number {
-      font-size: 28px;
-      font-weight: 800;
-      line-height: 1;
+      margin-top: 22px;
+
+      font-size: 41px;
+      font-weight: 850;
+
+      line-height: .9;
     }
 
     .metric-label {
-      margin-top: 5px;
+      margin-top: 8px;
 
-      font-size: 12px;
+      font-size: 15px;
       color: var(--cinza);
     }
 
-    /* =========================================================
-       BOTÃO ATUALIZAR
-       ========================================================= */
+    /* =======================================================
+       ATUALIZAÇÃO
+       ======================================================= */
 
-    .update-area {
-      background: var(--branco);
+    .update-box {
+      background: #fff;
 
       border:
         1px solid var(--borda);
 
-      border-radius: 20px;
+      border-radius: 23px;
 
-      padding: 14px;
+      padding: 15px;
 
       box-shadow: var(--sombra);
 
-      margin-bottom: 17px;
+      margin-bottom: 28px;
     }
 
-    .update-button {
+    .primary-button {
       width: 100%;
 
       border: 0;
 
-      border-radius: 15px;
+      border-radius: 18px;
 
       background:
         linear-gradient(
           135deg,
           var(--azul),
-          #137be3
+          var(--azul2)
         );
 
       color: #fff;
 
-      padding: 15px 16px;
+      min-height: 62px;
 
-      font-size: 15px;
-      font-weight: 800;
+      padding: 14px 18px;
 
-      min-height: 52px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 8px;
+      font-size: 17px;
+      font-weight: 850;
 
       box-shadow:
-        0 5px 14px
-        rgba(11,99,206,.22);
-
-      transition:
-        transform .12s ease,
-        opacity .12s ease;
+        0 5px 15px rgba(11,99,206,.20);
     }
 
-    .update-button:active {
-      transform: scale(.985);
-    }
-
-    .update-button:disabled {
-      opacity: .65;
-      cursor: default;
+    .primary-button:disabled {
+      opacity: .6;
     }
 
     .update-message {
@@ -381,9 +363,9 @@
 
       margin-top: 11px;
 
-      border-radius: 12px;
+      padding: 11px 13px;
 
-      padding: 10px 12px;
+      border-radius: 13px;
 
       font-size: 12px;
       line-height: 1.4;
@@ -408,47 +390,48 @@
       background: var(--vermelho-claro);
     }
 
-    .spinner {
-      width: 16px;
-      height: 16px;
+    /* =======================================================
+       PROCESSOS EM DESTAQUE
+       ======================================================= */
 
-      border:
-        2px solid rgba(255,255,255,.45);
-
-      border-top-color:
-        #fff;
-
-      border-radius: 50%;
-
-      animation:
-        spin .7s linear infinite;
+    .subsection-title {
+      margin:
+        0 5px
+        14px;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+    .subsection-title strong {
+      display: block;
+
+      font-size: 20px;
     }
 
-    /* =========================================================
-       CARTÃO DE PROCESSO
-       ========================================================= */
+    .subsection-title span {
+      display: block;
+
+      margin-top: 4px;
+
+      font-size: 13px;
+      color: var(--cinza);
+    }
+
+    /* =======================================================
+       PROCESS CARD
+       ======================================================= */
 
     .process-list {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 13px;
     }
 
     .process-card {
-      position: relative;
-
-      background: var(--branco);
+      background: #fff;
 
       border:
         1px solid var(--borda);
 
-      border-radius: 18px;
+      border-radius: 20px;
 
       overflow: hidden;
 
@@ -458,58 +441,50 @@
 
     .process-card.priority {
       border-color:
-        rgba(244,180,0,.6);
-
-      box-shadow:
-        0 5px 18px
-        rgba(244,180,0,.14);
+        #f0cf63;
     }
 
-    .priority-bar {
+    .priority-strip {
       display: none;
 
       background:
-        linear-gradient(
-          90deg,
-          #fff5bc,
-          #fffaf0
-        );
+        var(--amarelo-claro);
 
-      color: #8b6400;
+      color:
+        #8b6500;
 
-      padding: 7px 14px;
+      padding: 7px 15px;
 
-      font-size: 11px;
-      font-weight: 800;
+      font-size: 10px;
+      font-weight: 850;
     }
 
     .process-card.priority
-    .priority-bar {
+    .priority-strip {
       display: block;
     }
 
-    .process-main {
-      padding: 14px;
+    .process-body {
+      padding: 16px;
     }
 
     .process-top {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .process-top-content {
-      min-width: 0;
+    .process-title-area {
       flex: 1;
+      min-width: 0;
     }
 
     .process-number {
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.35;
 
       word-break: break-word;
-
-      line-height: 1.35;
     }
 
     .process-subject {
@@ -518,55 +493,49 @@
       color: var(--cinza);
 
       font-size: 12px;
-
-      line-height: 1.35;
+      line-height: 1.4;
     }
 
     .star-button {
-      flex: 0 0 38px;
+      flex: 0 0 42px;
 
-      width: 38px;
-      height: 38px;
-
-      display: grid;
-      place-items: center;
+      width: 42px;
+      height: 42px;
 
       border:
         1px solid var(--borda);
 
-      border-radius: 12px;
+      border-radius: 13px;
 
       background: #fff;
 
-      font-size: 20px;
+      display: grid;
+      place-items: center;
+
+      font-size: 23px;
     }
 
     .star-button.active {
       background:
         var(--amarelo-claro);
-
-      border-color:
-        #f1d475;
     }
 
-    .process-grid {
-      display: grid;
+    .process-info-grid {
+      margin-top: 14px;
 
+      display: grid;
       grid-template-columns:
-        1fr 1fr;
+        repeat(2,minmax(0,1fr));
 
       gap: 9px;
-
-      margin-top: 13px;
     }
 
     .process-info {
-      padding: 9px 10px;
+      background: #f5f7f9;
 
-      background:
-        var(--cinza-claro);
+      border-radius: 12px;
 
-      border-radius: 11px;
+      padding: 10px;
 
       min-width: 0;
     }
@@ -575,95 +544,54 @@
       grid-column: 1 / -1;
     }
 
-    .process-info-label {
+    .info-label {
       display: block;
 
-      font-size: 10px;
+      font-size: 9px;
 
       text-transform: uppercase;
-
       letter-spacing: .3px;
 
       color: var(--cinza);
 
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
-    .process-info-value {
+    .info-value {
+      display: block;
+
       font-size: 12px;
-
-      font-weight: 700;
-
+      font-weight: 750;
       line-height: 1.35;
 
       word-break: break-word;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-
-      gap: 5px;
-
-      border-radius: 999px;
-
-      padding: 5px 8px;
-
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .status.open {
-      background:
-        var(--verde-claro);
-
-      color:
-        var(--verde);
-    }
-
-    .status.error {
-      background:
-        var(--vermelho-claro);
-
-      color:
-        var(--vermelho);
-    }
-
-    .status.waiting {
-      background:
-        var(--cinza-claro);
-
-      color:
-        var(--cinza);
-    }
-
     .movement {
-      margin-top: 12px;
+      margin-top: 13px;
+
+      padding-top: 12px;
 
       border-top:
         1px solid var(--borda);
-
-      padding-top: 11px;
     }
 
-    .movement-title {
+    .movement-label {
       font-size: 10px;
 
       text-transform: uppercase;
 
       color: var(--cinza);
 
-      font-weight: 700;
+      font-weight: 750;
 
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
-    .movement-text {
+    .movement-value {
       font-size: 12px;
-
-      line-height: 1.45;
-
       font-weight: 650;
+      line-height: 1.45;
     }
 
     .new-badge {
@@ -671,81 +599,241 @@
 
       margin-left: 5px;
 
+      border-radius: 999px;
+
+      padding: 3px 7px;
+
       background:
         var(--laranja-claro);
 
       color:
         var(--laranja);
 
-      border-radius: 999px;
-
-      padding:
-        3px 7px;
-
       font-size: 9px;
-      font-weight: 800;
-
-      vertical-align: middle;
+      font-weight: 850;
     }
 
-    /* =========================================================
-       RESUMO
-       ========================================================= */
+    .card-actions {
+      display: grid;
 
-    .summary-card {
+      grid-template-columns:
+        1fr auto;
+
+      gap: 9px;
+
+      margin-top: 15px;
+    }
+
+    .sefaz-button {
+      border: 0;
+
+      border-radius: 13px;
+
+      padding: 12px 11px;
+
+      background:
+        var(--azul-claro);
+
+      color:
+        var(--azul);
+
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .delete-button {
+      width: 45px;
+
+      border:
+        1px solid #f0cccc;
+
+      border-radius: 13px;
+
+      background:
+        var(--vermelho-claro);
+
+      color:
+        var(--vermelho);
+
+      font-size: 18px;
+    }
+
+    /* =======================================================
+       QUADRO GERAL
+       ======================================================= */
+
+    .general-table-wrapper {
+      overflow-x: auto;
+
       background: #fff;
 
       border:
         1px solid var(--borda);
 
-      border-radius: 18px;
+      border-radius: 19px;
 
-      padding: 15px;
-
-      margin-bottom: 12px;
+      box-shadow:
+        0 2px 9px rgba(0,0,0,.035);
     }
 
-    .summary-card-title {
+    .general-table {
+      width: 100%;
+
+      min-width: 660px;
+
+      border-collapse: collapse;
+    }
+
+    .general-table th {
+      position: sticky;
+      top: 0;
+
+      background:
+        #eef5ff;
+
+      color:
+        #315271;
+
+      text-align: left;
+
+      padding: 12px 13px;
+
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    .general-table td {
+      border-top:
+        1px solid #edf0f3;
+
+      padding: 12px 13px;
+
+      font-size: 12px;
+      line-height: 1.35;
+
+      vertical-align: top;
+    }
+
+    .general-table
+    .process-col {
+      width: 220px;
       font-weight: 800;
-      margin-bottom: 12px;
     }
 
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
+    .general-table
+    .sector-col {
+      width: 130px;
+      font-weight: 700;
+    }
 
-      gap: 10px;
+    .row-priority {
+      background:
+        #fffdf2;
+    }
+
+    /* =======================================================
+       GERENCIAR PROCESSOS
+       ======================================================= */
+
+    .add-box {
+      background: #fff;
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 19px;
+
+      padding: 14px;
+
+      margin-bottom: 15px;
+
+      box-shadow:
+        0 2px 9px rgba(0,0,0,.035);
+    }
+
+    .add-title {
+      font-size: 14px;
+      font-weight: 850;
+
+      margin-bottom: 10px;
+    }
+
+    .add-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .add-form input {
+      flex: 1;
+      min-width: 0;
+
+      border:
+        1px solid #ccd5dd;
+
+      border-radius: 13px;
 
       padding:
-        9px 0;
+        12px 12px;
 
-      border-bottom:
-        1px solid #eef1f4;
+      outline: none;
 
       font-size: 13px;
     }
 
-    .summary-row:last-child {
-      border-bottom: 0;
+    .add-form input:focus {
+      border-color:
+        var(--azul);
     }
 
-    .summary-row-label {
-      color: var(--cinza);
+    .add-button {
+      border: 0;
+
+      border-radius: 13px;
+
+      background:
+        var(--azul);
+
+      color: #fff;
+
+      padding: 0 16px;
+
+      font-weight: 850;
+      font-size: 13px;
     }
 
-    .summary-row-value {
-      text-align: right;
-      font-weight: 750;
+    .management-message {
+      display: none;
+
+      margin-top: 9px;
+
+      font-size: 12px;
+      line-height: 1.4;
+
+      padding: 9px 11px;
+
+      border-radius: 11px;
     }
 
-    /* =========================================================
-       BUSCA
-       ========================================================= */
+    .management-message.show {
+      display: block;
+    }
+
+    .management-message.success {
+      background: var(--verde-claro);
+      color: var(--verde);
+    }
+
+    .management-message.error {
+      background: var(--vermelho-claro);
+      color: var(--vermelho);
+    }
 
     .search-box {
       display: flex;
       align-items: center;
-      gap: 9px;
+
+      gap: 8px;
 
       background: #fff;
 
@@ -757,31 +845,27 @@
       padding:
         0 12px;
 
-      margin-bottom: 13px;
+      margin-bottom: 14px;
     }
 
     .search-box input {
       width: 100%;
 
       border: 0;
-      outline: none;
+      outline: 0;
 
       background: transparent;
 
-      padding:
-        13px 0;
+      padding: 13px 0;
 
-      font-size: 14px;
-
-      color:
-        var(--texto);
+      font-size: 13px;
     }
 
-    /* =========================================================
+    /* =======================================================
        ALERTAS
-       ========================================================= */
+       ======================================================= */
 
-    .alert-card {
+    .alert {
       background: #fff;
 
       border:
@@ -794,19 +878,19 @@
       margin-bottom: 10px;
     }
 
-    .alert-card.new {
+    .alert.new {
       border-left:
         4px solid var(--laranja);
     }
 
-    .alert-card.error {
+    .alert.error {
       border-left:
         4px solid var(--vermelho);
     }
 
     .alert-title {
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .alert-text {
@@ -815,35 +899,32 @@
       color: var(--cinza);
 
       font-size: 12px;
-
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
-    .empty-state {
+    .empty {
+      text-align: center;
+
       background: #fff;
 
       border:
-        1px dashed #ccd4dc;
+        1px dashed #ccd5dd;
 
       border-radius: 18px;
 
-      padding:
-        35px 20px;
+      padding: 34px 20px;
 
-      text-align: center;
-
-      color:
-        var(--cinza);
+      color: var(--cinza);
     }
 
     .empty-icon {
-      font-size: 34px;
-      margin-bottom: 8px;
+      font-size: 32px;
+      margin-bottom: 7px;
     }
 
-    /* =========================================================
+    /* =======================================================
        MENU INFERIOR
-       ========================================================= */
+       ======================================================= */
 
     .bottom-nav {
       position: fixed;
@@ -857,84 +938,77 @@
         translateX(-50%);
 
       width:
-        min(760px, 100%);
+        min(760px,100%);
 
       min-height:
         var(--menu-height);
 
-      padding:
-        8px 7px
-        calc(
-          8px
-          + env(safe-area-inset-bottom)
-        );
-
       display: grid;
 
       grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
-      background:
-        rgba(255,255,255,.94);
+      padding:
+        8px
+        7px
+        calc(
+          8px +
+          env(safe-area-inset-bottom)
+        );
 
       border-top:
         1px solid var(--borda);
 
-      box-shadow:
-        0 -6px 24px
-        rgba(0,0,0,.07);
+      background:
+        rgba(255,255,255,.96);
 
       backdrop-filter:
-        blur(18px);
+        blur(20px);
+
+      box-shadow:
+        0 -6px 24px rgba(0,0,0,.07);
     }
 
-    .nav-item {
+    .nav-button {
       border: 0;
+
       background: transparent;
 
+      border-radius: 16px;
+
       color:
-        #737b86;
-
-      border-radius: 14px;
-
-      padding:
-        7px 3px;
+        #717986;
 
       display: flex;
+      flex-direction: column;
 
-      flex-direction:
-        column;
+      align-items: center;
+      justify-content: center;
 
-      justify-content:
-        center;
+      gap: 4px;
 
-      align-items:
-        center;
-
-      gap: 3px;
+      padding: 7px 2px;
 
       font-size: 10px;
+      font-weight: 800;
+    }
 
-      font-weight: 700;
+    .nav-button.active {
+      background:
+        var(--azul-claro);
+
+      color:
+        var(--azul);
     }
 
     .nav-icon {
       font-size: 21px;
-
       line-height: 1;
     }
 
-    .nav-item.active {
-      color:
-        var(--azul);
-
-      background:
-        var(--azul-claro);
-    }
-
-    /* =========================================================
+    /* =======================================================
        TOAST
-       ========================================================= */
+       ======================================================= */
 
     .toast {
       position: fixed;
@@ -947,11 +1021,11 @@
         calc(
           var(--menu-height)
           + env(safe-area-inset-bottom)
-          + 15px
+          + 14px
         );
 
       transform:
-        translate(-50%, 20px);
+        translate(-50%,20px);
 
       width:
         min(
@@ -959,35 +1033,25 @@
           560px
         );
 
-      padding:
-        12px 14px;
-
       background:
         #17202a;
 
-      color:
-        #fff;
+      color: #fff;
 
-      border-radius:
-        13px;
+      border-radius: 13px;
 
-      font-size:
-        12px;
+      padding: 12px 14px;
 
-      text-align:
-        center;
+      font-size: 12px;
+      text-align: center;
 
-      opacity:
-        0;
+      box-shadow: var(--sombra);
 
-      visibility:
-        hidden;
+      opacity: 0;
+      visibility: hidden;
 
       transition:
-        all .22s ease;
-
-      box-shadow:
-        var(--sombra);
+        all .2s ease;
     }
 
     .toast.show {
@@ -998,13 +1062,7 @@
         translate(-50%,0);
     }
 
-    /* =========================================================
-       RESPONSIVO
-       ========================================================= */
-
-    @media
-    (min-width: 640px) {
-
+    @media(min-width:640px) {
       .metrics {
         grid-template-columns:
           repeat(4,1fr);
@@ -1014,11 +1072,10 @@
         display: grid;
 
         grid-template-columns:
-          repeat(2, minmax(0,1fr));
+          repeat(2,minmax(0,1fr));
 
         align-items: start;
       }
-
     }
   </style>
 </head>
@@ -1027,28 +1084,24 @@
 
 <div class="app">
 
-  <!-- =======================================================
-       CABEÇALHO
-       ======================================================= -->
-
   <header class="header">
 
     <div class="header-top">
 
-      <div class="brand">
+      <div>
 
-        <div class="brand-small">
+        <div class="header-small">
           Monitoramento processual
         </div>
 
-        <h1 class="brand-title">
+        <h1 class="header-title">
           Monitor SEFAZ-AM
         </h1>
 
       </div>
 
       <div
-        class="status-pill"
+        class="online-pill"
         id="systemStatus"
       >
         ● Online
@@ -1056,31 +1109,31 @@
 
     </div>
 
-    <div class="header-info">
+    <div class="header-cards">
 
-      <div class="header-info-card">
+      <div class="header-card">
 
-        <span class="header-info-label">
+        <span class="header-card-label">
           Processos cadastrados
         </span>
 
         <span
-          class="header-info-value"
+          class="header-card-value"
           id="headerTotal"
         >
-          23
+          —
         </span>
 
       </div>
 
-      <div class="header-info-card">
+      <div class="header-card">
 
-        <span class="header-info-label">
+        <span class="header-card-label">
           Última atualização
         </span>
 
         <span
-          class="header-info-value"
+          class="header-card-value"
           id="headerUpdated"
         >
           Carregando...
@@ -1093,33 +1146,25 @@
   </header>
 
 
-  <!-- =======================================================
-       CONTEÚDO
-       ======================================================= -->
-
   <main>
 
-    <!-- =====================================================
-         VISÃO GERAL
-         ===================================================== -->
+    <!-- ===================================================
+         INÍCIO
+         =================================================== -->
 
     <section
+      id="page-home"
       class="page active"
-      id="page-overview"
     >
 
-      <div class="section-title">
+      <div class="section-header">
 
-        <div>
+        <h2>
+          Início
+        </h2>
 
-          <h2>
-            Visão geral
-          </h2>
-
-          <div class="section-sub">
-            Quadro geral resumido dos processos
-          </div>
-
+        <div class="section-subtitle">
+          Quadro geral resumido dos processos
         </div>
 
       </div>
@@ -1130,38 +1175,22 @@
         <div class="metric">
 
           <div class="metric-icon">
-            📁
-          </div>
-
-          <div
-            class="metric-number"
-            id="metricTotal"
-          >
-            23
-          </div>
-
-          <div class="metric-label">
-            Processos
-          </div>
-
-        </div>
-
-
-        <div class="metric">
-
-          <div class="metric-icon">
             🟢
           </div>
 
-          <div
-            class="metric-number"
-            id="metricOpen"
-          >
-            0
-          </div>
+          <div>
 
-          <div class="metric-label">
-            Abertos
+            <div
+              class="metric-number"
+              id="metricActive"
+            >
+              0
+            </div>
+
+            <div class="metric-label">
+              Ativos
+            </div>
+
           </div>
 
         </div>
@@ -1170,18 +1199,22 @@
         <div class="metric">
 
           <div class="metric-icon">
-            🔔
+            ⏸️
           </div>
 
-          <div
-            class="metric-number"
-            id="metricNew"
-          >
-            0
-          </div>
+          <div>
 
-          <div class="metric-label">
-            Novidades
+            <div
+              class="metric-number"
+              id="metricStopped"
+            >
+              0
+            </div>
+
+            <div class="metric-label">
+              Parados
+            </div>
+
           </div>
 
         </div>
@@ -1193,15 +1226,43 @@
             ⭐
           </div>
 
-          <div
-            class="metric-number"
-            id="metricPriority"
-          >
-            0
+          <div>
+
+            <div
+              class="metric-number"
+              id="metricPriority"
+            >
+              0
+            </div>
+
+            <div class="metric-label">
+              Prioritários
+            </div>
+
           </div>
 
-          <div class="metric-label">
-            Prioritários
+        </div>
+
+
+        <div class="metric">
+
+          <div class="metric-icon">
+            🔔
+          </div>
+
+          <div>
+
+            <div
+              class="metric-number"
+              id="metricNews"
+            >
+              0
+            </div>
+
+            <div class="metric-label">
+              Novidades
+            </div>
+
           </div>
 
         </div>
@@ -1209,22 +1270,14 @@
       </div>
 
 
-      <!-- BOTÃO NOVO -->
-
-      <div class="update-area">
+      <div class="update-box">
 
         <button
-          class="update-button"
-          id="updateProcessesButton"
+          class="primary-button"
+          id="updateButton"
           onclick="updateProcesses()"
         >
-          <span id="updateButtonIcon">
-            🔄
-          </span>
-
-          <span id="updateButtonText">
-            Atualizar processos
-          </span>
+          🔄 Atualizar processos
         </button>
 
         <div
@@ -1235,86 +1288,135 @@
       </div>
 
 
-      <div class="section-title">
+      <div class="subsection-title">
 
-        <div>
+        <strong>
+          Processos em destaque
+        </strong>
 
-          <h2 style="font-size:17px">
-            Processos em destaque
-          </h2>
-
-          <div class="section-sub">
-            Processos prioritários aparecem primeiro
-          </div>
-
-        </div>
+        <span>
+          Processos prioritários aparecem primeiro
+        </span>
 
       </div>
 
 
       <div
+        id="highlightProcesses"
         class="process-list"
-        id="overviewProcesses"
       ></div>
 
     </section>
 
 
-    <!-- =====================================================
-         RESUMO
-         ===================================================== -->
+    <!-- ===================================================
+         QUADRO GERAL
+         =================================================== -->
 
     <section
+      id="page-general"
       class="page"
-      id="page-summary"
     >
 
-      <div class="section-title">
+      <div class="section-header">
 
-        <div>
+        <h2>
+          Quadro geral
+        </h2>
 
-          <h2>
-            Resumo
-          </h2>
-
-          <div class="section-sub">
-            Situação consolidada do monitor
-          </div>
-
+        <div class="section-subtitle">
+          Todos os processos monitorados em formato resumido
         </div>
 
       </div>
 
 
-      <div
-        id="summaryContent"
-      ></div>
+      <div class="general-table-wrapper">
+
+        <table class="general-table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Processo
+              </th>
+
+              <th>
+                Setor atual
+              </th>
+
+              <th>
+                Última movimentação
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody
+            id="generalTableBody"
+          ></tbody>
+
+        </table>
+
+      </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          PROCESSOS
-         ===================================================== -->
+         =================================================== -->
 
     <section
-      class="page"
       id="page-processes"
+      class="page"
     >
 
-      <div class="section-title">
+      <div class="section-header">
 
-        <div>
+        <h2>
+          Processos
+        </h2>
 
-          <h2>
-            Processos
-          </h2>
+        <div class="section-subtitle">
+          Cadastro e gerenciamento dos processos monitorados
+        </div>
 
-          <div class="section-sub">
-            Todos os 23 processos monitorados
-          </div>
+      </div>
+
+
+      <div class="add-box">
+
+        <div class="add-title">
+          ＋ Adicionar processo
+        </div>
+
+        <div class="add-form">
+
+          <input
+            type="text"
+            id="newProcessNumber"
+            placeholder="01.01.028101.000000/2026-00"
+            autocomplete="off"
+          >
+
+          <button
+            class="add-button"
+            id="addProcessButton"
+            onclick="addProcess()"
+          >
+            Adicionar
+          </button>
 
         </div>
+
+        <div
+          class="management-message"
+          id="managementMessage"
+        ></div>
 
       </div>
 
@@ -1327,8 +1429,8 @@
 
         <input
           type="search"
-          id="searchProcess"
-          placeholder="Buscar processo, assunto ou interessado..."
+          id="processSearch"
+          placeholder="Buscar processo, interessado ou assunto..."
           oninput="renderProcesses()"
         >
 
@@ -1336,41 +1438,36 @@
 
 
       <div
+        id="processList"
         class="process-list"
-        id="allProcesses"
       ></div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          ALERTAS
-         ===================================================== -->
+         =================================================== -->
 
     <section
-      class="page"
       id="page-alerts"
+      class="page"
     >
 
-      <div class="section-title">
+      <div class="section-header">
 
-        <div>
+        <h2>
+          Alertas
+        </h2>
 
-          <h2>
-            Alertas
-          </h2>
-
-          <div class="section-sub">
-            Novas movimentações e problemas encontrados
-          </div>
-
+        <div class="section-subtitle">
+          Movimentações e avisos do monitor
         </div>
 
       </div>
 
-
       <div
-        id="alertsContent"
+        id="alertsList"
       ></div>
 
     </section>
@@ -1380,56 +1477,51 @@
 </div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      MENU INFERIOR
-     ordem solicitada:
-     visão geral / resumo / processos / alertas
-     ========================================================= -->
+     ======================================================= -->
 
 <nav class="bottom-nav">
 
   <button
-    class="nav-item active"
-    data-page="overview"
-    onclick="openPage('overview',this)"
+    class="nav-button active"
+    onclick="openPage('home',this)"
   >
 
     <span class="nav-icon">
-      ◫
+      ⌂
     </span>
 
     <span>
-      Visão geral
+      Início
     </span>
 
   </button>
 
 
   <button
-    class="nav-item"
-    data-page="summary"
-    onclick="openPage('summary',this)"
+    class="nav-button"
+    onclick="openPage('general',this)"
   >
 
     <span class="nav-icon">
-      ▤
+      ▦
     </span>
 
     <span>
-      Resumo
+      Quadro geral
     </span>
 
   </button>
 
 
   <button
-    class="nav-item"
-    data-page="processes"
+    class="nav-button"
     onclick="openPage('processes',this)"
   >
 
     <span class="nav-icon">
-      📁
+      📄
     </span>
 
     <span>
@@ -1440,8 +1532,7 @@
 
 
   <button
-    class="nav-item"
-    data-page="alerts"
+    class="nav-button"
     onclick="openPage('alerts',this)"
   >
 
@@ -1466,9 +1557,9 @@
 
 <script>
 
-  /* =========================================================
+  /* =======================================================
      CONFIGURAÇÃO
-     ========================================================= */
+     ======================================================= */
 
   const WORKER_URL =
     "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
@@ -1476,87 +1567,37 @@
   const DATA_URL =
     "./dados.json";
 
-  const REFRESH_INTERVAL =
-    5 * 60 * 1000;
+  const PROCESS_LIST_URL =
+    "./processos.json";
 
-  const UPDATE_POLL_INTERVAL =
-    5000;
+  const SEFAZ_BASE_URL =
+    "https://online.sefaz.am.gov.br/processo/";
 
   const UPDATE_TIMEOUT =
     120000;
 
-
-  /* =========================================================
-     23 PROCESSOS CADASTRADOS
-     ========================================================= */
-
-  const PROCESS_NUMBERS = [
-
-    "01.01.028101.030037/2026-43",
-
-    "01.01.028101.030087/2026-20",
-
-    "01.01.028101.030283/2026-03",
-
-    "01.01.028101.030287/2026-83",
-
-    "01.01.028101.030288/2026-28",
-
-    "01.01.028101.031074/2026-79",
-
-    "01.01.028101.031331/2026-72",
-
-    "01.01.028101.031373/2026-03",
-
-    "01.01.028101.031077/2026-02",
-
-    "01.01.028101.031217/2026-42",
-
-    "01.01.028101.031129/2026-40",
-
-    "01.01.028101.031393/2026-84",
-
-    "01.01.028101.031411/2026-28",
-
-    "01.01.028101.030117/2026-07",
-
-    "01.01.028101.030118/2026-43",
-
-    "01.01.028101.030125/2026-45",
-
-    "01.01.028101.030450/2026-08",
-
-    "01.01.028101.030453/2026-41",
-
-    "01.01.028101.030855/2026-46",
-
-    "01.01.028101.030858/2026-80",
-
-    "01.01.028101.030869/2026-60",
-
-    "01.01.013102.003068/2026-44",
-
-    "01.01.028101.000655/2026-69"
-
-  ];
+  const POLL_INTERVAL =
+    5000;
 
 
-  /* =========================================================
+  /* =======================================================
      ESTADO
-     ========================================================= */
+     ======================================================= */
+
+  let processNumbers = [];
 
   let processes = [];
 
-  let rawData = null;
+  let rawData = {};
 
   let currentFingerprint = "";
 
-  let isUpdatingProcesses = false;
+  let updating = false;
 
 
-  /* =========================================================
+  /* =======================================================
      PRIORIDADES
-     ========================================================= */
+     ======================================================= */
 
   function getPriorities() {
 
@@ -1587,56 +1628,62 @@
   }
 
 
-  function isPriority(numero) {
+  function isPriority(number) {
 
     return getPriorities()
-      .includes(numero);
+      .includes(number);
 
   }
 
 
-  function togglePriority(numero) {
+  function togglePriority(number) {
 
-    let priorities =
+    let list =
       getPriorities();
 
     if (
-      priorities.includes(numero)
+      list.includes(number)
     ) {
 
-      priorities =
-        priorities.filter(
+      list =
+        list.filter(
           item =>
-            item !== numero
+            item !== number
         );
-
-      showToast(
-        "Processo removido dos prioritários."
-      );
 
     } else {
 
-      priorities.push(numero);
-
-      showToast(
-        "⭐ Processo destacado e movido para o topo."
-      );
+      list.push(number);
 
     }
 
-    savePriorities(priorities);
+    savePriorities(list);
 
     renderAll();
 
   }
 
 
-  /* =========================================================
-     NORMALIZAÇÃO DOS DADOS
-     ========================================================= */
+  /* =======================================================
+     UTILIDADES
+     ======================================================= */
+
+  function escapeHtml(value) {
+
+    return String(
+      value ?? ""
+    )
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
 
   function firstValue(
-    object,
+    obj,
     keys,
     fallback = ""
   ) {
@@ -1646,13 +1693,13 @@
     ) {
 
       if (
-        object &&
-        object[key] !== undefined &&
-        object[key] !== null &&
-        object[key] !== ""
+        obj &&
+        obj[key] !== undefined &&
+        obj[key] !== null &&
+        obj[key] !== ""
       ) {
 
-        return object[key];
+        return obj[key];
 
       }
 
@@ -1663,370 +1710,252 @@
   }
 
 
-  function normalizeMovement(value) {
-
-    if (!value) {
-      return "";
-    }
-
-    if (
-      typeof value === "string"
-    ) {
-
-      return value;
-
-    }
-
-    if (
-      typeof value === "object"
-    ) {
-
-      const date =
-        firstValue(
-          value,
-          [
-            "data",
-            "date"
-          ],
-          ""
-        );
-
-      const sector =
-        firstValue(
-          value,
-          [
-            "setor",
-            "sector"
-          ],
-          ""
-        );
-
-      const event =
-        firstValue(
-          value,
-          [
-            "evento",
-            "event",
-            "descricao",
-            "description"
-          ],
-          ""
-        );
-
-      return [
-        date,
-        sector,
-        event
-      ]
-        .filter(Boolean)
-        .join(" • ");
-
-    }
-
-    return String(value);
-
-  }
-
-
-  function normalizeOne(
+  function normalizeProcess(
     item,
-    fallbackNumber
+    number
   ) {
-
-    const numero =
-      firstValue(
-        item,
-        [
-          "numero",
-          "processo",
-          "numero_processo",
-          "process_number",
-          "id"
-        ],
-        fallbackNumber
-      );
-
-
-    const situacao =
-      firstValue(
-        item,
-        [
-          "situacao",
-          "status",
-          "situação"
-        ],
-        "Aguardando dados"
-      );
-
-
-    const assunto =
-      firstValue(
-        item,
-        [
-          "assunto",
-          "subject"
-        ],
-        ""
-      );
-
-
-    const interessado =
-      firstValue(
-        item,
-        [
-          "interessado",
-          "interested",
-          "empresa"
-        ],
-        ""
-      );
-
-
-    const orgao =
-      firstValue(
-        item,
-        [
-          "orgao",
-          "órgão",
-          "entidade",
-          "orgao_entidade"
-        ],
-        ""
-      );
-
-
-    const movimentoRaw =
-      firstValue(
-        item,
-        [
-          "ultima_movimentacao",
-          "última_movimentação",
-          "ultimo_movimento",
-          "ultimaMovimentacao",
-          "movimentacao",
-          "movement"
-        ],
-        ""
-      );
-
-
-    const erro =
-      firstValue(
-        item,
-        [
-          "erro",
-          "error"
-        ],
-        ""
-      );
-
-
-    const newFlag =
-      Boolean(
-        firstValue(
-          item,
-          [
-            "nova_movimentacao",
-            "novaMovimentacao",
-            "novo",
-            "new_movement",
-            "alteracao",
-            "changed"
-          ],
-          false
-        )
-      );
-
-
-    const updated =
-      firstValue(
-        item,
-        [
-          "atualizado_em",
-          "ultima_atualizacao",
-          "updated_at",
-          "data_atualizacao"
-        ],
-        ""
-      );
-
 
     return {
 
-      numero,
-
-      situacao,
-
-      assunto,
-
-      interessado,
-
-      orgao,
-
-      movimento:
-        normalizeMovement(
-          movimentoRaw
+      numero:
+        firstValue(
+          item,
+          [
+            "numero",
+            "processo"
+          ],
+          number
         ),
 
-      erro,
+      situacao:
+        firstValue(
+          item,
+          [
+            "situacao",
+            "status"
+          ],
+          "Aguardando dados"
+        ),
 
-      novaMovimentacao:
-        newFlag,
+      interessado:
+        firstValue(
+          item,
+          [
+            "interessado"
+          ],
+          ""
+        ),
 
-      atualizadoEm:
-        updated
+      assunto:
+        firstValue(
+          item,
+          [
+            "assunto"
+          ],
+          ""
+        ),
+
+      setor:
+        firstValue(
+          item,
+          [
+            "setor"
+          ],
+          ""
+        ),
+
+      evento:
+        firstValue(
+          item,
+          [
+            "evento"
+          ],
+          ""
+        ),
+
+      dataMovimentacao:
+        firstValue(
+          item,
+          [
+            "dataMovimentacao",
+            "data_movimentacao"
+          ],
+          ""
+        ),
+
+      erro:
+        firstValue(
+          item,
+          [
+            "erro"
+          ],
+          ""
+        ),
+
+      consultadoEm:
+        firstValue(
+          item,
+          [
+            "consultado_em"
+          ],
+          ""
+        )
 
     };
 
   }
 
 
-  function extractProcessArray(data) {
+  /* =======================================================
+     DATA
+     ======================================================= */
 
-    if (
-      Array.isArray(data)
-    ) {
+  function parseBrazilDate(value) {
 
-      return data;
-
+    if (!value) {
+      return null;
     }
 
+    const match =
+      String(value)
+        .match(
+          /^(\d{2})\/(\d{2})\/(\d{4})$/
+        );
 
-    const possibilities = [
-
-      data?.processos,
-
-      data?.dados,
-
-      data?.items,
-
-      data?.results,
-
-      data?.processes
-
-    ];
-
-
-    for (
-      const possibility
-      of possibilities
-    ) {
-
-      if (
-        Array.isArray(
-          possibility
-        )
-      ) {
-
-        return possibility;
-
-      }
-
+    if (!match) {
+      return null;
     }
 
+    const day =
+      Number(match[1]);
 
-    if (
-      data &&
-      typeof data === "object"
-    ) {
+    const month =
+      Number(match[2]) - 1;
 
-      const values =
-        Object.values(data);
+    const year =
+      Number(match[3]);
 
-      if (
-        values.length &&
-        values.every(
-          item =>
-            item &&
-            typeof item === "object"
-        )
-      ) {
-
-        return values;
-
-      }
-
-    }
-
-
-    return [];
+    return new Date(
+      year,
+      month,
+      day,
+      12,
+      0,
+      0
+    );
 
   }
 
 
-  function normalizeData(data) {
+  function startOfToday() {
 
-    const array =
-      extractProcessArray(data);
+    const now =
+      new Date();
 
-
-    const map =
-      new Map();
-
-
-    array.forEach(item => {
-
-      const normalized =
-        normalizeOne(item, "");
-
-      if (
-        normalized.numero
-      ) {
-
-        map.set(
-          normalized.numero,
-          normalized
-        );
-
-      }
-
-    });
-
-
-    return PROCESS_NUMBERS
-      .map(numero => {
-
-        if (
-          map.has(numero)
-        ) {
-
-          return map.get(numero);
-
-        }
-
-        return normalizeOne(
-          {},
-          numero
-        );
-
-      });
+    return new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
 
   }
 
 
-  /* =========================================================
-     CARREGAR dados.json
-     ========================================================= */
+  function daysSinceMovement(process) {
 
-  async function fetchData() {
+    const movementDate =
+      parseBrazilDate(
+        process.dataMovimentacao
+      );
 
-    const url =
-      `${DATA_URL}?t=${Date.now()}`;
+    if (!movementDate) {
+      return null;
+    }
+
+    const today =
+      startOfToday();
+
+    const movementDay =
+      new Date(
+        movementDate.getFullYear(),
+        movementDate.getMonth(),
+        movementDate.getDate()
+      );
+
+    return Math.floor(
+      (
+        today.getTime()
+        -
+        movementDay.getTime()
+      )
+      /
+      86400000
+    );
+
+  }
+
+
+  function isStopped(process) {
+
+    const days =
+      daysSinceMovement(
+        process
+      );
+
+    return (
+      days !== null
+      &&
+      days > 3
+    );
+
+  }
+
+
+  function hasMovementToday(process) {
+
+    const days =
+      daysSinceMovement(
+        process
+      );
+
+    return days === 0;
+
+  }
+
+
+  function isActive(process) {
+
+    if (
+      process.erro
+    ) {
+
+      return false;
+
+    }
+
+    return !isStopped(process);
+
+  }
+
+
+  /* =======================================================
+     CARREGAMENTO
+     ======================================================= */
+
+  async function fetchJson(url) {
 
     const response =
       await fetch(
-        url,
+        `${url}?t=${Date.now()}`,
         {
           cache: "no-store"
         }
       );
 
-    if (
-      !response.ok
-    ) {
+    if (!response.ok) {
 
       throw new Error(
-        `dados.json: HTTP ${response.status}`
+        `HTTP ${response.status}`
       );
 
     }
@@ -2036,27 +1965,101 @@
   }
 
 
-  async function loadData(
-    showError = true
-  ) {
+  async function loadAll() {
 
     try {
 
-      const data =
-        await fetchData();
+      const [
+        processFile,
+        dataFile
+      ] =
+        await Promise.all([
+          fetchJson(
+            PROCESS_LIST_URL
+          ),
+          fetchJson(
+            DATA_URL
+          )
+        ]);
+
+
+      processNumbers =
+        Array.isArray(
+          processFile.processos
+        )
+        ?
+        processFile.processos
+        :
+        [];
+
 
       rawData =
-        data;
+        dataFile || {};
 
-      currentFingerprint =
-        JSON.stringify(data);
+
+      const dataProcesses =
+        Array.isArray(
+          rawData.processos
+        )
+        ?
+        rawData.processos
+        :
+        [];
+
+
+      const map =
+        new Map();
+
+
+      dataProcesses
+        .forEach(item => {
+
+          const number =
+            firstValue(
+              item,
+              [
+                "numero",
+                "processo"
+              ],
+              ""
+            );
+
+          if (
+            number
+          ) {
+
+            map.set(
+              number,
+              item
+            );
+
+          }
+
+        });
+
 
       processes =
-        normalizeData(data);
+        processNumbers
+          .map(number => {
 
-      updateHeader(data);
+            return normalizeProcess(
+              map.get(number) || {},
+              number
+            );
+
+          });
+
+
+      currentFingerprint =
+        JSON.stringify(
+          rawData
+        );
+
+
+      updateHeader();
 
       renderAll();
+
 
       document
         .getElementById(
@@ -2065,111 +2068,63 @@
         .textContent =
           "● Online";
 
-      return data;
 
     } catch (error) {
 
       console.error(error);
 
-      if (
-        !processes.length
-      ) {
-
-        processes =
-          normalizeData({});
-
-        renderAll();
-
-      }
 
       document
         .getElementById(
           "systemStatus"
         )
         .textContent =
-          "● Sem dados";
-
-      if (
-        showError
-      ) {
-
-        showToast(
-          "Não foi possível carregar dados.json."
-        );
-
-      }
-
-      throw error;
+          "● Erro";
 
     }
 
   }
 
 
-  /* =========================================================
-     ÚLTIMA ATUALIZAÇÃO
-     ========================================================= */
+  /* =======================================================
+     HEADER
+     ======================================================= */
 
-  function getUpdatedDate(data) {
+  function updateHeader() {
 
-    if (!data) {
-      return "";
-    }
+    document
+      .getElementById(
+        "headerTotal"
+      )
+      .textContent =
+        processNumbers.length;
 
-    const value =
+
+    const updated =
       firstValue(
-        data,
+        rawData,
         [
-          "atualizado_em",
+          "ultima_verificacao",
           "ultima_atualizacao",
-          "updated_at",
-          "gerado_em",
-          "data_atualizacao"
+          "updated_at"
         ],
         ""
       );
 
-    if (value) {
-      return value;
-    }
 
-
-    const array =
-      extractProcessArray(data);
-
-
-    for (
-      const item of array
-    ) {
-
-      const itemDate =
-        firstValue(
-          item,
-          [
-            "atualizado_em",
-            "ultima_atualizacao",
-            "updated_at",
-            "data_atualizacao"
-          ],
-          ""
+    document
+      .getElementById(
+        "headerUpdated"
+      )
+      .textContent =
+        formatDateTime(
+          updated
         );
 
-      if (
-        itemDate
-      ) {
-
-        return itemDate;
-
-      }
-
-    }
-
-
-    return "";
   }
 
 
-  function formatDate(value) {
+  function formatDateTime(value) {
 
     if (!value) {
 
@@ -2186,485 +2141,149 @@
       )
     ) {
 
-      return String(value);
+      return value;
 
     }
 
-    return date
-      .toLocaleString(
-        "pt-BR",
-        {
-          dateStyle: "short",
-          timeStyle: "short"
-        }
-      );
-
-  }
-
-
-  function updateHeader(data) {
-
-    document
-      .getElementById(
-        "headerTotal"
-      )
-      .textContent =
-        PROCESS_NUMBERS.length;
-
-
-    document
-      .getElementById(
-        "headerUpdated"
-      )
-      .textContent =
-        formatDate(
-          getUpdatedDate(data)
-        );
-
-  }
-
-
-  /* =========================================================
-     NOVO BOTÃO:
-     ATUALIZAR PROCESSOS
-     ========================================================= */
-
-  async function updateProcesses() {
-
-    if (
-      isUpdatingProcesses
-    ) {
-
-      return;
-
-    }
-
-    isUpdatingProcesses =
-      true;
-
-
-    const button =
-      document.getElementById(
-        "updateProcessesButton"
-      );
-
-    const icon =
-      document.getElementById(
-        "updateButtonIcon"
-      );
-
-    const text =
-      document.getElementById(
-        "updateButtonText"
-      );
-
-
-    button.disabled =
-      true;
-
-
-    icon.innerHTML =
-      '<span class="spinner"></span>';
-
-
-    text.textContent =
-      "Iniciando atualização...";
-
-
-    setUpdateMessage(
-      "info",
-      "Solicitando uma nova consulta de todos os 23 processos à SEFAZ-AM..."
-    );
-
-
-    let beforeFingerprint =
-      currentFingerprint;
-
-
-    try {
-
-      try {
-
-        const before =
-          await fetchData();
-
-        beforeFingerprint =
-          JSON.stringify(before);
-
-      } catch {
-        /* segue mesmo se a leitura anterior falhar */
+    return date.toLocaleString(
+      "pt-BR",
+      {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
       }
-
-
-      const response =
-        await fetch(
-          WORKER_URL,
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json"
-            },
-
-            body:
-              JSON.stringify({
-                source:
-                  "monitor-panel",
-                requestedAt:
-                  new Date()
-                    .toISOString()
-              })
-          }
-        );
-
-
-      let result = {};
-
-      try {
-
-        result =
-          await response.json();
-
-      } catch {
-        result = {};
-      }
-
-
-      if (
-        !response.ok ||
-        !result.ok
-      ) {
-
-        throw new Error(
-          result.erro ||
-          result.mensagem ||
-          `HTTP ${response.status}`
-        );
-
-      }
-
-
-      text.textContent =
-        "Consultando processos...";
-
-
-      setUpdateMessage(
-        "info",
-        "✅ Consulta iniciada. O GitHub Actions está verificando os 23 processos. Aguarde aproximadamente 1 minuto."
-      );
-
-
-      const changed =
-        await waitForNewData(
-          beforeFingerprint
-        );
-
-
-      if (
-        changed
-      ) {
-
-        await loadData(false);
-
-        text.textContent =
-          "Processos atualizados";
-
-
-        icon.textContent =
-          "✅";
-
-
-        setUpdateMessage(
-          "success",
-          "Processos atualizados com sucesso. O painel já está exibindo os dados mais recentes."
-        );
-
-
-        showToast(
-          "✅ Atualização concluída."
-        );
-
-      } else {
-
-        text.textContent =
-          "Atualização solicitada";
-
-
-        icon.textContent =
-          "✅";
-
-
-        setUpdateMessage(
-          "success",
-          "A consulta foi executada. A publicação dos novos dados ainda pode levar alguns instantes. O painel continuará verificando automaticamente."
-        );
-
-
-        setTimeout(
-          () =>
-            loadData(false)
-              .catch(() => {}),
-          30000
-        );
-
-      }
-
-    } catch (error) {
-
-      console.error(error);
-
-
-      icon.textContent =
-        "⚠️";
-
-
-      text.textContent =
-        "Tentar novamente";
-
-
-      setUpdateMessage(
-        "error",
-        "Não foi possível iniciar a atualização: " +
-        error.message
-      );
-
-
-      showToast(
-        "Falha ao atualizar os processos."
-      );
-
-    } finally {
-
-      setTimeout(() => {
-
-        button.disabled =
-          false;
-
-        if (
-          text.textContent !==
-          "Tentar novamente"
-        ) {
-
-          icon.textContent =
-            "🔄";
-
-          text.textContent =
-            "Atualizar processos";
-
-        }
-
-        isUpdatingProcesses =
-          false;
-
-      }, 4500);
-
-    }
-
-  }
-
-
-  async function waitForNewData(
-    oldFingerprint
-  ) {
-
-    const start =
-      Date.now();
-
-
-    while (
-      Date.now() - start <
-      UPDATE_TIMEOUT
-    ) {
-
-      await sleep(
-        UPDATE_POLL_INTERVAL
-      );
-
-
-      try {
-
-        const newest =
-          await fetchData();
-
-
-        const fingerprint =
-          JSON.stringify(
-            newest
-          );
-
-
-        if (
-          fingerprint !==
-          oldFingerprint
-        ) {
-
-          rawData =
-            newest;
-
-          currentFingerprint =
-            fingerprint;
-
-          processes =
-            normalizeData(
-              newest
-            );
-
-          updateHeader(
-            newest
-          );
-
-          renderAll();
-
-          return true;
-
-        }
-
-      } catch (error) {
-
-        console.log(
-          "Aguardando publicação...",
-          error
-        );
-
-      }
-
-    }
-
-
-    return false;
-
-  }
-
-
-  function sleep(ms) {
-
-    return new Promise(
-      resolve =>
-        setTimeout(
-          resolve,
-          ms
-        )
     );
 
   }
 
 
-  function setUpdateMessage(
-    type,
-    message
-  ) {
-
-    const element =
-      document.getElementById(
-        "updateMessage"
-      );
-
-
-    element.className =
-      "update-message show " +
-      type;
-
-
-    element.textContent =
-      message;
-
-  }
-
-
-  /* =========================================================
+  /* =======================================================
      ORDENAÇÃO
-     ========================================================= */
+     ======================================================= */
 
   function sortedProcesses() {
 
     return [
       ...processes
-    ].sort(
-      (a,b) => {
+    ]
+      .sort(
+        (a,b) => {
 
-        const priorityA =
-          isPriority(
-            a.numero
-          )
+          const pa =
+            isPriority(
+              a.numero
+            )
             ? 1
             : 0;
 
-        const priorityB =
-          isPriority(
-            b.numero
-          )
+          const pb =
+            isPriority(
+              b.numero
+            )
             ? 1
             : 0;
 
 
-        if (
-          priorityA !==
-          priorityB
-        ) {
+          if (
+            pa !== pb
+          ) {
+
+            return pb - pa;
+
+          }
+
 
           return (
-            priorityB -
-            priorityA
+            processNumbers
+              .indexOf(
+                a.numero
+              )
+            -
+            processNumbers
+              .indexOf(
+                b.numero
+              )
           );
 
         }
-
-
-        return (
-          PROCESS_NUMBERS
-            .indexOf(
-              a.numero
-            )
-          -
-          PROCESS_NUMBERS
-            .indexOf(
-              b.numero
-            )
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     PROCESS CARD
-     ========================================================= */
-
-  function escapeHtml(value) {
-
-    return String(
-      value ?? ""
-    )
-      .replace(
-        /&/g,
-        "&amp;"
-      )
-      .replace(
-        /</g,
-        "&lt;"
-      )
-      .replace(
-        />/g,
-        "&gt;"
-      )
-      .replace(
-        /"/g,
-        "&quot;"
-      )
-      .replace(
-        /'/g,
-        "&#039;"
       );
 
   }
 
 
-  function processCard(
-    process
-  ) {
+  /* =======================================================
+     MÉTRICAS
+     ======================================================= */
+
+  function renderMetrics() {
+
+    const active =
+      processes.filter(
+        isActive
+      ).length;
+
+
+    const stopped =
+      processes.filter(
+        isStopped
+      ).length;
+
+
+    const priorities =
+      processes.filter(
+        item =>
+          isPriority(
+            item.numero
+          )
+      ).length;
+
+
+    const news =
+      processes.filter(
+        hasMovementToday
+      ).length;
+
+
+    document
+      .getElementById(
+        "metricActive"
+      )
+      .textContent =
+        active;
+
+
+    document
+      .getElementById(
+        "metricStopped"
+      )
+      .textContent =
+        stopped;
+
+
+    document
+      .getElementById(
+        "metricPriority"
+      )
+      .textContent =
+        priorities;
+
+
+    document
+      .getElementById(
+        "metricNews"
+      )
+      .textContent =
+        news;
+
+  }
+
+
+  /* =======================================================
+     CARD PROCESSO
+     ======================================================= */
+
+  function processCard(process) {
 
     const priority =
       isPriority(
@@ -2672,23 +2291,18 @@
       );
 
 
-    const statusClass =
-      process.erro
-        ? "error"
-        :
-        process.situacao
-          .toLowerCase()
-          .includes("aberto")
-        ? "open"
-        : "waiting";
+    const stopped =
+      isStopped(
+        process
+      );
 
 
-    const situation =
-      process.erro
-        ? "Erro na consulta"
-        :
-        process.situacao ||
-        "Aguardando dados";
+    const movementText = [
+      process.dataMovimentacao,
+      process.evento
+    ]
+      .filter(Boolean)
+      .join(" — ");
 
 
     return `
@@ -2700,16 +2314,16 @@
         "
       >
 
-        <div class="priority-bar">
+        <div class="priority-strip">
           ⭐ PROCESSO PRIORITÁRIO
         </div>
 
 
-        <div class="process-main">
+        <div class="process-body">
 
           <div class="process-top">
 
-            <div class="process-top-content">
+            <div class="process-title-area">
 
               <div class="process-number">
                 ${escapeHtml(process.numero)}
@@ -2720,7 +2334,7 @@
                 ${
                   escapeHtml(
                     process.assunto ||
-                    "Assunto ainda não carregado"
+                    "Assunto não informado"
                   )
                 }
 
@@ -2739,9 +2353,6 @@
                   '${escapeHtml(process.numero)}'
                 )
               "
-              aria-label="
-                Destacar processo
-              "
             >
               ${priority ? "⭐" : "☆"}
             </button>
@@ -2749,21 +2360,25 @@
           </div>
 
 
-          <div class="process-grid">
+          <div class="process-info-grid">
 
             <div class="process-info">
 
-              <span class="process-info-label">
+              <span class="info-label">
                 Situação
               </span>
 
-              <span
-                class="
-                  status
-                  ${statusClass}
-                "
-              >
-                ${escapeHtml(situation)}
+              <span class="info-value">
+
+                ${
+                  stopped
+                  ? "⏸️ Parado"
+                  :
+                  escapeHtml(
+                    process.situacao
+                  )
+                }
+
               </span>
 
             </div>
@@ -2771,15 +2386,15 @@
 
             <div class="process-info">
 
-              <span class="process-info-label">
-                Atualização
+              <span class="info-label">
+                Setor atual
               </span>
 
-              <span class="process-info-value">
+              <span class="info-value">
 
                 ${
                   escapeHtml(
-                    process.atualizadoEm ||
+                    process.setor ||
                     "—"
                   )
                 }
@@ -2789,18 +2404,13 @@
             </div>
 
 
-            <div
-              class="
-                process-info
-                wide
-              "
-            >
+            <div class="process-info wide">
 
-              <span class="process-info-label">
+              <span class="info-label">
                 Interessado
               </span>
 
-              <span class="process-info-value">
+              <span class="info-value">
 
                 ${
                   escapeHtml(
@@ -2816,70 +2426,65 @@
           </div>
 
 
-          ${
-            process.movimento
-            ?
-            `
+          <div class="movement">
 
-              <div class="movement">
+            <div class="movement-label">
+              Última movimentação
+            </div>
 
-                <div class="movement-title">
-                  Última movimentação
-                </div>
+            <div class="movement-value">
 
-                <div class="movement-text">
+              ${
+                escapeHtml(
+                  movementText ||
+                  "Não informada"
+                )
+              }
 
-                  ${escapeHtml(process.movimento)}
+              ${
+                hasMovementToday(process)
+                ?
+                `
+                  <span class="new-badge">
+                    HOJE
+                  </span>
+                `
+                :
+                ""
+              }
 
-                  ${
-                    process.novaMovimentacao
-                    ?
-                    `
-                      <span class="new-badge">
-                        NOVA
-                      </span>
-                    `
-                    :
-                    ""
-                  }
+            </div>
 
-                </div>
-
-              </div>
-
-            `
-            :
-            ""
-          }
+          </div>
 
 
-          ${
-            process.erro
-            ?
-            `
+          <div class="card-actions">
 
-              <div class="movement">
+            <button
+              class="sefaz-button"
+              onclick="
+                consultOnSefaz(
+                  '${escapeHtml(process.numero)}'
+                )
+              "
+            >
+              🔎 Consultar na SEFAZ
+            </button>
 
-                <div
-                  class="movement-title"
-                  style="color:#c93434"
-                >
-                  Erro
-                </div>
 
-                <div
-                  class="movement-text"
-                  style="color:#c93434"
-                >
-                  ${escapeHtml(process.erro)}
-                </div>
+            <button
+              class="delete-button"
+              onclick="
+                deleteProcess(
+                  '${escapeHtml(process.numero)}'
+                )
+              "
+              aria-label="Excluir processo"
+            >
+              🗑
+            </button>
 
-              </div>
-
-            `
-            :
-            ""
-          }
+          </div>
 
         </div>
 
@@ -2890,21 +2495,21 @@
   }
 
 
-  /* =========================================================
-     VISÃO GERAL
-     ========================================================= */
+  /* =======================================================
+     DESTAQUES
+     ======================================================= */
 
-  function renderOverview() {
+  function renderHighlights() {
 
     const sorted =
       sortedProcesses();
 
 
-    const priority =
+    const priorities =
       sorted.filter(
-        process =>
+        item =>
           isPriority(
-            process.numero
+            item.numero
           )
       );
 
@@ -2913,29 +2518,14 @@
 
 
     if (
-      priority.length
+      priorities.length
     ) {
 
-      const others =
-        sorted.filter(
-          process =>
-            !isPriority(
-              process.numero
-            )
-        );
-
-
-      selected = [
-        ...priority,
-        ...others.slice(
+      selected =
+        priorities.slice(
           0,
-          Math.max(
-            0,
-            5 -
-            priority.length
-          )
-        )
-      ];
+          6
+        );
 
     } else {
 
@@ -2950,21 +2540,119 @@
 
     document
       .getElementById(
-        "overviewProcesses"
+        "highlightProcesses"
       )
       .innerHTML =
+        selected.length
+        ?
         selected
           .map(
             processCard
           )
-          .join("");
+          .join("")
+        :
+        `
+          <div class="empty">
+            Nenhum processo cadastrado.
+          </div>
+        `;
 
   }
 
 
-  /* =========================================================
-     PROCESSOS
-     ========================================================= */
+  /* =======================================================
+     QUADRO GERAL
+     ======================================================= */
+
+  function renderGeneralTable() {
+
+    const tbody =
+      document.getElementById(
+        "generalTableBody"
+      );
+
+
+    tbody.innerHTML =
+      sortedProcesses()
+        .map(process => {
+
+          const movement = [
+            process.dataMovimentacao,
+            process.evento
+          ]
+            .filter(Boolean)
+            .join(" — ");
+
+
+          return `
+
+            <tr
+              class="
+                ${
+                  isPriority(
+                    process.numero
+                  )
+                  ?
+                  "row-priority"
+                  :
+                  ""
+                }
+              "
+            >
+
+              <td class="process-col">
+
+                ${
+                  isPriority(
+                    process.numero
+                  )
+                  ?
+                  "⭐ "
+                  :
+                  ""
+                }
+
+                ${escapeHtml(process.numero)}
+
+              </td>
+
+
+              <td class="sector-col">
+
+                ${
+                  escapeHtml(
+                    process.setor ||
+                    "—"
+                  )
+                }
+
+              </td>
+
+
+              <td>
+
+                ${
+                  escapeHtml(
+                    movement ||
+                    "—"
+                  )
+                }
+
+              </td>
+
+            </tr>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /* =======================================================
+     LISTA PROCESSOS
+     ======================================================= */
 
   function renderProcesses() {
 
@@ -2972,7 +2660,7 @@
       (
         document
           .getElementById(
-            "searchProcess"
+            "processSearch"
           )
           ?.value ||
         ""
@@ -2986,324 +2674,61 @@
         .filter(process => {
 
           if (!search) {
-
             return true;
-
           }
 
 
           const text = [
 
             process.numero,
-
-            process.assunto,
-
             process.interessado,
-
-            process.situacao,
-
-            process.movimento
+            process.assunto,
+            process.setor,
+            process.evento
 
           ]
             .join(" ")
             .toLowerCase();
 
 
-          return text
-            .includes(search);
+          return text.includes(
+            search
+          );
 
         });
 
 
-    const container =
-      document.getElementById(
-        "allProcesses"
-      );
+    document
+      .getElementById(
+        "processList"
+      )
+      .innerHTML =
+        filtered.length
+        ?
+        filtered
+          .map(
+            processCard
+          )
+          .join("")
+        :
+        `
+          <div class="empty">
 
+            <div class="empty-icon">
+              🔎
+            </div>
 
-    if (
-      !filtered.length
-    ) {
+            Nenhum processo encontrado.
 
-      container.innerHTML = `
-
-        <div class="empty-state">
-
-          <div class="empty-icon">
-            🔎
           </div>
-
-          Nenhum processo encontrado.
-
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    container.innerHTML =
-      filtered
-        .map(
-          processCard
-        )
-        .join("");
+        `;
 
   }
 
 
-  /* =========================================================
-     MÉTRICAS
-     ========================================================= */
-
-  function renderMetrics() {
-
-    const total =
-      processes.length;
-
-
-    const open =
-      processes.filter(
-        item =>
-          String(
-            item.situacao
-          )
-            .toLowerCase()
-            .includes(
-              "aberto"
-            )
-      )
-      .length;
-
-
-    const news =
-      processes.filter(
-        item =>
-          item.novaMovimentacao
-      )
-      .length;
-
-
-    const priorities =
-      processes.filter(
-        item =>
-          isPriority(
-            item.numero
-          )
-      )
-      .length;
-
-
-    document
-      .getElementById(
-        "metricTotal"
-      )
-      .textContent =
-        total;
-
-
-    document
-      .getElementById(
-        "metricOpen"
-      )
-      .textContent =
-        open;
-
-
-    document
-      .getElementById(
-        "metricNew"
-      )
-      .textContent =
-        news;
-
-
-    document
-      .getElementById(
-        "metricPriority"
-      )
-      .textContent =
-        priorities;
-
-  }
-
-
-  /* =========================================================
-     RESUMO
-     ========================================================= */
-
-  function renderSummary() {
-
-    const total =
-      processes.length;
-
-
-    const open =
-      processes.filter(
-        item =>
-          item.situacao
-            .toLowerCase()
-            .includes("aberto")
-      )
-      .length;
-
-
-    const errors =
-      processes.filter(
-        item =>
-          Boolean(
-            item.erro
-          )
-      )
-      .length;
-
-
-    const news =
-      processes.filter(
-        item =>
-          item.novaMovimentacao
-      )
-      .length;
-
-
-    const priorities =
-      processes.filter(
-        item =>
-          isPriority(
-            item.numero
-          )
-      )
-      .length;
-
-
-    const movementCount =
-      processes.filter(
-        item =>
-          Boolean(
-            item.movimento
-          )
-      )
-      .length;
-
-
-    document
-      .getElementById(
-        "summaryContent"
-      )
-      .innerHTML = `
-
-        <div class="summary-card">
-
-          <div class="summary-card-title">
-            Quadro geral
-          </div>
-
-
-          ${summaryRow(
-            "Total monitorado",
-            total
-          )}
-
-          ${summaryRow(
-            "Processos abertos",
-            open
-          )}
-
-          ${summaryRow(
-            "Com movimentação carregada",
-            movementCount
-          )}
-
-          ${summaryRow(
-            "Novas movimentações",
-            news
-          )}
-
-          ${summaryRow(
-            "Processos prioritários",
-            priorities
-          )}
-
-          ${summaryRow(
-            "Erros de consulta",
-            errors
-          )}
-
-        </div>
-
-
-        <div class="summary-card">
-
-          <div class="summary-card-title">
-            Monitoramento automático
-          </div>
-
-
-          ${summaryRow(
-            "Periodicidade",
-            "A cada 3 horas"
-          )}
-
-          ${summaryRow(
-            "Horários",
-            "08:00 • 11:00 • 14:00 • 17:00"
-          )}
-
-          ${summaryRow(
-            "Dias",
-            "Segunda a sexta"
-          )}
-
-          ${summaryRow(
-            "Consulta manual",
-            "Disponível pelo botão Atualizar processos"
-          )}
-
-          ${summaryRow(
-            "Últimos dados",
-            formatDate(
-              getUpdatedDate(
-                rawData
-              )
-            )
-          )}
-
-        </div>
-
-      `;
-
-  }
-
-
-  function summaryRow(
-    label,
-    value
-  ) {
-
-    return `
-
-      <div class="summary-row">
-
-        <span class="summary-row-label">
-          ${escapeHtml(label)}
-        </span>
-
-        <span class="summary-row-value">
-          ${escapeHtml(value)}
-        </span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* =========================================================
+  /* =======================================================
      ALERTAS
-     ========================================================= */
+     ======================================================= */
 
   function renderAlerts() {
 
@@ -3314,19 +2739,28 @@
       .forEach(process => {
 
         if (
-          process.novaMovimentacao
+          hasMovementToday(
+            process
+          )
         ) {
 
           alerts.push({
 
-            type: "new",
+            type:
+              "new",
 
             title:
-              `🔔 Nova movimentação — ${process.numero}`,
+              `🔔 Movimentação hoje — ${process.numero}`,
 
             text:
-              process.movimento ||
-              "Nova movimentação detectada."
+              [
+                process.setor,
+                process.evento
+              ]
+                .filter(Boolean)
+                .join(" — ")
+                ||
+                "Movimentação registrada hoje."
 
           });
 
@@ -3339,7 +2773,8 @@
 
           alerts.push({
 
-            type: "error",
+            type:
+              "error",
 
             title:
               `⚠️ Erro — ${process.numero}`,
@@ -3357,7 +2792,7 @@
     const container =
       document
         .getElementById(
-          "alertsContent"
+          "alertsList"
         );
 
 
@@ -3367,24 +2802,15 @@
 
       container.innerHTML = `
 
-        <div class="empty-state">
+        <div class="empty">
 
           <div class="empty-icon">
             ✅
           </div>
 
           <strong>
-            Nenhum alerta pendente
+            Nenhum alerta no momento
           </strong>
-
-          <div
-            style="
-              margin-top:6px;
-              font-size:12px;
-            "
-          >
-            Novas movimentações aparecerão aqui.
-          </div>
 
         </div>
 
@@ -3397,56 +2823,716 @@
 
     container.innerHTML =
       alerts
-        .map(alert => `
+        .map(
+          alert => `
 
-          <div
-            class="
-              alert-card
-              ${alert.type}
-            "
-          >
+            <div
+              class="
+                alert
+                ${alert.type}
+              "
+            >
 
-            <div class="alert-title">
-              ${escapeHtml(alert.title)}
+              <div class="alert-title">
+                ${escapeHtml(alert.title)}
+              </div>
+
+              <div class="alert-text">
+                ${escapeHtml(alert.text)}
+              </div>
+
             </div>
 
-            <div class="alert-text">
-              ${escapeHtml(alert.text)}
-            </div>
-
-          </div>
-
-        `)
+          `
+        )
         .join("");
 
   }
 
 
-  /* =========================================================
-     RENDER GERAL
-     ========================================================= */
+  /* =======================================================
+     RENDER
+     ======================================================= */
 
   function renderAll() {
 
     renderMetrics();
 
-    renderOverview();
+    renderHighlights();
+
+    renderGeneralTable();
 
     renderProcesses();
-
-    renderSummary();
 
     renderAlerts();
 
   }
 
 
-  /* =========================================================
+  /* =======================================================
+     CONSULTAR SEFAZ
+     ======================================================= */
+
+  function consultOnSefaz(number) {
+
+    const url =
+      SEFAZ_BASE_URL
+      +
+      encodeURI(number);
+
+
+    window.open(
+      url,
+      "_blank"
+    );
+
+  }
+
+
+  /* =======================================================
+     ADICIONAR
+     ======================================================= */
+
+  async function addProcess() {
+
+    const input =
+      document
+        .getElementById(
+          "newProcessNumber"
+        );
+
+
+    const button =
+      document
+        .getElementById(
+          "addProcessButton"
+        );
+
+
+    const number =
+      String(
+        input.value || ""
+      )
+        .trim()
+        .replace(/\s+/g,"");
+
+
+    if (!number) {
+
+      showManagementMessage(
+        "error",
+        "Informe o número do processo."
+      );
+
+      return;
+
+    }
+
+
+    const regex =
+      /^\d{2}\.\d{2}\.\d{6}\.\d{6}\/\d{4}-\d{2}$/;
+
+
+    if (
+      !regex.test(number)
+    ) {
+
+      showManagementMessage(
+        "error",
+        "Formato inválido. Exemplo: 01.01.028101.030037/2026-43"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      processNumbers.includes(
+        number
+      )
+    ) {
+
+      showManagementMessage(
+        "error",
+        "Este processo já está cadastrado."
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !confirm(
+        `Adicionar o processo ${number} ao monitoramento?`
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    button.disabled =
+      true;
+
+    button.textContent =
+      "Adicionando...";
+
+
+    try {
+
+      const response =
+        await fetch(
+          WORKER_URL,
+          {
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                acao:
+                  "adicionar",
+                numero:
+                  number
+              })
+          }
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if (
+        !response.ok
+        ||
+        !result.ok
+      ) {
+
+        throw new Error(
+          result.erro
+          ||
+          "Não foi possível adicionar."
+        );
+
+      }
+
+
+      input.value =
+        "";
+
+
+      showManagementMessage(
+        "success",
+        "✅ Processo adicionado. A primeira consulta foi iniciada."
+      );
+
+
+      showToast(
+        "Processo adicionado com sucesso."
+      );
+
+
+      await waitForProcessListChange(
+        number,
+        true
+      );
+
+
+      await loadAll();
+
+
+    } catch(error) {
+
+      console.error(error);
+
+
+      showManagementMessage(
+        "error",
+        "Não foi possível adicionar: "
+        +
+        error.message
+      );
+
+    } finally {
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "Adicionar";
+
+    }
+
+  }
+
+
+  /* =======================================================
+     EXCLUIR
+     ======================================================= */
+
+  async function deleteProcess(number) {
+
+    if (
+      !confirm(
+        `Excluir o processo ${number} do monitoramento?`
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    try {
+
+      showToast(
+        "Excluindo processo..."
+      );
+
+
+      const response =
+        await fetch(
+          WORKER_URL,
+          {
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                acao:
+                  "excluir",
+                numero:
+                  number
+              })
+          }
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if (
+        !response.ok
+        ||
+        !result.ok
+      ) {
+
+        throw new Error(
+          result.erro
+          ||
+          "Não foi possível excluir."
+        );
+
+      }
+
+
+      removePriority(
+        number
+      );
+
+
+      await waitForProcessListChange(
+        number,
+        false
+      );
+
+
+      await loadAll();
+
+
+      showToast(
+        "✅ Processo excluído."
+      );
+
+
+    } catch(error) {
+
+      console.error(error);
+
+
+      alert(
+        "Não foi possível excluir o processo: "
+        +
+        error.message
+      );
+
+    }
+
+  }
+
+
+  function removePriority(number) {
+
+    const updated =
+      getPriorities()
+        .filter(
+          item =>
+            item !== number
+        );
+
+
+    savePriorities(
+      updated
+    );
+
+  }
+
+
+  async function waitForProcessListChange(
+    number,
+    shouldExist
+  ) {
+
+    const start =
+      Date.now();
+
+
+    while (
+      Date.now() - start
+      <
+      60000
+    ) {
+
+      await sleep(
+        3000
+      );
+
+
+      try {
+
+        const file =
+          await fetchJson(
+            PROCESS_LIST_URL
+          );
+
+
+        const list =
+          Array.isArray(
+            file.processos
+          )
+          ?
+          file.processos
+          :
+          [];
+
+
+        if (
+          list.includes(number)
+          ===
+          shouldExist
+        ) {
+
+          return true;
+
+        }
+
+      } catch {
+        /* continua tentando */
+      }
+
+    }
+
+
+    return false;
+
+  }
+
+
+  /* =======================================================
+     ATUALIZAR PROCESSOS
+     ======================================================= */
+
+  async function updateProcesses() {
+
+    if (
+      updating
+    ) {
+
+      return;
+
+    }
+
+
+    updating =
+      true;
+
+
+    const button =
+      document
+        .getElementById(
+          "updateButton"
+        );
+
+
+    button.disabled =
+      true;
+
+    button.textContent =
+      "⏳ Iniciando atualização...";
+
+
+    setUpdateMessage(
+      "info",
+      "Solicitando uma nova consulta de todos os processos..."
+    );
+
+
+    let oldFingerprint =
+      currentFingerprint;
+
+
+    try {
+
+      const response =
+        await fetch(
+          WORKER_URL,
+          {
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                acao:
+                  "atualizar"
+              })
+          }
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if (
+        !response.ok
+        ||
+        !result.ok
+      ) {
+
+        throw new Error(
+          result.erro
+          ||
+          "Falha ao iniciar consulta."
+        );
+
+      }
+
+
+      button.textContent =
+        "⏳ Consultando processos...";
+
+
+      setUpdateMessage(
+        "info",
+        "Consulta iniciada. Aguarde enquanto os processos são verificados."
+      );
+
+
+      const changed =
+        await waitForNewData(
+          oldFingerprint
+        );
+
+
+      if (
+        changed
+      ) {
+
+        await loadAll();
+
+
+        setUpdateMessage(
+          "success",
+          "✅ Processos atualizados com sucesso."
+        );
+
+
+        showToast(
+          "Atualização concluída."
+        );
+
+      } else {
+
+        setUpdateMessage(
+          "success",
+          "Consulta iniciada com sucesso. A publicação dos novos dados ainda pode levar alguns instantes."
+        );
+
+      }
+
+
+    } catch(error) {
+
+      console.error(error);
+
+
+      setUpdateMessage(
+        "error",
+        "Não foi possível atualizar: "
+        +
+        error.message
+      );
+
+    } finally {
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "🔄 Atualizar processos";
+
+      updating =
+        false;
+
+    }
+
+  }
+
+
+  async function waitForNewData(
+    oldFingerprint
+  ) {
+
+    const start =
+      Date.now();
+
+
+    while (
+      Date.now() - start
+      <
+      UPDATE_TIMEOUT
+    ) {
+
+      await sleep(
+        POLL_INTERVAL
+      );
+
+
+      try {
+
+        const newest =
+          await fetchJson(
+            DATA_URL
+          );
+
+
+        const fingerprint =
+          JSON.stringify(
+            newest
+          );
+
+
+        if (
+          fingerprint
+          !==
+          oldFingerprint
+        ) {
+
+          currentFingerprint =
+            fingerprint;
+
+          return true;
+
+        }
+
+      } catch {
+        /* continua aguardando */
+      }
+
+    }
+
+
+    return false;
+
+  }
+
+
+  /* =======================================================
+     MENSAGENS
+     ======================================================= */
+
+  function setUpdateMessage(
+    type,
+    text
+  ) {
+
+    const element =
+      document
+        .getElementById(
+          "updateMessage"
+        );
+
+
+    element.className =
+      `update-message show ${type}`;
+
+
+    element.textContent =
+      text;
+
+  }
+
+
+  function showManagementMessage(
+    type,
+    text
+  ) {
+
+    const element =
+      document
+        .getElementById(
+          "managementMessage"
+        );
+
+
+    element.className =
+      `management-message show ${type}`;
+
+
+    element.textContent =
+      text;
+
+  }
+
+
+  function sleep(ms) {
+
+    return new Promise(
+      resolve =>
+        setTimeout(
+          resolve,
+          ms
+        )
+    );
+
+  }
+
+
+  /* =======================================================
      ABAS
-     ========================================================= */
+     ======================================================= */
 
   function openPage(
-    name,
+    pageName,
     button
   ) {
 
@@ -3466,7 +3552,7 @@
 
     document
       .getElementById(
-        `page-${name}`
+        `page-${pageName}`
       )
       .classList
       .add(
@@ -3476,7 +3562,7 @@
 
     document
       .querySelectorAll(
-        ".nav-item"
+        ".nav-button"
       )
       .forEach(item => {
 
@@ -3505,25 +3591,24 @@
   }
 
 
-  /* =========================================================
+  /* =======================================================
      TOAST
-     ========================================================= */
+     ======================================================= */
 
   let toastTimer;
 
 
-  function showToast(
-    message
-  ) {
+  function showToast(text) {
 
     const toast =
-      document.getElementById(
-        "toast"
-      );
+      document
+        .getElementById(
+          "toast"
+        );
 
 
     toast.textContent =
-      message;
+      text;
 
 
     toast.classList
@@ -3547,58 +3632,101 @@
             );
 
         },
-        3200
+        3000
       );
 
   }
 
 
-  /* =========================================================
+  /* =======================================================
      INICIALIZAÇÃO
-     ========================================================= */
+
+     IMPORTANTE:
+     Sempre abre em INÍCIO.
+     ======================================================= */
 
   async function initialize() {
 
-    processes =
-      normalizeData({});
+    document
+      .querySelectorAll(
+        ".page"
+      )
+      .forEach(page => {
+
+        page.classList
+          .remove(
+            "active"
+          );
+
+      });
 
 
-    renderAll();
+    document
+      .getElementById(
+        "page-home"
+      )
+      .classList
+      .add(
+        "active"
+      );
 
 
-    try {
+    const navButtons =
+      document
+        .querySelectorAll(
+          ".nav-button"
+        );
 
-      await loadData(false);
 
-    } catch {
+    navButtons
+      .forEach(
+        button =>
+          button.classList
+            .remove(
+              "active"
+            )
+      );
 
-      /* mantém estrutura básica */
+
+    if (
+      navButtons[0]
+    ) {
+
+      navButtons[0]
+        .classList
+        .add(
+          "active"
+        );
 
     }
 
 
+    await loadAll();
+
+
     /*
-      Atualização silenciosa periódica
-      da interface.
+      Atualiza silenciosamente
+      os dados exibidos a cada 5 minutos.
 
       Isso NÃO dispara nova consulta.
-      Apenas verifica dados.json.
     */
 
     setInterval(
       () => {
 
         if (
-          !isUpdatingProcesses
+          !updating
         ) {
 
-          loadData(false)
-            .catch(() => {});
+          loadAll()
+            .catch(
+              () => {}
+            );
 
         }
 
       },
-      REFRESH_INTERVAL
+      5 * 60 * 1000
     );
 
   }
