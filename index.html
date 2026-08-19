@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
 
@@ -11,37 +10,16 @@
 
   <title>Monitor SEFAZ-AM</title>
 
-  <!-- ======================================================
-       PWA / IPHONE
-       ====================================================== -->
-
   <link rel="manifest" href="./manifest.json">
 
   <meta name="theme-color" content="#0b63ce">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Monitor SEFAZ-AM">
 
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
-  >
-
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="default"
-  >
-
-  <meta
-    name="apple-mobile-web-app-title"
-    content="Monitor SEFAZ-AM"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="./icon-192.png"
-  >
-
+  <link rel="apple-touch-icon" href="./icon-192.png">
 
   <style>
-
     :root {
       --azul: #0b63ce;
       --azul2: #1480e8;
@@ -73,21 +51,17 @@
         0 4px 18px rgba(0,0,0,.07);
     }
 
-
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
-
     html {
       background: var(--fundo);
     }
 
-
     body {
       margin: 0;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -105,30 +79,24 @@
         );
 
       color: var(--texto);
-
       min-height: 100vh;
 
       padding-bottom:
         calc(
           var(--menu-height)
-          +
-          env(safe-area-inset-bottom)
-          +
-          18px
+          + env(safe-area-inset-bottom)
+          + 18px
         );
     }
-
 
     button,
     input {
       font: inherit;
     }
 
-
     button {
       cursor: pointer;
     }
-
 
     .app {
       width: 100%;
@@ -136,10 +104,7 @@
       margin: 0 auto;
     }
 
-
-    /* ======================================================
-       CABEÇALHO
-       ====================================================== */
+    /* CABEÇALHO */
 
     .header {
       padding:
@@ -163,15 +128,12 @@
         0 9px 26px rgba(11,99,206,.18);
     }
 
-
     .header-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       gap: 15px;
     }
-
 
     .header-small {
       font-size: 16px;
@@ -179,16 +141,12 @@
       margin-bottom: 5px;
     }
 
-
     .header-title {
       margin: 0;
-
       font-size: 31px;
       line-height: 1.05;
-
       font-weight: 850;
     }
-
 
     .online-pill {
       border:
@@ -203,10 +161,8 @@
 
       font-size: 13px;
       font-weight: 800;
-
       white-space: nowrap;
     }
-
 
     .header-cards {
       margin-top: 27px;
@@ -218,7 +174,6 @@
 
       gap: 15px;
     }
-
 
     .header-card {
       background:
@@ -232,52 +187,36 @@
       padding: 15px 18px;
     }
 
-
     .header-card-label {
       display: block;
-
       font-size: 13px;
       opacity: .8;
-
       margin-bottom: 5px;
     }
 
-
     .header-card-value {
       display: block;
-
       font-size: 16px;
       font-weight: 850;
-
       overflow: hidden;
-
       text-overflow: ellipsis;
-
       white-space: nowrap;
     }
 
-
-    /* ======================================================
-       CONTEÚDO
-       ====================================================== */
+    /* CONTEÚDO */
 
     main {
       padding: 23px 22px 0;
     }
 
-
     .page {
       display: none;
     }
 
-
     .page.active {
       display: block;
-
-      animation:
-        fade .16s ease;
+      animation: fade .16s ease;
     }
-
 
     @keyframes fade {
       from {
@@ -289,36 +228,24 @@
       }
     }
 
-
     .section-header {
-      margin:
-        0 5px
-        16px;
+      margin: 0 5px 16px;
     }
-
 
     .section-header h2 {
       margin: 0;
-
       font-size: 25px;
       line-height: 1.1;
     }
 
-
     .section-subtitle {
       margin-top: 6px;
-
       color: var(--cinza);
-
       font-size: 14px;
-
       line-height: 1.35;
     }
 
-
-    /* ======================================================
-       CARDS INÍCIO
-       ====================================================== */
+    /* MÉTRICAS */
 
     .metrics {
       display: grid;
@@ -330,7 +257,6 @@
 
       margin-bottom: 24px;
     }
-
 
     .metric {
       background: #fff;
@@ -345,44 +271,31 @@
       min-height: 170px;
 
       display: flex;
-
       flex-direction: column;
-
       justify-content: space-between;
 
       box-shadow:
         0 3px 12px rgba(0,0,0,.035);
     }
 
-
     .metric-icon {
       font-size: 30px;
     }
 
-
     .metric-number {
       margin-top: 22px;
-
       font-size: 41px;
-
       font-weight: 850;
-
       line-height: .9;
     }
 
-
     .metric-label {
       margin-top: 8px;
-
       font-size: 15px;
-
       color: var(--cinza);
     }
 
-
-    /* ======================================================
-       ATUALIZAÇÃO
-       ====================================================== */
+    /* ATUALIZAÇÃO */
 
     .update-box {
       background: #fff;
@@ -398,7 +311,6 @@
 
       margin-bottom: 28px;
     }
-
 
     .primary-button {
       width: 100%;
@@ -421,18 +333,37 @@
       padding: 14px 18px;
 
       font-size: 17px;
-
       font-weight: 850;
 
       box-shadow:
         0 5px 15px rgba(11,99,206,.20);
     }
 
-
     .primary-button:disabled {
       opacity: .6;
     }
 
+    .secondary-button {
+      width: 100%;
+
+      border:
+        1px solid #bfd7f5;
+
+      border-radius: 16px;
+
+      background: #fff;
+
+      color: var(--azul);
+
+      min-height: 52px;
+
+      padding: 12px 15px;
+
+      margin-top: 10px;
+
+      font-size: 14px;
+      font-weight: 800;
+    }
 
     .update-message {
       display: none;
@@ -444,81 +375,51 @@
       border-radius: 13px;
 
       font-size: 12px;
-
       line-height: 1.4;
     }
-
 
     .update-message.show {
       display: block;
     }
 
-
     .update-message.info {
       color: #084f9f;
-
-      background:
-        var(--azul-claro);
+      background: var(--azul-claro);
     }
-
 
     .update-message.success {
       color: #116b34;
-
-      background:
-        var(--verde-claro);
+      background: var(--verde-claro);
     }
-
 
     .update-message.error {
       color: #a52d2d;
-
-      background:
-        var(--vermelho-claro);
+      background: var(--vermelho-claro);
     }
-
-
-    /* ======================================================
-       DESTAQUES
-       ====================================================== */
 
     .subsection-title {
-      margin:
-        0 5px
-        14px;
+      margin: 0 5px 14px;
     }
-
 
     .subsection-title strong {
       display: block;
-
       font-size: 20px;
     }
 
-
     .subsection-title span {
       display: block;
-
       margin-top: 4px;
-
       font-size: 13px;
-
       color: var(--cinza);
     }
 
-
-    /* ======================================================
-       CARD PROCESSO
-       ====================================================== */
+    /* PROCESSOS */
 
     .process-list {
       display: flex;
-
       flex-direction: column;
-
       gap: 13px;
     }
-
 
     .process-card {
       background: #fff;
@@ -534,11 +435,9 @@
         0 2px 9px rgba(0,0,0,.035);
     }
 
-
     .process-card.priority {
       border-color: #f0cf63;
     }
-
 
     .priority-strip {
       display: none;
@@ -551,65 +450,46 @@
       padding: 7px 15px;
 
       font-size: 10px;
-
       font-weight: 850;
     }
 
-
-    .process-card.priority
-    .priority-strip {
+    .process-card.priority .priority-strip {
       display: block;
     }
-
 
     .process-body {
       padding: 16px;
     }
 
-
     .process-top {
       display: flex;
-
       align-items: flex-start;
-
       gap: 12px;
     }
 
-
     .process-title-area {
       flex: 1;
-
       min-width: 0;
     }
 
-
     .process-number {
       font-size: 14px;
-
       font-weight: 850;
-
       line-height: 1.35;
-
       word-break: break-word;
     }
 
-
     .process-subject {
       margin-top: 5px;
-
       color: var(--cinza);
-
       font-size: 12px;
-
       line-height: 1.4;
     }
-
 
     .star-button {
       flex: 0 0 42px;
 
       width: 42px;
-
       height: 42px;
 
       border:
@@ -620,18 +500,15 @@
       background: #fff;
 
       display: grid;
-
       place-items: center;
 
       font-size: 23px;
     }
 
-
     .star-button.active {
       background:
         var(--amarelo-claro);
     }
-
 
     .process-info-grid {
       margin-top: 14px;
@@ -644,7 +521,6 @@
       gap: 9px;
     }
 
-
     .process-info {
       background: #f5f7f9;
 
@@ -655,12 +531,10 @@
       min-width: 0;
     }
 
-
     .process-info.wide {
       grid-column:
         1 / -1;
     }
-
 
     .info-label {
       display: block;
@@ -676,7 +550,6 @@
       margin-bottom: 4px;
     }
 
-
     .info-value {
       display: block;
 
@@ -689,7 +562,6 @@
       word-break: break-word;
     }
 
-
     .movement {
       margin-top: 13px;
 
@@ -699,28 +571,19 @@
         1px solid var(--borda);
     }
 
-
     .movement-label {
       font-size: 10px;
-
       text-transform: uppercase;
-
       color: var(--cinza);
-
       font-weight: 750;
-
       margin-bottom: 5px;
     }
 
-
     .movement-value {
       font-size: 12px;
-
       font-weight: 650;
-
       line-height: 1.45;
     }
-
 
     .new-badge {
       display: inline-block;
@@ -738,10 +601,8 @@
         var(--laranja);
 
       font-size: 9px;
-
       font-weight: 850;
     }
-
 
     .card-actions {
       display: grid;
@@ -753,7 +614,6 @@
 
       margin-top: 15px;
     }
-
 
     .sefaz-button {
       border: 0;
@@ -769,10 +629,8 @@
         var(--azul);
 
       font-size: 12px;
-
       font-weight: 850;
     }
-
 
     .delete-button {
       width: 45px;
@@ -791,10 +649,7 @@
       font-size: 18px;
     }
 
-
-    /* ======================================================
-       QUADRO GERAL
-       ====================================================== */
+    /* QUADRO GERAL */
 
     .general-table-wrapper {
       overflow-x: auto;
@@ -810,32 +665,21 @@
         0 2px 9px rgba(0,0,0,.035);
     }
 
-
     .general-table {
       width: 100%;
-
       min-width: 660px;
-
       border-collapse: collapse;
     }
 
-
     .general-table th {
       background: #eef5ff;
-
       color: #315271;
-
       text-align: left;
-
       padding: 12px 13px;
-
       font-size: 11px;
-
       text-transform: uppercase;
-
       letter-spacing: .3px;
     }
-
 
     .general-table td {
       border-top:
@@ -844,37 +688,25 @@
       padding: 12px 13px;
 
       font-size: 12px;
-
       line-height: 1.35;
-
       vertical-align: top;
     }
 
-
-    .general-table
-    .process-col {
+    .general-table .process-col {
       width: 220px;
-
       font-weight: 800;
     }
 
-
-    .general-table
-    .sector-col {
+    .general-table .sector-col {
       width: 130px;
-
       font-weight: 700;
     }
-
 
     .row-priority {
       background: #fffdf2;
     }
 
-
-    /* ======================================================
-       ADICIONAR
-       ====================================================== */
+    /* ADICIONAR */
 
     .add-box {
       background: #fff;
@@ -892,26 +724,19 @@
         0 2px 9px rgba(0,0,0,.035);
     }
 
-
     .add-title {
       font-size: 14px;
-
       font-weight: 850;
-
       margin-bottom: 10px;
     }
 
-
     .add-form {
       display: flex;
-
       gap: 8px;
     }
 
-
     .add-form input {
       flex: 1;
-
       min-width: 0;
 
       border:
@@ -926,11 +751,9 @@
       font-size: 13px;
     }
 
-
     .add-form input:focus {
       border-color: var(--azul);
     }
-
 
     .add-button {
       border: 0;
@@ -944,10 +767,8 @@
       padding: 0 16px;
 
       font-weight: 850;
-
       font-size: 13px;
     }
-
 
     .management-message {
       display: none;
@@ -959,37 +780,24 @@
       border-radius: 11px;
 
       font-size: 12px;
-
       line-height: 1.4;
     }
-
 
     .management-message.show {
       display: block;
     }
 
-
     .management-message.success {
-      background:
-        var(--verde-claro);
-
-      color:
-        var(--verde);
+      background: var(--verde-claro);
+      color: var(--verde);
     }
-
 
     .management-message.error {
-      background:
-        var(--vermelho-claro);
-
-      color:
-        var(--vermelho);
+      background: var(--vermelho-claro);
+      color: var(--vermelho);
     }
 
-
-    /* ======================================================
-       BUSCA
-       ====================================================== */
+    /* BUSCA */
 
     .search-box {
       display: flex;
@@ -1005,12 +813,10 @@
 
       border-radius: 15px;
 
-      padding:
-        0 12px;
+      padding: 0 12px;
 
       margin-bottom: 14px;
     }
-
 
     .search-box input {
       width: 100%;
@@ -1026,10 +832,7 @@
       font-size: 13px;
     }
 
-
-    /* ======================================================
-       ALERTAS
-       ====================================================== */
+    /* ALERTAS */
 
     .alert {
       background: #fff;
@@ -1044,25 +847,25 @@
       margin-bottom: 10px;
     }
 
-
     .alert.new {
       border-left:
         4px solid var(--laranja);
     }
-
 
     .alert.error {
       border-left:
         4px solid var(--vermelho);
     }
 
+    .alert.stopped {
+      border-left:
+        4px solid #7f8c8d;
+    }
 
     .alert-title {
       font-size: 13px;
-
       font-weight: 850;
     }
-
 
     .alert-text {
       margin-top: 5px;
@@ -1070,10 +873,29 @@
       color: var(--cinza);
 
       font-size: 12px;
-
       line-height: 1.4;
     }
 
+    .alert-actions {
+      margin-top: 11px;
+    }
+
+    .alert-sefaz-button {
+      width: 100%;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      padding: 11px 12px;
+
+      background: var(--azul-claro);
+
+      color: var(--azul);
+
+      font-size: 12px;
+      font-weight: 850;
+    }
 
     .empty {
       text-align: center;
@@ -1090,17 +912,12 @@
       color: var(--cinza);
     }
 
-
     .empty-icon {
       font-size: 32px;
-
       margin-bottom: 7px;
     }
 
-
-    /* ======================================================
-       MENU INFERIOR
-       ====================================================== */
+    /* MENU */
 
     .bottom-nav {
       position: fixed;
@@ -1108,7 +925,6 @@
       z-index: 1000;
 
       left: 50%;
-
       bottom: 0;
 
       transform:
@@ -1130,8 +946,7 @@
         7px
         calc(
           8px
-          +
-          env(safe-area-inset-bottom)
+          + env(safe-area-inset-bottom)
         );
 
       border-top:
@@ -1147,7 +962,6 @@
         0 -6px 24px rgba(0,0,0,.07);
     }
 
-
     .nav-button {
       border: 0;
 
@@ -1162,7 +976,6 @@
       flex-direction: column;
 
       align-items: center;
-
       justify-content: center;
 
       gap: 4px;
@@ -1170,10 +983,8 @@
       padding: 7px 2px;
 
       font-size: 10px;
-
       font-weight: 800;
     }
-
 
     .nav-button.active {
       background:
@@ -1182,17 +993,12 @@
       color: var(--azul);
     }
 
-
     .nav-icon {
       font-size: 21px;
-
       line-height: 1;
     }
 
-
-    /* ======================================================
-       TOAST
-       ====================================================== */
+    /* TOAST */
 
     .toast {
       position: fixed;
@@ -1204,10 +1010,8 @@
       bottom:
         calc(
           var(--menu-height)
-          +
-          env(safe-area-inset-bottom)
-          +
-          14px
+          + env(safe-area-inset-bottom)
+          + 14px
         );
 
       transform:
@@ -1220,7 +1024,6 @@
         );
 
       background: #17202a;
-
       color: #fff;
 
       border-radius: 13px;
@@ -1228,37 +1031,30 @@
       padding: 12px 14px;
 
       font-size: 12px;
-
       text-align: center;
 
       box-shadow: var(--sombra);
 
       opacity: 0;
-
       visibility: hidden;
 
       transition:
         all .2s ease;
     }
 
-
     .toast.show {
       opacity: 1;
-
       visibility: visible;
 
       transform:
         translate(-50%,0);
     }
 
-
     @media(min-width:640px) {
-
       .metrics {
         grid-template-columns:
           repeat(4,1fr);
       }
-
 
       .process-list {
         display: grid;
@@ -1268,32 +1064,19 @@
 
         align-items: start;
       }
-
     }
-
   </style>
-
 </head>
-
 
 <body>
 
-
 <div class="app">
-
-
-  <!-- ======================================================
-       CABEÇALHO
-       ====================================================== -->
 
   <header class="header">
 
-
     <div class="header-top">
 
-
       <div>
-
         <div class="header-small">
           Monitoramento processual
         </div>
@@ -1301,195 +1084,93 @@
         <h1 class="header-title">
           Monitor SEFAZ-AM
         </h1>
-
       </div>
 
-
-      <div
-        class="online-pill"
-        id="systemStatus"
-      >
+      <div class="online-pill" id="systemStatus">
         ● Online
       </div>
 
-
     </div>
-
 
     <div class="header-cards">
 
-
       <div class="header-card">
-
         <span class="header-card-label">
           Processos cadastrados
         </span>
 
-        <span
-          class="header-card-value"
-          id="headerTotal"
-        >
+        <span class="header-card-value" id="headerTotal">
           —
         </span>
-
       </div>
 
-
       <div class="header-card">
-
         <span class="header-card-label">
           Última atualização
         </span>
 
-        <span
-          class="header-card-value"
-          id="headerUpdated"
-        >
+        <span class="header-card-value" id="headerUpdated">
           Carregando...
         </span>
-
       </div>
-
 
     </div>
 
-
   </header>
-
-
 
   <main>
 
+    <!-- INÍCIO -->
 
-    <!-- ====================================================
-         INÍCIO
-         ==================================================== -->
-
-    <section
-      id="page-home"
-      class="page active"
-    >
-
+    <section id="page-home" class="page active">
 
       <div class="section-header">
-
-        <h2>
-          Início
-        </h2>
+        <h2>Início</h2>
 
         <div class="section-subtitle">
           Quadro geral resumido dos processos
         </div>
-
       </div>
-
-
 
       <div class="metrics">
 
-
         <div class="metric">
-
-          <div class="metric-icon">
-            🟢
-          </div>
+          <div class="metric-icon">🟢</div>
 
           <div>
-
-            <div
-              class="metric-number"
-              id="metricActive"
-            >
-              0
-            </div>
-
-            <div class="metric-label">
-              Ativos
-            </div>
-
+            <div class="metric-number" id="metricActive">0</div>
+            <div class="metric-label">Ativos</div>
           </div>
-
         </div>
-
-
 
         <div class="metric">
-
-          <div class="metric-icon">
-            ⏸️
-          </div>
+          <div class="metric-icon">⏸️</div>
 
           <div>
-
-            <div
-              class="metric-number"
-              id="metricStopped"
-            >
-              0
-            </div>
-
-            <div class="metric-label">
-              Parados
-            </div>
-
+            <div class="metric-number" id="metricStopped">0</div>
+            <div class="metric-label">Parados</div>
           </div>
-
         </div>
-
-
 
         <div class="metric">
-
-          <div class="metric-icon">
-            ⭐
-          </div>
+          <div class="metric-icon">⭐</div>
 
           <div>
-
-            <div
-              class="metric-number"
-              id="metricPriority"
-            >
-              0
-            </div>
-
-            <div class="metric-label">
-              Prioritários
-            </div>
-
+            <div class="metric-number" id="metricPriority">0</div>
+            <div class="metric-label">Prioritários</div>
           </div>
-
         </div>
-
-
 
         <div class="metric">
-
-          <div class="metric-icon">
-            🔔
-          </div>
+          <div class="metric-icon">🔔</div>
 
           <div>
-
-            <div
-              class="metric-number"
-              id="metricNews"
-            >
-              0
-            </div>
-
-            <div class="metric-label">
-              Novidades
-            </div>
-
+            <div class="metric-number" id="metricNews">0</div>
+            <div class="metric-label">Novidades</div>
           </div>
-
         </div>
-
 
       </div>
-
-
 
       <div class="update-box">
 
@@ -1501,6 +1182,14 @@
           🔄 Atualizar processos
         </button>
 
+        <button
+          class="secondary-button"
+          id="githubManualButton"
+          onclick="openManualWorkflow()"
+        >
+          ▶️ Executar manualmente pelo GitHub
+        </button>
+
         <div
           class="update-message"
           id="updateMessage"
@@ -1508,125 +1197,70 @@
 
       </div>
 
-
-
       <div class="subsection-title">
-
-        <strong>
-          Processos em destaque
-        </strong>
+        <strong>Processos em destaque</strong>
 
         <span>
-          Processos prioritários aparecem primeiro
+          Prioritários primeiro; depois, movimentação mais recente
         </span>
-
       </div>
-
-
 
       <div
         id="highlightProcesses"
         class="process-list"
       ></div>
 
-
     </section>
 
+    <!-- QUADRO GERAL -->
 
-
-    <!-- ====================================================
-         QUADRO GERAL
-         ==================================================== -->
-
-    <section
-      id="page-general"
-      class="page"
-    >
-
+    <section id="page-general" class="page">
 
       <div class="section-header">
-
-        <h2>
-          Quadro geral
-        </h2>
+        <h2>Quadro geral</h2>
 
         <div class="section-subtitle">
-          Todos os processos monitorados em formato resumido
+          Prioridades primeiro e movimentações mais recentes no topo
         </div>
-
       </div>
-
-
 
       <div class="general-table-wrapper">
 
         <table class="general-table">
 
           <thead>
-
             <tr>
-
-              <th>
-                Processo
-              </th>
-
-              <th>
-                Setor atual
-              </th>
-
-              <th>
-                Última movimentação
-              </th>
-
+              <th>Processo</th>
+              <th>Setor atual</th>
+              <th>Última movimentação</th>
             </tr>
-
           </thead>
 
-
-          <tbody
-            id="generalTableBody"
-          ></tbody>
-
+          <tbody id="generalTableBody"></tbody>
 
         </table>
 
       </div>
 
-
     </section>
 
+    <!-- PROCESSOS -->
 
-
-    <!-- ====================================================
-         PROCESSOS
-         ==================================================== -->
-
-    <section
-      id="page-processes"
-      class="page"
-    >
-
+    <section id="page-processes" class="page">
 
       <div class="section-header">
-
-        <h2>
-          Processos
-        </h2>
+        <h2>Processos</h2>
 
         <div class="section-subtitle">
           Cadastro e gerenciamento dos processos monitorados
         </div>
-
       </div>
-
-
 
       <div class="add-box">
 
         <div class="add-title">
           ＋ Adicionar processo
         </div>
-
 
         <div class="add-form">
 
@@ -1647,7 +1281,6 @@
 
         </div>
 
-
         <div
           class="management-message"
           id="managementMessage"
@@ -1655,13 +1288,9 @@
 
       </div>
 
-
-
       <div class="search-box">
 
-        <span>
-          🔎
-        </span>
+        <span>🔎</span>
 
         <input
           type="search"
@@ -1672,292 +1301,171 @@
 
       </div>
 
-
-
       <div
         id="processList"
         class="process-list"
       ></div>
 
-
     </section>
 
+    <!-- ALERTAS -->
 
-
-    <!-- ====================================================
-         ALERTAS
-         ==================================================== -->
-
-    <section
-      id="page-alerts"
-      class="page"
-    >
-
+    <section id="page-alerts" class="page">
 
       <div class="section-header">
-
-        <h2>
-          Alertas
-        </h2>
+        <h2>Alertas</h2>
 
         <div class="section-subtitle">
-          Movimentações e avisos do monitor
+          Movimentações, processos parados e avisos do monitor
         </div>
-
       </div>
 
-
-      <div
-        id="alertsList"
-      ></div>
-
+      <div id="alertsList"></div>
 
     </section>
-
 
   </main>
 
-
 </div>
 
-
-
-<!-- ========================================================
-     MENU INFERIOR
-     ======================================================== -->
-
 <nav class="bottom-nav">
-
 
   <button
     class="nav-button active"
     onclick="openPage('home',this)"
   >
-
-    <span class="nav-icon">
-      ⌂
-    </span>
-
-    <span>
-      Início
-    </span>
-
+    <span class="nav-icon">⌂</span>
+    <span>Início</span>
   </button>
-
-
 
   <button
     class="nav-button"
     onclick="openPage('general',this)"
   >
-
-    <span class="nav-icon">
-      ▦
-    </span>
-
-    <span>
-      Quadro geral
-    </span>
-
+    <span class="nav-icon">▦</span>
+    <span>Quadro geral</span>
   </button>
-
-
 
   <button
     class="nav-button"
     onclick="openPage('processes',this)"
   >
-
-    <span class="nav-icon">
-      📄
-    </span>
-
-    <span>
-      Processos
-    </span>
-
+    <span class="nav-icon">📄</span>
+    <span>Processos</span>
   </button>
-
-
 
   <button
     class="nav-button"
     onclick="openPage('alerts',this)"
   >
-
-    <span class="nav-icon">
-      🔔
-    </span>
-
-    <span>
-      Alertas
-    </span>
-
+    <span class="nav-icon">🔔</span>
+    <span>Alertas</span>
   </button>
-
 
 </nav>
 
-
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
-
+<div class="toast" id="toast"></div>
 
 <script>
 
-  /* ========================================================
-     CONFIGURAÇÃO
-     ======================================================== */
+  /* CONFIGURAÇÃO */
 
   const WORKER_URL =
     "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
-
   const DATA_URL =
     "./dados.json";
-
 
   const PROCESS_LIST_URL =
     "./processos.json";
 
-
   const SEFAZ_BASE_URL =
     "https://online.sefaz.am.gov.br/processo/";
 
+  const GITHUB_WORKFLOW_URL =
+    "https://github.com/Rclo29/Monitor-sefaz-am/actions/workflows/monitor.yml";
 
   const UPDATE_TIMEOUT =
     120000;
 
-
   const POLL_INTERVAL =
     5000;
 
-
-
-  /* ========================================================
-     ESTADO
-     ======================================================== */
+  /* ESTADO */
 
   let processNumbers = [];
-
   let processes = [];
-
   let rawData = {};
-
   let currentFingerprint = "";
-
   let updating = false;
 
-
-
-  /* ========================================================
-     PRIORIDADES
-     ======================================================== */
+  /* PRIORIDADES */
 
   function getPriorities() {
-
     try {
-
       return JSON.parse(
-        localStorage.getItem(
-          "sefazPriorities"
-        ) || "[]"
+        localStorage.getItem("sefazPriorities") || "[]"
       );
-
     } catch {
-
       return [];
-
     }
-
   }
 
-
-
   function savePriorities(list) {
-
     localStorage.setItem(
       "sefazPriorities",
       JSON.stringify(list)
     );
-
   }
-
-
 
   function isPriority(number) {
-
-    return getPriorities()
-      .includes(number);
-
+    return getPriorities().includes(number);
   }
 
-
-
   function togglePriority(number) {
+    let list = getPriorities();
 
-    let list =
-      getPriorities();
-
-
-    if (
-      list.includes(number)
-    ) {
-
-      list =
-        list.filter(
-          item =>
-            item !== number
-        );
-
+    if (list.includes(number)) {
+      list = list.filter(
+        item => item !== number
+      );
     } else {
-
       list.push(number);
-
     }
-
 
     savePriorities(list);
 
     renderAll();
-
   }
 
+  function removePriority(number) {
+    const updated =
+      getPriorities()
+        .filter(
+          item =>
+            item !== number
+        );
 
+    savePriorities(updated);
+  }
 
-  /* ========================================================
-     UTILIDADES
-     ======================================================== */
+  /* UTILIDADES */
 
   function escapeHtml(value) {
-
-    return String(
-      value ?? ""
-    )
+    return String(value ?? "")
       .replace(/&/g,"&amp;")
       .replace(/</g,"&lt;")
       .replace(/>/g,"&gt;")
       .replace(/"/g,"&quot;")
       .replace(/'/g,"&#039;");
-
   }
-
-
 
   function firstValue(
     obj,
     keys,
     fallback = ""
   ) {
-
-    for (
-      const key of keys
-    ) {
-
+    for (const key of keys) {
       if (
         obj
         &&
@@ -1967,27 +1475,18 @@
         &&
         obj[key] !== ""
       ) {
-
         return obj[key];
-
       }
-
     }
 
-
     return fallback;
-
   }
-
-
 
   function normalizeProcess(
     item,
     number
   ) {
-
     return {
-
       numero:
         firstValue(
           item,
@@ -1997,7 +1496,6 @@
           ],
           number
         ),
-
 
       situacao:
         firstValue(
@@ -2009,7 +1507,6 @@
           "Aguardando dados"
         ),
 
-
       interessado:
         firstValue(
           item,
@@ -2018,7 +1515,6 @@
           ],
           ""
         ),
-
 
       assunto:
         firstValue(
@@ -2029,7 +1525,6 @@
           ""
         ),
 
-
       setor:
         firstValue(
           item,
@@ -2039,7 +1534,6 @@
           ""
         ),
 
-
       evento:
         firstValue(
           item,
@@ -2048,7 +1542,6 @@
           ],
           ""
         ),
-
 
       dataMovimentacao:
         firstValue(
@@ -2060,7 +1553,6 @@
           ""
         ),
 
-
       erro:
         firstValue(
           item,
@@ -2070,7 +1562,6 @@
           ""
         ),
 
-
       consultadoEm:
         firstValue(
           item,
@@ -2079,81 +1570,94 @@
           ],
           ""
         )
-
     };
-
   }
 
-
-
-  /* ========================================================
-     DATAS
-     ======================================================== */
+  /* DATAS */
 
   function parseBrazilDate(value) {
-
     if (!value) {
       return null;
     }
 
+    const text =
+      String(value).trim();
 
-    const match =
-      String(value)
-        .match(
-          /^(\d{2})\/(\d{2})\/(\d{4})$/
-        );
+    const dateTimeMatch =
+      text.match(
+        /^(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/
+      );
 
-
-    if (!match) {
-      return null;
+    if (dateTimeMatch) {
+      return new Date(
+        Number(dateTimeMatch[3]),
+        Number(dateTimeMatch[2]) - 1,
+        Number(dateTimeMatch[1]),
+        Number(dateTimeMatch[4] || 12),
+        Number(dateTimeMatch[5] || 0),
+        0
+      );
     }
 
+    const iso =
+      new Date(text);
 
-    return new Date(
-      Number(match[3]),
-      Number(match[2]) - 1,
-      Number(match[1]),
-      12,
-      0,
-      0
-    );
+    if (
+      !Number.isNaN(
+        iso.getTime()
+      )
+    ) {
+      return iso;
+    }
 
+    return null;
   }
 
+  function movementTimestamp(process) {
+    const movementDate =
+      parseBrazilDate(
+        process.dataMovimentacao
+      );
 
+    if (movementDate) {
+      return movementDate.getTime();
+    }
+
+    const consulted =
+      parseBrazilDate(
+        process.consultadoEm
+      );
+
+    if (consulted) {
+      return consulted.getTime();
+    }
+
+    return 0;
+  }
 
   function startOfToday() {
-
     const now =
       new Date();
-
 
     return new Date(
       now.getFullYear(),
       now.getMonth(),
       now.getDate()
     );
-
   }
 
-
-
   function daysSinceMovement(process) {
-
     const movementDate =
       parseBrazilDate(
         process.dataMovimentacao
       );
 
-
     if (!movementDate) {
       return null;
     }
 
-
     const today =
       startOfToday();
-
 
     const movementDay =
       new Date(
@@ -2161,7 +1665,6 @@
         movementDate.getMonth(),
         movementDate.getDate()
       );
-
 
     return Math.floor(
       (
@@ -2172,66 +1675,37 @@
       /
       86400000
     );
-
   }
 
-
-
   function isStopped(process) {
-
     const days =
-      daysSinceMovement(
-        process
-      );
-
+      daysSinceMovement(process);
 
     return (
       days !== null
       &&
       days > 3
     );
-
   }
-
-
 
   function hasMovementToday(process) {
-
     const days =
-      daysSinceMovement(
-        process
-      );
-
+      daysSinceMovement(process);
 
     return days === 0;
-
   }
-
-
 
   function isActive(process) {
-
-    if (
-      process.erro
-    ) {
-
+    if (process.erro) {
       return false;
-
     }
 
-
     return !isStopped(process);
-
   }
 
-
-
-  /* ========================================================
-     CARREGAMENTO
-     ======================================================== */
+  /* CARREGAMENTO */
 
   async function fetchJson(url) {
-
     const response =
       await fetch(
         `${url}?t=${Date.now()}`,
@@ -2240,43 +1714,29 @@
         }
       );
 
-
     if (!response.ok) {
-
       throw new Error(
         `HTTP ${response.status}`
       );
-
     }
 
-
     return response.json();
-
   }
 
-
-
   async function loadAll() {
-
     try {
-
       const [
         processFile,
         dataFile
       ] =
         await Promise.all([
-
           fetchJson(
             PROCESS_LIST_URL
           ),
-
           fetchJson(
             DATA_URL
           )
-
         ]);
-
-
 
       processNumbers =
         Array.isArray(
@@ -2287,12 +1747,8 @@
         :
         [];
 
-
-
       rawData =
         dataFile || {};
-
-
 
       const dataProcesses =
         Array.isArray(
@@ -2303,16 +1759,11 @@
         :
         [];
 
-
-
       const map =
         new Map();
 
-
-
       dataProcesses
         .forEach(item => {
-
           const number =
             firstValue(
               item,
@@ -2323,47 +1774,29 @@
               ""
             );
 
-
-          if (
-            number
-          ) {
-
+          if (number) {
             map.set(
               number,
               item
             );
-
           }
-
         });
-
-
 
       processes =
         processNumbers
           .map(number => {
-
             return normalizeProcess(
               map.get(number) || {},
               number
             );
-
           });
 
-
-
       currentFingerprint =
-        JSON.stringify(
-          rawData
-        );
-
-
+        JSON.stringify(rawData);
 
       updateHeader();
 
       renderAll();
-
-
 
       document
         .getElementById(
@@ -2372,11 +1805,8 @@
         .textContent =
           "● Online";
 
-
     } catch(error) {
-
       console.error(error);
-
 
       document
         .getElementById(
@@ -2384,27 +1814,18 @@
         )
         .textContent =
           "● Erro";
-
     }
-
   }
 
-
-
-  /* ========================================================
-     HEADER
-     ======================================================== */
+  /* HEADER */
 
   function updateHeader() {
-
     document
       .getElementById(
         "headerTotal"
       )
       .textContent =
         processNumbers.length;
-
-
 
     const updated =
       firstValue(
@@ -2417,44 +1838,29 @@
         ""
       );
 
-
-
     document
       .getElementById(
         "headerUpdated"
       )
       .textContent =
-        formatDateTime(
-          updated
-        );
-
+        formatDateTime(updated);
   }
 
-
-
   function formatDateTime(value) {
-
     if (!value) {
-
       return "Dados carregados";
-
     }
-
 
     const date =
       new Date(value);
-
 
     if (
       Number.isNaN(
         date.getTime()
       )
     ) {
-
       return value;
-
     }
-
 
     return date.toLocaleString(
       "pt-BR",
@@ -2465,96 +1871,72 @@
         minute: "2-digit"
       }
     );
-
   }
 
-
-
-  /* ========================================================
-     ORDENAÇÃO
-     ======================================================== */
+  /* ORDENAÇÃO
+     1. Prioridade
+     2. Movimentação mais recente
+     3. Ordem original como desempate
+  */
 
   function sortedProcesses() {
-
-    return [
-      ...processes
-    ]
+    return [...processes]
       .sort(
         (a,b) => {
 
-          const pa =
-            isPriority(
-              a.numero
-            )
+          const priorityA =
+            isPriority(a.numero)
             ?
             1
             :
             0;
 
-
-          const pb =
-            isPriority(
-              b.numero
-            )
+          const priorityB =
+            isPriority(b.numero)
             ?
             1
             :
             0;
-
-
 
           if (
-            pa !== pb
+            priorityA !== priorityB
           ) {
-
-            return pb - pa;
-
+            return priorityB - priorityA;
           }
 
+          const dateA =
+            movementTimestamp(a);
 
+          const dateB =
+            movementTimestamp(b);
+
+          if (
+            dateA !== dateB
+          ) {
+            return dateB - dateA;
+          }
 
           return (
-            processNumbers
-              .indexOf(
-                a.numero
-              )
+            processNumbers.indexOf(a.numero)
             -
-            processNumbers
-              .indexOf(
-                b.numero
-              )
+            processNumbers.indexOf(b.numero)
           );
-
         }
       );
-
   }
 
-
-
-  /* ========================================================
-     MÉTRICAS
-     ======================================================== */
+  /* MÉTRICAS */
 
   function renderMetrics() {
-
     const active =
       processes
-        .filter(
-          isActive
-        )
+        .filter(isActive)
         .length;
-
-
 
     const stopped =
       processes
-        .filter(
-          isStopped
-        )
+        .filter(isStopped)
         .length;
-
-
 
     const priorities =
       processes
@@ -2566,16 +1948,12 @@
         )
         .length;
 
-
-
     const news =
       processes
         .filter(
           hasMovementToday
         )
         .length;
-
-
 
     document
       .getElementById(
@@ -2584,16 +1962,12 @@
       .textContent =
         active;
 
-
-
     document
       .getElementById(
         "metricStopped"
       )
       .textContent =
         stopped;
-
-
 
     document
       .getElementById(
@@ -2602,36 +1976,26 @@
       .textContent =
         priorities;
 
-
-
     document
       .getElementById(
         "metricNews"
       )
       .textContent =
         news;
-
   }
 
-
-
-  /* ========================================================
-     CARD
-     ======================================================== */
+  /* CARD */
 
   function processCard(process) {
-
     const priority =
       isPriority(
         process.numero
       );
 
-
     const stopped =
       isStopped(
         process
       );
-
 
     const movementText =
       [
@@ -2641,10 +2005,7 @@
         .filter(Boolean)
         .join(" — ");
 
-
-
     return `
-
       <article
         class="
           process-card
@@ -2652,29 +2013,21 @@
         "
       >
 
-
         <div class="priority-strip">
           ⭐ PROCESSO PRIORITÁRIO
         </div>
 
-
-
         <div class="process-body">
-
 
           <div class="process-top">
 
-
             <div class="process-title-area">
-
 
               <div class="process-number">
                 ${escapeHtml(process.numero)}
               </div>
 
-
               <div class="process-subject">
-
                 ${
                   escapeHtml(
                     process.assunto
@@ -2682,13 +2035,9 @@
                     "Assunto não informado"
                   )
                 }
-
               </div>
 
-
             </div>
-
-
 
             <button
               class="
@@ -2701,18 +2050,12 @@
                 )
               "
             >
-
               ${priority ? "⭐" : "☆"}
-
             </button>
-
 
           </div>
 
-
-
           <div class="process-info-grid">
-
 
             <div class="process-info">
 
@@ -2721,7 +2064,6 @@
               </span>
 
               <span class="info-value">
-
                 ${
                   stopped
                   ?
@@ -2731,12 +2073,9 @@
                     process.situacao
                   )
                 }
-
               </span>
 
             </div>
-
-
 
             <div class="process-info">
 
@@ -2745,7 +2084,6 @@
               </span>
 
               <span class="info-value">
-
                 ${
                   escapeHtml(
                     process.setor
@@ -2753,26 +2091,17 @@
                     "—"
                   )
                 }
-
               </span>
 
             </div>
 
-
-
-            <div
-              class="
-                process-info
-                wide
-              "
-            >
+            <div class="process-info wide">
 
               <span class="info-label">
                 Interessado
               </span>
 
               <span class="info-value">
-
                 ${
                   escapeHtml(
                     process.interessado
@@ -2780,23 +2109,17 @@
                     "—"
                   )
                 }
-
               </span>
 
             </div>
 
-
           </div>
 
-
-
           <div class="movement">
-
 
             <div class="movement-label">
               Última movimentação
             </div>
-
 
             <div class="movement-value">
 
@@ -2807,7 +2130,6 @@
                   "Não informada"
                 )
               }
-
 
               ${
                 hasMovementToday(process)
@@ -2823,13 +2145,9 @@
 
             </div>
 
-
           </div>
 
-
-
           <div class="card-actions">
-
 
             <button
               class="sefaz-button"
@@ -2841,8 +2159,6 @@
             >
               🔎 Consultar na SEFAZ
             </button>
-
-
 
             <button
               class="delete-button"
@@ -2856,30 +2172,19 @@
               🗑
             </button>
 
-
           </div>
-
 
         </div>
 
-
       </article>
-
     `;
-
   }
 
-
-
-  /* ========================================================
-     DESTAQUES
-     ======================================================== */
+  /* DESTAQUES */
 
   function renderHighlights() {
-
     const sorted =
       sortedProcesses();
-
 
     const priorities =
       sorted
@@ -2890,31 +2195,21 @@
             )
         );
 
-
     let selected;
 
-
-    if (
-      priorities.length
-    ) {
-
+    if (priorities.length) {
       selected =
         priorities.slice(
           0,
           6
         );
-
     } else {
-
       selected =
         sorted.slice(
           0,
           5
         );
-
     }
-
-
 
     document
       .getElementById(
@@ -2924,9 +2219,7 @@
         selected.length
         ?
         selected
-          .map(
-            processCard
-          )
+          .map(processCard)
           .join("")
         :
         `
@@ -2934,29 +2227,20 @@
             Nenhum processo cadastrado.
           </div>
         `;
-
   }
 
-
-
-  /* ========================================================
-     QUADRO GERAL
-     ======================================================== */
+  /* QUADRO GERAL */
 
   function renderGeneralTable() {
-
     const tbody =
       document
         .getElementById(
           "generalTableBody"
         );
 
-
-
     tbody.innerHTML =
       sortedProcesses()
         .map(process => {
-
 
           const movement =
             [
@@ -2966,10 +2250,7 @@
               .filter(Boolean)
               .join(" — ");
 
-
-
           return `
-
             <tr
               class="
                 ${
@@ -2983,7 +2264,6 @@
                 }
               "
             >
-
 
               <td class="process-col">
 
@@ -3001,8 +2281,6 @@
 
               </td>
 
-
-
               <td class="sector-col">
 
                 ${
@@ -3014,8 +2292,6 @@
                 }
 
               </td>
-
-
 
               <td>
 
@@ -3029,24 +2305,15 @@
 
               </td>
 
-
             </tr>
-
           `;
-
         })
         .join("");
-
   }
 
-
-
-  /* ========================================================
-     LISTA DE PROCESSOS
-     ======================================================== */
+  /* LISTA PROCESSOS */
 
   function renderProcesses() {
-
     const search =
       (
         document
@@ -3060,17 +2327,13 @@
         .trim()
         .toLowerCase();
 
-
-
     const filtered =
       sortedProcesses()
         .filter(process => {
 
-
           if (!search) {
             return true;
           }
-
 
           const text =
             [
@@ -3083,14 +2346,10 @@
               .join(" ")
               .toLowerCase();
 
-
           return text.includes(
             search
           );
-
         });
-
-
 
     document
       .getElementById(
@@ -3100,9 +2359,7 @@
         filtered.length
         ?
         filtered
-          .map(
-            processCard
-          )
+          .map(processCard)
           .join("")
         :
         `
@@ -3116,34 +2373,27 @@
 
           </div>
         `;
-
   }
 
-
-
-  /* ========================================================
-     ALERTAS
-     ======================================================== */
+  /* ALERTAS */
 
   function renderAlerts() {
-
     const alerts = [];
-
 
     sortedProcesses()
       .forEach(process => {
-
 
         if (
           hasMovementToday(
             process
           )
         ) {
-
           alerts.push({
-
             type:
               "new",
+
+            numero:
+              process.numero,
 
             title:
               `🔔 Movimentação hoje — ${process.numero}`,
@@ -3157,36 +2407,55 @@
                 .join(" — ")
               ||
               "Movimentação registrada hoje."
-
           });
-
         }
 
+        if (
+          isStopped(process)
+        ) {
+          const days =
+            daysSinceMovement(
+              process
+            );
 
+          alerts.push({
+            type:
+              "stopped",
+
+            numero:
+              process.numero,
+
+            title:
+              `⏸️ Processo parado — ${process.numero}`,
+
+            text:
+              days !== null
+              ?
+              `Sem movimentação há ${days} dias.`
+              :
+              "Processo sem movimentação recente."
+          });
+        }
 
         if (
           process.erro
         ) {
-
           alerts.push({
-
             type:
               "error",
+
+            numero:
+              process.numero,
 
             title:
               `⚠️ Erro — ${process.numero}`,
 
             text:
               process.erro
-
           });
-
         }
 
-
       });
-
-
 
     const container =
       document
@@ -3194,14 +2463,10 @@
           "alertsList"
         );
 
-
-
     if (
       !alerts.length
     ) {
-
       container.innerHTML = `
-
         <div class="empty">
 
           <div class="empty-icon">
@@ -3213,20 +2478,15 @@
           </strong>
 
         </div>
-
       `;
 
       return;
-
     }
-
-
 
     container.innerHTML =
       alerts
         .map(
           alert => `
-
             <div
               class="
                 alert
@@ -3242,76 +2502,65 @@
                 ${escapeHtml(alert.text)}
               </div>
 
-            </div>
+              <div class="alert-actions">
 
+                <button
+                  class="alert-sefaz-button"
+                  onclick="
+                    consultOnSefaz(
+                      '${escapeHtml(alert.numero)}'
+                    )
+                  "
+                >
+                  🔎 Consultar este processo na SEFAZ
+                </button>
+
+              </div>
+
+            </div>
           `
         )
         .join("");
-
   }
 
-
-
-  /* ========================================================
-     RENDER GERAL
-     ======================================================== */
+  /* RENDER GERAL */
 
   function renderAll() {
-
     renderMetrics();
-
     renderHighlights();
-
     renderGeneralTable();
-
     renderProcesses();
-
     renderAlerts();
-
   }
 
-
-
-  /* ========================================================
-     CONSULTAR NA SEFAZ
-     ======================================================== */
+  /* SEFAZ */
 
   function consultOnSefaz(number) {
-
     const url =
       SEFAZ_BASE_URL
       +
       encodeURI(number);
 
-
     window.open(
       url,
       "_blank"
     );
-
   }
 
-
-
-  /* ========================================================
-     ADICIONAR PROCESSO
-     ======================================================== */
+  /* ADICIONAR */
 
   async function addProcess() {
-
     const input =
       document
         .getElementById(
           "newProcessNumber"
         );
 
-
     const button =
       document
         .getElementById(
           "addProcessButton"
         );
-
 
     const number =
       String(
@@ -3320,168 +2569,116 @@
         .trim()
         .replace(/\s+/g,"");
 
-
-
     if (!number) {
-
       showManagementMessage(
         "error",
         "Informe o número do processo."
       );
 
       return;
-
     }
-
-
 
     const regex =
       /^\d{2}\.\d{2}\.\d{6}\.\d{6}\/\d{4}-\d{2}$/;
 
-
-
     if (
       !regex.test(number)
     ) {
-
       showManagementMessage(
         "error",
         "Formato inválido. Exemplo: 01.01.028101.030037/2026-43"
       );
 
       return;
-
     }
-
-
 
     if (
       processNumbers.includes(
         number
       )
     ) {
-
       showManagementMessage(
         "error",
         "Este processo já está cadastrado."
       );
 
       return;
-
     }
-
-
 
     if (
       !confirm(
         `Adicionar o processo ${number} ao monitoramento?`
       )
     ) {
-
       return;
-
     }
-
-
 
     button.disabled =
       true;
 
-
     button.textContent =
       "Adicionando...";
 
-
-
     try {
-
-
       const response =
         await fetch(
           WORKER_URL,
           {
-
             method:
               "POST",
 
             headers: {
-
               "Content-Type":
                 "application/json"
-
             },
 
             body:
               JSON.stringify({
-
                 acao:
                   "adicionar",
 
                 numero:
                   number
-
               })
-
           }
         );
 
-
-
       const result =
         await response.json();
-
-
 
       if (
         !response.ok
         ||
         !result.ok
       ) {
-
         throw new Error(
           result.erro
           ||
           "Não foi possível adicionar."
         );
-
       }
-
-
 
       input.value =
         "";
 
-
-
       showManagementMessage(
         "success",
-        "✅ Processo adicionado. A primeira consulta foi iniciada."
+        "✅ Processo adicionado."
       );
-
-
 
       showToast(
         "Processo adicionado com sucesso."
       );
-
-
 
       await waitForProcessListChange(
         number,
         true
       );
 
-
-
       await loadAll();
 
-
     } catch(error) {
-
-
       console.error(error);
-
-
 
       showManagementMessage(
         "error",
@@ -3490,192 +2687,116 @@
         error.message
       );
 
-
     } finally {
-
-
       button.disabled =
         false;
 
-
       button.textContent =
         "Adicionar";
-
     }
-
   }
 
-
-
-  /* ========================================================
-     EXCLUIR PROCESSO
-     ======================================================== */
+  /* EXCLUIR */
 
   async function deleteProcess(number) {
-
     if (
       !confirm(
         `Excluir o processo ${number} do monitoramento?`
       )
     ) {
-
       return;
-
     }
 
-
-
     try {
-
-
       showToast(
         "Excluindo processo..."
       );
-
-
 
       const response =
         await fetch(
           WORKER_URL,
           {
-
             method:
               "POST",
 
             headers: {
-
               "Content-Type":
                 "application/json"
-
             },
 
             body:
               JSON.stringify({
-
                 acao:
                   "excluir",
 
                 numero:
                   number
-
               })
-
           }
         );
 
-
-
       const result =
         await response.json();
-
-
 
       if (
         !response.ok
         ||
         !result.ok
       ) {
-
         throw new Error(
           result.erro
           ||
           "Não foi possível excluir."
         );
-
       }
-
-
 
       removePriority(
         number
       );
-
-
 
       await waitForProcessListChange(
         number,
         false
       );
 
-
-
       await loadAll();
-
-
 
       showToast(
         "✅ Processo excluído."
       );
 
-
     } catch(error) {
-
-
       console.error(error);
-
 
       alert(
         "Não foi possível excluir o processo: "
         +
         error.message
       );
-
     }
-
   }
-
-
-
-  function removePriority(number) {
-
-    const updated =
-      getPriorities()
-        .filter(
-          item =>
-            item !== number
-        );
-
-
-    savePriorities(
-      updated
-    );
-
-  }
-
-
 
   async function waitForProcessListChange(
     number,
     shouldExist
   ) {
-
     const start =
       Date.now();
-
-
 
     while (
       Date.now() - start
       <
       60000
     ) {
-
-
       await sleep(
         3000
       );
 
-
-
       try {
-
-
         const file =
           await fetchJson(
             PROCESS_LIST_URL
           );
-
-
 
         const list =
           Array.isArray(
@@ -3686,56 +2807,33 @@
           :
           [];
 
-
-
         if (
           list.includes(number)
           ===
           shouldExist
         ) {
-
           return true;
-
         }
 
-
       } catch {
-
         /* continua tentando */
-
       }
-
-
     }
 
-
-
     return false;
-
   }
 
-
-
-  /* ========================================================
-     ATUALIZAR PROCESSOS
-     ======================================================== */
+  /* ATUALIZAÇÃO MANUAL */
 
   async function updateProcesses() {
-
     if (
       updating
     ) {
-
       return;
-
     }
-
-
 
     updating =
       true;
-
-
 
     const button =
       document
@@ -3743,293 +2841,205 @@
           "updateButton"
         );
 
-
-
     button.disabled =
       true;
 
-
-
     button.textContent =
-      "⏳ Iniciando atualização...";
-
-
+      "⏳ Iniciando consulta...";
 
     setUpdateMessage(
       "info",
-      "Solicitando uma nova consulta de todos os processos..."
+      "Solicitando uma consulta manual de todos os processos..."
     );
-
-
 
     const oldFingerprint =
       currentFingerprint;
 
-
-
     try {
-
-
       const response =
         await fetch(
           WORKER_URL,
           {
-
             method:
               "POST",
 
             headers: {
-
               "Content-Type":
                 "application/json"
-
             },
 
             body:
               JSON.stringify({
-
                 acao:
                   "atualizar"
-
               })
-
           }
         );
 
+      let result = {};
 
-
-      const result =
-        await response.json();
-
-
+      try {
+        result =
+          await response.json();
+      } catch {
+        result = {};
+      }
 
       if (
         !response.ok
         ||
         !result.ok
       ) {
-
         throw new Error(
           result.erro
           ||
-          "Falha ao iniciar consulta."
+          `Serviço recusou a consulta (${response.status}).`
         );
-
       }
-
-
 
       button.textContent =
         "⏳ Consultando processos...";
 
-
-
       setUpdateMessage(
         "info",
-        "Consulta iniciada. Aguarde enquanto os processos são verificados."
+        "Consulta manual iniciada. Aguarde a atualização dos dados."
       );
-
-
 
       const changed =
         await waitForNewData(
           oldFingerprint
         );
 
-
-
       if (
         changed
       ) {
-
-
         await loadAll();
-
-
 
         setUpdateMessage(
           "success",
           "✅ Processos atualizados com sucesso."
         );
 
-
-
         showToast(
           "Atualização concluída."
         );
 
-
       } else {
-
-
         setUpdateMessage(
           "success",
-          "Consulta iniciada com sucesso. A publicação dos dados ainda pode levar alguns instantes."
+          "Consulta iniciada. A publicação dos resultados ainda pode levar alguns instantes."
         );
-
-
       }
 
-
     } catch(error) {
-
-
       console.error(error);
-
-
 
       setUpdateMessage(
         "error",
-        "Não foi possível atualizar: "
-        +
-        error.message
+        "Não foi possível iniciar pelo aplicativo. Use o botão “Executar manualmente pelo GitHub” logo acima."
       );
 
-
     } finally {
-
-
       button.disabled =
         false;
-
-
 
       button.textContent =
         "🔄 Atualizar processos";
 
-
-
       updating =
         false;
-
     }
-
   }
 
-
+  function openManualWorkflow() {
+    window.open(
+      GITHUB_WORKFLOW_URL,
+      "_blank"
+    );
+  }
 
   async function waitForNewData(
     oldFingerprint
   ) {
-
     const start =
       Date.now();
-
-
 
     while (
       Date.now() - start
       <
       UPDATE_TIMEOUT
     ) {
-
-
       await sleep(
         POLL_INTERVAL
       );
 
-
-
       try {
-
-
         const newest =
           await fetchJson(
             DATA_URL
           );
-
-
 
         const fingerprint =
           JSON.stringify(
             newest
           );
 
-
-
         if (
           fingerprint
           !==
           oldFingerprint
         ) {
-
           currentFingerprint =
             fingerprint;
 
           return true;
-
         }
 
-
       } catch {
-
         /* continua aguardando */
-
       }
-
-
     }
 
-
-
     return false;
-
   }
 
-
-
-  /* ========================================================
-     MENSAGENS
-     ======================================================== */
+  /* MENSAGENS */
 
   function setUpdateMessage(
     type,
     text
   ) {
-
     const element =
       document
         .getElementById(
           "updateMessage"
         );
 
-
     element.className =
       `update-message show ${type}`;
 
-
     element.textContent =
       text;
-
   }
-
-
 
   function showManagementMessage(
     type,
     text
   ) {
-
     const element =
       document
         .getElementById(
           "managementMessage"
         );
 
-
     element.className =
       `management-message show ${type}`;
 
-
     element.textContent =
       text;
-
   }
 
-
-
   function sleep(ms) {
-
     return new Promise(
       resolve =>
         setTimeout(
@@ -4037,34 +3047,24 @@
           ms
         )
     );
-
   }
 
-
-
-  /* ========================================================
-     ABAS
-     ======================================================== */
+  /* ABAS */
 
   function openPage(
     pageName,
     button
   ) {
-
     document
       .querySelectorAll(
         ".page"
       )
       .forEach(page => {
-
         page.classList
           .remove(
             "active"
           );
-
       });
-
-
 
     document
       .getElementById(
@@ -4075,22 +3075,16 @@
         "active"
       );
 
-
-
     document
       .querySelectorAll(
         ".nav-button"
       )
       .forEach(item => {
-
         item.classList
           .remove(
             "active"
           );
-
       });
-
-
 
     button
       .classList
@@ -4098,89 +3092,62 @@
         "active"
       );
 
-
-
     window.scrollTo(
       {
         top: 0,
         behavior: "smooth"
       }
     );
-
   }
 
-
-
-  /* ========================================================
-     TOAST
-     ======================================================== */
+  /* TOAST */
 
   let toastTimer;
 
-
-
   function showToast(text) {
-
     const toast =
       document
         .getElementById(
           "toast"
         );
 
-
     toast.textContent =
       text;
-
 
     toast.classList
       .add(
         "show"
       );
 
-
     clearTimeout(
       toastTimer
     );
 
-
     toastTimer =
       setTimeout(
         () => {
-
           toast.classList
             .remove(
               "show"
             );
-
         },
         3000
       );
-
   }
 
-
-
-  /* ========================================================
-     INICIALIZAÇÃO
-     SEMPRE ABRE EM INÍCIO
-     ======================================================== */
+  /* INICIALIZAÇÃO */
 
   async function initialize() {
-
     document
       .querySelectorAll(
         ".page"
       )
       .forEach(page => {
-
         page.classList
           .remove(
             "active"
           );
-
       });
-
-
 
     document
       .getElementById(
@@ -4191,15 +3158,11 @@
         "active"
       );
 
-
-
     const navButtons =
       document
         .querySelectorAll(
           ".nav-button"
         );
-
-
 
     navButtons
       .forEach(
@@ -4210,76 +3173,50 @@
             )
       );
 
-
-
     if (
       navButtons[0]
     ) {
-
       navButtons[0]
         .classList
         .add(
           "active"
         );
-
     }
-
-
 
     await loadAll();
 
-
-
     /*
-      Atualiza somente a interface
-      a cada 5 minutos.
-
-      Não dispara consulta nova.
+      Apenas recarrega os dados já publicados.
+      NÃO dispara nova consulta na SEFAZ.
     */
 
     setInterval(
       () => {
-
         if (
           !updating
         ) {
-
           loadAll()
             .catch(
               () => {}
             );
-
         }
-
       },
       5 * 60 * 1000
     );
-
   }
-
-
 
   initialize();
 
 </script>
 
-
-
-<!-- ========================================================
-     REGISTRO DO SERVICE WORKER
-     ======================================================== -->
-
 <script>
-
   if (
     "serviceWorker"
     in navigator
   ) {
-
     window.addEventListener(
       "load",
       () => {
-
         navigator
           .serviceWorker
           .register(
@@ -4287,33 +3224,24 @@
           )
           .then(
             registration => {
-
               console.log(
                 "Monitor SEFAZ-AM: Service Worker ativo",
                 registration.scope
               );
-
             }
           )
           .catch(
             error => {
-
               console.error(
                 "Erro ao registrar Service Worker:",
                 error
               );
-
             }
           );
-
       }
     );
-
   }
-
 </script>
 
-
 </body>
-
 </html>
