@@ -1,0 +1,42 @@
+name: Consulta automática SEFAZ-AM
+
+on:
+  schedule:
+    - cron: "0 13 * * 1-5"
+    - cron: "30 15 * * 1-5"
+    - cron: "30 18 * * 1-5"
+    - cron: "0 21 * * 1-5"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar arquivos
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Executar consulta SEFAZ
+        run: node consulta-sefaz.js
+
+      - name: Salvar resultados
+        run: |
+          git config user.name "Monitor SEFAZ-AM"
+          git config user.email "actions@github.com"
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração encontrada."
+          else
+            git commit -m "Atualização automática SEFAZ-AM"
+            git push
+          fi
