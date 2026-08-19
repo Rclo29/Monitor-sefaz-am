@@ -5,9 +5,12 @@ on:
 
   schedule:
     # Manaus = UTC-4
-    # 08:00, 11:00, 14:00 e 17:00 em Manaus
+    # 09:00, 11:30, 14:30 e 17:00 em Manaus
     # Segunda a sexta-feira
-    - cron: "0 12,15,18,21 * * 1-5"
+    - cron: "0 13 * * 1-5"
+    - cron: "30 15 * * 1-5"
+    - cron: "30 18 * * 1-5"
+    - cron: "0 21 * * 1-5"
 
 permissions:
   contents: write
@@ -18,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Baixar repositório
         uses: actions/checkout@v4
 
@@ -38,7 +42,7 @@ jobs:
         id: alertas
         shell: bash
         run: |
-          NOVOS=$(python -c "import json; d=json.load(open('dados.json', encoding='utf-8')); print(d.get('novos_alertas', 0))")
+          NOVOS=$(python -c "import json; d=json.load(open('dados.json', encoding='utf-8')); print(int(d.get('novos_alertas', 0)))")
           echo "Quantidade de novos alertas: $NOVOS"
           echo "novos=$NOVOS" >> "$GITHUB_OUTPUT"
 
@@ -99,10 +103,10 @@ jobs:
               )
 
               titulo = (
-                  f"🔔 SEFAZ-AM: nova movimentação — {numero}"
+                  f"🔔 SEFAZ-AM: nova movimentação - {numero}"
               )
 
-              corpo = f"""## 🔔 Nova movimentação detectada
+              corpo = f"""## 🔔 Nova movimentação processual
 
           **Processo:** {numero}
 
@@ -116,7 +120,7 @@ jobs:
 
           ---
 
-          Acesse o Monitor SEFAZ-AM para consultar os detalhes atualizados.
+          Acesse o Monitor SEFAZ-AM para consultar os detalhes.
 
           Monitor automático SEFAZ-AM
           """
@@ -149,7 +153,7 @@ jobs:
       - name: Salvar alterações
         shell: bash
         run: |
-          git config user.name "sefaz-monitor-bot"
+          git config user.name "sefaz-monitor"
           git config user.email "actions@github.com"
 
           git add dados.json
@@ -157,6 +161,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
-            git commit -m "Atualiza dados dos processos SEFAZ-AM"
+            git commit -m "Atualiza dados do Monitor SEFAZ-AM"
             git push
           fi
