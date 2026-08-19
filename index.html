@@ -62,6 +62,7 @@
 
     body {
       margin: 0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -341,28 +342,6 @@
 
     .primary-button:disabled {
       opacity: .6;
-    }
-
-    .secondary-button {
-      width: 100%;
-
-      border:
-        1px solid #bfd7f5;
-
-      border-radius: 16px;
-
-      background: #fff;
-
-      color: var(--azul);
-
-      min-height: 52px;
-
-      padding: 12px 15px;
-
-      margin-top: 10px;
-
-      font-size: 14px;
-      font-weight: 800;
     }
 
     .update-message {
@@ -1182,14 +1161,6 @@
           🔄 Atualizar processos
         </button>
 
-        <button
-          class="secondary-button"
-          id="githubManualButton"
-          onclick="openManualWorkflow()"
-        >
-          ▶️ Executar manualmente pelo GitHub
-        </button>
-
         <div
           class="update-message"
           id="updateMessage"
@@ -1381,9 +1352,6 @@
 
   const SEFAZ_BASE_URL =
     "https://online.sefaz.am.gov.br/processo/";
-
-  const GITHUB_WORKFLOW_URL =
-    "https://github.com/Rclo29/Monitor-sefaz-am/actions/workflows/monitor.yml";
 
   const UPDATE_TIMEOUT =
     120000;
@@ -1873,11 +1841,7 @@
     );
   }
 
-  /* ORDENAÇÃO
-     1. Prioridade
-     2. Movimentação mais recente
-     3. Ordem original como desempate
-  */
+  /* ORDENAÇÃO */
 
   function sortedProcesses() {
     return [...processes]
@@ -2936,7 +2900,7 @@
 
       setUpdateMessage(
         "error",
-        "Não foi possível iniciar pelo aplicativo. Use o botão “Executar manualmente pelo GitHub” logo acima."
+        "Não foi possível iniciar a atualização. Aguarde alguns instantes e tente novamente."
       );
 
     } finally {
@@ -2949,13 +2913,6 @@
       updating =
         false;
     }
-  }
-
-  function openManualWorkflow() {
-    window.open(
-      GITHUB_WORKFLOW_URL,
-      "_blank"
-    );
   }
 
   async function waitForNewData(
