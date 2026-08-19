@@ -3,14 +3,9 @@ name: Monitor SEFAZ-AM
 on:
   workflow_dispatch:
 
-  schedule:
-    # Manaus = UTC-4
-    # 09:00, 11:30, 14:30 e 17:00 em Manaus
-    # Segunda a sexta-feira
-      - cron: "0 13 * * 1-5"
-      - cron: "30 15 * * 1-5"
-      - cron: "30 18 * * 1-5"
-      - cron: "0 21 * * 1-5"
+permissions:
+  contents: write
+  issues: write
 
 permissions:
   contents: write
