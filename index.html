@@ -62,7 +62,6 @@
 
     body {
       margin: 0;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -507,7 +506,7 @@
     }
 
     /* =====================================================
-       QUADRO GERAL SUPER COMPACTO
+       QUADRO GERAL ULTRA COMPACTO
        ===================================================== */
 
     .general-table-wrapper {
@@ -519,7 +518,7 @@
       background: #fff;
 
       border: 1px solid var(--borda);
-      border-radius: 15px;
+      border-radius: 14px;
 
       box-shadow:
         0 2px 8px rgba(0,0,0,.03);
@@ -535,16 +534,15 @@
     .general-table th {
       background: #eef5ff;
       color: #315271;
-
       text-align: left;
 
-      padding: 7px 8px;
+      padding: 5px 6px;
 
-      font-size: 9px;
+      font-size: 8px;
       line-height: 1;
 
       text-transform: uppercase;
-      letter-spacing: .25px;
+      letter-spacing: .2px;
 
       white-space: nowrap;
     }
@@ -552,17 +550,17 @@
     .general-table td {
       border-top: 1px solid #edf0f3;
 
-      padding: 7px 8px;
+      padding: 5px 6px;
 
-      font-size: 10px;
-      line-height: 1.1;
+      font-size: 9px;
+      line-height: 1.05;
 
       vertical-align: middle;
     }
 
     .general-table .process-col {
-      width: 230px;
-      min-width: 230px;
+      width: 205px;
+      min-width: 205px;
 
       font-weight: 850;
 
@@ -570,8 +568,8 @@
     }
 
     .general-table .sector-col {
-      width: 82px;
-      min-width: 82px;
+      width: 68px;
+      min-width: 68px;
 
       font-weight: 750;
 
@@ -579,7 +577,7 @@
     }
 
     .general-table .movement-col {
-      min-width: 350px;
+      min-width: 320px;
 
       white-space: nowrap;
 
@@ -922,7 +920,6 @@
 
         <div class="metric">
           <div class="metric-icon">🟢</div>
-
           <div>
             <div class="metric-number" id="metricActive">0</div>
             <div class="metric-label">Ativos</div>
@@ -931,7 +928,6 @@
 
         <div class="metric">
           <div class="metric-icon">⏸️</div>
-
           <div>
             <div class="metric-number" id="metricStopped">0</div>
             <div class="metric-label">Parados</div>
@@ -940,7 +936,6 @@
 
         <div class="metric">
           <div class="metric-icon">⭐</div>
-
           <div>
             <div class="metric-number" id="metricPriority">0</div>
             <div class="metric-label">Prioritários</div>
@@ -949,7 +944,6 @@
 
         <div class="metric">
           <div class="metric-icon">🔔</div>
-
           <div>
             <div class="metric-number" id="metricNews">0</div>
             <div class="metric-label">Novidades</div>
@@ -977,7 +971,6 @@
 
       <div class="subsection-title">
         <strong>Processos em destaque</strong>
-
         <span>
           Prioritários primeiro; depois, movimentação mais recente
         </span>
@@ -1146,8 +1139,6 @@
 
 <script>
 
-  /* CONFIGURAÇÃO */
-
   const WORKER_URL =
     "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
@@ -1163,15 +1154,11 @@
   const UPDATE_TIMEOUT = 120000;
   const POLL_INTERVAL = 5000;
 
-  /* ESTADO */
-
   let processNumbers = [];
   let processes = [];
   let rawData = {};
   let currentFingerprint = "";
   let updating = false;
-
-  /* PRIORIDADES */
 
   function getPriorities() {
     try {
@@ -1213,8 +1200,6 @@
 
     savePriorities(updated);
   }
-
-  /* UTILIDADES */
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -1274,8 +1259,6 @@
         firstValue(item,["consultado_em"],"")
     };
   }
-
-  /* DATAS */
 
   function parseBrazilDate(value) {
     if (!value) {
@@ -1384,8 +1367,6 @@
     return !isStopped(process);
   }
 
-  /* CARREGAMENTO */
-
   async function fetchJson(url) {
     const response =
       await fetch(
@@ -1464,8 +1445,6 @@
     }
   }
 
-  /* HEADER */
-
   function updateHeader() {
     document
       .getElementById("headerTotal")
@@ -1509,8 +1488,6 @@
     );
   }
 
-  /* ORDENAÇÃO */
-
   function sortedProcesses() {
     return [...processes]
       .sort((a,b) => {
@@ -1539,8 +1516,6 @@
         );
       });
   }
-
-  /* MÉTRICAS */
 
   function renderMetrics() {
     const active =
@@ -1571,8 +1546,6 @@
     document.getElementById("metricNews").textContent =
       news;
   }
-
-  /* CARD */
 
   function processCard(process) {
     const priority =
@@ -1754,8 +1727,6 @@
     `;
   }
 
-  /* DESTAQUES */
-
   function renderHighlights() {
     const sorted = sortedProcesses();
 
@@ -1785,8 +1756,6 @@
           </div>
         `;
   }
-
-  /* QUADRO GERAL */
 
   function renderGeneralTable() {
     const tbody =
@@ -1853,8 +1822,6 @@
         .join("");
   }
 
-  /* LISTA PROCESSOS */
-
   function renderProcesses() {
     const search =
       (
@@ -1908,8 +1875,6 @@
           </div>
         `;
   }
-
-  /* ALERTAS */
 
   function renderAlerts() {
     const alerts = [];
@@ -2034,8 +1999,6 @@
         .join("");
   }
 
-  /* RENDER GERAL */
-
   function renderAll() {
     renderMetrics();
     renderHighlights();
@@ -2043,8 +2006,6 @@
     renderProcesses();
     renderAlerts();
   }
-
-  /* SEFAZ */
 
   function consultOnSefaz(number) {
     const url =
@@ -2056,8 +2017,6 @@
       "_blank"
     );
   }
-
-  /* ADICIONAR */
 
   async function addProcess() {
     const input =
@@ -2178,8 +2137,6 @@
     }
   }
 
-  /* EXCLUIR */
-
   async function deleteProcess(number) {
     if (
       !confirm(
@@ -2282,8 +2239,6 @@
 
     return false;
   }
-
-  /* ATUALIZAÇÃO MANUAL */
 
   async function updateProcesses() {
     if (updating) {
@@ -2429,8 +2384,6 @@
     return false;
   }
 
-  /* MENSAGENS */
-
   function setUpdateMessage(type,text) {
     const element =
       document.getElementById("updateMessage");
@@ -2457,8 +2410,6 @@
         setTimeout(resolve,ms)
     );
   }
-
-  /* ABAS */
 
   function openPage(pageName,button) {
     document
@@ -2488,8 +2439,6 @@
     );
   }
 
-  /* TOAST */
-
   let toastTimer;
 
   function showToast(text) {
@@ -2510,8 +2459,6 @@
         3000
       );
   }
-
-  /* INICIALIZAÇÃO */
 
   async function initialize() {
     document
@@ -2542,11 +2489,6 @@
     }
 
     await loadAll();
-
-    /*
-      Apenas recarrega os dados já publicados.
-      NÃO dispara nova consulta na SEFAZ.
-    */
 
     setInterval(
       () => {
