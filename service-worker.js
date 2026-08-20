@@ -1,191 +1,64 @@
-const CACHE_VERSION =
-  "monitor-sefaz-am-v12";
-
-const STATIC_CACHE =
-  `${CACHE_VERSION}-static`;
-
-const DATA_CACHE =
-  `${CACHE_VERSION}-data`;
-
-const APP_SHELL = [
-  "./",
-  "./index.html",
-  "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png"
-];
-
+const CACHE_NAME = "monitor-cache-v13";
 
 /* ============================================================
    INSTALAÇÃO
    ============================================================ */
 
-self.addEventListener(
-  "install",
-  event => {
-
-    self.skipWaiting();
-
-    event.waitUntil(
-      caches
-        .open(
-          STATIC_CACHE
-        )
-        .then(
-          cache =>
-            cache.addAll(
-              APP_SHELL
-            )
-        )
-        .catch(
-          error => {
-
-            console.error(
-              "Erro ao criar cache inicial:",
-              error
-            );
-
-          }
-        )
-    );
-
-  }
-);
+self.addEventListener("install", event => {
+  self.skipWaiting();
+});
 
 
 /* ============================================================
    ATIVAÇÃO
    ============================================================ */
 
-self.addEventListener(
-  "activate",
-  event => {
+self.addEventListener("activate", event => {
 
-    event.waitUntil(
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
 
-      Promise.all([
+      return Promise.all(
+        cacheNames.map(cacheName => {
 
-        /*
-          Remove qualquer cache antigo do Monitor.
-        */
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
 
-        caches
-          .keys()
-          .then(
-            cacheNames =>
-              Promise.all(
-                cacheNames.map(
-                  cacheName => {
+          return Promise.resolve();
 
-                    if (
-                      cacheName !== STATIC_CACHE
-                      &&
-                      cacheName !== DATA_CACHE
-                    ) {
+        })
+      );
 
-                      return caches.delete(
-                        cacheName
-                      );
+    }).then(() => self.clients.claim())
+  );
 
-                    }
-
-                    return Promise.resolve();
-
-                  }
-                )
-              )
-          ),
-
-        /*
-          Faz o novo Service Worker assumir
-          as páginas abertas imediatamente.
-        */
-
-        self.clients.claim()
-
-      ])
-
-    );
-
-  }
-);
+});
 
 
 /* ============================================================
-   UTILIDADES
+   FUNÇÕES AUXILIARES
    ============================================================ */
 
-function isHtmlRequest(
-  request,
-  url
-) {
-
-  if (
-    request.mode === "navigate"
-  ) {
-
-    return true;
-
-  }
-
-  if (
-    url.pathname.endsWith(
-      "/index.html"
-    )
-  ) {
-
-    return true;
-
-  }
-
-  if (
-    url.pathname.endsWith(
-      "/"
-    )
-  ) {
-
-    return true;
-
-  }
-
-  return false;
-
-}
-
-
-function isDynamicJson(
-  url
-) {
+function isHtmlRequest(request, url) {
 
   return (
-    url.pathname.endsWith(
-      "/dados.json"
-    )
+    request.mode === "navigate"
     ||
-    url.pathname.endsWith(
-      "/processos.json"
-    )
+    url.pathname.endsWith("/")
+    ||
+    url.pathname.endsWith("/index.html")
   );
 
 }
 
 
-function isStaticAsset(
-  url
-) {
+function isDynamicFile(url) {
 
   return (
-    url.pathname.endsWith(
-      "/manifest.json"
-    )
+    url.pathname.endsWith("/dados.json")
     ||
-    url.pathname.endsWith(
-      "/icon-192.png"
-    )
-    ||
-    url.pathname.endsWith(
-      "/icon-512.png"
-    )
+    url.pathname.endsWith("/processos.json")
   );
 
 }
@@ -193,42 +66,22 @@ function isStaticAsset(
 
 /* ============================================================
    NETWORK FIRST
-   index.html
-   dados.json
-   processos.json
    ============================================================ */
 
-async function networkFirst(
-  request,
-  cacheName
-) {
+async function networkFirst(request) {
 
-  const cache =
-    await caches.open(
-      cacheName
-    );
+  const cache = await caches.open(CACHE_NAME);
 
   try {
 
-    /*
-      Cria uma nova requisição com cache desabilitado
-      para evitar que Safari/GitHub Pages entregue
-      uma cópia antiga.
-    */
-
-    const freshRequest =
+    const response = await fetch(
       new Request(
         request,
         {
-          cache:
-            "no-store"
+          cache: "no-store"
         }
-      );
-
-    const response =
-      await fetch(
-        freshRequest
-      );
+      )
+    );
 
     if (
       response
@@ -236,26 +89,23 @@ async function networkFirst(
       response.ok
     ) {
 
-      await cache.put(
-        request,
-        response.clone()
-      );
+      try {
+        await cache.put(
+          request,
+          response.clone()
+        );
+      } catch {}
 
     }
 
     return response;
 
-  } catch(error) {
+  } catch (error) {
 
-    const cached =
-      await cache.match(
-        request
-      );
+    const cached = await cache.match(request);
 
     if (cached) {
-
       return cached;
-
     }
 
     throw error;
@@ -266,220 +116,132 @@ async function networkFirst(
 
 
 /* ============================================================
-   CACHE FIRST
-   somente arquivos estáticos
-   ============================================================ */
-
-async function cacheFirst(
-  request
-) {
-
-  const cache =
-    await caches.open(
-      STATIC_CACHE
-    );
-
-  const cached =
-    await cache.match(
-      request
-    );
-
-  if (cached) {
-
-    return cached;
-
-  }
-
-  const response =
-    await fetch(
-      request
-    );
-
-  if (
-    response
-    &&
-    response.ok
-  ) {
-
-    await cache.put(
-      request,
-      response.clone()
-    );
-
-  }
-
-  return response;
-
-}
-
-
-/* ============================================================
    FETCH
    ============================================================ */
 
-self.addEventListener(
-  "fetch",
-  event => {
+self.addEventListener("fetch", event => {
 
-    const request =
-      event.request;
+  const request = event.request;
 
-    /*
-      Só trabalhamos com GET.
-    */
+  if (request.method !== "GET") {
+    return;
+  }
 
-    if (
-      request.method !== "GET"
-    ) {
+  const url = new URL(request.url);
 
-      return;
+  /*
+    Não interfere em domínios externos,
+    Worker, SEFAZ ou SEMEF.
+  */
+  if (url.origin !== self.location.origin) {
+    return;
+  }
 
-    }
-
-    const url =
-      new URL(
-        request.url
-      );
-
-    /*
-      Não interfere em sites externos,
-      Worker, SEFAZ ou SEMEF.
-    */
-
-    if (
-      url.origin !==
-      self.location.origin
-    ) {
-
-      return;
-
-    }
-
-
-    /* ======================================================
-       INDEX / NAVEGAÇÃO
-       Sempre tenta a versão nova primeiro.
-       ====================================================== */
-
-    if (
-      isHtmlRequest(
-        request,
-        url
-      )
-    ) {
-
-      event.respondWith(
-        networkFirst(
-          request,
-          STATIC_CACHE
-        )
-      );
-
-      return;
-
-    }
-
-
-    /* ======================================================
-       DADOS.JSON / PROCESSOS.JSON
-       Nunca devem ficar presos em cache antigo.
-       ====================================================== */
-
-    if (
-      isDynamicJson(
-        url
-      )
-    ) {
-
-      event.respondWith(
-        networkFirst(
-          request,
-          DATA_CACHE
-        )
-      );
-
-      return;
-
-    }
-
-
-    /* ======================================================
-       ÍCONES / MANIFEST
-       Podem usar cache normalmente.
-       ====================================================== */
-
-    if (
-      isStaticAsset(
-        url
-      )
-    ) {
-
-      event.respondWith(
-        cacheFirst(
-          request
-        )
-      );
-
-      return;
-
-    }
-
-
-    /* ======================================================
-       DEMAIS ARQUIVOS
-       Rede primeiro, sem bloquear atualização.
-       ====================================================== */
+  /*
+    index.html / navegação:
+    sempre tenta a rede primeiro.
+  */
+  if (isHtmlRequest(request, url)) {
 
     event.respondWith(
-      fetch(
-        request
-      )
-      .catch(
-        () =>
-          caches.match(
-            request
-          )
-      )
+      networkFirst(request)
     );
 
+    return;
   }
-);
+
+  /*
+    dados.json e processos.json:
+    sempre tenta buscar a versão mais recente.
+  */
+  if (isDynamicFile(url)) {
+
+    event.respondWith(
+      networkFirst(request)
+    );
+
+    return;
+  }
+
+  /*
+    Outros arquivos:
+    rede primeiro, cache como fallback.
+  */
+  event.respondWith(
+    fetch(request)
+      .then(async response => {
+
+        if (
+          response
+          &&
+          response.ok
+        ) {
+
+          try {
+
+            const cache =
+              await caches.open(CACHE_NAME);
+
+            await cache.put(
+              request,
+              response.clone()
+            );
+
+          } catch {}
+
+        }
+
+        return response;
+
+      })
+      .catch(async () => {
+
+        const cached =
+          await caches.match(request);
+
+        if (cached) {
+          return cached;
+        }
+
+        return new Response(
+          "",
+          {
+            status: 504,
+            statusText: "Offline"
+          }
+        );
+
+      })
+  );
+
+});
 
 
 /* ============================================================
-   MENSAGEM PARA LIMPAR CACHE MANUALMENTE
+   LIMPEZA MANUAL DE CACHE
    ============================================================ */
 
-self.addEventListener(
-  "message",
-  event => {
+self.addEventListener("message", event => {
 
-    if (
-      event.data
-      &&
-      event.data.type ===
-      "CLEAR_MONITOR_CACHE"
-    ) {
+  if (
+    event.data
+    &&
+    event.data.type === "CLEAR_CACHE"
+  ) {
 
-      event.waitUntil(
+    event.waitUntil(
+      caches.keys().then(cacheNames => {
 
-        caches
-          .keys()
-          .then(
-            cacheNames =>
-              Promise.all(
-                cacheNames.map(
-                  cacheName =>
-                    caches.delete(
-                      cacheName
-                    )
-                )
-              )
+        return Promise.all(
+          cacheNames.map(
+            cacheName =>
+              caches.delete(cacheName)
           )
+        );
 
-      );
-
-    }
+      })
+    );
 
   }
-);
+
+});
