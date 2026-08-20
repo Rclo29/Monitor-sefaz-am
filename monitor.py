@@ -1,780 +1,3185 @@
 import json
+
 import os
+
 import re
+
 import sys
+
 import time
+
+import unicodedata
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 from datetime import datetime
+
 from urllib.parse import quote
+
 from zoneinfo import ZoneInfo
 
 import requests
+
 from bs4 import BeautifulSoup
 
+# ============================================================
+
+# CONFIGURAÇÃO
+
+# ============================================================
+
 ARQUIVO_DADOS = "dados.json"
+
 ARQUIVO_PROCESSOS = "processos.json"
 
 SEFAZ_BASE_URL = "https://online.sefaz.am.gov.br/processo/"
-SEMEF_BASE_URL = "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx"
 
-TIMEOUT_SEFAZ = 30
-SEMEF_CONNECT_TIMEOUT = 45
-SEMEF_READ_TIMEOUT = 60
-SEMEF_MAX_TENTATIVAS = 3
-SEMEF_ESPERA_BASE = 5
+SEMEF_BASE_URL = (
+
+    "https://sigedweb.manaus.am.gov.br/"
+
+    "protonweb/detalhe.aspx"
+
+)
+
+# Consulta rápida para não segurar o monitor
+
+SEFAZ_CONNECT_TIMEOUT = 8
+
+SEFAZ_READ_TIMEOUT = 15
+
+SEMEF_CONNECT_TIMEOUT = 8
+
+SEMEF_READ_TIMEOUT = 15
+
+SEMEF_MAX_TENTATIVAS = 2
+
+SEMEF_ESPERA = 2
+
+# Quantos processos podem ser consultados simultaneamente
+
+MAX_WORKERS = 8
 
 HEADERS = {
+
     "User-Agent": (
-        "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) "
-        "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 "
-        "Mobile/15E148 Safari/604.1"
+
+        "Mozilla/5.0 "
+
+        "(iPhone; CPU iPhone OS 18_0 like Mac OS X) "
+
+        "AppleWebKit/605.1.15 "
+
+        "(KHTML, like Gecko) "
+
+        "Version/18.0 Mobile/15E148 Safari/604.1"
+
     ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+
+    "Accept": (
+
+        "text/html,application/xhtml+xml,"
+
+        "application/xml;q=0.9,*/*;q=0.8"
+
+    ),
+
     "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+
     "Cache-Control": "no-cache",
+
     "Pragma": "no-cache",
+
 }
+
+# ============================================================
+
+# CÓDIGOS SEMEF CONHECIDOS
+
+# ============================================================
 
 SEMEF_PROTOCOLS = {
+
     "2024.18000.19012.0.008302": "7954846",
+
     "2026.18000.19951.0.024703": "11442112",
+
     "2026.18000.19951.0.014382": "11037580",
+
 }
 
+# ============================================================
+
+# DATA / HORA
+
+# ============================================================
 
 def agora_manaus():
-    return datetime.now(ZoneInfo("America/Manaus"))
 
+    return datetime.now(
+
+        ZoneInfo("America/Manaus")
+
+    )
 
 def agora_iso():
-    return agora_manaus().isoformat(timespec="seconds")
 
+    return agora_manaus().isoformat(
+
+        timespec="seconds"
+
+    )
+
+# ============================================================
+
+# TEXTO
+
+# ============================================================
+
+def reparar_mojibake(valor):
+
+    """
+
+    Corrige textos como:
+
+    NÃ£o -> Não
+
+    SituaÃ§Ã£o -> Situação
+
+    ÓrgÃ£o -> Órgão
+
+    """
+
+    if valor is None:
+
+        return ""
+
+    texto = str(valor)
+
+    if not any(
+
+        sinal in texto
+
+        for sinal in (
+
+            "Ã",
+
+            "Â",
+
+            "â€",
+
+            "ðŸ"
+
+        )
+
+    ):
+
+        return texto
+
+    try:
+
+        corrigido = texto.encode(
+
+            "latin1"
+
+        ).decode(
+
+            "utf-8"
+
+        )
+
+        return corrigido
+
+    except Exception:
+
+        return texto
 
 def texto_limpo(valor):
-    if valor is None:
-        return ""
-    return re.sub(r"\s+", " ", str(valor)).strip()
 
+    texto = reparar_mojibake(
+
+        valor
+
+    )
+
+    return re.sub(
+
+        r"\s+",
+
+        " ",
+
+        texto
+
+    ).strip()
+
+def chave_texto(valor):
+
+    """
+
+    Normaliza texto para comparação:
+
+    SITUAÇÃO -> situacao
+
+    ÓRGÃO/ENTIDADE -> orgao entidade
+
+    """
+
+    texto = texto_limpo(
+
+        valor
+
+    )
+
+    texto = unicodedata.normalize(
+
+        "NFD",
+
+        texto
+
+    )
+
+    texto = "".join(
+
+        caractere
+
+        for caractere in texto
+
+        if unicodedata.category(
+
+            caractere
+
+        ) != "Mn"
+
+    )
+
+    texto = texto.lower()
+
+    texto = re.sub(
+
+        r"[^a-z0-9]+",
+
+        " ",
+
+        texto
+
+    )
+
+    return texto.strip()
+
+# ============================================================
+
+# ORIGEM
+
+# ============================================================
 
 def normalizar_origem(valor):
-    return "semef" if texto_limpo(valor).lower() in ("semef", "siged") else "sefaz"
 
+    origem = chave_texto(
 
-def detectar_origem(numero):
-    numero = texto_limpo(numero)
-    if re.match(r"^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$", numero):
+        valor
+
+    )
+
+    if origem in (
+
+        "semef",
+
+        "siged"
+
+    ):
+
         return "semef"
+
     return "sefaz"
 
+def detectar_origem(numero):
+
+    numero = texto_limpo(
+
+        numero
+
+    )
+
+    if re.match(
+
+        r"^\d{4}\."
+
+        r"\d{5}\."
+
+        r"\d{5}\."
+
+        r"\d\."
+
+        r"\d{6}$",
+
+        numero
+
+    ):
+
+        return "semef"
+
+    return "sefaz"
+
+# ============================================================
+
+# URLs
+
+# ============================================================
 
 def url_sefaz(numero):
-    return SEFAZ_BASE_URL + quote(numero, safe="/")
 
+    return (
+
+        SEFAZ_BASE_URL
+
+        +
+
+        quote(
+
+            numero,
+
+            safe="/"
+
+        )
+
+    )
 
 def url_semef(cod_protocolo):
-    return f"{SEMEF_BASE_URL}?origem=1&cod_protocolo={quote(str(cod_protocolo))}"
 
+    return (
+
+        SEMEF_BASE_URL
+
+        +
+
+        "?origem=1"
+
+        +
+
+        "&cod_protocolo="
+
+        +
+
+        quote(
+
+            str(
+
+                cod_protocolo
+
+            )
+
+        )
+
+    )
+
+# ============================================================
+
+# PROCESSOS.JSON
+
+# ============================================================
 
 def carregar_processos():
-    if not os.path.exists(ARQUIVO_PROCESSOS):
-        raise FileNotFoundError("Arquivo processos.json nÃ£o encontrado.")
 
-    with open(ARQUIVO_PROCESSOS, "r", encoding="utf-8") as arquivo:
-        dados = json.load(arquivo)
+    if not os.path.exists(
 
-    if not isinstance(dados, dict):
-        raise ValueError("processos.json possui formato invÃ¡lido.")
+        ARQUIVO_PROCESSOS
 
-    lista = dados.get("processos", [])
-    if not isinstance(lista, list):
-        raise ValueError('O campo "processos" precisa ser uma lista.')
+    ):
+
+        raise FileNotFoundError(
+
+            "Arquivo processos.json não encontrado."
+
+        )
+
+    with open(
+
+        ARQUIVO_PROCESSOS,
+
+        "r",
+
+        encoding="utf-8"
+
+    ) as arquivo:
+
+        dados = json.load(
+
+            arquivo
+
+        )
+
+    if not isinstance(
+
+        dados,
+
+        dict
+
+    ):
+
+        raise ValueError(
+
+            "processos.json possui formato inválido."
+
+        )
+
+    lista = dados.get(
+
+        "processos",
+
+        []
+
+    )
+
+    if not isinstance(
+
+        lista,
+
+        list
+
+    ):
+
+        raise ValueError(
+
+            'O campo "processos" precisa ser uma lista.'
+
+        )
 
     processos = []
+
     vistos = set()
 
     for item in lista:
-        if isinstance(item, str):
-            numero = texto_limpo(item)
-            origem = detectar_origem(numero)
-            cod_protocolo = SEMEF_PROTOCOLS.get(numero, "") if origem == "semef" else ""
-        elif isinstance(item, dict):
-            numero = texto_limpo(item.get("numero", item.get("processo", "")))
-            origem = normalizar_origem(item.get("origem", detectar_origem(numero)))
-            cod_protocolo = texto_limpo(item.get("cod_protocolo", item.get("codProtocolo", "")))
-            if origem == "semef" and not cod_protocolo:
-                cod_protocolo = SEMEF_PROTOCOLS.get(numero, "")
+
+        if isinstance(
+
+            item,
+
+            str
+
+        ):
+
+            numero = texto_limpo(
+
+                item
+
+            )
+
+            origem = detectar_origem(
+
+                numero
+
+            )
+
+            cod_protocolo = (
+
+                SEMEF_PROTOCOLS.get(
+
+                    numero,
+
+                    ""
+
+                )
+
+                if origem == "semef"
+
+                else ""
+
+            )
+
+        elif isinstance(
+
+            item,
+
+            dict
+
+        ):
+
+            numero = texto_limpo(
+
+                item.get(
+
+                    "numero",
+
+                    item.get(
+
+                        "processo",
+
+                        ""
+
+                    )
+
+                )
+
+            )
+
+            origem = normalizar_origem(
+
+                item.get(
+
+                    "origem",
+
+                    detectar_origem(
+
+                        numero
+
+                    )
+
+                )
+
+            )
+
+            cod_protocolo = texto_limpo(
+
+                item.get(
+
+                    "cod_protocolo",
+
+                    item.get(
+
+                        "codProtocolo",
+
+                        ""
+
+                    )
+
+                )
+
+            )
+
+            if (
+
+                origem == "semef"
+
+                and
+
+                not cod_protocolo
+
+            ):
+
+                cod_protocolo = (
+
+                    SEMEF_PROTOCOLS.get(
+
+                        numero,
+
+                        ""
+
+                    )
+
+                )
+
         else:
+
             continue
 
-        if not numero or numero in vistos:
+        if not numero:
+
             continue
 
-        vistos.add(numero)
+        if numero in vistos:
+
+            continue
+
+        vistos.add(
+
+            numero
+
+        )
+
         processos.append({
+
             "numero": numero,
+
             "origem": origem,
+
             "cod_protocolo": cod_protocolo,
+
         })
 
     if not processos:
-        raise ValueError("Nenhum processo cadastrado em processos.json.")
+
+        raise ValueError(
+
+            "Nenhum processo cadastrado."
+
+        )
 
     return processos
 
+# ============================================================
+
+# DADOS.JSON
+
+# ============================================================
 
 def estrutura_vazia():
+
     return {
+
         "ultima_verificacao": None,
+
         "timezone": "America/Manaus",
+
         "total_processos": 0,
+
         "erros": 0,
+
         "novos_alertas": 0,
+
         "processos": [],
+
         "alertas": [],
+
     }
 
-
 def carregar_dados():
-    if not os.path.exists(ARQUIVO_DADOS):
+
+    if not os.path.exists(
+
+        ARQUIVO_DADOS
+
+    ):
+
         return estrutura_vazia()
 
     try:
-        with open(ARQUIVO_DADOS, "r", encoding="utf-8") as arquivo:
-            dados = json.load(arquivo)
 
-        if not isinstance(dados, dict):
+        with open(
+
+            ARQUIVO_DADOS,
+
+            "r",
+
+            encoding="utf-8"
+
+        ) as arquivo:
+
+            dados = json.load(
+
+                arquivo
+
+            )
+
+        if not isinstance(
+
+            dados,
+
+            dict
+
+        ):
+
             return estrutura_vazia()
 
-        dados.setdefault("processos", [])
-        dados.setdefault("alertas", [])
+        dados.setdefault(
+
+            "processos",
+
+            []
+
+        )
+
+        dados.setdefault(
+
+            "alertas",
+
+            []
+
+        )
+
         return dados
+
     except Exception as erro:
-        print("Aviso ao ler dados.json:", erro)
+
+        print(
+
+            "Aviso ao ler dados.json:",
+
+            erro
+
+        )
+
         return estrutura_vazia()
 
-
 def salvar_dados(dados):
-    with open(ARQUIVO_DADOS, "w", encoding="utf-8") as arquivo:
-        json.dump(dados, arquivo, ensure_ascii=False, indent=2)
-        arquivo.write("\n")
 
+    with open(
 
-def baixar_url(url, descricao):
-    print(f"Consultando {descricao}")
-    print(f"URL: {url}")
+        ARQUIVO_DADOS,
+
+        "w",
+
+        encoding="utf-8"
+
+    ) as arquivo:
+
+        json.dump(
+
+            dados,
+
+            arquivo,
+
+            ensure_ascii=False,
+
+            indent=2
+
+        )
+
+        arquivo.write(
+
+            "\n"
+
+        )
+
+# ============================================================
+
+# REQUISIÇÃO
+
+# ============================================================
+
+def baixar(
+
+    url,
+
+    connect_timeout,
+
+    read_timeout
+
+):
 
     resposta = requests.get(
-        url,
-        headers=HEADERS,
-        timeout=TIMEOUT_SEFAZ,
-        allow_redirects=True,
-    )
 
-    print("HTTP:", resposta.status_code)
-    print("URL final:", resposta.url)
+        url,
+
+        headers=HEADERS,
+
+        timeout=(
+
+            connect_timeout,
+
+            read_timeout
+
+        ),
+
+        allow_redirects=True
+
+    )
 
     resposta.raise_for_status()
 
-    if resposta.encoding is None:
-        resposta.encoding = resposta.apparent_encoding or "utf-8"
+    # Usamos bytes diretamente.
 
-    return resposta.text, resposta.url
+    # O BeautifulSoup detecta melhor o charset da página.
 
+    return (
 
-def baixar_url_semef(url, descricao):
-    ultimo_erro = None
+        resposta.content,
 
-    for tentativa in range(1, SEMEF_MAX_TENTATIVAS + 1):
-        print()
-        print(f"Consultando {descricao}")
-        print(f"Tentativa {tentativa}/{SEMEF_MAX_TENTATIVAS}")
-        print(f"URL: {url}")
+        resposta.url
 
-        try:
-            resposta = requests.get(
-                url,
-                headers=HEADERS,
-                timeout=(SEMEF_CONNECT_TIMEOUT, SEMEF_READ_TIMEOUT),
-                allow_redirects=True,
-            )
-
-            print("HTTP:", resposta.status_code)
-            print("URL final:", resposta.url)
-
-            resposta.raise_for_status()
-
-            if resposta.encoding is None:
-                resposta.encoding = resposta.apparent_encoding or "utf-8"
-
-            html = resposta.text
-            if not texto_limpo(html):
-                raise ValueError("SIGED retornou uma pÃ¡gina vazia.")
-
-            print("Consulta SEMEF recebida com sucesso.")
-            return html, resposta.url
-
-        except (requests.RequestException, ValueError) as erro:
-            ultimo_erro = erro
-            print(f"Falha na tentativa {tentativa}: {erro}")
-
-            if tentativa < SEMEF_MAX_TENTATIVAS:
-                espera = SEMEF_ESPERA_BASE * tentativa
-                print(f"Nova tentativa em {espera} segundos...")
-                time.sleep(espera)
-
-    raise RuntimeError(
-        f"NÃ£o foi possÃ­vel consultar o SIGED/SEMEF apÃ³s "
-        f"{SEMEF_MAX_TENTATIVAS} tentativas. Ãltimo erro: {ultimo_erro}"
     )
 
+# ============================================================
 
-def extrair_cabecalho_sefaz(soup):
-    texto = texto_limpo(soup.get_text(" ", strip=True))
+# FUNÇÕES DE EXTRAÇÃO POR RÓTULO
 
-    def pegar(padrao):
-        match = re.search(padrao, texto, flags=re.IGNORECASE)
-        return texto_limpo(match.group(1)) if match else ""
+# ============================================================
 
-    return {
-        "situacao": pegar(
-            r"SituaÃ§Ã£o\s*:\s*(.*?)(?=\s+Assunto\s*:|\s+ÃrgÃ£o/Entidade\s*:|\s+Interessado\s*:|$)"
-        ),
-        "assunto": pegar(
-            r"Assunto\s*:\s*(.*?)(?=\s+ÃrgÃ£o/Entidade\s*:|\s+CNPJ\s*:|\s+Interessado\s*:|$)"
-        ),
-        "interessado": pegar(
-            r"Interessado\s*:\s*(.*?)(?=\s+Processo disponÃ­vel|\s+Nova Pesquisa|\s+Data\s+Setor\s+Evento|$)"
-        ),
+def valor_apos_rotulo(
+
+    soup,
+
+    nomes
+
+):
+
+    """
+
+    Procura uma célula com um rótulo
+
+    e devolve a célula seguinte.
+
+    Funciona melhor que capturar todo
+
+    o texto da página.
+
+    """
+
+    alvos = {
+
+        chave_texto(
+
+            nome
+
+        )
+
+        for nome in nomes
+
     }
 
+    for celula in soup.find_all(
 
-def encontrar_tabela_movimentacoes_sefaz(soup):
-    for tabela in soup.find_all("table"):
-        texto = texto_limpo(tabela.get_text(" ", strip=True)).lower()
-        if "data" in texto and "setor" in texto and "evento" in texto:
-            return tabela
-    return None
+        [
 
+            "td",
 
-def extrair_movimentacoes_sefaz(soup):
-    tabela = encontrar_tabela_movimentacoes_sefaz(soup)
-    movimentacoes = []
+            "th",
 
-    if tabela is None:
-        print("Aviso: tabela de movimentaÃ§Ãµes SEFAZ nÃ£o encontrada.")
-        return movimentacoes
+            "label",
 
-    for linha in tabela.find_all("tr"):
-        valores = [
-            texto_limpo(celula.get_text(" ", strip=True))
-            for celula in linha.find_all(["td", "th"])
+            "span",
+
+            "div"
+
         ]
 
-        if len(valores) < 3:
+    ):
+
+        texto = chave_texto(
+
+            celula.get_text(
+
+                " ",
+
+                strip=True
+
+            )
+
+        )
+
+        if texto not in alvos:
+
             continue
 
-        if valores[0].lower() == "data" and valores[1].lower() == "setor":
-            continue
+        # Primeiro procura irmão direto
 
-        data = valores[0]
-        if not re.match(r"^\d{2}/\d{2}/\d{4}$", data):
-            continue
+        proxima = celula.find_next_sibling(
 
-        movimentacoes.append({
-            "data": data,
-            "setor": valores[1],
-            "evento": texto_limpo(" ".join(valores[2:])),
-        })
+            [
 
-    return movimentacoes
+                "td",
 
+                "th",
 
-def consultar_sefaz(processo):
-    numero = processo["numero"]
-    html, url_final = baixar_url(url_sefaz(numero), f"SEFAZ - {numero}")
-    soup = BeautifulSoup(html, "html.parser")
+                "span",
 
-    cabecalho = extrair_cabecalho_sefaz(soup)
-    movimentacoes = extrair_movimentacoes_sefaz(soup)
-    ultima = movimentacoes[0] if movimentacoes else {
-        "data": "",
-        "setor": "",
-        "evento": "",
-    }
+                "div"
 
-    return {
-        "numero": numero,
-        "origem": "sefaz",
-        "cod_protocolo": "",
-        "situacao": cabecalho["situacao"] or "NÃ£o identificada",
-        "interessado": cabecalho["interessado"],
-        "assunto": cabecalho["assunto"],
-        "dataMovimentacao": ultima["data"],
-        "setor": ultima["setor"],
-        "evento": ultima["evento"],
-        "url": url_final,
-        "consultado_em": agora_iso(),
-        "erro": None,
-    }
+            ]
 
+        )
 
-def localizar_valor_rotulo(soup, rotulo):
-    alvo = texto_limpo(rotulo).replace(":", "").upper()
-
-    for celula in soup.find_all(["td", "th"]):
-        texto = texto_limpo(celula.get_text(" ", strip=True)).replace(":", "").upper()
-
-        if texto != alvo:
-            continue
-
-        proxima = celula.find_next("td")
         if proxima:
-            valor = texto_limpo(proxima.get_text(" ", strip=True))
-            if valor and valor.upper() != alvo:
+
+            valor = texto_limpo(
+
+                proxima.get_text(
+
+                    " ",
+
+                    strip=True
+
+                )
+
+            )
+
+            if (
+
+                valor
+
+                and
+
+                chave_texto(
+
+                    valor
+
+                )
+
+                not in alvos
+
+            ):
+
+                return valor
+
+        # Depois procura próxima célula
+
+        proxima = celula.find_next(
+
+            "td"
+
+        )
+
+        if proxima:
+
+            valor = texto_limpo(
+
+                proxima.get_text(
+
+                    " ",
+
+                    strip=True
+
+                )
+
+            )
+
+            if (
+
+                valor
+
+                and
+
+                chave_texto(
+
+                    valor
+
+                )
+
+                not in alvos
+
+            ):
+
                 return valor
 
     return ""
 
+# ============================================================
 
-def extrair_cabecalho_semef(soup):
-    texto = texto_limpo(soup.get_text(" ", strip=True))
+# LIMPEZA DOS CAMPOS SEFAZ
 
-    def regex_valor(inicio, finais):
-        padrao_finais = "|".join(re.escape(item) for item in finais)
+# ============================================================
 
-        match = re.search(
-            re.escape(inicio)
-            + r"\s*:\s*(.*?)"
-            + r"(?=\s+(?:"
-            + padrao_finais
-            + r")\s*:|$)",
-            texto,
-            flags=re.IGNORECASE,
+def limpar_assunto_sefaz(valor):
+
+    texto = texto_limpo(
+
+        valor
+
+    )
+
+    marcadores = [
+
+        "Órgão/Entidade",
+
+        "Orgao/Entidade",
+
+        "Interessado",
+
+        "CNPJ",
+
+        "Processo disponível",
+
+        "Processo disponivel",
+
+    ]
+
+    for marcador in marcadores:
+
+        posicao = chave_texto(
+
+            texto
+
+        ).find(
+
+            chave_texto(
+
+                marcador
+
+            )
+
         )
 
-        return texto_limpo(match.group(1)) if match else ""
+        if posicao >= 0:
 
-    resultado = {
-        "numero": regex_valor(
-            "PROCESSO",
-            ["DATA DO PROCESSO", "SITUAÃÃO", "INTERESSADO"],
+            # precisa localizar também no original;
+
+            # regex é mais confiável aqui
+
+            texto = re.split(
+
+                re.escape(
+
+                    marcador
+
+                ),
+
+                texto,
+
+                maxsplit=1,
+
+                flags=re.IGNORECASE
+
+            )[0]
+
+    return texto_limpo(
+
+        texto
+
+    )
+
+def limpar_interessado_sefaz(
+
+    valor
+
+):
+
+    texto = texto_limpo(
+
+        valor
+
+    )
+
+    texto = re.split(
+
+        r"Processo\s+dispon[ií]vel",
+
+        texto,
+
+        maxsplit=1,
+
+        flags=re.IGNORECASE
+
+    )[0]
+
+    texto = re.split(
+
+        r"Nova\s+Pesquisa",
+
+        texto,
+
+        maxsplit=1,
+
+        flags=re.IGNORECASE
+
+    )[0]
+
+    return texto_limpo(
+
+        texto
+
+    )
+
+# ============================================================
+
+# CABEÇALHO SEFAZ
+
+# ============================================================
+
+def extrair_cabecalho_sefaz(
+
+    soup
+
+):
+
+    # --------------------------------------------------------
+
+    # 1. Primeiro tenta extrair pela estrutura HTML
+
+    # --------------------------------------------------------
+
+    situacao = valor_apos_rotulo(
+
+        soup,
+
+        [
+
+            "Situação",
+
+            "Situacao"
+
+        ]
+
+    )
+
+    assunto = valor_apos_rotulo(
+
+        soup,
+
+        [
+
+            "Assunto"
+
+        ]
+
+    )
+
+    interessado = valor_apos_rotulo(
+
+        soup,
+
+        [
+
+            "Interessado"
+
+        ]
+
+    )
+
+    # --------------------------------------------------------
+
+    # 2. Fallback: texto completo corrigido
+
+    # --------------------------------------------------------
+
+    texto = texto_limpo(
+
+        soup.get_text(
+
+            " ",
+
+            strip=True
+
+        )
+
+    )
+
+    if not situacao:
+
+        match = re.search(
+
+            r"Situa[cç][aã]o\s*:\s*"
+
+            r"(.*?)"
+
+            r"(?=\s+Assunto\s*:|"
+
+            r"\s+[ÓO]rg[aã]o/Entidade\s*:|"
+
+            r"\s+Interessado\s*:|$)",
+
+            texto,
+
+            flags=re.IGNORECASE
+
+        )
+
+        if match:
+
+            situacao = texto_limpo(
+
+                match.group(1)
+
+            )
+
+    if not assunto:
+
+        match = re.search(
+
+            r"Assunto\s*:\s*"
+
+            r"(.*?)"
+
+            r"(?=\s+[ÓO]rg[aã]o/Entidade\s*:|"
+
+            r"\s+CNPJ\s*:|"
+
+            r"\s+Interessado\s*:|$)",
+
+            texto,
+
+            flags=re.IGNORECASE
+
+        )
+
+        if match:
+
+            assunto = texto_limpo(
+
+                match.group(1)
+
+            )
+
+    if not interessado:
+
+        match = re.search(
+
+            r"Interessado\s*:\s*"
+
+            r"(.*?)"
+
+            r"(?=\s+Processo\s+dispon[ií]vel|"
+
+            r"\s+Nova\s+Pesquisa|"
+
+            r"\s+Data\s+Setor\s+Evento|$)",
+
+            texto,
+
+            flags=re.IGNORECASE
+
+        )
+
+        if match:
+
+            interessado = texto_limpo(
+
+                match.group(1)
+
+            )
+
+    # --------------------------------------------------------
+
+    # 3. Limpeza final
+
+    # --------------------------------------------------------
+
+    assunto = limpar_assunto_sefaz(
+
+        assunto
+
+    )
+
+    interessado = limpar_interessado_sefaz(
+
+        interessado
+
+    )
+
+    # Situação eventualmente vem com texto extra
+
+    situacao = re.split(
+
+        r"\s+Assunto\s*:",
+
+        texto_limpo(
+
+            situacao
+
         ),
-        "data_processo": regex_valor(
-            "DATA DO PROCESSO",
-            ["SITUAÃÃO", "INTERESSADO"],
-        ),
-        "situacao": regex_valor(
-            "SITUAÃÃO",
-            ["INTERESSADO", "ASSUNTO", "LOCALIZAÃÃO ATUAL"],
-        ),
-        "interessado": regex_valor(
-            "INTERESSADO",
-            ["ASSUNTO", "LOCALIZAÃÃO ATUAL"],
-        ),
-        "assunto": regex_valor(
-            "ASSUNTO",
-            ["LOCALIZAÃÃO ATUAL", "DATA DO SOBRESTAMENTO", "DESPACHO"],
-        ),
-        "localizacao": regex_valor(
-            "LOCALIZAÃÃO ATUAL",
-            ["DATA DO SOBRESTAMENTO", "DESPACHO", "MOTIVO", "HistÃ³rico do Processo"],
-        ),
+
+        maxsplit=1,
+
+        flags=re.IGNORECASE
+
+    )[0]
+
+    return {
+
+        "situacao":
+
+            texto_limpo(
+
+                situacao
+
+            ),
+
+        "assunto":
+
+            assunto,
+
+        "interessado":
+
+            interessado,
+
     }
 
-    for chave, rotulo in (
-        ("situacao", "SITUAÃÃO"),
-        ("interessado", "INTERESSADO"),
-        ("assunto", "ASSUNTO"),
-        ("localizacao", "LOCALIZAÃÃO ATUAL"),
+# ============================================================
+
+# MOVIMENTAÇÕES SEFAZ
+
+# ============================================================
+
+def encontrar_tabela_movimentacoes_sefaz(
+
+    soup
+
+):
+
+    for tabela in soup.find_all(
+
+        "table"
+
     ):
-        if not resultado[chave]:
-            resultado[chave] = localizar_valor_rotulo(soup, rotulo)
 
-    return resultado
+        texto = chave_texto(
 
+            tabela.get_text(
 
-def encontrar_tabela_historico_semef(soup):
-    for tabela in soup.find_all("table"):
-        texto = texto_limpo(tabela.get_text(" ", strip=True)).upper()
+                " ",
+
+                strip=True
+
+            )
+
+        )
 
         if (
-            "SITUAÃÃO" in texto
-            and "DATA" in texto
-            and "DEPTO" in texto
-            and "DESPACHO" in texto
-            and "MOVIMENTAÃÃO" in texto
+
+            "data" in texto
+
+            and
+
+            "setor" in texto
+
+            and
+
+            "evento" in texto
+
         ):
+
             return tabela
 
     return None
 
+def extrair_movimentacoes_sefaz(
 
-def extrair_historico_semef(soup):
-    tabela = encontrar_tabela_historico_semef(soup)
+    soup
+
+):
+
+    tabela = (
+
+        encontrar_tabela_movimentacoes_sefaz(
+
+            soup
+
+        )
+
+    )
 
     if tabela is None:
-        print("Aviso: histÃ³rico SEMEF nÃ£o encontrado.")
+
+        return []
+
+    movimentacoes = []
+
+    for linha in tabela.find_all(
+
+        "tr"
+
+    ):
+
+        valores = [
+
+            texto_limpo(
+
+                celula.get_text(
+
+                    " ",
+
+                    strip=True
+
+                )
+
+            )
+
+            for celula
+
+            in linha.find_all(
+
+                [
+
+                    "td",
+
+                    "th"
+
+                ]
+
+            )
+
+        ]
+
+        if len(
+
+            valores
+
+        ) < 3:
+
+            continue
+
+        if (
+
+            chave_texto(
+
+                valores[0]
+
+            )
+
+            == "data"
+
+        ):
+
+            continue
+
+        data = valores[0]
+
+        if not re.match(
+
+            r"^\d{2}/\d{2}/\d{4}$",
+
+            data
+
+        ):
+
+            continue
+
+        movimentacoes.append({
+
+            "data":
+
+                data,
+
+            "setor":
+
+                texto_limpo(
+
+                    valores[1]
+
+                ),
+
+            "evento":
+
+                texto_limpo(
+
+                    " ".join(
+
+                        valores[2:]
+
+                    )
+
+                ),
+
+        })
+
+    return movimentacoes
+
+# ============================================================
+
+# CONSULTAR SEFAZ
+
+# ============================================================
+
+def consultar_sefaz(
+
+    processo
+
+):
+
+    numero = processo[
+
+        "numero"
+
+    ]
+
+    conteudo, url_final = baixar(
+
+        url_sefaz(
+
+            numero
+
+        ),
+
+        SEFAZ_CONNECT_TIMEOUT,
+
+        SEFAZ_READ_TIMEOUT
+
+    )
+
+    soup = BeautifulSoup(
+
+        conteudo,
+
+        "html.parser"
+
+    )
+
+    cabecalho = (
+
+        extrair_cabecalho_sefaz(
+
+            soup
+
+        )
+
+    )
+
+    movimentacoes = (
+
+        extrair_movimentacoes_sefaz(
+
+            soup
+
+        )
+
+    )
+
+    ultima = (
+
+        movimentacoes[0]
+
+        if movimentacoes
+
+        else {
+
+            "data": "",
+
+            "setor": "",
+
+            "evento": "",
+
+        }
+
+    )
+
+    situacao = texto_limpo(
+
+        cabecalho[
+
+            "situacao"
+
+        ]
+
+    )
+
+    # Não gravamos mojibake no JSON
+
+    if not situacao:
+
+        situacao = (
+
+            "Não identificada"
+
+        )
+
+    return {
+
+        "numero":
+
+            numero,
+
+        "origem":
+
+            "sefaz",
+
+        "cod_protocolo":
+
+            "",
+
+        "situacao":
+
+            situacao,
+
+        "interessado":
+
+            texto_limpo(
+
+                cabecalho[
+
+                    "interessado"
+
+                ]
+
+            ),
+
+        "assunto":
+
+            texto_limpo(
+
+                cabecalho[
+
+                    "assunto"
+
+                ]
+
+            ),
+
+        "dataMovimentacao":
+
+            ultima[
+
+                "data"
+
+            ],
+
+        "setor":
+
+            ultima[
+
+                "setor"
+
+            ],
+
+        "evento":
+
+            ultima[
+
+                "evento"
+
+            ],
+
+        "url":
+
+            url_final,
+
+        "consultado_em":
+
+            agora_iso(),
+
+        "erro":
+
+            None,
+
+    }
+
+# ============================================================
+
+# SEMEF
+
+# ============================================================
+
+def resolver_cod_protocolo(
+
+    processo
+
+):
+
+    numero = processo[
+
+        "numero"
+
+    ]
+
+    codigo = texto_limpo(
+
+        processo.get(
+
+            "cod_protocolo",
+
+            ""
+
+        )
+
+    )
+
+    if codigo:
+
+        return codigo
+
+    codigo = SEMEF_PROTOCOLS.get(
+
+        numero,
+
+        ""
+
+    )
+
+    if codigo:
+
+        return codigo
+
+    raise ValueError(
+
+        "Processo SEMEF sem código de protocolo."
+
+    )
+
+def extrair_cabecalho_semef(
+
+    soup
+
+):
+
+    return {
+
+        "numero":
+
+            valor_apos_rotulo(
+
+                soup,
+
+                [
+
+                    "PROCESSO",
+
+                    "Processo"
+
+                ]
+
+            ),
+
+        "situacao":
+
+            valor_apos_rotulo(
+
+                soup,
+
+                [
+
+                    "SITUAÇÃO",
+
+                    "Situação"
+
+                ]
+
+            ),
+
+        "interessado":
+
+            valor_apos_rotulo(
+
+                soup,
+
+                [
+
+                    "INTERESSADO",
+
+                    "Interessado"
+
+                ]
+
+            ),
+
+        "assunto":
+
+            valor_apos_rotulo(
+
+                soup,
+
+                [
+
+                    "ASSUNTO",
+
+                    "Assunto"
+
+                ]
+
+            ),
+
+        "localizacao":
+
+            valor_apos_rotulo(
+
+                soup,
+
+                [
+
+                    "LOCALIZAÇÃO ATUAL",
+
+                    "Localização Atual"
+
+                ]
+
+            ),
+
+    }
+
+def encontrar_tabela_historico_semef(
+
+    soup
+
+):
+
+    for tabela in soup.find_all(
+
+        "table"
+
+    ):
+
+        texto = chave_texto(
+
+            tabela.get_text(
+
+                " ",
+
+                strip=True
+
+            )
+
+        )
+
+        if (
+
+            "situacao" in texto
+
+            and
+
+            "data" in texto
+
+            and
+
+            "despacho" in texto
+
+            and
+
+            "movimentacao" in texto
+
+        ):
+
+            return tabela
+
+    return None
+
+def extrair_historico_semef(
+
+    soup
+
+):
+
+    tabela = (
+
+        encontrar_tabela_historico_semef(
+
+            soup
+
+        )
+
+    )
+
+    if tabela is None:
+
         return []
 
     linhas = []
 
-    for linha in tabela.find_all("tr"):
+    for linha in tabela.find_all(
+
+        "tr"
+
+    ):
+
         valores = [
-            texto_limpo(celula.get_text(" ", strip=True))
-            for celula in linha.find_all(["td", "th"])
+
+            texto_limpo(
+
+                celula.get_text(
+
+                    " ",
+
+                    strip=True
+
+                )
+
+            )
+
+            for celula
+
+            in linha.find_all(
+
+                [
+
+                    "td",
+
+                    "th"
+
+                ]
+
+            )
+
         ]
 
-        if not valores:
+        if len(
+
+            valores
+
+        ) < 2:
+
             continue
 
-        texto_linha = " ".join(valores).upper()
+        data = (
 
-        if "DESPACHO MOVIMENTAÃÃO" in texto_linha or "DEPTO. ORIGEM" in texto_linha:
-            continue
+            valores[1]
 
-        if len(valores) < 2:
-            continue
+            if len(
 
-        data = valores[1] if len(valores) > 1 else ""
+                valores
 
-        if not re.match(r"^\d{2}/\d{2}/\d{4}$", data):
+            ) > 1
+
+            else ""
+
+        )
+
+        if not re.match(
+
+            r"^\d{2}/\d{2}/\d{4}$",
+
+            data
+
+        ):
+
             continue
 
         linhas.append({
-            "situacao": valores[0] if len(valores) > 0 else "",
-            "data": data,
-            "origem": valores[2] if len(valores) > 2 else "",
-            "recebido": valores[4] if len(valores) > 4 else "",
-            "destino": valores[5] if len(valores) > 5 else "",
-            "despacho": texto_limpo(" ".join(valores[6:])) if len(valores) > 6 else "",
+
+            "situacao":
+
+                valores[0]
+
+                if len(
+
+                    valores
+
+                ) > 0
+
+                else "",
+
+            "data":
+
+                data,
+
+            "origem":
+
+                valores[2]
+
+                if len(
+
+                    valores
+
+                ) > 2
+
+                else "",
+
+            "destino":
+
+                valores[5]
+
+                if len(
+
+                    valores
+
+                ) > 5
+
+                else "",
+
+            "despacho":
+
+                texto_limpo(
+
+                    " ".join(
+
+                        valores[6:]
+
+                    )
+
+                )
+
+                if len(
+
+                    valores
+
+                ) > 6
+
+                else "",
+
         })
 
     return linhas
 
+def consultar_semef(
 
-def resolver_cod_protocolo(processo):
-    numero = processo["numero"]
-    cod_protocolo = texto_limpo(processo.get("cod_protocolo", ""))
+    processo
 
-    if cod_protocolo:
-        return cod_protocolo
+):
 
-    cod_protocolo = SEMEF_PROTOCOLS.get(numero, "")
-    if cod_protocolo:
-        return cod_protocolo
+    numero = processo[
 
-    raise ValueError(
-        "Processo SEMEF sem cÃ³digo de protocolo conhecido. "
-        "A pesquisa inicial do SIGED exige validaÃ§Ã£o por cÃ³digo de acesso."
-    )
+        "numero"
 
+    ]
 
-def consultar_semef(processo):
-    numero = processo["numero"]
-    cod_protocolo = resolver_cod_protocolo(processo)
-    url = url_semef(cod_protocolo)
+    codigo = (
 
-    html, url_final = baixar_url_semef(url, f"SEMEF - {numero}")
-    soup = BeautifulSoup(html, "html.parser")
+        resolver_cod_protocolo(
 
-    cabecalho = extrair_cabecalho_semef(soup)
-    historico = extrair_historico_semef(soup)
+            processo
 
-    ultima = historico[0] if historico else {
-        "situacao": "",
-        "data": "",
-        "origem": "",
-        "recebido": "",
-        "destino": "",
-        "despacho": "",
-    }
-
-    numero_pagina = texto_limpo(cabecalho.get("numero", ""))
-
-    if numero_pagina and numero_pagina != numero:
-        raise ValueError(
-            f"O cÃ³digo de protocolo SEMEF nÃ£o corresponde ao nÃºmero {numero}."
         )
 
-    situacao = texto_limpo(cabecalho.get("situacao", ""))
-    if not situacao:
-        situacao = texto_limpo(ultima.get("situacao", ""))
+    )
 
-    setor = texto_limpo(cabecalho.get("localizacao", ""))
-    if not setor:
-        setor = texto_limpo(ultima.get("destino", ""))
-    if not setor:
-        setor = texto_limpo(ultima.get("origem", ""))
+    ultimo_erro = None
 
-    return {
-        "numero": numero,
-        "origem": "semef",
-        "cod_protocolo": cod_protocolo,
-        "situacao": situacao or "NÃ£o identificada",
-        "interessado": texto_limpo(cabecalho.get("interessado", "")),
-        "assunto": texto_limpo(cabecalho.get("assunto", "")),
-        "dataMovimentacao": texto_limpo(ultima.get("data", "")),
-        "setor": setor,
-        "evento": texto_limpo(ultima.get("despacho", "")),
-        "url": url_final,
-        "consultado_em": agora_iso(),
-        "erro": None,
-    }
+    for tentativa in range(
 
+        1,
 
-def consultar_processo(processo):
-    if processo.get("origem", "sefaz") == "semef":
-        return consultar_semef(processo)
+        SEMEF_MAX_TENTATIVAS + 1
 
-    return consultar_sefaz(processo)
+    ):
 
+        try:
 
-def assinatura_movimentacao(processo):
-    if not processo:
-        return ""
+            conteudo, url_final = baixar(
 
-    data = texto_limpo(processo.get("dataMovimentacao", ""))
-    setor = texto_limpo(processo.get("setor", ""))
-    evento = texto_limpo(processo.get("evento", ""))
+                url_semef(
 
-    if not (data or setor or evento):
-        return ""
+                    codigo
 
-    return "|".join([data, setor, evento])
+                ),
 
+                SEMEF_CONNECT_TIMEOUT,
 
-def localizar_anterior(dados, numero):
-    for processo in dados.get("processos", []):
-        if processo.get("numero") == numero:
-            return processo
+                SEMEF_READ_TIMEOUT
+
+            )
+
+            soup = BeautifulSoup(
+
+                conteudo,
+
+                "html.parser"
+
+            )
+
+            cabecalho = (
+
+                extrair_cabecalho_semef(
+
+                    soup
+
+                )
+
+            )
+
+            historico = (
+
+                extrair_historico_semef(
+
+                    soup
+
+                )
+
+            )
+
+            ultima = (
+
+                historico[0]
+
+                if historico
+
+                else {
+
+                    "situacao": "",
+
+                    "data": "",
+
+                    "origem": "",
+
+                    "destino": "",
+
+                    "despacho": "",
+
+                }
+
+            )
+
+            situacao = (
+
+                texto_limpo(
+
+                    cabecalho[
+
+                        "situacao"
+
+                    ]
+
+                )
+
+                or
+
+                texto_limpo(
+
+                    ultima[
+
+                        "situacao"
+
+                    ]
+
+                )
+
+                or
+
+                "Não identificada"
+
+            )
+
+            setor = (
+
+                texto_limpo(
+
+                    cabecalho[
+
+                        "localizacao"
+
+                    ]
+
+                )
+
+                or
+
+                texto_limpo(
+
+                    ultima[
+
+                        "destino"
+
+                    ]
+
+                )
+
+                or
+
+                texto_limpo(
+
+                    ultima[
+
+                        "origem"
+
+                    ]
+
+                )
+
+            )
+
+            return {
+
+                "numero":
+
+                    numero,
+
+                "origem":
+
+                    "semef",
+
+                "cod_protocolo":
+
+                    codigo,
+
+                "situacao":
+
+                    situacao,
+
+                "interessado":
+
+                    texto_limpo(
+
+                        cabecalho[
+
+                            "interessado"
+
+                        ]
+
+                    ),
+
+                "assunto":
+
+                    texto_limpo(
+
+                        cabecalho[
+
+                            "assunto"
+
+                        ]
+
+                    ),
+
+                "dataMovimentacao":
+
+                    texto_limpo(
+
+                        ultima[
+
+                            "data"
+
+                        ]
+
+                    ),
+
+                "setor":
+
+                    setor,
+
+                "evento":
+
+                    texto_limpo(
+
+                        ultima[
+
+                            "despacho"
+
+                        ]
+
+                    ),
+
+                "url":
+
+                    url_final,
+
+                "consultado_em":
+
+                    agora_iso(),
+
+                "erro":
+
+                    None,
+
+            }
+
+        except Exception as erro:
+
+            ultimo_erro = erro
+
+            if (
+
+                tentativa
+
+                <
+
+                SEMEF_MAX_TENTATIVAS
+
+            ):
+
+                time.sleep(
+
+                    SEMEF_ESPERA
+
+                )
+
+    raise RuntimeError(
+
+        "Não foi possível atualizar o processo SEMEF. "
+
+        f"{ultimo_erro}"
+
+    )
+
+# ============================================================
+
+# CONSULTA POR ORIGEM
+
+# ============================================================
+
+def consultar_processo(
+
+    processo
+
+):
+
+    if (
+
+        processo.get(
+
+            "origem"
+
+        )
+
+        ==
+
+        "semef"
+
+    ):
+
+        return consultar_semef(
+
+            processo
+
+        )
+
+    return consultar_sefaz(
+
+        processo
+
+    )
+
+# ============================================================
+
+# DADOS ANTERIORES
+
+# ============================================================
+
+def localizar_anterior(
+
+    dados,
+
+    numero
+
+):
+
+    for item in dados.get(
+
+        "processos",
+
+        []
+
+    ):
+
+        if (
+
+            item.get(
+
+                "numero"
+
+            )
+
+            ==
+
+            numero
+
+        ):
+
+            return item
 
     return None
 
+def assinatura_movimentacao(
 
-def anterior_e_valido(anterior):
-    if not anterior or anterior.get("erro"):
+    processo
+
+):
+
+    if not processo:
+
+        return ""
+
+    return "|".join([
+
+        texto_limpo(
+
+            processo.get(
+
+                "dataMovimentacao",
+
+                ""
+
+            )
+
+        ),
+
+        texto_limpo(
+
+            processo.get(
+
+                "setor",
+
+                ""
+
+            )
+
+        ),
+
+        texto_limpo(
+
+            processo.get(
+
+                "evento",
+
+                ""
+
+            )
+
+        ),
+
+    ])
+
+def anterior_valido(
+
+    anterior
+
+):
+
+    if not anterior:
+
         return False
 
-    if "erro" in texto_limpo(anterior.get("situacao", "")).lower():
+    if anterior.get(
+
+        "erro"
+
+    ):
+
         return False
 
     return bool(
+
         assinatura_movimentacao(
+
             anterior
+
+        ).replace(
+
+            "|",
+
+            ""
+
         )
+
     )
 
+# ============================================================
 
-def criar_alerta(numero, novo, anterior):
-    return {
-        "numero": numero,
-        "origem": novo.get("origem", "sefaz"),
-        "data": agora_iso(),
-        "mensagem": (
-            "Nova movimentaÃ§Ã£o: "
-            + (novo.get("evento") or "movimentaÃ§Ã£o atualizada")
-        ),
-        "movimentacao_anterior": assinatura_movimentacao(anterior),
-        "movimentacao_atual": assinatura_movimentacao(novo),
-        "data_movimentacao": novo.get("dataMovimentacao", ""),
-        "setor": novo.get("setor", ""),
-        "evento": novo.get("evento", ""),
-    }
+# ALERTAS
 
+# ============================================================
 
-def alerta_ja_existe(alertas, numero, assinatura):
+def alerta_ja_existe(
+
+    alertas,
+
+    numero,
+
+    assinatura
+
+):
+
     return any(
-        alerta.get("numero") == numero
-        and alerta.get("movimentacao_atual") == assinatura
-        for alerta in alertas
-    )
 
+        alerta.get(
 
-def url_do_processo(processo):
-    if processo.get("origem") == "semef":
-        try:
-            return url_semef(
-                resolver_cod_protocolo(
-                    processo
-                )
-            )
-        except Exception:
-            return "https://sigedweb.manaus.am.gov.br/protonweb/"
+            "numero"
 
-    return url_sefaz(
-        processo["numero"]
-    )
-
-
-def main():
-    print("=" * 60)
-    print("MONITOR SEFAZ + SEMEF")
-    print("InÃ­cio:", agora_manaus().strftime("%d/%m/%Y %H:%M:%S"))
-    print("=" * 60)
-
-    try:
-        processos_monitorados = carregar_processos()
-    except Exception as erro:
-        print("ERRO ao carregar processos.json:", erro)
-        return 1
-
-    print("Processos cadastrados:", len(processos_monitorados))
-
-    dados_anteriores = carregar_dados()
-    novos_processos = []
-
-    numeros_ativos = {
-        item["numero"]
-        for item in processos_monitorados
-    }
-
-    novos_alertas = [
-        alerta
-        for alerta in dados_anteriores.get("alertas", [])
-        if alerta.get("numero") in numeros_ativos
-    ]
-
-    erros = 0
-    novos_alertas_detectados = 0
-
-    for cadastro in processos_monitorados:
-        numero = cadastro["numero"]
-        origem = cadastro["origem"]
-
-        print()
-        print("-" * 60)
-        print(f"{origem.upper()} - {numero}")
-        print("-" * 60)
-
-        anterior = localizar_anterior(
-            dados_anteriores,
-            numero
         )
 
-        try:
-            atual = consultar_processo(
-                cadastro
-            )
+        ==
 
-            print("Origem:", atual["origem"].upper())
-            print("SituaÃ§Ã£o:", atual["situacao"])
-            print("Interessado:", atual["interessado"])
-            print("Assunto:", atual["assunto"])
-            print("Setor:", atual["setor"])
-            print("Data:", atual["dataMovimentacao"])
-            print("Ãltima movimentaÃ§Ã£o:", atual["evento"] or "â")
+        numero
 
-            if anterior_e_valido(anterior):
-                assinatura_anterior = assinatura_movimentacao(anterior)
-                assinatura_atual = assinatura_movimentacao(atual)
+        and
 
-                if assinatura_atual and assinatura_atual != assinatura_anterior:
-                    if not alerta_ja_existe(
-                        novos_alertas,
-                        numero,
-                        assinatura_atual
-                    ):
-                        novos_alertas.insert(
-                            0,
-                            criar_alerta(
-                                numero,
-                                atual,
-                                anterior
-                            )
-                        )
+        alerta.get(
 
-                        novos_alertas_detectados += 1
-                        print("NOVA MOVIMENTAÃÃO DETECTADA!")
-                    else:
-                        print("MovimentaÃ§Ã£o jÃ¡ possui alerta registrado.")
-                else:
-                    print("Nenhuma nova movimentaÃ§Ã£o.")
-            else:
-                print("Sem consulta anterior vÃ¡lida para comparaÃ§Ã£o.")
-                print("Estado atual salvo como referÃªncia inicial.")
+            "movimentacao_atual"
 
-            novos_processos.append(
-                atual
-            )
+        )
 
-        except Exception as erro:
-            erros += 1
-            print(f"ERRO ao consultar {numero}: {erro}")
+        ==
 
-            if anterior:
-                copia = dict(
-                    anterior
-                )
+        assinatura
 
-                copia["origem"] = origem
+        for alerta
 
-                if origem == "semef":
-                    copia["cod_protocolo"] = cadastro.get(
-                        "cod_protocolo",
-                        SEMEF_PROTOCOLS.get(
-                            numero,
-                            ""
-                        )
+        in alertas
+
+    )
+
+def criar_alerta(
+
+    numero,
+
+    novo,
+
+    anterior
+
+):
+
+    return {
+
+        "numero":
+
+            numero,
+
+        "origem":
+
+            novo.get(
+
+                "origem",
+
+                "sefaz"
+
+            ),
+
+        "data":
+
+            agora_iso(),
+
+        "mensagem":
+
+            (
+
+                "Nova movimentação: "
+
+                +
+
+                (
+
+                    novo.get(
+
+                        "evento"
+
                     )
 
-                copia["erro"] = str(
-                    erro
+                    or
+
+                    "movimentação atualizada"
+
                 )
 
-                copia["consultado_em"] = agora_iso()
+            ),
 
-                novos_processos.append(
-                    copia
+        "movimentacao_anterior":
+
+            assinatura_movimentacao(
+
+                anterior
+
+            ),
+
+        "movimentacao_atual":
+
+            assinatura_movimentacao(
+
+                novo
+
+            ),
+
+        "data_movimentacao":
+
+            novo.get(
+
+                "dataMovimentacao",
+
+                ""
+
+            ),
+
+        "setor":
+
+            novo.get(
+
+                "setor",
+
+                ""
+
+            ),
+
+        "evento":
+
+            novo.get(
+
+                "evento",
+
+                ""
+
+            ),
+
+    }
+
+# ============================================================
+
+# RESULTADO DE ERRO
+
+# ============================================================
+
+def criar_resultado_erro(
+
+    cadastro,
+
+    anterior,
+
+    erro
+
+):
+
+    numero = cadastro[
+
+        "numero"
+
+    ]
+
+    origem = cadastro[
+
+        "origem"
+
+    ]
+
+    mensagem = texto_limpo(
+
+        erro
+
+    )
+
+    # Preserva os últimos dados válidos
+
+    if anterior:
+
+        resultado = dict(
+
+            anterior
+
+        )
+
+        resultado[
+
+            "numero"
+
+        ] = numero
+
+        resultado[
+
+            "origem"
+
+        ] = origem
+
+        if origem == "semef":
+
+            resultado[
+
+                "cod_protocolo"
+
+            ] = cadastro.get(
+
+                "cod_protocolo",
+
+                SEMEF_PROTOCOLS.get(
+
+                    numero,
+
+                    ""
+
                 )
 
-            else:
-                novos_processos.append({
-                    "numero": numero,
-                    "origem": origem,
-                    "cod_protocolo": cadastro.get(
+            )
+
+        resultado[
+
+            "erro"
+
+        ] = mensagem
+
+        resultado[
+
+            "consultado_em"
+
+        ] = agora_iso()
+
+        return resultado
+
+    return {
+
+        "numero":
+
+            numero,
+
+        "origem":
+
+            origem,
+
+        "cod_protocolo":
+
+            cadastro.get(
+
+                "cod_protocolo",
+
+                SEMEF_PROTOCOLS.get(
+
+                    numero,
+
+                    ""
+
+                )
+
+            ),
+
+        "situacao":
+
+            "Não atualizado",
+
+        "interessado":
+
+            "",
+
+        "assunto":
+
+            "",
+
+        "dataMovimentacao":
+
+            "",
+
+        "setor":
+
+            "",
+
+        "evento":
+
+            "",
+
+        "url":
+
+            (
+
+                url_semef(
+
+                    cadastro.get(
+
                         "cod_protocolo",
-                        SEMEF_PROTOCOLS.get(
-                            numero,
-                            ""
-                        )
-                    ),
-                    "situacao": "Erro na consulta",
-                    "interessado": "",
-                    "assunto": "",
-                    "dataMovimentacao": "",
-                    "setor": "",
-                    "evento": "",
-                    "url": url_do_processo(cadastro),
-                    "consultado_em": agora_iso(),
-                    "erro": str(erro),
-                })
 
-    novos_alertas = novos_alertas[:100]
+                        ""
+
+                    )
+
+                )
+
+                if (
+
+                    origem == "semef"
+
+                    and
+
+                    cadastro.get(
+
+                        "cod_protocolo"
+
+                    )
+
+                )
+
+                else (
+
+                    url_sefaz(
+
+                        numero
+
+                    )
+
+                    if origem == "sefaz"
+
+                    else "https://sigedweb.manaus.am.gov.br/protonweb/"
+
+                )
+
+            ),
+
+        "consultado_em":
+
+            agora_iso(),
+
+        "erro":
+
+            mensagem,
+
+    }
+
+# ============================================================
+
+# EXECUÇÃO
+
+# ============================================================
+
+def main():
+
+    print(
+
+        "=" * 60
+
+    )
+
+    print(
+
+        "MONITOR SEFAZ-AM + SEMEF"
+
+    )
+
+    print(
+
+        agora_manaus().strftime(
+
+            "%d/%m/%Y %H:%M:%S"
+
+        )
+
+    )
+
+    print(
+
+        "=" * 60
+
+    )
+
+    try:
+
+        cadastros = (
+
+            carregar_processos()
+
+        )
+
+    except Exception as erro:
+
+        print(
+
+            "Erro:",
+
+            erro
+
+        )
+
+        return 1
+
+    dados_anteriores = (
+
+        carregar_dados()
+
+    )
+
+    anteriores = {
+
+        item.get(
+
+            "numero"
+
+        ):
+
+        item
+
+        for item
+
+        in dados_anteriores.get(
+
+            "processos",
+
+            []
+
+        )
+
+        if item.get(
+
+            "numero"
+
+        )
+
+    }
+
+    numeros_ativos = {
+
+        item[
+
+            "numero"
+
+        ]
+
+        for item
+
+        in cadastros
+
+    }
+
+    alertas = [
+
+        alerta
+
+        for alerta
+
+        in dados_anteriores.get(
+
+            "alertas",
+
+            []
+
+        )
+
+        if alerta.get(
+
+            "numero"
+
+        )
+
+        in numeros_ativos
+
+    ]
+
+    resultados = {}
+
+    erros = 0
+
+    novos_alertas = 0
+
+    # ========================================================
+
+    # CONSULTAS EM PARALELO
+
+    # ========================================================
+
+    with ThreadPoolExecutor(
+
+        max_workers=MAX_WORKERS
+
+    ) as executor:
+
+        futuros = {
+
+            executor.submit(
+
+                consultar_processo,
+
+                cadastro
+
+            ):
+
+            cadastro
+
+            for cadastro
+
+            in cadastros
+
+        }
+
+        for futuro in as_completed(
+
+            futuros
+
+        ):
+
+            cadastro = futuros[
+
+                futuro
+
+            ]
+
+            numero = cadastro[
+
+                "numero"
+
+            ]
+
+            anterior = anteriores.get(
+
+                numero
+
+            )
+
+            try:
+
+                atual = futuro.result()
+
+                resultados[
+
+                    numero
+
+                ] = atual
+
+                print(
+
+                    "OK:",
+
+                    numero,
+
+                    atual.get(
+
+                        "setor",
+
+                        ""
+
+                    )
+
+                )
+
+                if anterior_valido(
+
+                    anterior
+
+                ):
+
+                    assinatura_anterior = (
+
+                        assinatura_movimentacao(
+
+                            anterior
+
+                        )
+
+                    )
+
+                    assinatura_atual = (
+
+                        assinatura_movimentacao(
+
+                            atual
+
+                        )
+
+                    )
+
+                    if (
+
+                        assinatura_atual
+
+                        !=
+
+                        assinatura_anterior
+
+                    ):
+
+                        if not alerta_ja_existe(
+
+                            alertas,
+
+                            numero,
+
+                            assinatura_atual
+
+                        ):
+
+                            alertas.insert(
+
+                                0,
+
+                                criar_alerta(
+
+                                    numero,
+
+                                    atual,
+
+                                    anterior
+
+                                )
+
+                            )
+
+                            novos_alertas += 1
+
+            except Exception as erro:
+
+                erros += 1
+
+                print(
+
+                    "ERRO:",
+
+                    numero,
+
+                    erro
+
+                )
+
+                resultados[
+
+                    numero
+
+                ] = criar_resultado_erro(
+
+                    cadastro,
+
+                    anterior,
+
+                    erro
+
+                )
+
+    # ========================================================
+
+    # MANTÉM A ORDEM DO PROCESSOS.JSON
+
+    # ========================================================
+
+    lista_final = [
+
+        resultados[
+
+            cadastro[
+
+                "numero"
+
+            ]
+
+        ]
+
+        for cadastro
+
+        in cadastros
+
+        if cadastro[
+
+            "numero"
+
+        ]
+
+        in resultados
+
+    ]
 
     saida = {
-        "ultima_verificacao": agora_iso(),
-        "timezone": "America/Manaus",
-        "total_processos": len(novos_processos),
-        "erros": erros,
-        "novos_alertas": novos_alertas_detectados,
-        "processos": novos_processos,
-        "alertas": novos_alertas,
+
+        "ultima_verificacao":
+
+            agora_iso(),
+
+        "timezone":
+
+            "America/Manaus",
+
+        "total_processos":
+
+            len(
+
+                lista_final
+
+            ),
+
+        "erros":
+
+            erros,
+
+        "novos_alertas":
+
+            novos_alertas,
+
+        "processos":
+
+            lista_final,
+
+        "alertas":
+
+            alertas[:100],
+
     }
 
     salvar_dados(
+
         saida
+
     )
 
-    print("=" * 60)
-    print("dados.json atualizado.")
-    print("Processos:", len(novos_processos))
-    print("Erros:", erros)
-    print("Novos alertas:", novos_alertas_detectados)
-    print("=" * 60)
+    print(
+
+        "=" * 60
+
+    )
+
+    print(
+
+        "dados.json atualizado"
+
+    )
+
+    print(
+
+        "Processos:",
+
+        len(
+
+            lista_final
+
+        )
+
+    )
+
+    print(
+
+        "Erros:",
+
+        erros
+
+    )
+
+    print(
+
+        "Novos alertas:",
+
+        novos_alertas
+
+    )
+
+    print(
+
+        "=" * 60
+
+    )
 
     return 0
 
-
 if __name__ == "__main__":
+
     sys.exit(
+
         main()
+
     )
