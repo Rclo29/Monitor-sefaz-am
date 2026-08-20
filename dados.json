@@ -1,13 +1,13 @@
 {
-  "ultima_verificacao": "2026-08-20T14:44:32-04:00",
-  "ultima_atualizacao": "2026-08-20T14:44:32-04:00",
+  "ultima_verificacao": "2026-08-20T15:17:29-04:00",
+  "ultima_atualizacao": "2026-08-20T15:17:29-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 29.3,
+  "duracao_segundos": 9.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 50,
   "total_processos": 26,
-  "erros": 26,
-  "processos_nao_atualizados": 26,
+  "erros": 4,
+  "processos_nao_atualizados": 4,
   "processos_tempo_excedido": 0,
   "novos_alertas": 0,
   "processos": [
@@ -21,8 +21,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:23-04:00"
     },
     {
       "numero": "01.01.028101.030087/2026-20",
@@ -34,8 +34,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.030283/2026-03",
@@ -47,8 +47,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.030287/2026-83",
@@ -60,8 +60,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.030287/2026-83 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7f9a5faca5a0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.030288/2026-28",
@@ -73,8 +73,8 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.031074/2026-79",
@@ -86,8 +86,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.031331/2026-72",
@@ -99,8 +99,8 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.031373/2026-03",
@@ -112,8 +112,8 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.031077/2026-02",
@@ -125,8 +125,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=8)",
+      "consultado_em": "2026-08-20T15:17:29-04:00"
     },
     {
       "numero": "01.01.028101.031217/2026-42",
@@ -138,8 +138,8 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:22-04:00"
     },
     {
       "numero": "01.01.028101.031129/2026-40",
@@ -151,8 +151,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.031393/2026-84",
@@ -164,8 +164,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.031393/2026-84 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7f9a5faf7f80>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -177,8 +177,8 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -190,8 +190,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -203,8 +203,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:23-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -216,8 +216,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -229,8 +229,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -242,8 +242,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:24-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -255,8 +255,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:25-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -268,8 +268,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:25-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -281,8 +281,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:25-04:00"
     },
     {
       "numero": "01.01.013102.003068/2026-44",
@@ -294,8 +294,8 @@
       "setor": "GATAS",
       "evento": "65 - JUNTADA",
       "dataMovimentacao": "19/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:25-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -307,8 +307,8 @@
       "setor": "G249052",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=4)",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-20T15:17:25-04:00"
     },
     {
       "numero": "2024.18000.19012.0.008302",
@@ -320,8 +320,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f9a5fb24e60>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f892064aa80>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-08-20T15:17:29-04:00"
     },
     {
       "numero": "2026.18000.19951.0.024703",
@@ -333,8 +333,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f9a5fb270e0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f89206dfec0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-08-20T15:17:29-04:00"
     },
     {
       "numero": "2026.18000.19951.0.014382",
@@ -346,8 +346,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11037580 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f9a5faca000>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T14:44:32-04:00"
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11037580 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f892059e5a0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-08-20T15:17:29-04:00"
     }
   ],
   "alertas": [
