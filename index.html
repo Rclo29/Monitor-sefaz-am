@@ -421,6 +421,80 @@
 
       background:
         var(--vermelho-claro);
+
+      border:
+        1px solid #efb7b7;
+    }
+
+    /* =========================
+       NÃO ATUALIZADO
+       ========================= */
+
+    .process-card.not-updated {
+      border:
+        2px solid var(--vermelho);
+
+      background:
+        #fffafa;
+    }
+
+    .not-updated-strip {
+      display: none;
+
+      padding:
+        8px 15px;
+
+      background:
+        var(--vermelho-claro);
+
+      color:
+        var(--vermelho);
+
+      font-size: 11px;
+
+      font-weight: 900;
+    }
+
+    .process-card.not-updated
+    .not-updated-strip {
+      display: block;
+    }
+
+    .not-updated-badge {
+      display: inline-block;
+
+      margin-top: 7px;
+
+      padding:
+        5px 9px;
+
+      border-radius: 999px;
+
+      background:
+        var(--vermelho-claro);
+
+      color:
+        var(--vermelho);
+
+      border:
+        1px solid #efb7b7;
+
+      font-size: 10px;
+
+      font-weight: 900;
+    }
+
+    tr.not-updated-row td {
+      background:
+        var(--vermelho-claro) !important;
+
+      color:
+        #9d2929;
+    }
+
+    tr.not-updated-row
+    .process-col {
+      font-weight: 900;
     }
 
     .subsection-title {
@@ -767,72 +841,17 @@
 
       font-size: 18px;
     }
-
-    /* =========================
-       FILTRO QUADRO GERAL
-       ========================= */
-
-    .general-filter {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap: 7px;
-
-      margin:
-        0 0 14px;
-
-      padding: 5px;
-
-      border-radius: 15px;
-
-      background: #fff;
-
-      border:
-        1px solid var(--borda);
-    }
-
-    .filter-button {
-      border: 0;
-
-      border-radius: 11px;
-
-      padding:
-        10px 6px;
-
-      background:
-        transparent;
-
-      color:
-        var(--cinza);
-
-      font-size: 11px;
-
-      font-weight: 850;
-    }
-
-    .filter-button.active {
-      background:
-        var(--azul-claro);
-
-      color:
-        var(--azul);
-    }
-
-    /* =========================
-       QUADRO GERAL
+        /* =========================
+       QUADRO GERAL COMPACTO
        ========================= */
 
     .general-table-wrapper {
       width: 100%;
 
       overflow-x: auto;
-
       overflow-y: hidden;
 
-      -webkit-overflow-scrolling:
-        touch;
+      -webkit-overflow-scrolling: touch;
 
       background: #fff;
 
@@ -842,7 +861,7 @@
       border-radius: 14px;
 
       box-shadow:
-        0 2px 8px rgba(0,0,0,.03);
+        0 2px 9px rgba(0,0,0,.035);
     }
 
     .general-table {
@@ -850,37 +869,30 @@
 
       min-width: 100%;
 
-      border-collapse:
-        collapse;
+      border-collapse: collapse;
 
-      table-layout:
-        auto;
+      table-layout: auto;
     }
 
     .general-table th {
-      background:
-        #eef5ff;
+      background: #eef5ff;
 
-      color:
-        #315271;
+      color: #315271;
 
-      text-align:
-        left;
+      text-align: left;
 
       padding:
-        5px 6px;
+        7px 6px;
 
-      font-size:
-        8px;
+      font-size: 8px;
 
-      line-height:
-        1;
+      line-height: 1.1;
 
-      text-transform:
-        uppercase;
+      text-transform: uppercase;
 
-      white-space:
-        nowrap;
+      letter-spacing: .15px;
+
+      white-space: nowrap;
     }
 
     .general-table td {
@@ -888,63 +900,82 @@
         1px solid #edf0f3;
 
       padding:
-        5px 6px;
+        7px 6px;
 
-      font-size:
-        9px;
+      font-size: 9px;
 
-      line-height:
-        1.05;
+      line-height: 1.2;
 
-      vertical-align:
-        middle;
+      vertical-align: middle;
+
+      white-space: nowrap;
     }
 
-    .general-table
-    .process-col {
-      width: 205px;
+    .general-table .process-col {
+      width: 168px;
 
-      min-width: 205px;
+      min-width: 168px;
+
+      max-width: 168px;
 
       font-weight: 850;
-
-      white-space: nowrap;
     }
 
-    .general-table
-    .source-col {
-      width: 65px;
+    .general-table .sector-col {
+      width: 86px;
 
-      min-width: 65px;
+      min-width: 86px;
 
-      font-weight: 800;
-
-      white-space: nowrap;
-    }
-
-    .general-table
-    .sector-col {
-      width: 68px;
-
-      min-width: 68px;
+      max-width: 86px;
 
       font-weight: 750;
-
-      white-space: nowrap;
     }
 
-    .general-table
-    .movement-col {
-      min-width: 320px;
+    .general-table .movement-col {
+      min-width: 360px;
 
-      white-space: nowrap;
+      font-weight: 600;
+    }
 
-      font-weight: 550;
+    .general-table .movement-date-table {
+      color: var(--cinza);
+
+      font-weight: 700;
+
+      margin-right: 4px;
     }
 
     .row-priority {
       background:
-        #fffaf0;
+        #fffdf2;
+    }
+
+    .table-status-badge {
+      display: inline-block;
+
+      margin-left: 4px;
+
+      padding:
+        2px 5px;
+
+      border-radius: 999px;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      vertical-align: middle;
+    }
+
+    .table-status-badge.error {
+      background:
+        #ffdede;
+
+      color:
+        var(--vermelho);
+
+      border:
+        1px solid #efb7b7;
     }
 
     /* =========================
@@ -975,52 +1006,6 @@
       margin-bottom: 10px;
     }
 
-    .add-source {
-      margin-bottom: 8px;
-    }
-
-    .add-source select {
-      width: 100%;
-
-      border:
-        1px solid #ccd5dd;
-
-      border-radius: 13px;
-
-      padding: 12px;
-
-      outline: none;
-
-      background: #fff;
-
-      font-size: 13px;
-    }
-
-    .protocol-row {
-      display: none;
-
-      margin-bottom: 8px;
-    }
-
-    .protocol-row.show {
-      display: block;
-    }
-
-    .protocol-row input {
-      width: 100%;
-
-      border:
-        1px solid #ccd5dd;
-
-      border-radius: 13px;
-
-      padding: 12px;
-
-      outline: none;
-
-      font-size: 13px;
-    }
-
     .add-form {
       display: flex;
 
@@ -1044,9 +1029,7 @@
       font-size: 13px;
     }
 
-    .add-form input:focus,
-    .protocol-row input:focus,
-    .add-source select:focus {
+    .add-form input:focus {
       border-color:
         var(--azul);
     }
@@ -1135,8 +1118,7 @@
 
       outline: 0;
 
-      background:
-        transparent;
+      background: transparent;
 
       padding:
         13px 0;
@@ -1169,6 +1151,9 @@
     .alert.error {
       border-left:
         4px solid var(--vermelho);
+
+      background:
+        #fffafa;
     }
 
     .alert.stopped {
@@ -1250,7 +1235,7 @@
     }
 
     /* =========================
-       MENU
+       MENU INFERIOR
        ========================= */
 
     .bottom-nav {
@@ -1279,7 +1264,10 @@
       padding:
         8px
         7px
-        calc(8px + env(safe-area-inset-bottom));
+        calc(
+          8px
+          + env(safe-area-inset-bottom)
+        );
 
       border-top:
         1px solid var(--borda);
@@ -1290,6 +1278,9 @@
       backdrop-filter:
         blur(20px);
 
+      -webkit-backdrop-filter:
+        blur(20px);
+
       box-shadow:
         0 -6px 24px rgba(0,0,0,.07);
     }
@@ -1297,35 +1288,28 @@
     .nav-button {
       border: 0;
 
-      background:
-        transparent;
+      background: transparent;
 
       border-radius: 16px;
 
-      color:
-        #717986;
+      color: #717986;
 
       display: flex;
 
-      flex-direction:
-        column;
+      flex-direction: column;
 
-      align-items:
-        center;
+      align-items: center;
 
-      justify-content:
-        center;
+      justify-content: center;
 
       gap: 4px;
 
       padding:
         7px 2px;
 
-      font-size:
-        10px;
+      font-size: 10px;
 
-      font-weight:
-        800;
+      font-weight: 800;
     }
 
     .nav-button.active {
@@ -1416,8 +1400,7 @@
         grid-template-columns:
           repeat(2,minmax(0,1fr));
 
-        align-items:
-          start;
+        align-items: start;
       }
     }
 
@@ -1428,6 +1411,10 @@
 <body>
 
 <div class="app">
+
+  <!-- =========================
+       CABEÇALHO
+       ========================= -->
 
   <header class="header">
 
@@ -1633,7 +1620,7 @@
         </strong>
 
         <span>
-          Prioritários primeiro; depois, movimentação mais recente
+          Prioritários primeiro; processos não atualizados ficam no final
         </span>
 
       </div>
@@ -1661,48 +1648,8 @@
         </h2>
 
         <div class="section-subtitle">
-          Prioridades primeiro e movimentações mais recentes no topo
+          Arraste horizontalmente para visualizar a movimentação completa
         </div>
-
-      </div>
-
-      <div class="general-filter">
-
-        <button
-          class="filter-button active"
-          onclick="
-            setGeneralFilter(
-              'todos',
-              this
-            )
-          "
-        >
-          Todos
-        </button>
-
-        <button
-          class="filter-button"
-          onclick="
-            setGeneralFilter(
-              'sefaz',
-              this
-            )
-          "
-        >
-          SEFAZ-AM
-        </button>
-
-        <button
-          class="filter-button"
-          onclick="
-            setGeneralFilter(
-              'semef',
-              this
-            )
-          "
-        >
-          SEMEF
-        </button>
 
       </div>
 
@@ -1716,10 +1663,6 @@
 
               <th>
                 Processo
-              </th>
-
-              <th>
-                Origem
               </th>
 
               <th>
@@ -1771,46 +1714,12 @@
           ＋ Adicionar processo
         </div>
 
-        <div class="add-source">
-
-          <select
-            id="newProcessSource"
-            onchange="updateAddForm()"
-          >
-
-            <option value="sefaz">
-              SEFAZ-AM
-            </option>
-
-            <option value="semef">
-              SEMEF / SIGED
-            </option>
-
-          </select>
-
-        </div>
-
-        <div
-          class="protocol-row"
-          id="protocolRow"
-        >
-
-          <input
-            type="text"
-            id="newProcessProtocol"
-            inputmode="numeric"
-            placeholder="Código do protocolo SEMEF"
-            autocomplete="off"
-          >
-
-        </div>
-
         <div class="add-form">
 
           <input
             type="text"
             id="newProcessNumber"
-            placeholder="01.01.028101.000000/2026-00"
+            placeholder="Número do processo"
             autocomplete="off"
           >
 
@@ -1869,7 +1778,7 @@
         </h2>
 
         <div class="section-subtitle">
-          Movimentações, processos parados e avisos do monitor
+          Movimentações, processos parados e falhas de atualização
         </div>
 
       </div>
@@ -1884,16 +1793,15 @@
 
 </div>
 
+<!-- =========================
+     MENU INFERIOR
+     ========================= -->
+
 <nav class="bottom-nav">
 
   <button
     class="nav-button active"
-    onclick="
-      openPage(
-        'home',
-        this
-      )
-    "
+    onclick="openPage('home',this)"
   >
 
     <span class="nav-icon">
@@ -1908,12 +1816,7 @@
 
   <button
     class="nav-button"
-    onclick="
-      openPage(
-        'general',
-        this
-      )
-    "
+    onclick="openPage('general',this)"
   >
 
     <span class="nav-icon">
@@ -1928,12 +1831,7 @@
 
   <button
     class="nav-button"
-    onclick="
-      openPage(
-        'processes',
-        this
-      )
-    "
+    onclick="openPage('processes',this)"
   >
 
     <span class="nav-icon">
@@ -1948,12 +1846,7 @@
 
   <button
     class="nav-button"
-    onclick="
-      openPage(
-        'alerts',
-        this
-      )
-    "
+    onclick="openPage('alerts',this)"
   >
 
     <span class="nav-icon">
@@ -1975,6 +1868,10 @@
 
 <script>
 
+  /* =========================
+     CONFIGURAÇÃO
+     ========================= */
+
   const WORKER_URL =
     "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
@@ -1987,37 +1884,24 @@
   const SEFAZ_BASE_URL =
     "https://online.sefaz.am.gov.br/processo/";
 
-  const SEMEF_BASE_URL =
-    "https://sigedweb.manaus.am.gov.br/protonweb/";
-
-  const SEMEF_DETAIL_URL =
-    "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=";
-
-  const UPDATE_TIMEOUT =
-    120000;
-
-  const POLL_INTERVAL =
-    5000;
-
   /*
-    Protocolos SEMEF já informados.
+    A atualização manual não ficará
+    esperando indefinidamente.
 
-    Isso permite que os botões
-    "Consultar na SEMEF"
-    já funcionem para esses processos.
+    Após 60 segundos sem dados novos,
+    o aplicativo mostrará:
+    TEMPO EXCEDIDO.
   */
 
-  const SEMEF_KNOWN_PROTOCOLS = {
+  const UPDATE_TIMEOUT =
+    60000;
 
-    "2024.18000.19012.0.008302":
-      "7954846",
+  const POLL_INTERVAL =
+    3000;
 
-    "2026.18000.19951.0.024703":
-      "11442112"
-
-  };
-
-  let processRegistry = [];
+  /* =========================
+     ESTADO
+     ========================= */
 
   let processNumbers = [];
 
@@ -2028,9 +1912,6 @@
   let currentFingerprint = "";
 
   let updating = false;
-
-  let generalFilter =
-    "todos";
 
   /* =========================
      PRIORIDADES
@@ -2111,83 +1992,7 @@
     savePriorities(updated);
 
   }
-
-  /* =========================
-     PROTOCOLOS SEMEF
-     ========================= */
-
-  function getLocalSemefProtocols() {
-
-    try {
-
-      return JSON.parse(
-        localStorage.getItem(
-          "semefProtocols"
-        )
-        ||
-        "{}"
-      );
-
-    } catch {
-
-      return {};
-
-    }
-
-  }
-
-  function saveLocalSemefProtocol(
-    number,
-    protocol
-  ) {
-
-    const map =
-      getLocalSemefProtocols();
-
-    map[number] =
-      String(protocol);
-
-    localStorage.setItem(
-      "semefProtocols",
-      JSON.stringify(map)
-    );
-
-  }
-
-  function removeLocalSemefProtocol(
-    number
-  ) {
-
-    const map =
-      getLocalSemefProtocols();
-
-    delete map[number];
-
-    localStorage.setItem(
-      "semefProtocols",
-      JSON.stringify(map)
-    );
-
-  }
-
-  function getKnownSemefProtocol(
-    number
-  ) {
-
-    const localMap =
-      getLocalSemefProtocols();
-
-    return (
-      localMap[number]
-      ||
-      SEMEF_KNOWN_PROTOCOLS[number]
-      ||
-      ""
-    );
-
-  }
-
-  /* =========================
+    /* =========================
      UTILITÁRIOS
      ========================= */
 
@@ -2251,7 +2056,7 @@
   }
 
   /* =========================
-     ORIGEM DO PROCESSO
+     ORIGEM
      ========================= */
 
   function detectSource(
@@ -2274,9 +2079,13 @@
         .toLowerCase();
 
     if (
-      explicit.includes("semef")
+      explicit.includes(
+        "semef"
+      )
       ||
-      explicit.includes("siged")
+      explicit.includes(
+        "siged"
+      )
     ) {
 
       return "semef";
@@ -2284,24 +2093,22 @@
     }
 
     if (
-      explicit.includes("sefaz")
+      explicit.includes(
+        "sefaz"
+      )
     ) {
 
       return "sefaz";
 
     }
 
-    /*
-      Padrão dos processos
-      SEMEF/SIGED:
-      2026.18000.19951.0.024703
-    */
-
     const semefRegex =
       /^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$/;
 
     if (
-      semefRegex.test(number)
+      semefRegex.test(
+        number
+      )
     ) {
 
       return "semef";
@@ -2312,7 +2119,9 @@
 
   }
 
-  function sourceLabel(process) {
+  function sourceLabel(
+    process
+  ) {
 
     return (
       process.origem === "semef"
@@ -2325,7 +2134,7 @@
   }
 
   /* =========================
-     NORMALIZAÇÃO CADASTRO
+     NORMALIZAÇÃO
      ========================= */
 
   function normalizeRegistryEntry(
@@ -2336,23 +2145,17 @@
       typeof entry === "string"
     ) {
 
-      const origem =
-        detectSource(entry);
-
       return {
 
         numero:
           entry,
 
-        origem,
+        origem:
+          detectSource(
+            entry
+          ),
 
         codProtocolo:
-          origem === "semef"
-          ?
-          getKnownSemefProtocol(
-            entry
-          )
-          :
           ""
 
       };
@@ -2372,39 +2175,29 @@
       )
         .trim();
 
-    const origem =
-      detectSource(
-        numero,
-        entry
-      );
-
-    const codProtocolo =
-      String(
-        firstValue(
-          entry,
-          [
-            "cod_protocolo",
-            "codProtocolo",
-            "protocolo",
-            "codigo_protocolo"
-          ],
-          origem === "semef"
-          ?
-          getKnownSemefProtocol(
-            numero
-          )
-          :
-          ""
-        )
-      );
-
     return {
 
       numero,
 
-      origem,
+      origem:
+        detectSource(
+          numero,
+          entry
+        ),
 
-      codProtocolo
+      codProtocolo:
+        String(
+          firstValue(
+            entry,
+            [
+              "cod_protocolo",
+              "codProtocolo",
+              "protocolo",
+              "codigo_protocolo"
+            ],
+            ""
+          )
+        )
 
     };
 
@@ -2426,30 +2219,6 @@
         registryEntry
       );
 
-    const codProtocolo =
-      String(
-        firstValue(
-          item,
-          [
-            "cod_protocolo",
-            "codProtocolo",
-            "protocolo",
-            "codigo_protocolo"
-          ],
-          registryEntry.codProtocolo
-          ||
-          (
-            origem === "semef"
-            ?
-            getKnownSemefProtocol(
-              number
-            )
-            :
-            ""
-          )
-        )
-      );
-
     return {
 
       numero:
@@ -2464,7 +2233,21 @@
 
       origem,
 
-      codProtocolo,
+      codProtocolo:
+        String(
+          firstValue(
+            item,
+            [
+              "cod_protocolo",
+              "codProtocolo",
+              "protocolo",
+              "codigo_protocolo"
+            ],
+            registryEntry.codProtocolo
+            ||
+            ""
+          )
+        ),
 
       situacao:
         firstValue(
@@ -2505,11 +2288,6 @@
           ],
           ""
         ),
-
-      /*
-        Para a SEMEF,
-        evento = DESPACHO MOVIMENTAÇÃO.
-      */
 
       evento:
         firstValue(
@@ -2561,6 +2339,54 @@
   }
 
   /* =========================
+     STATUS DA ATUALIZAÇÃO
+     ========================= */
+
+  function isNotUpdated(
+    process
+  ) {
+
+    if (
+      process.erro
+    ) {
+
+      return true;
+
+    }
+
+    const situacao =
+      String(
+        process.situacao
+        ||
+        ""
+      )
+        .toLowerCase();
+
+    if (
+      situacao.includes(
+        "erro na consulta"
+      )
+    ) {
+
+      return true;
+
+    }
+
+    if (
+      situacao.includes(
+        "não atualizado"
+      )
+    ) {
+
+      return true;
+
+    }
+
+    return false;
+
+  }
+
+  /* =========================
      DATAS
      ========================= */
 
@@ -2568,14 +2394,18 @@
     value
   ) {
 
-    if (!value) {
+    if (
+      !value
+    ) {
 
       return null;
 
     }
 
     const text =
-      String(value)
+      String(
+        value
+      )
         .trim();
 
     const dateTimeMatch =
@@ -2620,7 +2450,9 @@
     }
 
     const iso =
-      new Date(text);
+      new Date(
+        text
+      );
 
     if (
       !Number.isNaN(
@@ -2741,6 +2573,16 @@
     process
   ) {
 
+    if (
+      isNotUpdated(
+        process
+      )
+    ) {
+
+      return false;
+
+    }
+
     const days =
       daysSinceMovement(
         process
@@ -2758,6 +2600,16 @@
     process
   ) {
 
+    if (
+      isNotUpdated(
+        process
+      )
+    ) {
+
+      return false;
+
+    }
+
     const days =
       daysSinceMovement(
         process
@@ -2774,7 +2626,9 @@
   ) {
 
     if (
-      process.erro
+      isNotUpdated(
+        process
+      )
     ) {
 
       return false;
@@ -2787,27 +2641,14 @@
 
   }
 
-  /*
-    REGRA SEMEF:
-
-    A última movimentação exibida
-    será exclusivamente o conteúdo
-    da coluna DESPACHO MOVIMENTAÇÃO.
-
-    Se o despacho da movimentação
-    estiver vazio, mostra "—".
-
-    Não busca o despacho da linha
-    anterior, inclusive quando a
-    situação for SOBRESTADO.
-  */
-
   function movementText(
     process
   ) {
 
     if (
-      process.origem === "semef"
+      process.origem
+      ===
+      "semef"
     ) {
 
       return (
@@ -2825,8 +2666,12 @@
       process.evento
 
     ]
-      .filter(Boolean)
-      .join(" — ");
+      .filter(
+        Boolean
+      )
+      .join(
+        " — "
+      );
 
   }
 
@@ -2844,7 +2689,8 @@
         `${url}?t=${Date.now()}`,
 
         {
-          cache: "no-store"
+          cache:
+            "no-store"
         }
 
       );
@@ -2892,7 +2738,7 @@
         :
         [];
 
-      processRegistry =
+      const registry =
         rawList
           .map(
             normalizeRegistryEntry
@@ -2903,7 +2749,7 @@
           );
 
       processNumbers =
-        processRegistry
+        registry
           .map(
             item =>
               item.numero
@@ -2955,7 +2801,7 @@
         );
 
       processes =
-        processRegistry
+        registry
           .map(
             registryEntry => {
 
@@ -3046,7 +2892,9 @@
     value
   ) {
 
-    if (!value) {
+    if (
+      !value
+    ) {
 
       return "Dados carregados";
 
@@ -3073,10 +2921,17 @@
         "pt-BR",
 
         {
-          day: "2-digit",
-          month: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit"
+          day:
+            "2-digit",
+
+          month:
+            "2-digit",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit"
         }
 
       );
@@ -3096,6 +2951,51 @@
     ]
       .sort(
         (a,b) => {
+
+          /*
+            REGRA 1:
+            processos que NÃO foram
+            atualizados vão sempre
+            para o final.
+          */
+
+          const errorA =
+            isNotUpdated(
+              a
+            )
+            ?
+            1
+            :
+            0;
+
+          const errorB =
+            isNotUpdated(
+              b
+            )
+            ?
+            1
+            :
+            0;
+
+          if (
+            errorA
+            !==
+            errorB
+          ) {
+
+            return (
+              errorA
+              -
+              errorB
+            );
+
+          }
+
+          /*
+            REGRA 2:
+            dentro do mesmo grupo,
+            prioridade primeiro.
+          */
 
           const priorityA =
             isPriority(
@@ -3129,6 +3029,11 @@
 
           }
 
+          /*
+            REGRA 3:
+            movimentação mais recente.
+          */
+
           const dateA =
             movementTimestamp(
               a
@@ -3140,7 +3045,9 @@
             );
 
           if (
-            dateA !== dateB
+            dateA
+            !==
+            dateB
           ) {
 
             return (
@@ -3150,6 +3057,11 @@
             );
 
           }
+
+          /*
+            REGRA 4:
+            ordem original.
+          */
 
           return (
 
@@ -3257,6 +3169,11 @@
         process
       );
 
+    const notUpdated =
+      isNotUpdated(
+        process
+      );
+
     const movement =
       movementText(
         process
@@ -3268,25 +3185,6 @@
       "🔎 Consultar na SEMEF"
       :
       "🔎 Consultar na SEFAZ";
-
-    const movementDisplay =
-      process.origem === "semef"
-      ?
-      (
-        movement
-        ?
-        escapeHtml(
-          movement
-        )
-        :
-        "—"
-      )
-      :
-      escapeHtml(
-        movement
-        ||
-        "Não informada"
-      );
 
     return `
 
@@ -3300,8 +3198,21 @@
             :
             ""
           }
+          ${
+            notUpdated
+            ?
+            "not-updated"
+            :
+            ""
+          }
         "
       >
+
+        <div
+          class="not-updated-strip"
+        >
+          ⚠️ NÃO ATUALIZADO
+        </div>
 
         <div
           class="priority-strip"
@@ -3335,7 +3246,9 @@
                 class="
                   source-badge
                   ${
-                    process.origem === "semef"
+                    process.origem
+                    ===
+                    "semef"
                     ?
                     "semef"
                     :
@@ -3349,6 +3262,20 @@
                   )
                 }
               </span>
+
+              ${
+                notUpdated
+                ?
+                `
+                  <span
+                    class="not-updated-badge"
+                  >
+                    ⚠️ Não atualizado
+                  </span>
+                `
+                :
+                ""
+              }
 
               <div
                 class="process-subject"
@@ -3410,12 +3337,18 @@
                 class="info-value"
               >
                 ${
-                  stopped
+                  notUpdated
                   ?
-                  "⏸️ Parado"
+                  "⚠️ Não atualizado"
                   :
-                  escapeHtml(
-                    process.situacao
+                  (
+                    stopped
+                    ?
+                    "⏸️ Parado"
+                    :
+                    escapeHtml(
+                      process.situacao
+                    )
                   )
                 }
               </span>
@@ -3487,7 +3420,11 @@
             >
 
               ${
-                movementDisplay
+                escapeHtml(
+                  movement
+                  ||
+                  "Não informada"
+                )
               }
 
               ${
@@ -3507,18 +3444,20 @@
               }
 
               ${
-                process.origem === "semef"
+                notUpdated
                 &&
-                process.dataMovimentacao
+                process.consultadoEm
                 ?
                 `
                   <span
                     class="movement-date"
                   >
-                    Data:
+                    Última tentativa:
                     ${
                       escapeHtml(
-                        process.dataMovimentacao
+                        formatDateTime(
+                          process.consultadoEm
+                        )
                       )
                     }
                   </span>
@@ -3539,7 +3478,9 @@
               class="
                 consult-button
                 ${
-                  process.origem === "semef"
+                  process.origem
+                  ===
+                  "semef"
                   ?
                   "semef"
                   :
@@ -3588,8 +3529,23 @@
     const sorted =
       sortedProcesses();
 
-    const priorities =
+    /*
+      Não colocamos processos
+      com erro entre os destaques
+      enquanto houver processos
+      atualizados disponíveis.
+    */
+
+    const updated =
       sorted.filter(
+        process =>
+          !isNotUpdated(
+            process
+          )
+      );
+
+    const priorities =
+      updated.filter(
         item =>
           isPriority(
             item.numero
@@ -3609,6 +3565,24 @@
         );
 
     } else {
+
+      selected =
+        updated.slice(
+          0,
+          5
+        );
+
+    }
+
+    /*
+      Se todos estiverem com erro,
+      mostra os primeiros para não
+      deixar a tela vazia.
+    */
+
+    if (
+      !selected.length
+    ) {
 
       selected =
         sorted.slice(
@@ -3643,68 +3617,6 @@
   }
 
   /* =========================
-     FILTRO QUADRO GERAL
-     ========================= */
-
-  function setGeneralFilter(
-    filter,
-    button
-  ) {
-
-    generalFilter =
-      filter;
-
-    document
-      .querySelectorAll(
-        ".filter-button"
-      )
-      .forEach(
-        item => {
-
-          item.classList
-            .remove(
-              "active"
-            );
-
-        }
-      );
-
-    if (
-      button
-    ) {
-
-      button.classList
-        .add(
-          "active"
-        );
-
-    }
-
-    renderGeneralTable();
-
-  }
-
-  function filteredGeneralProcesses() {
-
-    if (
-      generalFilter === "todos"
-    ) {
-
-      return processes;
-
-    }
-
-    return processes
-      .filter(
-        process =>
-          process.origem
-          ===
-          generalFilter
-      );
-
-  }
-
-  /* =========================
      QUADRO GERAL
      ========================= */
 
@@ -3717,31 +3629,28 @@
         );
 
     const list =
-      sortedProcesses(
-        filteredGeneralProcesses()
-      );
+      sortedProcesses();
 
     if (
       !list.length
     ) {
 
-      tbody.innerHTML =
-        `
-          <tr>
+      tbody.innerHTML = `
+        <tr>
 
-            <td
-              colspan="4"
-              style="
-                padding:18px;
-                text-align:center;
-                color:#667085;
-              "
-            >
-              Nenhum processo nesta origem.
-            </td>
+          <td
+            colspan="3"
+            style="
+              padding:18px;
+              text-align:center;
+              color:#667085;
+            "
+          >
+            Nenhum processo cadastrado.
+          </td>
 
-          </tr>
-        `;
+        </tr>
+      `;
 
       return;
 
@@ -3757,6 +3666,11 @@
                 process
               );
 
+            const notUpdated =
+              isNotUpdated(
+                process
+              );
+
             return `
 
               <tr
@@ -3767,6 +3681,14 @@
                     )
                     ?
                     "row-priority"
+                    :
+                    ""
+                  }
+
+                  ${
+                    notUpdated
+                    ?
+                    "not-updated-row"
                     :
                     ""
                   }
@@ -3793,16 +3715,18 @@
                     )
                   }
 
-                </td>
-
-                <td
-                  class="source-col"
-                >
-
                   ${
-                    sourceLabel(
-                      process
-                    )
+                    notUpdated
+                    ?
+                    `
+                      <span
+                        class="table-status-badge error"
+                      >
+                        NÃO ATUALIZADO
+                      </span>
+                    `
+                    :
+                    ""
                   }
 
                 </td>
@@ -3824,6 +3748,24 @@
                 <td
                   class="movement-col"
                 >
+
+                  ${
+                    process.dataMovimentacao
+                    ?
+                    `
+                      <span
+                        class="movement-date-table"
+                      >
+                        ${
+                          escapeHtml(
+                            process.dataMovimentacao
+                          )
+                        }
+                      </span>
+                    `
+                    :
+                    ""
+                  }
 
                   ${
                     escapeHtml(
@@ -3864,6 +3806,12 @@
         .trim()
         .toLowerCase();
 
+    /*
+      sortedProcesses() já garante
+      que os "Não atualizados"
+      aparecem por último.
+    */
+
     const filtered =
       sortedProcesses()
         .filter(
@@ -3891,10 +3839,14 @@
 
               process.setor,
 
-              process.evento
+              process.evento,
+
+              process.erro
 
             ]
-              .join(" ")
+              .join(
+                " "
+              )
               .toLowerCase();
 
             return text
@@ -3936,8 +3888,7 @@
         `;
 
   }
-
-  /* =========================
+    /* =========================
      ALERTAS
      ========================= */
 
@@ -3972,20 +3923,20 @@
 
               text:
                 [
-
                   sourceLabel(
                     process
                   ),
-
                   process.setor,
-
                   movementText(
                     process
                   )
-
                 ]
-                  .filter(Boolean)
-                  .join(" — ")
+                  .filter(
+                    Boolean
+                  )
+                  .join(
+                    " — "
+                  )
                 ||
                 "Movimentação registrada hoje."
 
@@ -4030,7 +3981,9 @@
           }
 
           if (
-            process.erro
+            isNotUpdated(
+              process
+            )
           ) {
 
             alerts.push({
@@ -4045,10 +3998,12 @@
                 process.origem,
 
               title:
-                `⚠️ Erro — ${process.numero}`,
+                `⚠️ Não atualizado — ${process.numero}`,
 
               text:
                 process.erro
+                ||
+                "A consulta deste processo não foi concluída."
 
             });
 
@@ -4164,6 +4119,10 @@
 
   }
 
+  /* =========================
+     RENDER GERAL
+     ========================= */
+
   function renderAll() {
 
     renderMetrics();
@@ -4186,10 +4145,13 @@
     number
   ) {
 
-    return processes.find(
-      item =>
-        item.numero === number
-    );
+    return processes
+      .find(
+        item =>
+          item.numero
+          ===
+          number
+      );
 
   }
 
@@ -4211,40 +4173,36 @@
     }
 
     if (
-      process.origem === "semef"
+      process.origem
+      ===
+      "semef"
     ) {
 
-      const protocol =
-        process.codProtocolo
-        ||
-        getKnownSemefProtocol(
-          number
-        );
+      /*
+        O código de protocolo já vem
+        do dados.json/processos.json.
+      */
 
       if (
-        protocol
+        process.codProtocolo
       ) {
 
-        window.open(
-
-          SEMEF_DETAIL_URL
+        const url =
+          "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo="
           +
           encodeURIComponent(
-            protocol
-          ),
+            process.codProtocolo
+          );
 
+        window.open(
+          url,
           "_blank"
-
         );
 
       } else {
 
-        showToast(
-          "Código do protocolo SEMEF não cadastrado. Abrindo o SIGED."
-        );
-
         window.open(
-          SEMEF_BASE_URL,
+          "https://sigedweb.manaus.am.gov.br/protonweb/",
           "_blank"
         );
 
@@ -4269,79 +4227,15 @@
   }
 
   /* =========================
-     FORMULÁRIO ADICIONAR
-     ========================= */
-
-  function updateAddForm() {
-
-    const source =
-      document
-        .getElementById(
-          "newProcessSource"
-        )
-        .value;
-
-    const numberInput =
-      document
-        .getElementById(
-          "newProcessNumber"
-        );
-
-    const protocolRow =
-      document
-        .getElementById(
-          "protocolRow"
-        );
-
-    if (
-      source === "semef"
-    ) {
-
-      protocolRow.classList
-        .add(
-          "show"
-        );
-
-      numberInput.placeholder =
-        "2026.18000.19951.0.024703";
-
-    } else {
-
-      protocolRow.classList
-        .remove(
-          "show"
-        );
-
-      numberInput.placeholder =
-        "01.01.028101.000000/2026-00";
-
-    }
-
-  }
-
-  /* =========================
      ADICIONAR PROCESSO
      ========================= */
 
   async function addProcess() {
 
-    const source =
-      document
-        .getElementById(
-          "newProcessSource"
-        )
-        .value;
-
     const input =
       document
         .getElementById(
           "newProcessNumber"
-        );
-
-    const protocolInput =
-      document
-        .getElementById(
-          "newProcessProtocol"
         );
 
     const button =
@@ -4359,18 +4253,6 @@
         .trim()
         .replace(
           /\s+/g,
-          ""
-        );
-
-    const protocol =
-      String(
-        protocolInput.value
-        ||
-        ""
-      )
-        .trim()
-        .replace(
-          /\D/g,
           ""
         );
 
@@ -4393,8 +4275,17 @@
     const semefRegex =
       /^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$/;
 
+    const origem =
+      semefRegex.test(
+        number
+      )
+      ?
+      "semef"
+      :
+      "sefaz";
+
     if (
-      source === "sefaz"
+      origem === "sefaz"
       &&
       !sefazRegex.test(
         number
@@ -4403,39 +4294,7 @@
 
       showManagementMessage(
         "error",
-        "Formato SEFAZ inválido. Exemplo: 01.01.028101.030037/2026-43"
-      );
-
-      return;
-
-    }
-
-    if (
-      source === "semef"
-      &&
-      !semefRegex.test(
-        number
-      )
-    ) {
-
-      showManagementMessage(
-        "error",
-        "Formato SEMEF inválido. Exemplo: 2026.18000.19951.0.024703"
-      );
-
-      return;
-
-    }
-
-    if (
-      source === "semef"
-      &&
-      !protocol
-    ) {
-
-      showManagementMessage(
-        "error",
-        "Informe também o código do protocolo da SEMEF."
+        "Formato inválido."
       );
 
       return;
@@ -4458,16 +4317,9 @@
 
     }
 
-    const sourceName =
-      source === "semef"
-      ?
-      "SEMEF"
-      :
-      "SEFAZ-AM";
-
     if (
       !confirm(
-        `Adicionar o processo ${number} (${sourceName}) ao monitoramento?`
+        `Adicionar o processo ${number} ao monitoramento?`
       )
     ) {
 
@@ -4482,33 +4334,6 @@
       "Adicionando...";
 
     try {
-
-      const payload = {
-
-        acao:
-          "adicionar",
-
-        numero:
-          number,
-
-        origem:
-          source
-
-      };
-
-      if (
-        source === "semef"
-      ) {
-
-        payload.cod_protocolo =
-          protocol;
-
-        saveLocalSemefProtocol(
-          number,
-          protocol
-        );
-
-      }
 
       const response =
         await fetch(
@@ -4528,9 +4353,18 @@
             },
 
             body:
-              JSON.stringify(
-                payload
-              )
+              JSON.stringify({
+
+                acao:
+                  "adicionar",
+
+                numero:
+                  number,
+
+                origem:
+                  origem
+
+              })
 
           }
 
@@ -4557,16 +4391,6 @@
         !result.ok
       ) {
 
-        if (
-          source === "semef"
-        ) {
-
-          removeLocalSemefProtocol(
-            number
-          );
-
-        }
-
         throw new Error(
           result.erro
           ||
@@ -4578,12 +4402,9 @@
       input.value =
         "";
 
-      protocolInput.value =
-        "";
-
       showManagementMessage(
         "success",
-        `✅ Processo ${sourceName} adicionado.`
+        "✅ Processo adicionado."
       );
 
       showToast(
@@ -4623,7 +4444,7 @@
   }
 
   /* =========================
-     EXCLUIR
+     EXCLUIR PROCESSO
      ========================= */
 
   async function deleteProcess(
@@ -4635,16 +4456,9 @@
         number
       );
 
-    const sourceName =
-      process?.origem === "semef"
-      ?
-      "SEMEF"
-      :
-      "SEFAZ-AM";
-
     if (
       !confirm(
-        `Excluir o processo ${number} (${sourceName}) do monitoramento?`
+        `Excluir o processo ${number} do monitoramento?`
       )
     ) {
 
@@ -4697,8 +4511,20 @@
 
         );
 
-      const result =
-        await response.json();
+      let result =
+        {};
+
+      try {
+
+        result =
+          await response.json();
+
+      } catch {
+
+        result =
+          {};
+
+      }
 
       if (
         !response.ok
@@ -4715,10 +4541,6 @@
       }
 
       removePriority(
-        number
-      );
-
-      removeLocalSemefProtocol(
         number
       );
 
@@ -4754,36 +4576,39 @@
     number
   ) {
 
-    return list.some(
-      item => {
+    return list
+      .some(
+        item => {
 
-        if (
-          typeof item === "string"
-        ) {
+          if (
+            typeof item
+            ===
+            "string"
+          ) {
+
+            return (
+              item
+              ===
+              number
+            );
+
+          }
 
           return (
-            item === number
+            firstValue(
+              item,
+              [
+                "numero",
+                "processo"
+              ],
+              ""
+            )
+            ===
+            number
           );
 
         }
-
-        return (
-
-          firstValue(
-            item,
-            [
-              "numero",
-              "processo"
-            ],
-            ""
-          )
-          ===
-          number
-
-        );
-
-      }
-    );
+      );
 
   }
 
@@ -4796,13 +4621,15 @@
       Date.now();
 
     while (
-      Date.now() - start
+      Date.now()
+      -
+      start
       <
-      60000
+      30000
     ) {
 
       await sleep(
-        3000
+        2000
       );
 
       try {
@@ -4948,7 +4775,7 @@
 
       setUpdateMessage(
         "info",
-        "Consulta manual iniciada. Aguarde a atualização dos dados."
+        "Consulta iniciada. O limite de espera do aplicativo é de 60 segundos."
       );
 
       const changed =
@@ -4962,20 +4789,59 @@
 
         await loadAll();
 
-        setUpdateMessage(
-          "success",
-          "✅ Processos atualizados com sucesso."
-        );
+        const failed =
+          processes
+            .filter(
+              isNotUpdated
+            )
+            .length;
 
-        showToast(
-          "Atualização concluída."
-        );
+        if (
+          failed > 0
+        ) {
+
+          setUpdateMessage(
+            "error",
+            `⚠️ Atualização concluída com ${failed} processo(s) não atualizado(s). Eles estão destacados em vermelho e foram enviados para o final das listas.`
+          );
+
+          showToast(
+            "Atualização concluída com falhas."
+          );
+
+        } else {
+
+          setUpdateMessage(
+            "success",
+            "✅ Processos atualizados com sucesso."
+          );
+
+          showToast(
+            "Atualização concluída."
+          );
+
+        }
 
       } else {
 
+        /*
+          IMPORTANTE:
+          depois de 60 segundos,
+          o aplicativo para de esperar.
+        */
+
+        await loadAll()
+          .catch(
+            () => {}
+          );
+
         setUpdateMessage(
-          "success",
-          "Consulta iniciada. A publicação dos resultados ainda pode levar alguns instantes."
+          "error",
+          "⏱️ Tempo excedido. A atualização não foi concluída dentro de 60 segundos. Os processos que não foram atualizados permanecerão destacados em vermelho."
+        );
+
+        showToast(
+          "Tempo excedido."
         );
 
       }
@@ -4986,9 +4852,14 @@
         error
       );
 
+      await loadAll()
+        .catch(
+          () => {}
+        );
+
       setUpdateMessage(
         "error",
-        "Não foi possível iniciar a atualização. Aguarde alguns instantes e tente novamente."
+        "⚠️ Não foi possível concluir a atualização. Os processos com falha permanecem destacados em vermelho."
       );
 
     } finally {
@@ -5014,7 +4885,9 @@
       Date.now();
 
     while (
-      Date.now() - start
+      Date.now()
+      -
+      start
       <
       UPDATE_TIMEOUT
     ) {
@@ -5162,14 +5035,16 @@
         }
       );
 
-    button.classList
+    button
+      .classList
       .add(
         "active"
       );
 
     window.scrollTo({
 
-      top: 0,
+      top:
+        0,
 
       behavior:
         "smooth"
@@ -5281,9 +5156,14 @@
 
     }
 
-    updateAddForm();
-
     await loadAll();
+
+    /*
+      Apenas recarrega os dados
+      já publicados.
+
+      NÃO dispara nova consulta.
+    */
 
     setInterval(
 
