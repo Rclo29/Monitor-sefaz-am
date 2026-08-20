@@ -2,32 +2,17 @@ export default {
 
   async fetch(request, env) {
 
-    const allowedOrigins = [
-      "https://rclo29.github.io",
-      "https://rclo29.github.io/",
-    ];
+    /* =====================================================
+       CORS
+       ===================================================== */
 
     const origin =
-      request.headers.get("Origin")
-      || "";
-
-    const allowOrigin =
-      allowedOrigins.some(
-        item =>
-          origin.startsWith(
-            item.replace(/\/$/, "")
-          )
-      )
-      ?
-      origin
-      :
-      "*";
-
+      request.headers.get("Origin") || "";
 
     const corsHeaders = {
 
       "Access-Control-Allow-Origin":
-        allowOrigin,
+        origin || "*",
 
       "Access-Control-Allow-Methods":
         "POST, OPTIONS",
@@ -54,9 +39,7 @@ export default {
     };
 
 
-    if (
-      request.method === "OPTIONS"
-    ) {
+    if (request.method === "OPTIONS") {
 
       return new Response(
         null,
@@ -69,34 +52,14 @@ export default {
     }
 
 
-    if (
-      request.method !== "POST"
-    ) {
+    if (request.method !== "POST") {
 
       return respostaJSON(
         {
           ok: false,
-          erro:
-            "Método não permitido.",
+          erro: "Método não permitido.",
         },
         405,
-        jsonHeaders
-      );
-
-    }
-
-
-    if (
-      !env.GITHUB_TOKEN
-    ) {
-
-      return respostaJSON(
-        {
-          ok: false,
-          erro:
-            "GITHUB_TOKEN não configurado.",
-        },
-        500,
         jsonHeaders
       );
 
@@ -119,15 +82,137 @@ export default {
 
     const acao =
       String(
-        body.acao
-        ||
-        ""
+        body.acao || ""
       )
         .trim()
         .toLowerCase();
 
 
     try {
+
+      /* ===================================================
+         CONSULTAR SEMEF
+         Não depende do GitHub Token.
+         =================================================== */
+
+      if (
+        acao === "consultar_semef"
+      ) {
+
+        const numero =
+          normalizarNumero(
+            body.numero || ""
+          );
+
+        let codProtocolo =
+          normalizarProtocolo(
+            body.cod_protocolo
+            ||
+            body.codProtocolo
+            ||
+            ""
+          );
+
+
+        if (
+          !codProtocolo
+          &&
+          numero
+        ) {
+
+          codProtocolo =
+            protocoloSemefConhecido(
+              numero
+            );
+
+        }
+
+
+        if (
+          numero
+          &&
+          !validarNumero(
+            numero,
+            "semef"
+          )
+        ) {
+
+          return respostaJSON(
+            {
+              ok: false,
+              erro:
+                "Número de processo SEMEF inválido.",
+            },
+            400,
+            jsonHeaders
+          );
+
+        }
+
+
+        if (!codProtocolo) {
+
+          return respostaJSON(
+            {
+              ok: false,
+              erro:
+                "Código interno do protocolo SEMEF não informado.",
+            },
+            400,
+            jsonHeaders
+          );
+
+        }
+
+
+        const resultado =
+          await consultarSemefPorWorker(
+            codProtocolo
+          );
+
+
+        return respostaJSON(
+          {
+
+            ...resultado,
+
+            numero,
+
+            cod_protocolo:
+              codProtocolo,
+
+          },
+          resultado.ok
+            ? 200
+            : 502,
+          jsonHeaders
+        );
+
+      }
+
+
+      /* ===================================================
+         A PARTIR DAQUI PRECISAMOS DO TOKEN GITHUB
+         =================================================== */
+
+      if (!env.GITHUB_TOKEN) {
+
+        return respostaJSON(
+          {
+            ok: false,
+            erro:
+              "GITHUB_TOKEN não configurado.",
+          },
+          500,
+          jsonHeaders
+        );
+
+      }
+
+
+      /* ===================================================
+         ATUALIZAR
+         =================================================== */
 
       if (
         acao === "atualizar"
@@ -142,15 +227,17 @@ export default {
         return respostaJSON(
           resultado,
           resultado.ok
-          ?
-          200
-          :
-          500,
+            ? 200
+            : 500,
           jsonHeaders
         );
 
       }
 
+
+      /* ===================================================
+         ADICIONAR
+         =================================================== */
 
       if (
         acao === "adicionar"
@@ -162,9 +249,7 @@ export default {
           );
 
 
-        if (
-          !numero
-        ) {
+        if (!numero) {
 
           return respostaJSON(
             {
@@ -198,13 +283,16 @@ export default {
 
           return respostaJSON(
             {
+
               ok: false,
+
               erro:
                 origem === "semef"
-                ?
-                "Formato SEMEF inválido. Exemplo: 2026.18000.19951.0.024703"
-                :
-                "Formato SEFAZ inválido. Exemplo: 01.01.028101.030037/2026-43",
+                  ?
+                  "Formato SEMEF inválido. Exemplo: 2026.18000.19951.0.024703"
+                  :
+                  "Formato SEFAZ inválido. Exemplo: 01.01.028101.030037/2026-43",
+
             },
             400,
             jsonHeaders
@@ -245,10 +333,12 @@ export default {
 
           return respostaJSON(
             {
+
               ok: false,
 
               erro:
-                "Ainda não conhecemos o código interno deste processo SEMEF. Faça uma consulta no SIGED uma primeira vez e informe o link do processo para cadastrarmos o protocolo.",
+                "Ainda não conhecemos o código interno deste processo SEMEF.",
+
             },
             400,
             jsonHeaders
@@ -269,15 +359,17 @@ export default {
         return respostaJSON(
           resultado,
           resultado.ok
-          ?
-          200
-          :
-          400,
+            ? 200
+            : 400,
           jsonHeaders
         );
 
       }
 
+
+      /* ===================================================
+         EXCLUIR
+         =================================================== */
 
       if (
         acao === "excluir"
@@ -289,9 +381,7 @@ export default {
           );
 
 
-        if (
-          !numero
-        ) {
+        if (!numero) {
 
           return respostaJSON(
             {
@@ -316,10 +406,8 @@ export default {
         return respostaJSON(
           resultado,
           resultado.ok
-          ?
-          200
-          :
-          400,
+            ? 200
+            : 400,
           jsonHeaders
         );
 
@@ -342,15 +430,14 @@ export default {
       console.error(
         "Erro no Worker:",
         String(
-          erro?.message
-          ||
-          erro
+          erro?.message || erro
         )
       );
 
 
       return respostaJSON(
         {
+
           ok: false,
 
           erro:
@@ -358,10 +445,9 @@ export default {
 
           detalhe:
             String(
-              erro?.message
-              ||
-              erro
+              erro?.message || erro
             ),
+
         },
         500,
         jsonHeaders
@@ -398,7 +484,21 @@ const API_BASE =
 
 
 /* ===========================================================
-   PROTOCOLOS SEMEF CONHECIDOS
+   CONFIGURAÇÃO SEMEF
+   =========================================================== */
+
+const SEMEF_HOME_URL =
+  "https://sigedweb.manaus.am.gov.br/protonweb/";
+
+const SEMEF_DETALHE_URL =
+  "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx";
+
+const SEMEF_TIMEOUT_MS =
+  8000;
+
+
+/* ===========================================================
+   PROTOCOLOS SEMEF
    =========================================================== */
 
 const SEMEF_PROTOCOLS = {
@@ -408,6 +508,9 @@ const SEMEF_PROTOCOLS = {
 
   "2026.18000.19951.0.024703":
     "11442112",
+
+  "2026.18000.19951.0.014382":
+    "11037580",
 
 };
 
@@ -447,9 +550,7 @@ function normalizarNumero(
 ) {
 
   return String(
-    valor
-    ||
-    ""
+    valor || ""
   )
     .trim()
     .replace(
@@ -466,9 +567,7 @@ function normalizarOrigem(
 
   const origem =
     String(
-      valor
-      ||
-      ""
+      valor || ""
     )
       .trim()
       .toLowerCase();
@@ -495,9 +594,7 @@ function normalizarProtocolo(
 ) {
 
   return String(
-    valor
-    ||
-    ""
+    valor || ""
   )
     .replace(
       /\D/g,
@@ -583,6 +680,488 @@ function protocoloSemefConhecido(
     ||
     ""
   );
+
+}
+
+
+/* ===========================================================
+   CONSULTA SEMEF PELO CLOUDFLARE
+   =========================================================== */
+
+async function consultarSemefPorWorker(
+  codProtocolo
+) {
+
+  const url =
+    SEMEF_DETALHE_URL
+    +
+    "?origem=1&cod_protocolo="
+    +
+    encodeURIComponent(
+      codProtocolo
+    );
+
+
+  const headers = {
+
+    "User-Agent":
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
+
+    "Accept":
+      "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+
+    "Accept-Language":
+      "pt-BR,pt;q=0.9,en;q=0.8",
+
+    "Cache-Control":
+      "no-cache",
+
+    "Pragma":
+      "no-cache",
+
+    "Referer":
+      SEMEF_HOME_URL,
+
+  };
+
+
+  const erros = [];
+
+
+  /* =======================================================
+     TENTATIVA 1 — DETALHE DIRETO
+     ======================================================= */
+
+  try {
+
+    const resposta =
+      await fetchComTimeout(
+        url,
+        {
+          method: "GET",
+          headers,
+          redirect: "follow",
+        },
+        SEMEF_TIMEOUT_MS
+      );
+
+
+    if (
+      resposta.ok
+    ) {
+
+      const html =
+        await resposta.text();
+
+
+      if (
+        paginaSemefValida(
+          html
+        )
+      ) {
+
+        return {
+
+          ok: true,
+
+          via:
+            "cloudflare-direto",
+
+          status:
+            resposta.status,
+
+          html,
+
+        };
+
+      }
+
+
+      erros.push(
+        "A SEMEF respondeu, mas a página direta não contém os dados esperados."
+      );
+
+    } else {
+
+      erros.push(
+        `Acesso direto retornou HTTP ${resposta.status}.`
+      );
+
+    }
+
+  } catch (erro) {
+
+    erros.push(
+      "Falha no acesso direto: "
+      +
+      String(
+        erro?.message || erro
+      )
+    );
+
+  }
+
+
+  /* =======================================================
+     TENTATIVA 2 — ABRIR HOME
+     ======================================================= */
+
+  let cookie = "";
+
+
+  try {
+
+    const respostaHome =
+      await fetchComTimeout(
+        SEMEF_HOME_URL,
+        {
+
+          method:
+            "GET",
+
+          headers: {
+
+            "User-Agent":
+              headers["User-Agent"],
+
+            "Accept":
+              headers["Accept"],
+
+            "Accept-Language":
+              headers["Accept-Language"],
+
+            "Cache-Control":
+              "no-cache",
+
+          },
+
+          redirect:
+            "follow",
+
+        },
+        SEMEF_TIMEOUT_MS
+      );
+
+
+    if (
+      respostaHome.ok
+    ) {
+
+      cookie =
+        extrairCookie(
+          respostaHome.headers
+        );
+
+    } else {
+
+      erros.push(
+        `Página inicial retornou HTTP ${respostaHome.status}.`
+      );
+
+    }
+
+  } catch (erro) {
+
+    erros.push(
+      "Falha ao abrir a página inicial: "
+      +
+      String(
+        erro?.message || erro
+      )
+    );
+
+  }
+
+
+  /* =======================================================
+     TENTATIVA 3 — DETALHE COM COOKIE
+     ======================================================= */
+
+  try {
+
+    const headersSessao = {
+      ...headers,
+    };
+
+
+    if (cookie) {
+
+      headersSessao.Cookie =
+        cookie;
+
+    }
+
+
+    const resposta =
+      await fetchComTimeout(
+        url,
+        {
+
+          method:
+            "GET",
+
+          headers:
+            headersSessao,
+
+          redirect:
+            "follow",
+
+        },
+        SEMEF_TIMEOUT_MS
+      );
+
+
+    if (
+      resposta.ok
+    ) {
+
+      const html =
+        await resposta.text();
+
+
+      if (
+        paginaSemefValida(
+          html
+        )
+      ) {
+
+        return {
+
+          ok: true,
+
+          via:
+            cookie
+              ?
+              "cloudflare-sessao"
+              :
+              "cloudflare-segunda-tentativa",
+
+          status:
+            resposta.status,
+
+          html,
+
+        };
+
+      }
+
+
+      erros.push(
+        "A segunda resposta da SEMEF não contém os dados esperados."
+      );
+
+    } else {
+
+      erros.push(
+        `Segunda tentativa retornou HTTP ${resposta.status}.`
+      );
+
+    }
+
+  } catch (erro) {
+
+    erros.push(
+      "Falha na segunda tentativa: "
+      +
+      String(
+        erro?.message || erro
+      )
+    );
+
+  }
+
+
+  return {
+
+    ok:
+      false,
+
+    erro:
+      "Não foi possível consultar a SEMEF pelo Cloudflare Worker.",
+
+    detalhe:
+      erros.join(
+        " | "
+      ),
+
+  };
+
+}
+
+
+/* ===========================================================
+   FETCH COM TIMEOUT
+   =========================================================== */
+
+async function fetchComTimeout(
+  url,
+  options,
+  timeoutMs
+) {
+
+  const controller =
+    new AbortController();
+
+
+  const timer =
+    setTimeout(
+      () => {
+
+        controller.abort();
+
+      },
+      timeoutMs
+    );
+
+
+  try {
+
+    return await fetch(
+      url,
+      {
+        ...options,
+        signal:
+          controller.signal,
+      }
+    );
+
+  } finally {
+
+    clearTimeout(
+      timer
+    );
+
+  }
+
+}
+
+
+/* ===========================================================
+   VALIDAR HTML SEMEF
+   =========================================================== */
+
+function paginaSemefValida(
+  html
+) {
+
+  const texto =
+    String(
+      html || ""
+    )
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
+      );
+
+
+  return (
+
+    texto.includes(
+      "consulta de documentos e processos"
+    )
+
+    &&
+
+    texto.includes(
+      "processo"
+    )
+
+    &&
+
+    texto.includes(
+      "situacao"
+    )
+
+    &&
+
+    (
+      texto.includes(
+        "historico do processo"
+      )
+
+      ||
+
+      texto.includes(
+        "despacho movimentacao"
+      )
+    )
+
+  );
+
+}
+
+
+/* ===========================================================
+   EXTRAIR COOKIE DA SEMEF
+   =========================================================== */
+
+function extrairCookie(
+  headers
+) {
+
+  try {
+
+    if (
+      typeof headers.getSetCookie
+      ===
+      "function"
+    ) {
+
+      const cookies =
+        headers.getSetCookie();
+
+
+      if (
+        Array.isArray(
+          cookies
+        )
+      ) {
+
+        return cookies
+          .map(
+            item =>
+              String(item)
+                .split(";")[0]
+          )
+          .filter(Boolean)
+          .join("; ");
+
+      }
+
+    }
+
+  } catch {
+
+    /* continua */
+
+  }
+
+
+  const setCookie =
+    headers.get(
+      "set-cookie"
+    );
+
+
+  if (!setCookie) {
+
+    return "";
+
+  }
+
+
+  return setCookie
+    .split(",")
+    .map(
+      item =>
+        item
+          .trim()
+          .split(";")[0]
+    )
+    .filter(Boolean)
+    .join("; ");
 
 }
 
@@ -711,7 +1290,7 @@ function textoParaBase64(
 
 
 /* ===========================================================
-   NORMALIZA ITEM
+   NORMALIZAR ITEM DO processos.json
    =========================================================== */
 
 function normalizarItemProcesso(
@@ -753,9 +1332,7 @@ function normalizarItemProcesso(
         );
 
 
-      if (
-        protocolo
-      ) {
+      if (protocolo) {
 
         resultado.cod_protocolo =
           protocolo;
@@ -813,9 +1390,13 @@ function normalizarItemProcesso(
         normalizarProtocolo(
 
           item.cod_protocolo
+
           ||
+
           item.codProtocolo
+
           ||
+
           protocoloSemefConhecido(
             numero
           )
@@ -823,9 +1404,7 @@ function normalizarItemProcesso(
         );
 
 
-      if (
-        protocolo
-      ) {
+      if (protocolo) {
 
         resultado.cod_protocolo =
           protocolo;
@@ -859,10 +1438,9 @@ async function lerProcessos(
 
   const resposta =
     await fetch(
-
       url,
-
       {
+
         method:
           "GET",
 
@@ -870,26 +1448,15 @@ async function lerProcessos(
           githubHeaders(
             token
           ),
-      }
 
+      }
     );
 
 
-  if (
-    !resposta.ok
-  ) {
+  if (!resposta.ok) {
 
     const detalhe =
       await resposta.text();
-
-
-    console.error(
-      "ERRO GITHUB AO LER processos.json:",
-      "STATUS:",
-      resposta.status,
-      "DETALHE:",
-      detalhe
-    );
 
 
     throw new Error(
@@ -988,17 +1555,9 @@ async function gravarProcessos(
     "\n";
 
 
-  const conteudoBase64 =
-    textoParaBase64(
-      conteudo
-    );
-
-
   const resposta =
     await fetch(
-
       url,
-
       {
 
         method:
@@ -1016,7 +1575,9 @@ async function gravarProcessos(
               mensagem,
 
             content:
-              conteudoBase64,
+              textoParaBase64(
+                conteudo
+              ),
 
             sha,
 
@@ -1026,25 +1587,13 @@ async function gravarProcessos(
           }),
 
       }
-
     );
 
 
-  if (
-    !resposta.ok
-  ) {
+  if (!resposta.ok) {
 
     const detalhe =
       await resposta.text();
-
-
-    console.error(
-      "ERRO GITHUB AO GRAVAR processos.json:",
-      "STATUS:",
-      resposta.status,
-      "DETALHE:",
-      detalhe
-    );
 
 
     throw new Error(
@@ -1073,9 +1622,7 @@ async function dispararWorkflow(
 
   const resposta =
     await fetch(
-
       url,
-
       {
 
         method:
@@ -1095,7 +1642,6 @@ async function dispararWorkflow(
           }),
 
       }
-
     );
 
 
@@ -1118,15 +1664,6 @@ async function dispararWorkflow(
 
   const detalhe =
     await resposta.text();
-
-
-  console.error(
-    "ERRO AO DISPARAR WORKFLOW:",
-    "STATUS:",
-    resposta.status,
-    "DETALHE:",
-    detalhe
-  );
 
 
   return {
@@ -1177,9 +1714,7 @@ async function adicionarProcesso(
     );
 
 
-  if (
-    jaExiste
-  ) {
+  if (jaExiste) {
 
     return {
 
@@ -1251,10 +1786,10 @@ async function adicionarProcesso(
 
     cod_protocolo:
       origem === "semef"
-      ?
-      codProtocolo
-      :
-      undefined,
+        ?
+        codProtocolo
+        :
+        undefined,
 
     total:
       processos.length,
@@ -1295,9 +1830,7 @@ async function excluirProcesso(
     );
 
 
-  if (
-    !existe
-  ) {
+  if (!existe) {
 
     return {
 
