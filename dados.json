@@ -1,12 +1,14 @@
 {
-  "ultima_verificacao": "2026-08-19T19:52:15-04:00",
+  "ultima_verificacao": "2026-08-20T04:52:20-04:00",
   "timezone": "America/Manaus",
-  "total_processos": 23,
-  "erros": 0,
+  "total_processos": 26,
+  "erros": 3,
   "novos_alertas": 0,
   "processos": [
     {
       "numero": "01.01.028101.030037/2026-43",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -14,11 +16,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030037/2026-43",
-      "consultado_em": "2026-08-19T19:51:34-04:00",
+      "consultado_em": "2026-08-20T04:50:07-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030087/2026-20",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -26,11 +30,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030087/2026-20",
-      "consultado_em": "2026-08-19T19:51:35-04:00",
+      "consultado_em": "2026-08-20T04:50:11-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030283/2026-03",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -38,11 +44,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030283/2026-03",
-      "consultado_em": "2026-08-19T19:51:37-04:00",
+      "consultado_em": "2026-08-20T04:50:13-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030287/2026-83",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -50,11 +58,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030287/2026-83",
-      "consultado_em": "2026-08-19T19:51:39-04:00",
+      "consultado_em": "2026-08-20T04:50:15-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030288/2026-28",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -62,11 +72,13 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030288/2026-28",
-      "consultado_em": "2026-08-19T19:51:42-04:00",
+      "consultado_em": "2026-08-20T04:50:16-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031074/2026-79",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -74,11 +86,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031074/2026-79",
-      "consultado_em": "2026-08-19T19:51:44-04:00",
+      "consultado_em": "2026-08-20T04:50:19-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031331/2026-72",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -86,11 +100,13 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031331/2026-72",
-      "consultado_em": "2026-08-19T19:51:45-04:00",
+      "consultado_em": "2026-08-20T04:50:21-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031373/2026-03",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -98,11 +114,13 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031373/2026-03",
-      "consultado_em": "2026-08-19T19:51:47-04:00",
+      "consultado_em": "2026-08-20T04:50:23-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031077/2026-02",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -110,11 +128,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031077/2026-02",
-      "consultado_em": "2026-08-19T19:51:48-04:00",
+      "consultado_em": "2026-08-20T04:50:25-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031217/2026-42",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -122,11 +142,13 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031217/2026-42",
-      "consultado_em": "2026-08-19T19:51:49-04:00",
+      "consultado_em": "2026-08-20T04:50:27-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031129/2026-40",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -134,11 +156,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031129/2026-40",
-      "consultado_em": "2026-08-19T19:51:50-04:00",
+      "consultado_em": "2026-08-20T04:50:29-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031393/2026-84",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -146,11 +170,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031393/2026-84",
-      "consultado_em": "2026-08-19T19:51:52-04:00",
+      "consultado_em": "2026-08-20T04:50:30-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.031411/2026-28",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -158,11 +184,13 @@
       "setor": "GEFIN",
       "evento": "59 - TRAMITANDO",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.031411/2026-28",
-      "consultado_em": "2026-08-19T19:51:53-04:00",
+      "consultado_em": "2026-08-20T04:50:33-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030117/2026-07",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -170,11 +198,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030117/2026-07",
-      "consultado_em": "2026-08-19T19:51:54-04:00",
+      "consultado_em": "2026-08-20T04:50:34-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030118/2026-43",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -182,11 +212,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030118/2026-43",
-      "consultado_em": "2026-08-19T19:51:57-04:00",
+      "consultado_em": "2026-08-20T04:50:36-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030125/2026-45",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -194,11 +226,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030125/2026-45",
-      "consultado_em": "2026-08-19T19:51:58-04:00",
+      "consultado_em": "2026-08-20T04:50:38-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030450/2026-08",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -206,11 +240,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030450/2026-08",
-      "consultado_em": "2026-08-19T19:51:59-04:00",
+      "consultado_em": "2026-08-20T04:50:39-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030453/2026-41",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -218,11 +254,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030453/2026-41",
-      "consultado_em": "2026-08-19T19:52:01-04:00",
+      "consultado_em": "2026-08-20T04:50:40-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030855/2026-46",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -230,11 +268,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030855/2026-46",
-      "consultado_em": "2026-08-19T19:52:02-04:00",
+      "consultado_em": "2026-08-20T04:50:42-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030858/2026-80",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -242,11 +282,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030858/2026-80",
-      "consultado_em": "2026-08-19T19:52:11-04:00",
+      "consultado_em": "2026-08-20T04:50:44-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.030869/2026-60",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
@@ -254,11 +296,13 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.030869/2026-60",
-      "consultado_em": "2026-08-19T19:52:12-04:00",
+      "consultado_em": "2026-08-20T04:50:45-04:00",
       "erro": null
     },
     {
       "numero": "01.01.013102.003068/2026-44",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "819 - REQUERIMENTO",
@@ -266,11 +310,13 @@
       "setor": "GATAS",
       "evento": "65 - JUNTADA",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.013102.003068/2026-44",
-      "consultado_em": "2026-08-19T19:52:13-04:00",
+      "consultado_em": "2026-08-20T04:50:46-04:00",
       "erro": null
     },
     {
       "numero": "01.01.028101.000655/2026-69",
+      "origem": "sefaz",
+      "cod_protocolo": "",
       "situacao": "Aberto",
       "interessado": "DEPARTAMENTO DE INFRAESTRUTURA - DEINFRA/SEDUC",
       "assunto": "704 - SOLICITANDO CONTRATACAO",
@@ -278,8 +324,50 @@
       "setor": "G249052",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "url": "https://online.sefaz.am.gov.br/processo/01.01.028101.000655/2026-69",
-      "consultado_em": "2026-08-19T19:52:15-04:00",
+      "consultado_em": "2026-08-20T04:50:48-04:00",
       "erro": null
+    },
+    {
+      "numero": "2024.18000.19012.0.008302",
+      "origem": "semef",
+      "cod_protocolo": "7954846",
+      "situacao": "Erro na consulta",
+      "interessado": "",
+      "assunto": "",
+      "dataMovimentacao": "",
+      "setor": "",
+      "evento": "",
+      "url": "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846",
+      "consultado_em": "2026-08-20T04:51:19-04:00",
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f18085efc80>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=30)'))"
+    },
+    {
+      "numero": "2026.18000.19951.0.024703",
+      "origem": "semef",
+      "cod_protocolo": "11442112",
+      "situacao": "Erro na consulta",
+      "interessado": "",
+      "assunto": "",
+      "dataMovimentacao": "",
+      "setor": "",
+      "evento": "",
+      "url": "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112",
+      "consultado_em": "2026-08-20T04:51:49-04:00",
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f18088122d0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=30)'))"
+    },
+    {
+      "numero": "2026.18000.19951.0.014382",
+      "origem": "semef",
+      "cod_protocolo": "11037580",
+      "situacao": "Erro na consulta",
+      "interessado": "",
+      "assunto": "",
+      "dataMovimentacao": "",
+      "setor": "",
+      "evento": "",
+      "url": "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=11037580",
+      "consultado_em": "2026-08-20T04:52:20-04:00",
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11037580 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f180831b620>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=30)'))"
     }
   ],
   "alertas": [
