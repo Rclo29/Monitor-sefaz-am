@@ -122,7 +122,8 @@ export default {
 
         const resultado =
           await consultarSemefPorWorker(
-            codProtocolo
+            codProtocolo,
+            numero
           );
 
         return respostaJSON(
@@ -367,10 +368,6 @@ const SEMEF_HOME_URL =
 const SEMEF_DETALHE_URL =
   `https://${SEMEF_HOST}/protonweb/detalhe.aspx`;
 
-
-// Timeout curto proposital.
-// Se a SEMEF não responder, não queremos travar
-// o Worker por muito tempo.
 const SEMEF_TIMEOUT_MS = 8000;
 
 
@@ -469,7 +466,7 @@ function detectarOrigem(numero) {
 
 
 // ============================================================
-// VALIDAR
+// VALIDAR NÚMERO
 // ============================================================
 
 function validarNumero(
@@ -538,6 +535,31 @@ function formatarErro(erro) {
           )
         : "",
   };
+}
+
+
+// ============================================================
+// NORMALIZAR TEXTO SEMEF
+// ============================================================
+
+function normalizarTextoSemef(valor) {
+
+  return String(valor || "")
+    .normalize("NFD")
+    .replace(
+      /[\u0300-\u036f]/g,
+      ""
+    )
+    .toLowerCase()
+    .replace(
+      /&nbsp;/gi,
+      " "
+    )
+    .replace(
+      /\s+/g,
+      " "
+    )
+    .trim();
 }
 
 
@@ -629,8 +651,218 @@ function resumirHTML(html) {
 
   return texto.slice(
     0,
-    500
+    700
   );
+}
+
+
+// ============================================================
+// SINAIS DA PÁGINA SEMEF
+// ============================================================
+
+function sinaisPaginaSemef(
+  html,
+  numeroEsperado = ""
+) {
+
+  const texto =
+    normalizarTextoSemef(
+      String(html || "")
+        .replace(
+          /<script[\s\S]*?<\/script>/gi,
+          " "
+        )
+        .replace(
+          /<style[\s\S]*?<\/style>/gi,
+          " "
+        )
+        .replace(
+          /<[^>]+>/g,
+          " "
+        )
+    );
+
+  const numero =
+    normalizarNumero(
+      numeroEsperado
+    );
+
+  const numeroCompacto =
+    numero.replace(
+      /\D/g,
+      ""
+    );
+
+  const textoCompacto =
+    texto.replace(
+      /\D/g,
+      ""
+    );
+
+  const temNumero =
+    Boolean(numero) &&
+    (
+      texto.includes(
+        numero.toLowerCase()
+      )
+      ||
+      (
+        numeroCompacto.length >= 10 &&
+        textoCompacto.includes(
+          numeroCompacto
+        )
+      )
+    );
+
+  const sinais = {
+
+    numero_processo:
+      temNumero,
+
+    semef:
+      texto.includes("semef"),
+
+    consulta_processos:
+      texto.includes(
+        "consulta de documentos e processos"
+      )
+      ||
+      texto.includes(
+        "consulta de documentos"
+      ),
+
+    processo:
+      texto.includes("processo"),
+
+    data_processo:
+      texto.includes(
+        "data do processo"
+      ),
+
+    situacao:
+      texto.includes("situacao"),
+
+    interessado:
+      texto.includes("interessado"),
+
+    assunto:
+      texto.includes("assunto"),
+
+    localizacao:
+      texto.includes("localizacao"),
+
+    historico:
+      texto.includes(
+        "historico do processo"
+      )
+      ||
+      texto.includes(
+        "historico"
+      ),
+
+    despacho:
+      texto.includes(
+        "despacho movimentacao"
+      )
+      ||
+      texto.includes(
+        "despacho"
+      ),
+
+    depto_origem:
+      texto.includes(
+        "depto. origem"
+      )
+      ||
+      texto.includes(
+        "depto origem"
+      ),
+
+    depto_destino:
+      texto.includes(
+        "depto. destino"
+      )
+      ||
+      texto.includes(
+        "depto destino"
+      ),
+
+  };
+
+  return sinais;
+}
+
+
+// ============================================================
+// VALIDAR HTML SEMEF
+// ============================================================
+
+function paginaSemefValida(
+  html,
+  numeroEsperado = ""
+) {
+
+  if (
+    !html ||
+    String(html).length < 500
+  ) {
+    return false;
+  }
+
+  const sinais =
+    sinaisPaginaSemef(
+      html,
+      numeroEsperado
+    );
+
+  // ----------------------------------------------------------
+  // REGRA 1
+  // Melhor cenário:
+  // a página contém exatamente o processo pesquisado
+  // e pelo menos alguns campos processuais.
+  // ----------------------------------------------------------
+
+  if (
+    sinais.numero_processo &&
+    sinais.processo &&
+    (
+      sinais.situacao ||
+      sinais.interessado ||
+      sinais.assunto ||
+      sinais.localizacao ||
+      sinais.historico
+    )
+  ) {
+    return true;
+  }
+
+  // ----------------------------------------------------------
+  // REGRA 2
+  // Página processual completa mesmo que a formatação do
+  // número tenha sido alterada pelo site.
+  // ----------------------------------------------------------
+
+  let pontos = 0;
+
+  if (sinais.consulta_processos) pontos++;
+  if (sinais.data_processo) pontos++;
+  if (sinais.situacao) pontos++;
+  if (sinais.interessado) pontos++;
+  if (sinais.assunto) pontos++;
+  if (sinais.localizacao) pontos++;
+  if (sinais.historico) pontos++;
+  if (sinais.despacho) pontos++;
+  if (sinais.depto_origem) pontos++;
+  if (sinais.depto_destino) pontos++;
+
+  if (
+    sinais.processo &&
+    pontos >= 4
+  ) {
+    return true;
+  }
+
+  return false;
 }
 
 
@@ -639,7 +871,8 @@ function resumirHTML(html) {
 // ============================================================
 
 async function consultarSemefPorWorker(
-  codProtocolo
+  codProtocolo,
+  numeroEsperado = ""
 ) {
 
   const inicioTotal =
@@ -713,20 +946,35 @@ async function consultarSemefPorWorker(
     const html =
       await resposta.text();
 
+    const sinais =
+      sinaisPaginaSemef(
+        html,
+        numeroEsperado
+      );
+
+    const paginaValida =
+      paginaSemefValida(
+        html,
+        numeroEsperado
+      );
+
     diag.tamanho_resposta =
       html.length;
 
     diag.preview =
       resumirHTML(html);
 
+    diag.sinais =
+      sinais;
+
     diag.pagina_semef_valida =
-      paginaSemefValida(html);
+      paginaValida;
 
     diagnostico.push(diag);
 
     if (
       resposta.ok &&
-      paginaSemefValida(html)
+      paginaValida
     ) {
 
       return {
@@ -737,6 +985,9 @@ async function consultarSemefPorWorker(
 
         status:
           resposta.status,
+
+        url_final:
+          resposta.url,
 
         duracao_total_ms:
           Date.now() -
@@ -783,7 +1034,7 @@ async function consultarSemefPorWorker(
 
   // =========================================================
   // TESTE 2
-  // Página inicial
+  // Página inicial para criação de sessão
   // =========================================================
 
   let cookie = "";
@@ -892,7 +1143,7 @@ async function consultarSemefPorWorker(
 
   // =========================================================
   // TESTE 3
-  // Detalhe após a sessão
+  // Detalhe após criação da sessão
   // =========================================================
 
   try {
@@ -930,6 +1181,18 @@ async function consultarSemefPorWorker(
     const html =
       await resposta.text();
 
+    const sinais =
+      sinaisPaginaSemef(
+        html,
+        numeroEsperado
+      );
+
+    const paginaValida =
+      paginaSemefValida(
+        html,
+        numeroEsperado
+      );
+
     const diag =
       diagnosticoResposta(
         "detalhe_com_sessao",
@@ -946,8 +1209,11 @@ async function consultarSemefPorWorker(
     diag.cookie_enviado =
       Boolean(cookie);
 
+    diag.sinais =
+      sinais;
+
     diag.pagina_semef_valida =
-      paginaSemefValida(html);
+      paginaValida;
 
     diagnostico.push(
       diag
@@ -955,7 +1221,7 @@ async function consultarSemefPorWorker(
 
     if (
       resposta.ok &&
-      paginaSemefValida(html)
+      paginaValida
     ) {
 
       return {
@@ -968,6 +1234,9 @@ async function consultarSemefPorWorker(
 
         status:
           resposta.status,
+
+        url_final:
+          resposta.url,
 
         duracao_total_ms:
           Date.now() -
@@ -1016,7 +1285,7 @@ async function consultarSemefPorWorker(
     ok: false,
 
     erro:
-      "Não foi possível consultar a SEMEF pelo Cloudflare Worker.",
+      "A SEMEF respondeu, mas a página recebida não foi reconhecida como a página do processo.",
 
     host:
       SEMEF_HOST,
@@ -1026,6 +1295,9 @@ async function consultarSemefPorWorker(
 
     protocolo:
       codProtocolo,
+
+    numero_esperado:
+      numeroEsperado,
 
     timeout_por_tentativa_ms:
       SEMEF_TIMEOUT_MS,
@@ -1097,47 +1369,6 @@ async function fetchComTimeout(
       timer
     );
   }
-}
-
-
-// ============================================================
-// VALIDAR HTML SEMEF
-// ============================================================
-
-function paginaSemefValida(html) {
-
-  const texto =
-    String(html || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(
-        /[\u0300-\u036f]/g,
-        ""
-      );
-
-  return (
-    texto.includes(
-      "consulta de documentos e processos"
-    )
-    &&
-    texto.includes(
-      "processo"
-    )
-    &&
-    texto.includes(
-      "situacao"
-    )
-    &&
-    (
-      texto.includes(
-        "historico do processo"
-      )
-      ||
-      texto.includes(
-        "despacho movimentacao"
-      )
-    )
-  );
 }
 
 
