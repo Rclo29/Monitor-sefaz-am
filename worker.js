@@ -54,10 +54,6 @@ export default {
     };
 
 
-    /* =======================================================
-       OPTIONS / CORS
-       ======================================================= */
-
     if (
       request.method === "OPTIONS"
     ) {
@@ -72,10 +68,6 @@ export default {
 
     }
 
-
-    /* =======================================================
-       SOMENTE POST
-       ======================================================= */
 
     if (
       request.method !== "POST"
@@ -94,10 +86,6 @@ export default {
     }
 
 
-    /* =======================================================
-       TOKEN
-       ======================================================= */
-
     if (
       !env.GITHUB_TOKEN
     ) {
@@ -114,10 +102,6 @@ export default {
 
     }
 
-
-    /* =======================================================
-       BODY
-       ======================================================= */
 
     let body = {};
 
@@ -145,10 +129,6 @@ export default {
 
     try {
 
-      /* =====================================================
-         ATUALIZAR
-         ===================================================== */
-
       if (
         acao === "atualizar"
       ) {
@@ -171,10 +151,6 @@ export default {
 
       }
 
-
-      /* =====================================================
-         ADICIONAR
-         ===================================================== */
 
       if (
         acao === "adicionar"
@@ -261,16 +237,6 @@ export default {
         }
 
 
-        /*
-          O SIGED exige Código de Acesso
-          para a pesquisa inicial.
-
-          Portanto, um processo SEMEF
-          desconhecido precisa ter seu
-          cod_protocolo identificado uma
-          primeira vez.
-        */
-
         if (
           origem === "semef"
           &&
@@ -312,10 +278,6 @@ export default {
 
       }
 
-
-      /* =====================================================
-         EXCLUIR
-         ===================================================== */
 
       if (
         acao === "excluir"
@@ -364,10 +326,6 @@ export default {
       }
 
 
-      /* =====================================================
-         AÇÃO INVÁLIDA
-         ===================================================== */
-
       return respostaJSON(
         {
           ok: false,
@@ -383,7 +341,11 @@ export default {
 
       console.error(
         "Erro no Worker:",
-        erro
+        String(
+          erro?.message
+          ||
+          erro
+        )
       );
 
 
@@ -749,18 +711,12 @@ function textoParaBase64(
 
 
 /* ===========================================================
-   NORMALIZA ITEM DO processos.json
+   NORMALIZA ITEM
    =========================================================== */
 
 function normalizarItemProcesso(
   item
 ) {
-
-  /*
-    Compatibilidade com formato antigo:
-
-    "01.01..."
-  */
 
   if (
     typeof item === "string"
@@ -813,16 +769,6 @@ function normalizarItemProcesso(
 
   }
 
-
-  /*
-    Novo formato:
-
-    {
-      numero: "...",
-      origem: "sefaz|semef",
-      cod_protocolo: "..."
-    }
-  */
 
   if (
     item
@@ -937,10 +883,17 @@ async function lerProcessos(
       await resposta.text();
 
 
-    throw new Error(
-      "Falha ao ler processos.json: "
-      +
+    console.error(
+      "ERRO GITHUB AO LER processos.json:",
+      "STATUS:",
+      resposta.status,
+      "DETALHE:",
       detalhe
+    );
+
+
+    throw new Error(
+      `GitHub retornou HTTP ${resposta.status} ao ler processos.json: ${detalhe}`
     );
 
   }
@@ -1085,10 +1038,17 @@ async function gravarProcessos(
       await resposta.text();
 
 
-    throw new Error(
-      "Falha ao atualizar processos.json: "
-      +
+    console.error(
+      "ERRO GITHUB AO GRAVAR processos.json:",
+      "STATUS:",
+      resposta.status,
+      "DETALHE:",
       detalhe
+    );
+
+
+    throw new Error(
+      `GitHub retornou HTTP ${resposta.status}: ${detalhe}`
     );
 
   }
@@ -1158,6 +1118,15 @@ async function dispararWorkflow(
 
   const detalhe =
     await resposta.text();
+
+
+  console.error(
+    "ERRO AO DISPARAR WORKFLOW:",
+    "STATUS:",
+    resposta.status,
+    "DETALHE:",
+    detalhe
+  );
 
 
   return {
