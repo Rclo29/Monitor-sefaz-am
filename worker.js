@@ -1,61 +1,42 @@
-// deploy cloudflare 20-08
+// ============================================================
+// MONITOR SEFAZ-AM + SEMEF
+// Cloudflare Worker
+// ============================================================
 
 export default {
-
   async fetch(request, env) {
 
-    /* =====================================================
-       CORS
-       ===================================================== */
-
-    const origin =
-      request.headers.get("Origin") || "";
+    const origin = request.headers.get("Origin") || "*";
 
     const corsHeaders = {
-
-      "Access-Control-Allow-Origin":
-        origin || "*",
-
-      "Access-Control-Allow-Methods":
-        "POST, OPTIONS",
-
-      "Access-Control-Allow-Headers":
-        "Content-Type",
-
-      "Access-Control-Max-Age":
-        "86400",
-
+      "Access-Control-Allow-Origin": origin,
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Max-Age": "86400",
     };
-
 
     const jsonHeaders = {
-
       ...corsHeaders,
-
-      "Content-Type":
-        "application/json; charset=utf-8",
-
-      "Cache-Control":
-        "no-store",
-
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
     };
 
+    // --------------------------------------------------------
+    // CORS
+    // --------------------------------------------------------
 
     if (request.method === "OPTIONS") {
-
-      return new Response(
-        null,
-        {
-          status: 204,
-          headers: corsHeaders,
-        }
-      );
-
+      return new Response(null, {
+        status: 204,
+        headers: corsHeaders,
+      });
     }
 
+    // --------------------------------------------------------
+    // SOMENTE POST
+    // --------------------------------------------------------
 
     if (request.method !== "POST") {
-
       return respostaJSON(
         {
           ok: false,
@@ -64,81 +45,58 @@ export default {
         405,
         jsonHeaders
       );
-
     }
 
+    // --------------------------------------------------------
+    // JSON
+    // --------------------------------------------------------
 
     let body = {};
 
     try {
-
-      body =
-        await request.json();
-
+      body = await request.json();
     } catch {
-
-      body = {};
-
+      return respostaJSON(
+        {
+          ok: false,
+          erro: "Corpo JSON inválido.",
+        },
+        400,
+        jsonHeaders
+      );
     }
 
-
-    const acao =
-      String(
-        body.acao || ""
-      )
-        .trim()
-        .toLowerCase();
-
+    const acao = String(body.acao || "")
+      .trim()
+      .toLowerCase();
 
     try {
 
-      /* ===================================================
-         CONSULTAR SEMEF
-         Não depende do GitHub Token.
-         =================================================== */
+      // ======================================================
+      // CONSULTAR SEMEF
+      // ======================================================
 
-      if (
-        acao === "consultar_semef"
-      ) {
+      if (acao === "consultar_semef") {
 
-        const numero =
-          normalizarNumero(
-            body.numero || ""
-          );
+        const numero = normalizarNumero(
+          body.numero || ""
+        );
 
-        let codProtocolo =
-          normalizarProtocolo(
-            body.cod_protocolo
-            ||
-            body.codProtocolo
-            ||
-            ""
-          );
+        let codProtocolo = normalizarProtocolo(
+          body.cod_protocolo ||
+          body.codProtocolo ||
+          ""
+        );
 
-
-        if (
-          !codProtocolo
-          &&
-          numero
-        ) {
-
+        if (!codProtocolo && numero) {
           codProtocolo =
-            protocoloSemefConhecido(
-              numero
-            );
-
+            protocoloSemefConhecido(numero);
         }
 
-
         if (
-          numero
-          &&
-          !validarNumero(
-            numero,
-            "semef"
-          )
+          numero &&
+          !validarNumero(numero, "semef")
         ) {
-
           return respostaJSON(
             {
               ok: false,
@@ -148,12 +106,9 @@ export default {
             400,
             jsonHeaders
           );
-
         }
 
-
         if (!codProtocolo) {
-
           return respostaJSON(
             {
               ok: false,
@@ -163,96 +118,68 @@ export default {
             400,
             jsonHeaders
           );
-
         }
-
 
         const resultado =
           await consultarSemefPorWorker(
             codProtocolo
           );
 
-
         return respostaJSON(
           {
-
             ...resultado,
-
             numero,
-
-            cod_protocolo:
-              codProtocolo,
-
+            cod_protocolo: codProtocolo,
           },
-          resultado.ok
-            ? 200
-            : 502,
+          resultado.ok ? 200 : 502,
           jsonHeaders
         );
-
       }
 
-
-      /* ===================================================
-         A PARTIR DAQUI PRECISAMOS DO TOKEN GITHUB
-         =================================================== */
+      // ======================================================
+      // DAQUI PARA BAIXO PRECISA DO GITHUB_TOKEN
+      // ======================================================
 
       if (!env.GITHUB_TOKEN) {
-
         return respostaJSON(
           {
             ok: false,
             erro:
-              "GITHUB_TOKEN não configurado.",
+              "GITHUB_TOKEN não configurado no Worker.",
           },
           500,
           jsonHeaders
         );
-
       }
 
+      // ======================================================
+      // ATUALIZAR
+      // ======================================================
 
-      /* ===================================================
-         ATUALIZAR
-         =================================================== */
-
-      if (
-        acao === "atualizar"
-      ) {
+      if (acao === "atualizar") {
 
         const resultado =
           await dispararWorkflow(
             env.GITHUB_TOKEN
           );
 
-
         return respostaJSON(
           resultado,
-          resultado.ok
-            ? 200
-            : 500,
+          resultado.ok ? 200 : 500,
           jsonHeaders
         );
-
       }
 
+      // ======================================================
+      // ADICIONAR
+      // ======================================================
 
-      /* ===================================================
-         ADICIONAR
-         =================================================== */
-
-      if (
-        acao === "adicionar"
-      ) {
+      if (acao === "adicionar") {
 
         const numero =
-          normalizarNumero(
-            body.numero
-          );
-
+          normalizarNumero(body.numero);
 
         if (!numero) {
-
           return respostaJSON(
             {
               ok: false,
@@ -262,19 +189,13 @@ export default {
             400,
             jsonHeaders
           );
-
         }
-
 
         const origem =
           normalizarOrigem(
-            body.origem
-            ||
-            detectarOrigem(
-              numero
-            )
+            body.origem ||
+            detectarOrigem(numero)
           );
-
 
         if (
           !validarNumero(
@@ -282,72 +203,51 @@ export default {
             origem
           )
         ) {
-
           return respostaJSON(
             {
-
               ok: false,
 
               erro:
                 origem === "semef"
-                  ?
-                  "Formato SEMEF inválido. Exemplo: 2026.18000.19951.0.024703"
-                  :
-                  "Formato SEFAZ inválido. Exemplo: 01.01.028101.030037/2026-43",
-
+                  ? "Formato SEMEF inválido. Exemplo: 2026.18000.19951.0.024703"
+                  : "Formato SEFAZ inválido. Exemplo: 01.01.028101.030037/2026-43",
             },
             400,
             jsonHeaders
           );
-
         }
-
 
         let codProtocolo =
           normalizarProtocolo(
-            body.cod_protocolo
-            ||
-            body.codProtocolo
-            ||
+            body.cod_protocolo ||
+            body.codProtocolo ||
             ""
           );
 
-
         if (
-          origem === "semef"
-          &&
+          origem === "semef" &&
           !codProtocolo
         ) {
-
           codProtocolo =
             protocoloSemefConhecido(
               numero
             );
-
         }
 
-
         if (
-          origem === "semef"
-          &&
+          origem === "semef" &&
           !codProtocolo
         ) {
-
           return respostaJSON(
             {
-
               ok: false,
-
               erro:
                 "Ainda não conhecemos o código interno deste processo SEMEF.",
-
             },
             400,
             jsonHeaders
           );
-
         }
-
 
         const resultado =
           await adicionarProcesso(
@@ -357,34 +257,23 @@ export default {
             codProtocolo
           );
 
-
         return respostaJSON(
           resultado,
-          resultado.ok
-            ? 200
-            : 400,
+          resultado.ok ? 200 : 400,
           jsonHeaders
         );
-
       }
 
+      // ======================================================
+      // EXCLUIR
+      // ======================================================
 
-      /* ===================================================
-         EXCLUIR
-         =================================================== */
-
-      if (
-        acao === "excluir"
-      ) {
+      if (acao === "excluir") {
 
         const numero =
-          normalizarNumero(
-            body.numero
-          );
-
+          normalizarNumero(body.numero);
 
         if (!numero) {
-
           return respostaJSON(
             {
               ok: false,
@@ -394,9 +283,7 @@ export default {
             400,
             jsonHeaders
           );
-
         }
-
 
         const resultado =
           await excluirProcesso(
@@ -404,76 +291,58 @@ export default {
             numero
           );
 
-
         return respostaJSON(
           resultado,
-          resultado.ok
-            ? 200
-            : 400,
+          resultado.ok ? 200 : 400,
           jsonHeaders
         );
-
       }
 
+      // ======================================================
+      // AÇÃO DESCONHECIDA
+      // ======================================================
 
       return respostaJSON(
         {
           ok: false,
-          erro:
-            "Ação desconhecida.",
+          erro: "Ação desconhecida.",
+          acao_recebida: acao,
         },
         400,
         jsonHeaders
       );
 
-
     } catch (erro) {
 
       console.error(
         "Erro no Worker:",
-        String(
-          erro?.message || erro
-        )
+        erro
       );
-
 
       return respostaJSON(
         {
-
           ok: false,
-
           erro:
             "Erro interno do Worker.",
 
           detalhe:
-            String(
-              erro?.message || erro
-            ),
-
+            formatarErro(erro),
         },
         500,
         jsonHeaders
       );
-
     }
-
   },
-
 };
 
 
-/* ===========================================================
-   CONFIGURAÇÃO GITHUB
-   =========================================================== */
+// ============================================================
+// GITHUB
+// ============================================================
 
-const OWNER =
-  "Rclo29";
-
-const REPO =
-  "Monitor-sefaz-am";
-
-const BRANCH =
-  "main";
+const OWNER = "Rclo29";
+const REPO = "Monitor-sefaz-am";
+const BRANCH = "main";
 
 const WORKFLOW =
   "monitor.yml";
@@ -485,23 +354,29 @@ const API_BASE =
   `https://api.github.com/repos/${OWNER}/${REPO}`;
 
 
-/* ===========================================================
-   CONFIGURAÇÃO SEMEF
-   =========================================================== */
+// ============================================================
+// SEMEF
+// ============================================================
+
+const SEMEF_HOST =
+  "sigedweb.manaus.am.gov.br";
 
 const SEMEF_HOME_URL =
-  "https://sigedweb.manaus.am.gov.br/protonweb/";
+  `https://${SEMEF_HOST}/protonweb/`;
 
 const SEMEF_DETALHE_URL =
-  "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx";
-
-const SEMEF_TIMEOUT_MS =
-  8000;
+  `https://${SEMEF_HOST}/protonweb/detalhe.aspx`;
 
 
-/* ===========================================================
-   PROTOCOLOS SEMEF
-   =========================================================== */
+// Timeout curto proposital.
+// Se a SEMEF não responder, não queremos travar
+// o Worker por muito tempo.
+const SEMEF_TIMEOUT_MS = 8000;
+
+
+// ============================================================
+// PROTOCOLOS SEMEF
+// ============================================================
 
 const SEMEF_PROTOCOLS = {
 
@@ -517,9 +392,9 @@ const SEMEF_PROTOCOLS = {
 };
 
 
-/* ===========================================================
-   RESPOSTA JSON
-   =========================================================== */
+// ============================================================
+// JSON
+// ============================================================
 
 function respostaJSON(
   dados,
@@ -528,171 +403,249 @@ function respostaJSON(
 ) {
 
   return new Response(
-
     JSON.stringify(
-      dados
+      dados,
+      null,
+      2
     ),
-
     {
       status,
       headers,
     }
-
   );
-
 }
 
 
-/* ===========================================================
-   NORMALIZAÇÃO
-   =========================================================== */
+// ============================================================
+// NORMALIZAÇÃO
+// ============================================================
 
-function normalizarNumero(
-  valor
-) {
+function normalizarNumero(valor) {
 
-  return String(
-    valor || ""
-  )
+  return String(valor || "")
     .trim()
-    .replace(
-      /\s+/g,
-      ""
-    );
-
+    .replace(/\s+/g, "");
 }
 
 
-function normalizarOrigem(
-  valor
-) {
+function normalizarOrigem(valor) {
 
   const origem =
-    String(
-      valor || ""
-    )
+    String(valor || "")
       .trim()
       .toLowerCase();
 
-
   if (
-    origem === "semef"
-    ||
+    origem === "semef" ||
     origem === "siged"
   ) {
-
     return "semef";
-
   }
 
-
   return "sefaz";
-
 }
 
 
-function normalizarProtocolo(
-  valor
-) {
+function normalizarProtocolo(valor) {
 
-  return String(
-    valor || ""
-  )
-    .replace(
-      /\D/g,
-      ""
-    );
-
+  return String(valor || "")
+    .replace(/\D/g, "");
 }
 
 
-/* ===========================================================
-   DETECTAR ORIGEM
-   =========================================================== */
+// ============================================================
+// DETECTAR ORIGEM
+// ============================================================
 
-function detectarOrigem(
-  numero
-) {
+function detectarOrigem(numero) {
 
   const semefRegex =
     /^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$/;
 
-
-  if (
-    semefRegex.test(
-      numero
-    )
-  ) {
-
-    return "semef";
-
-  }
-
-
-  return "sefaz";
-
+  return semefRegex.test(numero)
+    ? "semef"
+    : "sefaz";
 }
 
 
-/* ===========================================================
-   VALIDAR NÚMERO
-   =========================================================== */
+// ============================================================
+// VALIDAR
+// ============================================================
 
 function validarNumero(
   numero,
   origem
 ) {
 
-  if (
-    origem === "semef"
-  ) {
+  if (origem === "semef") {
 
     return (
       /^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$/
-        .test(
-          numero
-        )
+        .test(numero)
     );
-
   }
-
 
   return (
     /^\d{2}\.\d{2}\.\d{6}\.\d{6}\/\d{4}-\d{2}$/
-      .test(
-        numero
-      )
+      .test(numero)
   );
-
 }
 
 
-/* ===========================================================
-   PROTOCOLO SEMEF
-   =========================================================== */
+// ============================================================
+// PROTOCOLO SEMEF
+// ============================================================
 
 function protocoloSemefConhecido(
   numero
 ) {
 
   return (
-    SEMEF_PROTOCOLS[
-      numero
-    ]
+    SEMEF_PROTOCOLS[numero]
     ||
     ""
   );
-
 }
 
 
-/* ===========================================================
-   CONSULTA SEMEF PELO CLOUDFLARE
-   =========================================================== */
+// ============================================================
+// ERRO
+// ============================================================
+
+function formatarErro(erro) {
+
+  if (!erro) {
+    return "Erro desconhecido";
+  }
+
+  return {
+    nome:
+      String(
+        erro.name || ""
+      ),
+
+    mensagem:
+      String(
+        erro.message ||
+        erro
+      ),
+
+    causa:
+      erro.cause
+        ? String(
+            erro.cause.message ||
+            erro.cause
+          )
+        : "",
+  };
+}
+
+
+// ============================================================
+// DIAGNÓSTICO HTTP
+// ============================================================
+
+function diagnosticoResposta(
+  etapa,
+  resposta,
+  duracaoMs
+) {
+
+  return {
+    etapa,
+
+    sucesso_http:
+      resposta.ok,
+
+    status:
+      resposta.status,
+
+    status_text:
+      resposta.statusText || "",
+
+    url_final:
+      resposta.url || "",
+
+    redirected:
+      resposta.redirected,
+
+    tipo:
+      resposta.type || "",
+
+    content_type:
+      resposta.headers.get(
+        "content-type"
+      ) || "",
+
+    server:
+      resposta.headers.get(
+        "server"
+      ) || "",
+
+    cf_ray:
+      resposta.headers.get(
+        "cf-ray"
+      ) || "",
+
+    duracao_ms:
+      duracaoMs,
+  };
+}
+
+
+// ============================================================
+// PRÉVIA SEGURA DO HTML
+// ============================================================
+
+function resumirHTML(html) {
+
+  if (!html) {
+    return "";
+  }
+
+  const texto =
+    String(html)
+      .replace(
+        /<script[\s\S]*?<\/script>/gi,
+        " "
+      )
+      .replace(
+        /<style[\s\S]*?<\/style>/gi,
+        " "
+      )
+      .replace(
+        /<[^>]+>/g,
+        " "
+      )
+      .replace(
+        /&nbsp;/gi,
+        " "
+      )
+      .replace(
+        /\s+/g,
+        " "
+      )
+      .trim();
+
+  return texto.slice(
+    0,
+    500
+  );
+}
+
+
+// ============================================================
+// CONSULTA SEMEF
+// ============================================================
 
 async function consultarSemefPorWorker(
   codProtocolo
 ) {
+
+  const inicioTotal =
+    Date.now();
+
+  const diagnostico = [];
 
   const url =
     SEMEF_DETALHE_URL
@@ -704,7 +657,7 @@ async function consultarSemefPorWorker(
     );
 
 
-  const headers = {
+  const headersBase = {
 
     "User-Agent":
       "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
@@ -723,277 +676,372 @@ async function consultarSemefPorWorker(
 
     "Referer":
       SEMEF_HOME_URL,
-
   };
 
 
-  const erros = [];
-
-
-  /* =======================================================
-     TENTATIVA 1 — DETALHE DIRETO
-     ======================================================= */
+  // =========================================================
+  // TESTE 1
+  // Página de detalhe diretamente
+  // =========================================================
 
   try {
+
+    const inicio =
+      Date.now();
 
     const resposta =
       await fetchComTimeout(
         url,
         {
           method: "GET",
-          headers,
+          headers: headersBase,
           redirect: "follow",
         },
         SEMEF_TIMEOUT_MS
       );
 
+    const duracao =
+      Date.now() - inicio;
+
+    const diag =
+      diagnosticoResposta(
+        "detalhe_direto",
+        resposta,
+        duracao
+      );
+
+    const html =
+      await resposta.text();
+
+    diag.tamanho_resposta =
+      html.length;
+
+    diag.preview =
+      resumirHTML(html);
+
+    diag.pagina_semef_valida =
+      paginaSemefValida(html);
+
+    diagnostico.push(diag);
 
     if (
-      resposta.ok
+      resposta.ok &&
+      paginaSemefValida(html)
     ) {
 
-      const html =
-        await resposta.text();
+      return {
+        ok: true,
 
+        via:
+          "cloudflare-direto",
 
-      if (
-        paginaSemefValida(
-          html
-        )
-      ) {
+        status:
+          resposta.status,
 
-        return {
+        duracao_total_ms:
+          Date.now() -
+          inicioTotal,
 
-          ok: true,
+        diagnostico,
 
-          via:
-            "cloudflare-direto",
-
-          status:
-            resposta.status,
-
-          html,
-
-        };
-
-      }
-
-
-      erros.push(
-        "A SEMEF respondeu, mas a página direta não contém os dados esperados."
-      );
-
-    } else {
-
-      erros.push(
-        `Acesso direto retornou HTTP ${resposta.status}.`
-      );
-
+        html,
+      };
     }
 
   } catch (erro) {
 
-    erros.push(
-      "Falha no acesso direto: "
-      +
-      String(
-        erro?.message || erro
-      )
-    );
+    diagnostico.push({
+      etapa:
+        "detalhe_direto",
 
+      sucesso:
+        false,
+
+      tipo_erro:
+        erro?.name || "",
+
+      mensagem:
+        String(
+          erro?.message ||
+          erro
+        ),
+
+      causa:
+        erro?.cause
+          ? String(
+              erro.cause.message ||
+              erro.cause
+            )
+          : "",
+
+      duracao_ms:
+        Date.now() -
+        inicioTotal,
+    });
   }
 
 
-  /* =======================================================
-     TENTATIVA 2 — ABRIR HOME
-     ======================================================= */
+  // =========================================================
+  // TESTE 2
+  // Página inicial
+  // =========================================================
 
   let cookie = "";
 
-
   try {
+
+    const inicio =
+      Date.now();
 
     const respostaHome =
       await fetchComTimeout(
         SEMEF_HOME_URL,
         {
-
-          method:
-            "GET",
+          method: "GET",
 
           headers: {
-
             "User-Agent":
-              headers["User-Agent"],
+              headersBase[
+                "User-Agent"
+              ],
 
             "Accept":
-              headers["Accept"],
+              headersBase[
+                "Accept"
+              ],
 
             "Accept-Language":
-              headers["Accept-Language"],
+              headersBase[
+                "Accept-Language"
+              ],
 
             "Cache-Control":
               "no-cache",
 
+            "Pragma":
+              "no-cache",
           },
 
           redirect:
             "follow",
-
         },
         SEMEF_TIMEOUT_MS
       );
 
+    const duracao =
+      Date.now() - inicio;
 
-    if (
-      respostaHome.ok
-    ) {
+    const htmlHome =
+      await respostaHome.text();
 
-      cookie =
-        extrairCookie(
-          respostaHome.headers
-        );
-
-    } else {
-
-      erros.push(
-        `Página inicial retornou HTTP ${respostaHome.status}.`
+    cookie =
+      extrairCookie(
+        respostaHome.headers
       );
 
-    }
+    const diag =
+      diagnosticoResposta(
+        "pagina_inicial",
+        respostaHome,
+        duracao
+      );
+
+    diag.tamanho_resposta =
+      htmlHome.length;
+
+    diag.preview =
+      resumirHTML(
+        htmlHome
+      );
+
+    diag.cookie_recebido =
+      Boolean(cookie);
+
+    diagnostico.push(
+      diag
+    );
 
   } catch (erro) {
 
-    erros.push(
-      "Falha ao abrir a página inicial: "
-      +
-      String(
-        erro?.message || erro
-      )
-    );
+    diagnostico.push({
+      etapa:
+        "pagina_inicial",
 
+      sucesso:
+        false,
+
+      tipo_erro:
+        erro?.name || "",
+
+      mensagem:
+        String(
+          erro?.message ||
+          erro
+        ),
+
+      causa:
+        erro?.cause
+          ? String(
+              erro.cause.message ||
+              erro.cause
+            )
+          : "",
+    });
   }
 
 
-  /* =======================================================
-     TENTATIVA 3 — DETALHE COM COOKIE
-     ======================================================= */
+  // =========================================================
+  // TESTE 3
+  // Detalhe após a sessão
+  // =========================================================
 
   try {
 
+    const inicio =
+      Date.now();
+
     const headersSessao = {
-      ...headers,
+      ...headersBase,
     };
 
-
     if (cookie) {
-
       headersSessao.Cookie =
         cookie;
-
     }
-
 
     const resposta =
       await fetchComTimeout(
         url,
         {
-
-          method:
-            "GET",
+          method: "GET",
 
           headers:
             headersSessao,
 
           redirect:
             "follow",
-
         },
         SEMEF_TIMEOUT_MS
       );
 
+    const duracao =
+      Date.now() - inicio;
+
+    const html =
+      await resposta.text();
+
+    const diag =
+      diagnosticoResposta(
+        "detalhe_com_sessao",
+        resposta,
+        duracao
+      );
+
+    diag.tamanho_resposta =
+      html.length;
+
+    diag.preview =
+      resumirHTML(html);
+
+    diag.cookie_enviado =
+      Boolean(cookie);
+
+    diag.pagina_semef_valida =
+      paginaSemefValida(html);
+
+    diagnostico.push(
+      diag
+    );
 
     if (
-      resposta.ok
+      resposta.ok &&
+      paginaSemefValida(html)
     ) {
 
-      const html =
-        await resposta.text();
+      return {
+        ok: true,
 
+        via:
+          cookie
+            ? "cloudflare-sessao"
+            : "cloudflare-segunda-tentativa",
 
-      if (
-        paginaSemefValida(
-          html
-        )
-      ) {
+        status:
+          resposta.status,
 
-        return {
+        duracao_total_ms:
+          Date.now() -
+          inicioTotal,
 
-          ok: true,
+        diagnostico,
 
-          via:
-            cookie
-              ?
-              "cloudflare-sessao"
-              :
-              "cloudflare-segunda-tentativa",
-
-          status:
-            resposta.status,
-
-          html,
-
-        };
-
-      }
-
-
-      erros.push(
-        "A segunda resposta da SEMEF não contém os dados esperados."
-      );
-
-    } else {
-
-      erros.push(
-        `Segunda tentativa retornou HTTP ${resposta.status}.`
-      );
-
+        html,
+      };
     }
 
   } catch (erro) {
 
-    erros.push(
-      "Falha na segunda tentativa: "
-      +
-      String(
-        erro?.message || erro
-      )
-    );
+    diagnostico.push({
+      etapa:
+        "detalhe_com_sessao",
 
+      sucesso:
+        false,
+
+      tipo_erro:
+        erro?.name || "",
+
+      mensagem:
+        String(
+          erro?.message ||
+          erro
+        ),
+
+      causa:
+        erro?.cause
+          ? String(
+              erro.cause.message ||
+              erro.cause
+            )
+          : "",
+    });
   }
 
 
-  return {
+  // =========================================================
+  // FALHA FINAL
+  // =========================================================
 
-    ok:
-      false,
+  return {
+    ok: false,
 
     erro:
       "Não foi possível consultar a SEMEF pelo Cloudflare Worker.",
 
-    detalhe:
-      erros.join(
-        " | "
-      ),
+    host:
+      SEMEF_HOST,
 
+    endpoint:
+      SEMEF_DETALHE_URL,
+
+    protocolo:
+      codProtocolo,
+
+    timeout_por_tentativa_ms:
+      SEMEF_TIMEOUT_MS,
+
+    duracao_total_ms:
+      Date.now() -
+      inicioTotal,
+
+    diagnostico,
   };
-
 }
 
 
-/* ===========================================================
-   FETCH COM TIMEOUT
-   =========================================================== */
+// ============================================================
+// FETCH COM TIMEOUT
+// ============================================================
 
 async function fetchComTimeout(
   url,
@@ -1004,17 +1052,14 @@ async function fetchComTimeout(
   const controller =
     new AbortController();
 
-
   const timer =
     setTimeout(
-      () => {
-
-        controller.abort();
-
-      },
+      () =>
+        controller.abort(
+          "Tempo excedido"
+        ),
       timeoutMs
     );
-
 
   try {
 
@@ -1027,29 +1072,42 @@ async function fetchComTimeout(
       }
     );
 
+  } catch (erro) {
+
+    if (
+      controller.signal.aborted
+    ) {
+
+      const timeoutError =
+        new Error(
+          `Timeout após ${timeoutMs} ms ao acessar ${url}`
+        );
+
+      timeoutError.name =
+        "TimeoutError";
+
+      throw timeoutError;
+    }
+
+    throw erro;
+
   } finally {
 
     clearTimeout(
       timer
     );
-
   }
-
 }
 
 
-/* ===========================================================
-   VALIDAR HTML SEMEF
-   =========================================================== */
+// ============================================================
+// VALIDAR HTML SEMEF
+// ============================================================
 
-function paginaSemefValida(
-  html
-) {
+function paginaSemefValida(html) {
 
   const texto =
-    String(
-      html || ""
-    )
+    String(html || "")
       .toLowerCase()
       .normalize("NFD")
       .replace(
@@ -1057,68 +1115,50 @@ function paginaSemefValida(
         ""
       );
 
-
   return (
-
     texto.includes(
       "consulta de documentos e processos"
     )
-
     &&
-
     texto.includes(
       "processo"
     )
-
     &&
-
     texto.includes(
       "situacao"
     )
-
     &&
-
     (
       texto.includes(
         "historico do processo"
       )
-
       ||
-
       texto.includes(
         "despacho movimentacao"
       )
     )
-
   );
-
 }
 
 
-/* ===========================================================
-   EXTRAIR COOKIE DA SEMEF
-   =========================================================== */
+// ============================================================
+// COOKIE
+// ============================================================
 
-function extrairCookie(
-  headers
-) {
+function extrairCookie(headers) {
 
   try {
 
     if (
       typeof headers.getSetCookie
-      ===
-      "function"
+      === "function"
     ) {
 
       const cookies =
         headers.getSetCookie();
 
-
       if (
-        Array.isArray(
-          cookies
-        )
+        Array.isArray(cookies)
       ) {
 
         return cookies
@@ -1129,30 +1169,21 @@ function extrairCookie(
           )
           .filter(Boolean)
           .join("; ");
-
       }
-
     }
 
   } catch {
-
-    /* continua */
-
+    // continua
   }
-
 
   const setCookie =
     headers.get(
       "set-cookie"
     );
 
-
   if (!setCookie) {
-
     return "";
-
   }
-
 
   return setCookie
     .split(",")
@@ -1164,20 +1195,16 @@ function extrairCookie(
     )
     .filter(Boolean)
     .join("; ");
-
 }
 
 
-/* ===========================================================
-   HEADERS GITHUB
-   =========================================================== */
+// ============================================================
+// GITHUB HEADERS
+// ============================================================
 
-function githubHeaders(
-  token
-) {
+function githubHeaders(token) {
 
   return {
-
     "Accept":
       "application/vnd.github+json",
 
@@ -1192,19 +1219,15 @@ function githubHeaders(
 
     "Content-Type":
       "application/json",
-
   };
-
 }
 
 
-/* ===========================================================
-   BASE64 UTF-8
-   =========================================================== */
+// ============================================================
+// BASE64 UTF-8
+// ============================================================
 
-function base64ParaTexto(
-  base64
-) {
+function base64ParaTexto(base64) {
 
   const binario =
     atob(
@@ -1214,12 +1237,10 @@ function base64ParaTexto(
       )
     );
 
-
   const bytes =
     new Uint8Array(
       binario.length
     );
-
 
   for (
     let i = 0;
@@ -1228,40 +1249,25 @@ function base64ParaTexto(
   ) {
 
     bytes[i] =
-      binario.charCodeAt(
-        i
-      );
-
+      binario.charCodeAt(i);
   }
-
 
   return new TextDecoder(
     "utf-8"
-  ).decode(
-    bytes
-  );
-
+  ).decode(bytes);
 }
 
 
-function textoParaBase64(
-  texto
-) {
+function textoParaBase64(texto) {
 
   const bytes =
     new TextEncoder()
-      .encode(
-        texto
-      );
+      .encode(texto);
 
-
-  let binario =
-    "";
-
+  let binario = "";
 
   const tamanhoBloco =
     8192;
-
 
   for (
     let i = 0;
@@ -1275,114 +1281,76 @@ function textoParaBase64(
         i + tamanhoBloco
       );
 
-
     binario +=
       String.fromCharCode(
         ...bloco
       );
-
   }
 
-
-  return btoa(
-    binario
-  );
-
+  return btoa(binario);
 }
 
 
-/* ===========================================================
-   NORMALIZAR ITEM DO processos.json
-   =========================================================== */
+// ============================================================
+// NORMALIZAR PROCESSOS.JSON
+// ============================================================
 
-function normalizarItemProcesso(
-  item
-) {
+function normalizarItemProcesso(item) {
 
   if (
     typeof item === "string"
   ) {
 
     const numero =
-      normalizarNumero(
-        item
-      );
-
+      normalizarNumero(item);
 
     const origem =
-      detectarOrigem(
-        numero
-      );
-
+      detectarOrigem(numero);
 
     const resultado = {
-
       numero,
-
       origem,
-
     };
 
-
-    if (
-      origem === "semef"
-    ) {
+    if (origem === "semef") {
 
       const protocolo =
         protocoloSemefConhecido(
           numero
         );
 
-
       if (protocolo) {
 
         resultado.cod_protocolo =
           protocolo;
-
       }
-
     }
 
-
     return resultado;
-
   }
 
-
   if (
-    item
-    &&
+    item &&
     typeof item === "object"
   ) {
 
     const numero =
       normalizarNumero(
-        item.numero
-        ||
-        item.processo
-        ||
+        item.numero ||
+        item.processo ||
         ""
       );
 
-
     const origem =
       normalizarOrigem(
-        item.origem
-        ||
-        detectarOrigem(
-          numero
-        )
+        item.origem ||
+        detectarOrigem(numero)
       );
 
-
     const resultado = {
-
       numero,
-
       origem,
-
     };
-
 
     if (
       origem === "semef"
@@ -1390,107 +1358,72 @@ function normalizarItemProcesso(
 
       const protocolo =
         normalizarProtocolo(
-
-          item.cod_protocolo
-
-          ||
-
-          item.codProtocolo
-
-          ||
-
+          item.cod_protocolo ||
+          item.codProtocolo ||
           protocoloSemefConhecido(
             numero
           )
-
         );
-
 
       if (protocolo) {
 
         resultado.cod_protocolo =
           protocolo;
-
       }
-
     }
 
-
     return resultado;
-
   }
 
-
   return null;
-
 }
 
 
-/* ===========================================================
-   LER processos.json
-   =========================================================== */
+// ============================================================
+// LER PROCESSOS.JSON
+// ============================================================
 
-async function lerProcessos(
-  token
-) {
+async function lerProcessos(token) {
 
   const url =
     `${API_BASE}/contents/${ARQUIVO_PROCESSOS}?ref=${encodeURIComponent(BRANCH)}`;
-
 
   const resposta =
     await fetch(
       url,
       {
-
-        method:
-          "GET",
-
+        method: "GET",
         headers:
-          githubHeaders(
-            token
-          ),
-
+          githubHeaders(token),
       }
     );
-
 
   if (!resposta.ok) {
 
     const detalhe =
       await resposta.text();
 
-
     throw new Error(
       `GitHub retornou HTTP ${resposta.status} ao ler processos.json: ${detalhe}`
     );
-
   }
-
 
   const arquivo =
     await resposta.json();
 
-
   const texto =
     base64ParaTexto(
       String(
-        arquivo.content
-        ||
+        arquivo.content ||
         ""
       )
     );
 
-
   const dados =
-    JSON.parse(
-      texto
-    );
-
+    JSON.parse(texto);
 
   if (
-    !dados
-    ||
+    !dados ||
     !Array.isArray(
       dados.processos
     )
@@ -1499,40 +1432,31 @@ async function lerProcessos(
     throw new Error(
       "processos.json possui formato inválido."
     );
-
   }
-
 
   const processos =
     dados.processos
-
       .map(
         normalizarItemProcesso
       )
-
       .filter(
         item =>
-          item
-          &&
+          item &&
           item.numero
       );
 
-
   return {
-
     sha:
       arquivo.sha,
 
     processos,
-
   };
-
 }
 
 
-/* ===========================================================
-   GRAVAR processos.json
-   =========================================================== */
+// ============================================================
+// GRAVAR PROCESSOS.JSON
+// ============================================================
 
 async function gravarProcessos(
   token,
@@ -1543,7 +1467,6 @@ async function gravarProcessos(
 
   const url =
     `${API_BASE}/contents/${ARQUIVO_PROCESSOS}`;
-
 
   const conteudo =
     JSON.stringify(
@@ -1556,122 +1479,93 @@ async function gravarProcessos(
     +
     "\n";
 
-
   const resposta =
     await fetch(
       url,
       {
-
-        method:
-          "PUT",
+        method: "PUT",
 
         headers:
-          githubHeaders(
-            token
-          ),
+          githubHeaders(token),
 
         body:
-          JSON.stringify({
+          JSON.stringify(
+            {
+              message:
+                mensagem,
 
-            message:
-              mensagem,
+              content:
+                textoParaBase64(
+                  conteudo
+                ),
 
-            content:
-              textoParaBase64(
-                conteudo
-              ),
+              sha,
 
-            sha,
-
-            branch:
-              BRANCH,
-
-          }),
-
+              branch:
+                BRANCH,
+            }
+          ),
       }
     );
-
 
   if (!resposta.ok) {
 
     const detalhe =
       await resposta.text();
 
-
     throw new Error(
       `GitHub retornou HTTP ${resposta.status}: ${detalhe}`
     );
-
   }
 
-
   return resposta.json();
-
 }
 
 
-/* ===========================================================
-   DISPARAR WORKFLOW
-   =========================================================== */
+// ============================================================
+// DISPARAR WORKFLOW
+// ============================================================
 
-async function dispararWorkflow(
-  token
-) {
+async function dispararWorkflow(token) {
 
   const url =
     `${API_BASE}/actions/workflows/${WORKFLOW}/dispatches`;
-
 
   const resposta =
     await fetch(
       url,
       {
-
-        method:
-          "POST",
+        method: "POST",
 
         headers:
-          githubHeaders(
-            token
-          ),
+          githubHeaders(token),
 
         body:
-          JSON.stringify({
-
-            ref:
-              BRANCH,
-
-          }),
-
+          JSON.stringify(
+            {
+              ref:
+                BRANCH,
+            }
+          ),
       }
     );
-
 
   if (
     resposta.status === 204
   ) {
 
     return {
-
-      ok:
-        true,
-
+      ok: true,
       mensagem:
         "Atualização iniciada.",
-
     };
-
   }
-
 
   const detalhe =
     await resposta.text();
 
-
   return {
-
-    ok:
-      false,
+    ok: false,
 
     erro:
       "GitHub recusou o disparo do monitor.",
@@ -1680,15 +1574,13 @@ async function dispararWorkflow(
       resposta.status,
 
     detalhe,
-
   };
-
 }
 
 
-/* ===========================================================
-   ADICIONAR PROCESSO
-   =========================================================== */
+// ============================================================
+// ADICIONAR
+// ============================================================
 
 async function adicionarProcesso(
   token,
@@ -1698,47 +1590,30 @@ async function adicionarProcesso(
 ) {
 
   const atual =
-    await lerProcessos(
-      token
-    );
-
+    await lerProcessos(token);
 
   const processos =
     atual.processos;
 
-
   const jaExiste =
     processos.some(
       item =>
-        item.numero
-        ===
-        numero
+        item.numero === numero
     );
-
 
   if (jaExiste) {
 
     return {
-
-      ok:
-        false,
-
+      ok: false,
       erro:
         "Este processo já está cadastrado.",
-
     };
-
   }
 
-
   const novo = {
-
     numero,
-
     origem,
-
   };
-
 
   if (
     origem === "semef"
@@ -1746,38 +1621,22 @@ async function adicionarProcesso(
 
     novo.cod_protocolo =
       codProtocolo;
-
   }
 
-
-  processos.push(
-    novo
-  );
-
+  processos.push(novo);
 
   await gravarProcessos(
-
     token,
-
     processos,
-
     atual.sha,
-
     `Adiciona processo ${numero}`
-
   );
 
-
   const workflow =
-    await dispararWorkflow(
-      token
-    );
-
+    await dispararWorkflow(token);
 
   return {
-
-    ok:
-      true,
+    ok: true,
 
     mensagem:
       `Processo ${origem.toUpperCase()} adicionado.`,
@@ -1788,25 +1647,21 @@ async function adicionarProcesso(
 
     cod_protocolo:
       origem === "semef"
-        ?
-        codProtocolo
-        :
-        undefined,
+        ? codProtocolo
+        : undefined,
 
     total:
       processos.length,
 
     consultaIniciada:
       workflow.ok,
-
   };
-
 }
 
 
-/* ===========================================================
-   EXCLUIR PROCESSO
-   =========================================================== */
+// ============================================================
+// EXCLUIR
+// ============================================================
 
 async function excluirProcesso(
   token,
@@ -1814,71 +1669,44 @@ async function excluirProcesso(
 ) {
 
   const atual =
-    await lerProcessos(
-      token
-    );
-
+    await lerProcessos(token);
 
   const processos =
     atual.processos;
 
-
   const existe =
     processos.some(
       item =>
-        item.numero
-        ===
-        numero
+        item.numero === numero
     );
-
 
   if (!existe) {
 
     return {
-
-      ok:
-        false,
-
+      ok: false,
       erro:
         "Processo não encontrado.",
-
     };
-
   }
-
 
   const novaLista =
     processos.filter(
       item =>
-        item.numero
-        !==
-        numero
+        item.numero !== numero
     );
-
 
   await gravarProcessos(
-
     token,
-
     novaLista,
-
     atual.sha,
-
     `Remove processo ${numero}`
-
   );
 
-
   const workflow =
-    await dispararWorkflow(
-      token
-    );
-
+    await dispararWorkflow(token);
 
   return {
-
-    ok:
-      true,
+    ok: true,
 
     mensagem:
       "Processo removido.",
@@ -1890,7 +1718,5 @@ async function excluirProcesso(
 
     consultaIniciada:
       workflow.ok,
-
   };
-
 }
