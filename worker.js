@@ -1,3 +1,5 @@
+// deploy cloudflare 20-08
+
 export default {
 
   async fetch(request, env) {
