@@ -35,33 +35,32 @@ TIMEZONE = "America/Manaus"
 
 
 # ============================================================
-# TEMPOS
+# LIMITES DE TEMPO
 # ============================================================
 
-# Tempo máximo da execução completa.
+# Limite máximo de toda a execução.
 TEMPO_MAXIMO_EXECUCAO = 50
 
 # Número máximo de consultas simultâneas.
 MAX_WORKERS = 10
 
-# SEFAZ
+# SEFAZ-AM
 SEFAZ_CONNECT_TIMEOUT = 4
 SEFAZ_READ_TIMEOUT = 8
 
-# SEMEF
+# SEMEF / SIGED
 SEMEF_CONNECT_TIMEOUT = 4
 SEMEF_READ_TIMEOUT = 7
 
-# Uma única tentativa por atualização.
+# Uma tentativa por processo SEMEF.
 SEMEF_MAX_TENTATIVAS = 1
 
 
 # ============================================================
-# HEADERS
+# HEADERS HTTP
 # ============================================================
 
 HEADERS = {
-
     "User-Agent": (
         "Mozilla/5.0 "
         "(iPhone; CPU iPhone OS 18_0 like Mac OS X) "
@@ -95,7 +94,6 @@ HEADERS = {
 # ============================================================
 
 SEMEF_PROTOCOLS = {
-
     "2024.18000.19012.0.008302":
         "7954846",
 
@@ -108,7 +106,7 @@ SEMEF_PROTOCOLS = {
 
 
 # ============================================================
-# DATA E HORA
+# DATA / HORA
 # ============================================================
 
 def agora_manaus():
@@ -131,9 +129,14 @@ def agora_iso():
 # TEXTO
 # ============================================================
 
-def reparar_mojibake(
-    valor
-):
+def reparar_mojibake(valor):
+    """
+    Corrige textos como:
+
+    NÃ£o -> Não
+    SituaÃ§Ã£o -> Situação
+    AnÃ¡lise -> Análise
+    """
 
     if valor is None:
         return ""
@@ -142,14 +145,11 @@ def reparar_mojibake(
         valor
     )
 
-    for _ in range(
-        2
-    ):
+    for _ in range(2):
 
         if not any(
-            marcador in texto
-            for marcador
-            in (
+            sinal in texto
+            for sinal in (
                 "Ã",
                 "Â",
                 "â€",
@@ -162,12 +162,8 @@ def reparar_mojibake(
 
             corrigido = (
                 texto
-                .encode(
-                    "latin1"
-                )
-                .decode(
-                    "utf-8"
-                )
+                .encode("latin1")
+                .decode("utf-8")
             )
 
             if corrigido == texto:
@@ -176,15 +172,12 @@ def reparar_mojibake(
             texto = corrigido
 
         except Exception:
-
             break
 
     return texto
 
 
-def texto_limpo(
-    valor
-):
+def texto_limpo(valor):
 
     texto = reparar_mojibake(
         valor
@@ -199,9 +192,7 @@ def texto_limpo(
     return texto.strip()
 
 
-def chave_texto(
-    valor
-):
+def chave_texto(valor):
 
     texto = texto_limpo(
         valor
@@ -214,13 +205,10 @@ def chave_texto(
 
     texto = "".join(
         caractere
-        for caractere
-        in texto
+        for caractere in texto
         if unicodedata.category(
             caractere
-        )
-        !=
-        "Mn"
+        ) != "Mn"
     )
 
     texto = texto.lower()
@@ -235,12 +223,10 @@ def chave_texto(
 
 
 # ============================================================
-# ORIGEM DO PROCESSO
+# ORIGEM
 # ============================================================
 
-def detectar_origem(
-    numero
-):
+def detectar_origem(numero):
 
     numero = texto_limpo(
         numero
@@ -273,11 +259,9 @@ def normalizar_origem(
         "semef",
         "siged"
     ):
-
         return "semef"
 
     if origem == "sefaz":
-
         return "sefaz"
 
     return detectar_origem(
@@ -289,9 +273,7 @@ def normalizar_origem(
 # URLS
 # ============================================================
 
-def url_sefaz(
-    numero
-):
+def url_sefaz(numero):
 
     return (
         SEFAZ_BASE_URL
@@ -303,9 +285,7 @@ def url_sefaz(
     )
 
 
-def url_semef(
-    cod_protocolo
-):
+def url_semef(cod_protocolo):
 
     return (
         SEMEF_BASE_URL
@@ -346,6 +326,15 @@ def carregar_processos():
             arquivo
         )
 
+    if not isinstance(
+        dados,
+        dict
+    ):
+
+        raise ValueError(
+            "processos.json possui formato inválido."
+        )
+
     lista = dados.get(
         "processos",
         []
@@ -365,10 +354,6 @@ def carregar_processos():
     vistos = set()
 
     for item in lista:
-
-        # ====================================================
-        # FORMATO SIMPLES
-        # ====================================================
 
         if isinstance(
             item,
@@ -391,10 +376,6 @@ def carregar_processos():
                 if origem == "semef"
                 else ""
             )
-
-        # ====================================================
-        # FORMATO COMPLETO
-        # ====================================================
 
         elif isinstance(
             item,
@@ -447,11 +428,9 @@ def carregar_processos():
             continue
 
         if not numero:
-
             continue
 
         if numero in vistos:
-
             continue
 
         vistos.add(
@@ -459,7 +438,6 @@ def carregar_processos():
         )
 
         processos.append({
-
             "numero":
                 numero,
 
@@ -473,7 +451,7 @@ def carregar_processos():
     if not processos:
 
         raise ValueError(
-            "Nenhum processo cadastrado em processos.json."
+            "Nenhum processo cadastrado."
         )
 
     return processos
@@ -490,12 +468,8 @@ def carregar_dados_anteriores():
     ):
 
         return {
-
-            "processos":
-                [],
-
-            "alertas":
-                []
+            "processos": [],
+            "alertas": []
         }
 
     try:
@@ -516,12 +490,8 @@ def carregar_dados_anteriores():
         ):
 
             return {
-
-                "processos":
-                    [],
-
-                "alertas":
-                    []
+                "processos": [],
+                "alertas": []
             }
 
         dados.setdefault(
@@ -544,18 +514,12 @@ def carregar_dados_anteriores():
         )
 
         return {
-
-            "processos":
-                [],
-
-            "alertas":
-                []
+            "processos": [],
+            "alertas": []
         }
 
 
-def criar_mapa_anterior(
-    dados
-):
+def criar_mapa_anterior(dados):
 
     mapa = {}
 
@@ -568,7 +532,6 @@ def criar_mapa_anterior(
             processo,
             dict
         ):
-
             continue
 
         numero = texto_limpo(
@@ -594,21 +557,14 @@ def criar_mapa_anterior(
 # ESTRUTURA PADRÃO
 # ============================================================
 
-def estrutura_vazia(
-    cadastro
-):
+def estrutura_vazia(cadastro):
 
     return {
-
         "numero":
-            cadastro[
-                "numero"
-            ],
+            cadastro["numero"],
 
         "origem":
-            cadastro[
-                "origem"
-            ],
+            cadastro["origem"],
 
         "cod_protocolo":
             cadastro.get(
@@ -656,23 +612,18 @@ def marcar_nao_atualizado(
         cadastro
     )
 
-    # Mantém os dados anteriores,
-    # quando existirem.
-
     if isinstance(
         anterior,
         dict
     ):
 
         for campo in (
-
             "situacao",
             "interessado",
             "assunto",
             "setor",
             "evento",
             "dataMovimentacao",
-
         ):
 
             valor = anterior.get(
@@ -739,14 +690,11 @@ def obter_html(
     try:
 
         resposta = sessao.get(
-
             url,
-
             timeout=(
                 connect_timeout,
                 read_timeout
             ),
-
             allow_redirects=True
         )
 
@@ -768,26 +716,130 @@ def obter_html(
 
 
 # ============================================================
-# VALOR POR RÓTULO
+# RÓTULOS
+# ============================================================
+
+ROTULOS_CONHECIDOS = {
+    "situacao",
+    "assunto",
+    "interessado",
+    "orgao entidade",
+    "cnpj",
+    "processo",
+    "setor",
+    "evento",
+    "data",
+    "localizacao atual",
+    "localizacao",
+}
+
+
+def token_invalido_como_valor(
+    valor
+):
+
+    texto = texto_limpo(
+        valor
+    )
+
+    if not texto:
+        return True
+
+    if texto in (
+        ":",
+        "-",
+        "–",
+        "—"
+    ):
+        return True
+
+    chave = chave_texto(
+        texto
+    )
+
+    if chave in ROTULOS_CONHECIDOS:
+        return True
+
+    return False
+
+
+# ============================================================
+# VALOR POR RÓTULO - NOVA VERSÃO
 # ============================================================
 
 def valor_por_rotulo(
     soup,
     rotulos
 ):
+    """
+    Localiza valores sem aceitar ':' ou outro rótulo.
+
+    Exemplo real:
+
+    Situação
+    :
+    Aberto
+
+    retorna "Aberto".
+    """
 
     alvos = {
-
         chave_texto(
             rotulo
         )
-
-        for rotulo
-        in rotulos
+        for rotulo in rotulos
     }
 
     # ========================================================
-    # TABELAS
+    # MÉTODO 1 - STRIPPED STRINGS
+    # ========================================================
+
+    tokens = [
+        texto_limpo(
+            texto
+        )
+        for texto
+        in soup.stripped_strings
+    ]
+
+    for indice, token in enumerate(
+        tokens
+    ):
+
+        if chave_texto(
+            token
+        ) not in alvos:
+
+            continue
+
+        # Procura alguns tokens à frente
+        # ignorando ":" e outros rótulos.
+
+        limite = min(
+            len(tokens),
+            indice + 8
+        )
+
+        for proximo_indice in range(
+            indice + 1,
+            limite
+        ):
+
+            candidato = tokens[
+                proximo_indice
+            ]
+
+            if token_invalido_como_valor(
+                candidato
+            ):
+                continue
+
+            return texto_limpo(
+                candidato
+            )
+
+    # ========================================================
+    # MÉTODO 2 - LINHAS DE TABELA
     # ========================================================
 
     for linha in soup.find_all(
@@ -801,87 +853,46 @@ def valor_por_rotulo(
             ]
         )
 
-        if len(
-            celulas
-        ) < 2:
-
+        if not celulas:
             continue
 
-        for indice, celula in enumerate(
-            celulas[:-1]
-        ):
-
-            chave = chave_texto(
+        textos = [
+            texto_limpo(
                 celula.get_text(
                     " ",
                     strip=True
                 )
             )
+            for celula
+            in celulas
+        ]
 
-            if chave not in alvos:
+        for indice, texto in enumerate(
+            textos
+        ):
+
+            if chave_texto(
+                texto
+            ) not in alvos:
 
                 continue
 
-            valor = texto_limpo(
-                celulas[
-                    indice + 1
-                ].get_text(
-                    " ",
-                    strip=True
-                )
-            )
+            for candidato in textos[
+                indice + 1:
+            ]:
 
-            if valor:
+                if token_invalido_como_valor(
+                    candidato
+                ):
+                    continue
 
-                return valor
-
-    # ========================================================
-    # OUTROS ELEMENTOS
-    # ========================================================
-
-    for elemento in soup.find_all(
-        [
-            "td",
-            "th",
-            "label",
-            "span",
-            "div"
-        ]
-    ):
-
-        chave = chave_texto(
-            elemento.get_text(
-                " ",
-                strip=True
-            )
-        )
-
-        if chave not in alvos:
-
-            continue
-
-        proximo = (
-            elemento.find_next_sibling()
-        )
-
-        if proximo:
-
-            valor = texto_limpo(
-                proximo.get_text(
-                    " ",
-                    strip=True
-                )
-            )
-
-            if valor:
-
-                return valor
+                return candidato
 
     return ""
 
 
 # ============================================================
-# LIMPEZA SEFAZ
+# CORTAR TEXTOS EXTRAS
 # ============================================================
 
 def cortar_no_primeiro_marcador(
@@ -912,9 +923,7 @@ def cortar_no_primeiro_marcador(
     if posicoes:
 
         texto = texto[
-            :min(
-                posicoes
-            )
+            :min(posicoes)
         ]
 
     return texto_limpo(
@@ -922,14 +931,10 @@ def cortar_no_primeiro_marcador(
     )
 
 
-def limpar_situacao_sefaz(
-    valor
-):
+def limpar_situacao_sefaz(valor):
 
-    return cortar_no_primeiro_marcador(
-
+    valor = cortar_no_primeiro_marcador(
         valor,
-
         [
             r"\bAssunto\b",
             r"\bÓrgão\s*/\s*Entidade\b",
@@ -939,15 +944,18 @@ def limpar_situacao_sefaz(
         ]
     )
 
+    if token_invalido_como_valor(
+        valor
+    ):
+        return ""
 
-def limpar_assunto_sefaz(
-    valor
-):
+    return valor
 
-    return cortar_no_primeiro_marcador(
 
+def limpar_assunto_sefaz(valor):
+
+    valor = cortar_no_primeiro_marcador(
         valor,
-
         [
             r"\bÓrgão\s*/\s*Entidade\b",
             r"\bOrgao\s*/\s*Entidade\b",
@@ -957,20 +965,119 @@ def limpar_assunto_sefaz(
         ]
     )
 
+    if token_invalido_como_valor(
+        valor
+    ):
+        return ""
 
-def limpar_interessado_sefaz(
-    valor
-):
+    return valor
 
-    return cortar_no_primeiro_marcador(
 
+def limpar_interessado_sefaz(valor):
+
+    valor = cortar_no_primeiro_marcador(
         valor,
-
         [
             r"\bProcesso\s+dispon[ií]vel\b",
             r"\bNova\s+Pesquisa\b",
             r"\bData\s+Setor\s+Evento\b",
         ]
+    )
+
+    if token_invalido_como_valor(
+        valor
+    ):
+        return ""
+
+    return valor
+
+
+# ============================================================
+# EXTRAÇÃO SEQUENCIAL DA SEFAZ
+# ============================================================
+
+def extrair_campo_sefaz_por_tokens(
+    soup,
+    rotulo,
+    proximos_rotulos
+):
+    """
+    Extrai tudo entre um rótulo e o próximo rótulo.
+
+    Isso é importante para assuntos ou interessados
+    que possuem mais de uma palavra.
+    """
+
+    tokens = [
+        texto_limpo(
+            item
+        )
+        for item
+        in soup.stripped_strings
+    ]
+
+    alvo = chave_texto(
+        rotulo
+    )
+
+    limites = {
+        chave_texto(
+            item
+        )
+        for item
+        in proximos_rotulos
+    }
+
+    inicio = None
+
+    for indice, token in enumerate(
+        tokens
+    ):
+
+        if chave_texto(
+            token
+        ) == alvo:
+
+            inicio = indice + 1
+            break
+
+    if inicio is None:
+        return ""
+
+    partes = []
+
+    for token in tokens[
+        inicio:
+    ]:
+
+        chave = chave_texto(
+            token
+        )
+
+        if chave in limites:
+            break
+
+        if token in (
+            ":",
+            "",
+        ):
+            continue
+
+        if (
+            not partes
+            and
+            chave in ROTULOS_CONHECIDOS
+        ):
+            continue
+
+        partes.append(
+            token
+        )
+
+    return texto_limpo(
+        " ".join(
+            partes
+        )
     )
 
 
@@ -982,168 +1089,120 @@ def extrair_cabecalho_sefaz(
     soup
 ):
 
-    situacao = valor_por_rotulo(
-        soup,
-        [
-            "Situação",
-            "Situacao"
-        ]
-    )
+    # ========================================================
+    # SITUAÇÃO
+    # ========================================================
 
-    assunto = valor_por_rotulo(
+    situacao = extrair_campo_sefaz_por_tokens(
         soup,
+        "Situação",
         [
-            "Assunto"
-        ]
-    )
-
-    interessado = valor_por_rotulo(
-        soup,
-        [
+            "Assunto",
+            "Órgão/Entidade",
             "Interessado"
         ]
     )
 
-    texto = texto_limpo(
-        soup.get_text(
-            " ",
-            strip=True
-        )
-    )
-
-    # ========================================================
-    # FALLBACK SITUAÇÃO
-    # ========================================================
-
     if not situacao:
 
-        correspondencia = re.search(
-
-            (
-                r"Situa(?:ç|c)(?:ã|a)o\s*:?\s*"
-                r"(.*?)"
-                r"(?="
-                r"\s+Assunto\s*:?"
-                r"|\s+[ÓO]rg(?:ã|a)o\s*/\s*Entidade\s*:?"
-                r"|\s+Interessado\s*:?"
-                r"|$"
-                r")"
-            ),
-
-            texto,
-
-            flags=re.IGNORECASE
+        situacao = valor_por_rotulo(
+            soup,
+            [
+                "Situação",
+                "Situacao"
+            ]
         )
 
-        if correspondencia:
-
-            situacao = (
-                correspondencia.group(
-                    1
-                )
-            )
-
     # ========================================================
-    # FALLBACK ASSUNTO
+    # ASSUNTO
     # ========================================================
+
+    assunto = extrair_campo_sefaz_por_tokens(
+        soup,
+        "Assunto",
+        [
+            "Órgão/Entidade",
+            "CNPJ",
+            "Interessado"
+        ]
+    )
 
     if not assunto:
 
-        correspondencia = re.search(
-
-            (
-                r"Assunto\s*:?\s*"
-                r"(.*?)"
-                r"(?="
-                r"\s+[ÓO]rg(?:ã|a)o\s*/\s*Entidade\s*:?"
-                r"|\s+CNPJ\s*:?"
-                r"|\s+Interessado\s*:?"
-                r"|$"
-                r")"
-            ),
-
-            texto,
-
-            flags=re.IGNORECASE
+        assunto = valor_por_rotulo(
+            soup,
+            [
+                "Assunto"
+            ]
         )
 
-        if correspondencia:
-
-            assunto = (
-                correspondencia.group(
-                    1
-                )
-            )
-
     # ========================================================
-    # FALLBACK INTERESSADO
+    # INTERESSADO
     # ========================================================
+
+    interessado = extrair_campo_sefaz_por_tokens(
+        soup,
+        "Interessado",
+        [
+            "Processo disponível",
+            "Nova Pesquisa",
+            "Data",
+            "Setor",
+            "Evento"
+        ]
+    )
 
     if not interessado:
 
-        correspondencia = re.search(
-
-            (
-                r"Interessado\s*:?\s*"
-                r"(.*?)"
-                r"(?="
-                r"\s+Processo\s+dispon[ií]vel"
-                r"|\s+Nova\s+Pesquisa"
-                r"|\s+Data\s+Setor\s+Evento"
-                r"|$"
-                r")"
-            ),
-
-            texto,
-
-            flags=re.IGNORECASE
+        interessado = valor_por_rotulo(
+            soup,
+            [
+                "Interessado"
+            ]
         )
 
-        if correspondencia:
+    # ========================================================
+    # LIMPEZA
+    # ========================================================
 
-            interessado = (
-                correspondencia.group(
-                    1
-                )
-            )
+    situacao = limpar_situacao_sefaz(
+        situacao
+    )
+
+    assunto = limpar_assunto_sefaz(
+        assunto
+    )
+
+    interessado = limpar_interessado_sefaz(
+        interessado
+    )
 
     return {
-
         "situacao":
-            limpar_situacao_sefaz(
-                situacao
-            ),
+            situacao,
 
         "assunto":
-            limpar_assunto_sefaz(
-                assunto
-            ),
+            assunto,
 
         "interessado":
-            limpar_interessado_sefaz(
-                interessado
-            ),
+            interessado,
     }
 
 
 # ============================================================
-# DATAS
+# DATA
 # ============================================================
 
-def converter_data(
-    valor
-):
+def converter_data(valor):
 
     valor = texto_limpo(
         valor
     )
 
     for formato in (
-
         "%d/%m/%Y %H:%M:%S",
         "%d/%m/%Y %H:%M",
         "%d/%m/%Y",
-
     ):
 
         try:
@@ -1154,7 +1213,6 @@ def converter_data(
             )
 
         except ValueError:
-
             pass
 
     return None
@@ -1190,11 +1248,9 @@ def extrair_movimentacoes_sefaz(
         ):
 
             tabela_alvo = tabela
-
             break
 
     if tabela_alvo is None:
-
         return []
 
     movimentacoes = []
@@ -1204,14 +1260,12 @@ def extrair_movimentacoes_sefaz(
     ):
 
         valores = [
-
             texto_limpo(
                 celula.get_text(
                     " ",
                     strip=True
                 )
             )
-
             for celula
             in linha.find_all(
                 [
@@ -1224,12 +1278,9 @@ def extrair_movimentacoes_sefaz(
         if len(
             valores
         ) < 3:
-
             continue
 
-        data = valores[
-            0
-        ]
+        data = valores[0]
 
         if not re.fullmatch(
             (
@@ -1238,27 +1289,21 @@ def extrair_movimentacoes_sefaz(
             ),
             data
         ):
-
             continue
 
         movimentacoes.append({
-
             "data":
                 data,
 
             "setor":
                 texto_limpo(
-                    valores[
-                        1
-                    ]
+                    valores[1]
                 ),
 
             "evento":
                 texto_limpo(
                     " ".join(
-                        valores[
-                            2:
-                        ]
+                        valores[2:]
                     )
                 ),
 
@@ -1278,66 +1323,55 @@ def ultima_movimentacao_sefaz(
     if not movimentacoes:
 
         return {
-
-            "data":
-                "",
-
-            "setor":
-                "",
-
-            "evento":
-                ""
+            "data": "",
+            "setor": "",
+            "evento": ""
         }
 
     validas = [
-
         item
-
         for item
         in movimentacoes
-
         if item.get(
             "data_obj"
-        )
-        is not None
+        ) is not None
     ]
 
     if validas:
 
         ultima = max(
-
             validas,
-
             key=lambda item:
-                item[
-                    "data_obj"
-                ]
+                item["data_obj"]
         )
 
     else:
 
-        ultima = movimentacoes[
-            0
-        ]
+        ultima = movimentacoes[0]
 
     return {
-
         "data":
-            ultima.get(
-                "data",
-                ""
+            texto_limpo(
+                ultima.get(
+                    "data",
+                    ""
+                )
             ),
 
         "setor":
-            ultima.get(
-                "setor",
-                ""
+            texto_limpo(
+                ultima.get(
+                    "setor",
+                    ""
+                )
             ),
 
         "evento":
-            ultima.get(
-                "evento",
-                ""
+            texto_limpo(
+                ultima.get(
+                    "evento",
+                    ""
+                )
             ),
     }
 
@@ -1355,13 +1389,10 @@ def consultar_sefaz(
     ]
 
     conteudo = obter_html(
-
         url_sefaz(
             numero
         ),
-
         SEFAZ_CONNECT_TIMEOUT,
-
         SEFAZ_READ_TIMEOUT
     )
 
@@ -1388,8 +1419,50 @@ def consultar_sefaz(
         )
     )
 
-    return {
+    situacao = texto_limpo(
+        cabecalho.get(
+            "situacao",
+            ""
+        )
+    )
 
+    assunto = texto_limpo(
+        cabecalho.get(
+            "assunto",
+            ""
+        )
+    )
+
+    interessado = texto_limpo(
+        cabecalho.get(
+            "interessado",
+            ""
+        )
+    )
+
+    # Impede que rótulos inválidos
+    # sejam gravados como valores.
+
+    if token_invalido_como_valor(
+        situacao
+    ):
+        situacao = ""
+
+    if token_invalido_como_valor(
+        assunto
+    ):
+        assunto = ""
+
+    if token_invalido_como_valor(
+        interessado
+    ):
+        interessado = ""
+
+    if not situacao:
+
+        situacao = "Não identificada"
+
+    return {
         "numero":
             numero,
 
@@ -1400,25 +1473,13 @@ def consultar_sefaz(
             "",
 
         "situacao":
-            (
-                cabecalho.get(
-                    "situacao"
-                )
-                or
-                "Não identificada"
-            ),
+            situacao,
 
         "interessado":
-            cabecalho.get(
-                "interessado",
-                ""
-            ),
+            interessado,
 
         "assunto":
-            cabecalho.get(
-                "assunto",
-                ""
-            ),
+            assunto,
 
         "setor":
             ultima.get(
@@ -1447,7 +1508,7 @@ def consultar_sefaz(
 
 
 # ============================================================
-# SEMEF - CÓDIGO DE PROTOCOLO
+# SEMEF - PROTOCOLO
 # ============================================================
 
 def resolver_cod_protocolo(
@@ -1462,7 +1523,6 @@ def resolver_cod_protocolo(
     )
 
     if codigo:
-
         return codigo
 
     numero = cadastro[
@@ -1477,7 +1537,6 @@ def resolver_cod_protocolo(
     )
 
     if codigo:
-
         return codigo
 
     raise ValueError(
@@ -1494,7 +1553,6 @@ def extrair_cabecalho_semef(
 ):
 
     return {
-
         "numero":
             valor_por_rotulo(
                 soup,
@@ -1535,7 +1593,7 @@ def extrair_cabecalho_semef(
                     "Localização Atual",
                     "Localizacao Atual",
                     "Localização",
-                    "Localizacao",
+                    "Localizacao"
                 ]
             ),
     }
@@ -1573,11 +1631,9 @@ def extrair_historico_semef(
         ):
 
             tabela_alvo = tabela
-
             break
 
     if tabela_alvo is None:
-
         return []
 
     historico = []
@@ -1587,14 +1643,12 @@ def extrair_historico_semef(
     ):
 
         valores = [
-
             texto_limpo(
                 celula.get_text(
                     " ",
                     strip=True
                 )
             )
-
             for celula
             in linha.find_all(
                 [
@@ -1605,7 +1659,6 @@ def extrair_historico_semef(
         ]
 
         if not valores:
-
             continue
 
         indice_data = None
@@ -1623,11 +1676,9 @@ def extrair_historico_semef(
             ):
 
                 indice_data = indice
-
                 break
 
         if indice_data is None:
-
             continue
 
         data = valores[
@@ -1635,28 +1686,18 @@ def extrair_historico_semef(
         ]
 
         situacao = (
-
-            valores[
-                0
-            ]
-
+            valores[0]
             if indice_data > 0
-
             else ""
         )
 
         origem = (
-
             valores[
                 indice_data + 1
             ]
-
-            if len(
-                valores
-            )
+            if len(valores)
             >
             indice_data + 1
-
             else ""
         )
 
@@ -1697,7 +1738,6 @@ def extrair_historico_semef(
             )
 
         historico.append({
-
             "situacao":
                 situacao,
 
@@ -1729,51 +1769,31 @@ def ultima_movimentacao_semef(
     if not historico:
 
         return {
-
-            "situacao":
-                "",
-
-            "data":
-                "",
-
-            "origem":
-                "",
-
-            "destino":
-                "",
-
-            "despacho":
-                ""
+            "situacao": "",
+            "data": "",
+            "origem": "",
+            "destino": "",
+            "despacho": ""
         }
 
     validos = [
-
         item
-
         for item
         in historico
-
         if item.get(
             "data_obj"
-        )
-        is not None
+        ) is not None
     ]
 
     if validos:
 
         return max(
-
             validos,
-
             key=lambda item:
-                item[
-                    "data_obj"
-                ]
+                item["data_obj"]
         )
 
-    return historico[
-        0
-    ]
+    return historico[0]
 
 
 # ============================================================
@@ -1801,13 +1821,10 @@ def consultar_semef(
         try:
 
             conteudo = obter_html(
-
                 url_semef(
                     codigo
                 ),
-
                 SEMEF_CONNECT_TIMEOUT,
-
                 SEMEF_READ_TIMEOUT
             )
 
@@ -1834,69 +1851,39 @@ def consultar_semef(
                 )
             )
 
-            numero_encontrado = texto_limpo(
-                cabecalho.get(
-                    "numero",
-                    ""
-                )
-            )
-
-            # Só bloqueia se a página realmente
-            # informar um processo diferente.
-
-            if (
-                numero_encontrado
-                and
-                numero not in numero_encontrado
-            ):
-
-                raise RuntimeError(
-                    "O SIGED retornou um processo diferente do cadastrado."
-                )
-
             situacao = (
-
                 texto_limpo(
                     cabecalho.get(
                         "situacao",
                         ""
                     )
                 )
-
                 or
-
                 texto_limpo(
                     ultima.get(
                         "situacao",
                         ""
                     )
                 )
-
                 or
-
                 "Não identificada"
             )
 
             setor = (
-
                 texto_limpo(
                     cabecalho.get(
                         "localizacao",
                         ""
                     )
                 )
-
                 or
-
                 texto_limpo(
                     ultima.get(
                         "destino",
                         ""
                     )
                 )
-
                 or
-
                 texto_limpo(
                     ultima.get(
                         "origem",
@@ -1905,34 +1892,30 @@ def consultar_semef(
                 )
             )
 
-            # Se a página respondeu, mas não trouxe
-            # nenhum dado útil, tratamos como falha.
+            interessado = texto_limpo(
+                cabecalho.get(
+                    "interessado",
+                    ""
+                )
+            )
+
+            assunto = texto_limpo(
+                cabecalho.get(
+                    "assunto",
+                    ""
+                )
+            )
 
             possui_dados = any([
-
-                texto_limpo(
-                    cabecalho.get(
-                        "interessado",
-                        ""
-                    )
-                ),
-
-                texto_limpo(
-                    cabecalho.get(
-                        "assunto",
-                        ""
-                    )
-                ),
-
+                interessado,
+                assunto,
                 setor,
-
                 texto_limpo(
                     ultima.get(
                         "data",
                         ""
                     )
                 ),
-
                 texto_limpo(
                     ultima.get(
                         "despacho",
@@ -1948,7 +1931,6 @@ def consultar_semef(
                 )
 
             return {
-
                 "numero":
                     numero,
 
@@ -1962,20 +1944,10 @@ def consultar_semef(
                     situacao,
 
                 "interessado":
-                    texto_limpo(
-                        cabecalho.get(
-                            "interessado",
-                            ""
-                        )
-                    ),
+                    interessado,
 
                 "assunto":
-                    texto_limpo(
-                        cabecalho.get(
-                            "assunto",
-                            ""
-                        )
-                    ),
+                    assunto,
 
                 "setor":
                     setor,
@@ -2008,7 +1980,6 @@ def consultar_semef(
             ultimo_erro = erro
 
     raise RuntimeError(
-
         "Não foi possível atualizar o processo SEMEF: "
         +
         texto_limpo(
@@ -2039,7 +2010,7 @@ def consultar_processo(
 
 
 # ============================================================
-# MOVIMENTAÇÃO / ALERTAS
+# ALERTAS
 # ============================================================
 
 def assinatura_movimentacao(
@@ -2050,25 +2021,21 @@ def assinatura_movimentacao(
         processo,
         dict
     ):
-
         return ""
 
     return "|".join([
-
         texto_limpo(
             processo.get(
                 "dataMovimentacao",
                 ""
             )
         ),
-
         texto_limpo(
             processo.get(
                 "setor",
                 ""
             )
         ),
-
         texto_limpo(
             processo.get(
                 "evento",
@@ -2086,7 +2053,6 @@ def dado_anterior_valido(
         processo,
         dict
     ):
-
         return False
 
     if texto_limpo(
@@ -2095,11 +2061,9 @@ def dado_anterior_valido(
             ""
         )
     ):
-
         return False
 
     return bool(
-
         assinatura_movimentacao(
             processo
         ).replace(
@@ -2116,23 +2080,14 @@ def alerta_ja_existe(
 ):
 
     return any(
-
         alerta.get(
             "numero"
-        )
-        ==
-        numero
-
+        ) == numero
         and
-
         alerta.get(
             "movimentacao_atual"
-        )
-        ==
-        assinatura
-
-        for alerta
-        in alertas
+        ) == assinatura
+        for alerta in alertas
     )
 
 
@@ -2142,7 +2097,6 @@ def criar_alerta(
 ):
 
     return {
-
         "numero":
             atual.get(
                 "numero",
@@ -2240,7 +2194,6 @@ def worker_consulta(
             )
 
             fila_saida.put({
-
                 "numero":
                     numero,
 
@@ -2254,7 +2207,6 @@ def worker_consulta(
         except Exception as erro:
 
             fila_saida.put({
-
                 "numero":
                     numero,
 
@@ -2353,7 +2305,7 @@ def main():
     )
 
     # ========================================================
-    # PROCESSOS
+    # CADASTROS
     # ========================================================
 
     try:
@@ -2393,29 +2345,20 @@ def main():
     )
 
     numeros_ativos = {
-
-        cadastro[
-            "numero"
-        ]
-
-        for cadastro
-        in cadastros
+        cadastro["numero"]
+        for cadastro in cadastros
     }
 
     alertas = [
-
         alerta
-
         for alerta
         in dados_anteriores.get(
             "alertas",
             []
         )
-
         if alerta.get(
             "numero"
-        )
-        in numeros_ativos
+        ) in numeros_ativos
     ]
 
     # ========================================================
@@ -2423,7 +2366,6 @@ def main():
     # ========================================================
 
     fila_entrada = queue.Queue()
-
     fila_saida = queue.Queue()
 
     for cadastro in cadastros:
@@ -2432,40 +2374,35 @@ def main():
             cadastro
         )
 
-    # ========================================================
-    # THREADS
-    # ========================================================
-
     quantidade_workers = min(
-
         MAX_WORKERS,
-
         len(
             cadastros
         )
     )
+
+    # ========================================================
+    # THREADS
+    # ========================================================
 
     for _ in range(
         quantidade_workers
     ):
 
         thread = threading.Thread(
-
             target=worker_consulta,
-
             args=(
                 fila_entrada,
                 fila_saida,
                 deadline
             ),
-
             daemon=True
         )
 
         thread.start()
 
     # ========================================================
-    # RESULTADOS
+    # COLETAR RESPOSTAS
     # ========================================================
 
     recebidos = {}
@@ -2493,7 +2430,6 @@ def main():
         try:
 
             item = fila_saida.get(
-
                 timeout=min(
                     0.5,
                     restante
@@ -2501,18 +2437,14 @@ def main():
             )
 
             recebidos[
-                item[
-                    "numero"
-                ]
+                item["numero"]
             ] = item
 
         except queue.Empty:
 
             continue
 
-    # ========================================================
-    # ÚLTIMOS RESULTADOS
-    # ========================================================
+    # Drenagem final.
 
     while True:
 
@@ -2523,9 +2455,7 @@ def main():
             )
 
             recebidos[
-                item[
-                    "numero"
-                ]
+                item["numero"]
             ] = item
 
         except queue.Empty:
@@ -2533,15 +2463,13 @@ def main():
             break
 
     # ========================================================
-    # MONTAGEM FINAL
+    # RESULTADOS FINAIS
     # ========================================================
 
     processos_finais = []
 
     quantidade_erros = 0
-
     quantidade_tempo_excedido = 0
-
     novos_alertas = 0
 
     for cadastro in cadastros:
@@ -2559,21 +2487,17 @@ def main():
         )
 
         # ====================================================
-        # TEMPO GLOBAL EXCEDIDO
+        # TEMPO EXCEDIDO
         # ====================================================
 
         if resposta is None:
 
             quantidade_erros += 1
-
             quantidade_tempo_excedido += 1
 
             atual = marcar_nao_atualizado(
-
                 cadastro,
-
                 anterior,
-
                 (
                     "Tempo excedido. "
                     "O processo não foi atualizado "
@@ -2597,17 +2521,15 @@ def main():
         # ====================================================
 
         if not resposta.get(
-            "ok"
+            "ok",
+            False
         ):
 
             quantidade_erros += 1
 
             atual = marcar_nao_atualizado(
-
                 cadastro,
-
                 anterior,
-
                 resposta.get(
                     "erro",
                     "Erro na consulta."
@@ -2622,9 +2544,7 @@ def main():
                 "NÃO ATUALIZADO:",
                 numero,
                 "-",
-                atual[
-                    "erro"
-                ]
+                atual["erro"]
             )
 
             continue
@@ -2650,6 +2570,11 @@ def main():
             numero,
             "|",
             atual.get(
+                "situacao",
+                ""
+            ),
+            "|",
+            atual.get(
                 "setor",
                 ""
             ),
@@ -2661,7 +2586,7 @@ def main():
         )
 
         # ====================================================
-        # NOVA MOVIMENTAÇÃO
+        # ALERTA DE MOVIMENTAÇÃO
         # ====================================================
 
         if dado_anterior_valido(
@@ -2705,7 +2630,7 @@ def main():
                 novos_alertas += 1
 
     # ========================================================
-    # PAYLOAD
+    # PAYLOAD FINAL
     # ========================================================
 
     agora = agora_iso()
@@ -2718,7 +2643,6 @@ def main():
     )
 
     payload = {
-
         "ultima_verificacao":
             agora,
 
@@ -2762,9 +2686,7 @@ def main():
             processos_finais,
 
         "alertas":
-            alertas[
-                :100
-            ],
+            alertas[:100],
     }
 
     salvar_payload(
