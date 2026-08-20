@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-08-20T10:57:45-04:00",
-  "ultima_atualizacao": "2026-08-20T10:57:45-04:00",
+  "ultima_verificacao": "2026-08-20T11:14:04-04:00",
+  "ultima_atualizacao": "2026-08-20T11:14:04-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 8.7,
+  "duracao_segundos": 9.4,
   "tempo_excedido": false,
   "limite_execucao_segundos": 50,
   "total_processos": 26,
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:39-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.030087/2026-20",
@@ -35,7 +35,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:39-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.030283/2026-03",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:38-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.030287/2026-83",
@@ -61,7 +61,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:38-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.030288/2026-28",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:39-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.031074/2026-79",
@@ -87,7 +87,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:39-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.031331/2026-72",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:38-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.031373/2026-03",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:38-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.031077/2026-02",
@@ -126,7 +126,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:38-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.031217/2026-42",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:38-04:00"
+      "consultado_em": "2026-08-20T11:13:58-04:00"
     },
     {
       "numero": "01.01.028101.031129/2026-40",
@@ -152,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.031393/2026-84",
@@ -165,7 +165,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -178,7 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -204,7 +204,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -217,7 +217,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:45-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -230,7 +230,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -243,7 +243,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:40-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -256,7 +256,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:41-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -269,7 +269,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:41-04:00"
+      "consultado_em": "2026-08-20T11:14:00-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -282,7 +282,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:42-04:00"
+      "consultado_em": "2026-08-20T11:14:02-04:00"
     },
     {
       "numero": "01.01.013102.003068/2026-44",
@@ -295,7 +295,7 @@
       "evento": "65 - JUNTADA",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:42-04:00"
+      "consultado_em": "2026-08-20T11:14:02-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -308,7 +308,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T10:57:41-04:00"
+      "consultado_em": "2026-08-20T11:14:02-04:00"
     },
     {
       "numero": "2024.18000.19012.0.008302",
@@ -320,8 +320,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f04ccfd6660>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T10:57:45-04:00"
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe354ad6240>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-08-20T11:14:04-04:00"
     },
     {
       "numero": "2026.18000.19951.0.024703",
@@ -333,8 +333,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f04d41c2de0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T10:57:45-04:00"
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe3549971a0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-08-20T11:14:04-04:00"
     },
     {
       "numero": "2026.18000.19951.0.014382",
@@ -346,8 +346,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11037580 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f04d42f9f70>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
-      "consultado_em": "2026-08-20T10:57:45-04:00"
+      "erro": "HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11037580 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe3549e8b00>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-08-20T11:14:04-04:00"
     }
   ],
   "alertas": [
