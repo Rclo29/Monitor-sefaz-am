@@ -1,14 +1,14 @@
 {
-  "ultima_verificacao": "2026-08-20T16:16:47-04:00",
-  "ultima_atualizacao": "2026-08-20T16:16:47-04:00",
+  "ultima_verificacao": "2026-08-20T20:47:39-04:00",
+  "ultima_atualizacao": "2026-08-20T20:47:39-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 50.0,
-  "tempo_excedido": true,
+  "duracao_segundos": 36.6,
+  "tempo_excedido": false,
   "limite_execucao_segundos": 50,
   "total_processos": 29,
-  "erros": 3,
-  "processos_nao_atualizados": 3,
-  "processos_tempo_excedido": 3,
+  "erros": 0,
+  "processos_nao_atualizados": 0,
+  "processos_tempo_excedido": 0,
   "novos_alertas": 2,
   "processos": [
     {
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.030087/2026-20",
@@ -35,7 +35,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:04-04:00"
     },
     {
       "numero": "01.01.028101.030283/2026-03",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.030287/2026-83",
@@ -61,7 +61,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.030288/2026-28",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:04-04:00"
     },
     {
       "numero": "01.01.028101.031074/2026-79",
@@ -87,7 +87,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.031331/2026-72",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.031373/2026-03",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:04-04:00"
     },
     {
       "numero": "01.01.028101.031077/2026-02",
@@ -126,7 +126,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:04-04:00"
     },
     {
       "numero": "01.01.028101.031217/2026-42",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:00-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.031129/2026-40",
@@ -152,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:06-04:00"
     },
     {
       "numero": "01.01.028101.031393/2026-84",
@@ -165,7 +165,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:06-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -178,7 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:05-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:06-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -204,7 +204,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -217,7 +217,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -230,7 +230,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -243,7 +243,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -256,7 +256,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -269,7 +269,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:02-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -282,7 +282,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:04-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.013102.003068/2026-44",
@@ -295,7 +295,7 @@
       "evento": "65 - JUNTADA",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:04-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -308,46 +308,46 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:04-04:00"
+      "consultado_em": "2026-08-20T20:47:07-04:00"
     },
     {
       "numero": "2024.18000.19012.0.008302",
       "origem": "semef",
       "cod_protocolo": "7954846",
-      "situacao": "Erro na consulta",
-      "interessado": "",
-      "assunto": "",
-      "setor": "",
-      "evento": "",
-      "dataMovimentacao": "",
-      "erro": "Tempo excedido. O processo não foi atualizado nesta consulta.",
-      "consultado_em": "2026-08-20T16:16:47-04:00"
+      "situacao": "TRAMITANDO",
+      "interessado": "P. S. M. VIEITAS EIRELI",
+      "assunto": "A EMPRESA P. S. M. VIEITAS EIRELI, CNPJ/MF SOB O N.º 35.718.714/0001-14, VEM REQUERER A LIQUIDAÇÃO DO VALOR DE R$178.229,01 (CENTO E SETENTA E OITO MIL DUZENTOS E VINTE E NOVE REAIS E UM CENTAVO) REFERENTE AO REAJUSTE NO VALOR DO CONTRATO Nº 007/2021. NOTA DE N° 196 EMITIDA EM 20 DE MARÇO DE 2024.",
+      "setor": "GEOR - SEMED",
+      "evento": "ANALISE E PROVIDÊNCIAS",
+      "dataMovimentacao": "23/07/2026",
+      "erro": "",
+      "consultado_em": "2026-08-20T20:47:22-04:00"
     },
     {
       "numero": "2026.18000.19951.0.024703",
       "origem": "semef",
       "cod_protocolo": "11442112",
-      "situacao": "Erro na consulta",
-      "interessado": "",
-      "assunto": "",
-      "setor": "",
-      "evento": "",
-      "dataMovimentacao": "",
-      "erro": "Tempo excedido. O processo não foi atualizado nesta consulta.",
-      "consultado_em": "2026-08-20T16:16:47-04:00"
+      "situacao": "TRAMITANDO",
+      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
+      "assunto": "PLATINA SERVICOS DE ENGENHARIALTDA - Solicitação de pagamento da NFS-e Nº 197 de 30/07/2026, no valor total de R$ 2.015.883,87, referentes aos serviços contratados por meio do Termo 032/2024 - 3º Termo Aditivo - Período da prestação dos serviços: 04/06/2026 a 30/06/2026.",
+      "setor": "CONTINT - SEMED",
+      "evento": "PROVIDÊNCIAS",
+      "dataMovimentacao": "20/08/2026",
+      "erro": "",
+      "consultado_em": "2026-08-20T20:47:39-04:00"
     },
     {
       "numero": "2026.18000.19951.0.014382",
       "origem": "semef",
       "cod_protocolo": "11037580",
-      "situacao": "Erro na consulta",
-      "interessado": "",
-      "assunto": "",
-      "setor": "",
-      "evento": "",
-      "dataMovimentacao": "",
-      "erro": "Tempo excedido. O processo não foi atualizado nesta consulta.",
-      "consultado_em": "2026-08-20T16:16:47-04:00"
+      "situacao": "SOBRESTADO",
+      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
+      "assunto": "PLATINA SERVIÇOS DE ENGENHARAIA LTDA - SOLICITAÇÃO DE PAGAMENTO REFERENTE AO CONTRATO N° 105/2025 - NOTA FISCAL N° 133 - VALOR R$ 1.510.359,43 - EMISSÃO: 05/05/2026 - PERÍODO DE ABRIL DE 2026.",
+      "setor": "GLIQ - SEMED",
+      "evento": "AGUARDANDO PAGAMENTO",
+      "dataMovimentacao": "19/08/2026",
+      "erro": "",
+      "consultado_em": "2026-08-20T20:47:39-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -356,11 +356,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "setor": "GSERV",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "20/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:04-04:00"
+      "consultado_em": "2026-08-20T20:47:13-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -369,11 +369,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "setor": "GSERV",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "20/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:04-04:00"
+      "consultado_em": "2026-08-20T20:47:13-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -386,10 +386,32 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "20/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T16:16:04-04:00"
+      "consultado_em": "2026-08-20T20:47:13-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.032673/2026-00",
+      "origem": "sefaz",
+      "data": "2026-08-20T20:47:39-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "20/08/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "20/08/2026|GSERV|59 - TRAMITANDO",
+      "data_movimentacao": "20/08/2026",
+      "setor": "GSERV",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.032668/2026-05",
+      "origem": "sefaz",
+      "data": "2026-08-20T20:47:39-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "20/08/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "20/08/2026|GSERV|59 - TRAMITANDO",
+      "data_movimentacao": "20/08/2026",
+      "setor": "GSERV",
+      "evento": "59 - TRAMITANDO"
+    },
     {
       "numero": "01.01.028101.032673/2026-00",
       "origem": "sefaz",

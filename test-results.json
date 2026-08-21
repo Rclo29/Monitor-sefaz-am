@@ -6,7 +6,7 @@
       "status": 200,
       "via": "cloudflare-direto",
       "version": "semef-proxy-v1",
-      "html_size": 50518,
+      "html_size": 49242,
       "estrutura": [
         [
           "PROCESSO :",
@@ -120,9 +120,9 @@
       "numero": "2026.18000.19951.0.024703",
       "ok": true,
       "status": 200,
-      "via": "cloudflare-direto",
+      "via": "cloudflare-segunda-tentativa",
       "version": "semef-proxy-v1",
-      "html_size": 20167,
+      "html_size": 18933,
       "estrutura": [
         [
           "PROCESSO :",
@@ -238,7 +238,7 @@
       "status": 200,
       "via": "cloudflare-direto",
       "version": "semef-proxy-v1",
-      "html_size": 36647,
+      "html_size": 36606,
       "estrutura": [
         [
           "PROCESSO :",
@@ -329,12 +329,12 @@
   ],
   "monitor": {
     "returncode": 0,
-    "stdout": "============================================================\nMONITOR SEFAZ-AM + SEMEF\nInício: 20/08/2026 20:43:24\nLimite global: 50 segundos\n============================================================\nSEMEF via Cloudflare: 2024.18000.19012.0.008302 cloudflare-direto semef-proxy-v1 49283\nTentativa SEMEF 1/2 falhou: 2026.18000.19951.0.024703 HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=15)\nSEMEF via Cloudflare: 2026.18000.19951.0.024703 cloudflare-direto semef-proxy-v1 18932\nSEMEF via Cloudflare: 2026.18000.19951.0.014382 cloudflare-direto semef-proxy-v1 36647\n============================================================\ndados.json atualizado.\nDuração: 21.2 segundos\nTotal: 29\nNão atualizados: 0\nTempo excedido: 0\nNovos alertas: 2\n============================================================\n",
+    "stdout": "============================================================\nMONITOR SEFAZ-AM + SEMEF\nInício: 20/08/2026 20:47:02\nLimite global: 50 segundos\n============================================================\nTentativa SEMEF 1/2 falhou: 2024.18000.19012.0.008302 HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=15)\nSEMEF via Cloudflare: 2024.18000.19012.0.008302 cloudflare-direto semef-proxy-v1 49219\nTentativa SEMEF 1/2 falhou: 2026.18000.19951.0.024703 HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=15)\nSEMEF via Cloudflare: 2026.18000.19951.0.024703 cloudflare-direto semef-proxy-v1 18868\nSEMEF via Cloudflare: 2026.18000.19951.0.014382 cloudflare-direto semef-proxy-v1 36606\n============================================================\ndados.json atualizado.\nDuração: 36.6 segundos\nTotal: 29\nNão atualizados: 0\nTempo excedido: 0\nNovos alertas: 2\n============================================================\n",
     "stderr": "",
     "total_processos": 29,
     "erros_gerais": 0,
     "tempo_excedido": false,
-    "duracao_segundos": 21.2,
+    "duracao_segundos": 36.6,
     "semef_total": 3,
     "semef_erros": [],
     "semef_processos": [
