@@ -1,5 +1,7 @@
+# disparo do reteste
 name: Reteste atualização
 on:
+  workflow_dispatch: {}
   push:
     paths:
       - ".github/workflows/test-update-button2.yml"
