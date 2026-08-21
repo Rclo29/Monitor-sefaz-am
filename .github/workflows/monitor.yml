@@ -4,6 +4,13 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [atualizar-monitor]
+  push:
+    branches: [main]
+    paths:
+      - "monitor.py"
+      - "monitor_runner.py"
+      - "processos.json"
+      - ".github/workflows/monitor.yml"
 
 permissions:
   contents: write
