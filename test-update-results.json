@@ -1,0 +1,13 @@
+{
+  "inicio": "2026-08-21T01:13:30.471257Z",
+  "ultima_verificacao_antes": "2026-08-20T20:47:39-04:00",
+  "worker": {
+    "status": 500,
+    "body": "{\n  \"ok\": false,\n  \"erro\": \"GitHub recusou o disparo do monitor.\",\n  \"statusGitHub\": 422,\n  \"detalhe\": \"{\\\"message\\\":\\\"Workflow does not have 'workflow_dispatch' trigger\\\",\\\"documentation_url\\\":\\\"https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event\\\",\\\"status\\\":\\\"422\\\"}\"\n}"
+  },
+  "publicacao": {
+    "mudou": false,
+    "erro": "Worker não aceitou a atualização"
+  },
+  "ok": false
+}
