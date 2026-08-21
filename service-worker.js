@@ -1,68 +1,30 @@
 /* =========================================================
-   MONITOR — SERVICE WORKER DE RECUPERAÇÃO
-   Versão: v17
-   Objetivos:
-   - remover caches antigos
-   - não armazenar index.html
-   - buscar sempre a versão atual na internet
-   - ler dados.json e processos.json direto do branch main,
-     sem aguardar o deploy do GitHub Pages
-   - evitar preflight CORS desnecessário ao acessar o GitHub raw
-   - forçar a substituição de versões antigas do app no iPhone
+   MONITOR — SERVICE WORKER
+   Versão: v18
+   - sem cache persistente
+   - dados.json/processos.json lidos diretamente pelo Worker
+   - evita espera de publicação do GitHub Pages
+   - aplica divisórias visuais no Quadro geral
    ========================================================= */
 
-const CACHE_NAME = "monitor-cache-v17";
+const CACHE_NAME = "monitor-cache-v18";
+const WORKER_BASE = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
-const RAW_BASE =
-  "https://raw.githubusercontent.com/Rclo29/Monitor-sefaz-am/main";
-
-/* =========================================================
-   INSTALAÇÃO
-   ========================================================= */
-
-self.addEventListener("install", event => {
+self.addEventListener("install", () => {
   self.skipWaiting();
 });
 
-/* =========================================================
-   ATIVAÇÃO
-   Remove TODOS os caches antigos
-   ========================================================= */
-
 self.addEventListener("activate", event => {
-
   event.waitUntil(
     caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            return caches.delete(cacheName);
-          })
-        );
-      })
+      .then(names => Promise.all(names.map(name => caches.delete(name))))
       .then(() => self.clients.claim())
   );
-
 });
 
-/* =========================================================
-   DADOS DO MONITOR
-
-   processos.json é a fonte oficial do cadastro.
-   dados.json contém apenas os resultados de consulta.
-   Ambos são lidos diretamente do branch main para impedir
-   que um card já excluído continue aparecendo por atraso do
-   GitHub Pages ou por cache antigo do Safari/PWA.
-   ========================================================= */
-
-async function fetchMonitorJson(request, fileName) {
-
-  const rawUrl =
-    `${RAW_BASE}/${fileName}?t=${Date.now()}`;
-
+async function fetchJsonDireto(request, endpoint) {
   try {
-
-    const response = await fetch(rawUrl, {
+    const response = await fetch(`${WORKER_BASE}/${endpoint}?t=${Date.now()}`, {
       method: "GET",
       mode: "cors",
       cache: "no-store",
@@ -70,9 +32,7 @@ async function fetchMonitorJson(request, fileName) {
     });
 
     if (response.ok) {
-
       const body = await response.arrayBuffer();
-
       return new Response(body, {
         status: 200,
         headers: {
@@ -82,64 +42,64 @@ async function fetchMonitorJson(request, fileName) {
           "Expires": "0"
         }
       });
-
     }
-
-    console.warn(
-      "Monitor: GitHub raw respondeu",
-      response.status,
-      fileName
-    );
-
   } catch (error) {
-
-    console.warn(
-      "Monitor: falha ao consultar JSON no branch main",
-      fileName,
-      error
-    );
-
+    console.warn("Monitor: falha ao buscar JSON direto pelo Worker", endpoint, error);
   }
 
-  return fetch(request, {
-    cache: "no-store"
+  return fetch(request, { cache: "no-store" });
+}
+
+async function fetchPaginaComAjuste(request) {
+  const response = await fetch(request, { cache: "no-store" });
+  if (!response.ok) return response;
+
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("text/html")) return response;
+
+  let html = await response.text();
+  const extraCss = `
+<style id="quadro-geral-divisorias-v18">
+.summary-head,.summary-line{grid-template-columns:185px 76px 1fr!important;column-gap:0!important}
+.summary-head>div,.summary-line>div{min-width:0}
+.summary-sector,.summary-head>div:nth-child(2){border-left:1px solid #d8dee6;padding-left:9px;padding-right:7px}
+.summary-move,.summary-head>div:nth-child(3){border-left:1px solid #d8dee6;padding-left:9px}
+@media(max-width:390px){.summary-head,.summary-line{grid-template-columns:178px 72px 1fr!important}}
+</style>`;
+
+  html = html.replace("</head>", `${extraCss}</head>`);
+
+  return new Response(html, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+    }
   });
 }
 
-/* =========================================================
-   FETCH
-   ========================================================= */
-
 self.addEventListener("fetch", event => {
-
-  if (event.request.method !== "GET") {
-    return;
-  }
+  if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
 
   if (url.origin === self.location.origin) {
-
     if (url.pathname.endsWith("/dados.json")) {
-      event.respondWith(
-        fetchMonitorJson(event.request, "dados.json")
-      );
+      event.respondWith(fetchJsonDireto(event.request, "dados-atualizados"));
       return;
     }
 
     if (url.pathname.endsWith("/processos.json")) {
-      event.respondWith(
-        fetchMonitorJson(event.request, "processos.json")
-      );
+      event.respondWith(fetchJsonDireto(event.request, "processos-atualizados"));
       return;
     }
 
+    if (event.request.mode === "navigate" || url.pathname.endsWith("/index.html") || url.pathname.endsWith("/Monitor-sefaz-am/")) {
+      event.respondWith(fetchPaginaComAjuste(event.request));
+      return;
+    }
   }
 
-  event.respondWith(
-    fetch(event.request, {
-      cache: "no-store"
-    })
-  );
-
+  event.respondWith(fetch(event.request, { cache: "no-store" }));
 });
