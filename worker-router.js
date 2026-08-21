@@ -1,6 +1,6 @@
 import workerEntry from "./worker-entry.js";
 
-const ROUTER_VERSION = "router-v3-workflow-dispatch-fallback";
+const ROUTER_VERSION = "router-v4-workflow-diagnostics";
 const GITHUB_API = "https://api.github.com/repos/Rclo29/Monitor-sefaz-am";
 const WORKFLOW_FILE = "monitor.yml";
 const BRANCH = "main";
@@ -28,21 +28,45 @@ function githubHeaders(token) {
   };
 }
 
+function resumirDetalhe(texto) {
+  const valor = String(texto || "").trim();
+  return valor.length > 800 ? `${valor.slice(0, 800)}…` : valor;
+}
+
 async function tentarWorkflowDispatch(token) {
-  const resposta = await fetch(
-    `${GITHUB_API}/actions/workflows/${encodeURIComponent(WORKFLOW_FILE)}/dispatches`,
-    {
-      method: "POST",
-      headers: githubHeaders(token),
-      body: JSON.stringify({ ref: BRANCH }),
-    }
-  );
+  const endpoint = `${GITHUB_API}/actions/workflows/${encodeURIComponent(WORKFLOW_FILE)}/dispatches`;
+  const inicio = Date.now();
+
+  console.log("[monitor] workflow_dispatch iniciando", {
+    endpoint,
+    workflow: WORKFLOW_FILE,
+    branch: BRANCH,
+    token_configurado: Boolean(token),
+  });
+
+  const resposta = await fetch(endpoint, {
+    method: "POST",
+    headers: githubHeaders(token),
+    body: JSON.stringify({ ref: BRANCH }),
+  });
+
+  const duracao_ms = Date.now() - inicio;
+  const detalhe = resposta.status === 204 ? "" : resumirDetalhe(await resposta.text());
+
+  console.log("[monitor] workflow_dispatch resposta", {
+    status: resposta.status,
+    ok: resposta.status === 204,
+    duracao_ms,
+    detalhe,
+    github_request_id: resposta.headers.get("x-github-request-id") || "",
+  });
 
   if (resposta.status === 204) {
     return {
       ok: true,
       metodo: "workflow_dispatch",
       statusGitHub: 204,
+      duracao_ms,
     };
   }
 
@@ -50,12 +74,22 @@ async function tentarWorkflowDispatch(token) {
     ok: false,
     metodo: "workflow_dispatch",
     statusGitHub: resposta.status,
-    detalhe: await resposta.text(),
+    duracao_ms,
+    detalhe,
   };
 }
 
 async function tentarRepositoryDispatch(token) {
-  const resposta = await fetch(`${GITHUB_API}/dispatches`, {
+  const endpoint = `${GITHUB_API}/dispatches`;
+  const inicio = Date.now();
+
+  console.log("[monitor] repository_dispatch iniciando", {
+    endpoint,
+    event_type: "atualizar-monitor",
+    token_configurado: Boolean(token),
+  });
+
+  const resposta = await fetch(endpoint, {
     method: "POST",
     headers: githubHeaders(token),
     body: JSON.stringify({
@@ -67,11 +101,23 @@ async function tentarRepositoryDispatch(token) {
     }),
   });
 
+  const duracao_ms = Date.now() - inicio;
+  const detalhe = resposta.status === 204 ? "" : resumirDetalhe(await resposta.text());
+
+  console.log("[monitor] repository_dispatch resposta", {
+    status: resposta.status,
+    ok: resposta.status === 204,
+    duracao_ms,
+    detalhe,
+    github_request_id: resposta.headers.get("x-github-request-id") || "",
+  });
+
   if (resposta.status === 204) {
     return {
       ok: true,
       metodo: "repository_dispatch",
       statusGitHub: 204,
+      duracao_ms,
     };
   }
 
@@ -79,17 +125,26 @@ async function tentarRepositoryDispatch(token) {
     ok: false,
     metodo: "repository_dispatch",
     statusGitHub: resposta.status,
-    detalhe: await resposta.text(),
+    duracao_ms,
+    detalhe,
   };
 }
 
 async function dispararAtualizacao(token) {
+  console.log("[monitor] dispararAtualizacao", {
+    router_version: ROUTER_VERSION,
+    token_configurado: Boolean(token),
+    token_tamanho: token ? String(token).length : 0,
+  });
+
   if (!token) {
-    return {
+    const resultado = {
       ok: false,
       erro: "GITHUB_TOKEN não configurado no Worker.",
       router_version: ROUTER_VERSION,
     };
+    console.error("[monitor] atualização recusada", resultado);
+    return resultado;
   }
 
   const tentativas = [];
@@ -99,20 +154,24 @@ async function dispararAtualizacao(token) {
     tentativas.push(workflow);
 
     if (workflow.ok) {
-      return {
+      const resultado = {
         ok: true,
         mensagem: "Atualização iniciada.",
         metodo: workflow.metodo,
         router_version: ROUTER_VERSION,
         tentativas,
       };
+      console.log("[monitor] atualização aceita pelo GitHub", resultado);
+      return resultado;
     }
   } catch (erro) {
-    tentativas.push({
+    const falha = {
       ok: false,
       metodo: "workflow_dispatch",
       erro: String(erro?.message || erro),
-    });
+    };
+    tentativas.push(falha);
+    console.error("[monitor] workflow_dispatch exceção", falha);
   }
 
   try {
@@ -120,28 +179,35 @@ async function dispararAtualizacao(token) {
     tentativas.push(repository);
 
     if (repository.ok) {
-      return {
+      const resultado = {
         ok: true,
         mensagem: "Atualização iniciada.",
         metodo: repository.metodo,
         router_version: ROUTER_VERSION,
         tentativas,
       };
+      console.log("[monitor] atualização aceita pelo GitHub", resultado);
+      return resultado;
     }
   } catch (erro) {
-    tentativas.push({
+    const falha = {
       ok: false,
       metodo: "repository_dispatch",
       erro: String(erro?.message || erro),
-    });
+    };
+    tentativas.push(falha);
+    console.error("[monitor] repository_dispatch exceção", falha);
   }
 
-  return {
+  const resultado = {
     ok: false,
     erro: "GitHub recusou o disparo do monitor.",
     router_version: ROUTER_VERSION,
     tentativas,
   };
+
+  console.error("[monitor] todas as tentativas falharam", resultado);
+  return resultado;
 }
 
 export default {
@@ -165,6 +231,7 @@ export default {
         ok: true,
         service: "monitor-sefaz-am",
         router_version: ROUTER_VERSION,
+        github_token_configurado: Boolean(env.GITHUB_TOKEN),
         timestamp: new Date().toISOString(),
       });
     }
@@ -205,12 +272,20 @@ export default {
         const body = await request.clone().json();
         const acao = String(body?.acao || "").trim().toLowerCase();
 
+        console.log("[monitor] POST recebido", {
+          acao,
+          pathname: url.pathname,
+          router_version: ROUTER_VERSION,
+        });
+
         if (acao === "atualizar") {
           const resultado = await dispararAtualizacao(env.GITHUB_TOKEN);
           return json(resultado, resultado.ok ? 200 : 500);
         }
-      } catch {
-        // Qualquer outra ação continua no Worker principal.
+      } catch (erro) {
+        console.error("[monitor] falha ao interpretar POST no router", {
+          erro: String(erro?.message || erro),
+        });
       }
     }
 
