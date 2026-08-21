@@ -2,6 +2,9 @@ name: Monitor SEFAZ-AM
 
 on:
   workflow_dispatch: {}
+  repository_dispatch:
+    types:
+      - atualizar-monitor
   push:
     paths:
       - ".github/workflows/monitor.yml"
