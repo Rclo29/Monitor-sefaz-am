@@ -1,52 +1,35 @@
 {
-  "gerado_em": "2026-08-21T19:03:49.376870+00:00",
+  "gerado_em": "2026-08-21T19:10:49.611904+00:00",
   "worker": "https://monitor-sefaz-am.8dryc8ph6w.workers.dev",
   "testes_worker": [
     {
       "numero": "2024.18000.19012.0.008302",
       "cod_protocolo": "7954846",
-      "http_status": 200,
-      "duracao_segundos": 0.46,
+      "http_status": 503,
+      "duracao_segundos": 12.09,
       "resposta": {
-        "ok": true,
-        "via": "cloudflare-direto",
+        "ok": false,
+        "indisponivel": true,
+        "erro": "Servidor da SEMEF não respondeu dentro do tempo limite.",
         "version": "semef-proxy-v2-fast-fail",
         "numero": "2024.18000.19012.0.008302",
         "cod_protocolo": "7954846",
-        "status": 200,
-        "duracao_total_ms": 392,
+        "duracao_total_ms": 12000,
         "diagnostico": [
           {
             "etapa": "detalhe_direto",
-            "status": 200,
-            "sucesso_http": true,
-            "tamanho_resposta": 49295,
-            "duracao_ms": 392,
-            "pagina_semef_valida": true,
-            "sinais": {
-              "numero_processo": true,
-              "semef": true,
-              "processo": true,
-              "situacao": true,
-              "interessado": true,
-              "assunto": true,
-              "localizacao": true,
-              "historico": true,
-              "despacho": true,
-              "tramitando": true,
-              "consulta_documentos": true
-            },
-            "preview": "SEMEF - Secretaria Municipal de Finanças | Prefeitura de Manaus - Versão 20150210A Cidadão Empresa Autônomo Consulta de Documentos e Processos PROCESSO : DATA DO PROCESSO : SITUAÇÃO: 2024.18000.19012.0.008302 21/03/2024 TRAMITANDO INTERESSADO: P. S. M. VIEITAS EIRELI ASSUNTO: A EMPRESA P. S. M. VIEITAS EIRELI, CNPJ/MF SOB O N.º 35.718.714/0001-14, VEM REQUERER A LIQUIDAÇÃO DO VALOR DE R$178.229,01 (CENTO E SETENTA E OITO MIL DUZENTOS E VINTE E NOVE REAIS E UM CENTAVO) REFERENTE AO REAJUSTE NO VA"
+            "timeout": true,
+            "erro": "Timeout após 12000 ms",
+            "duracao_ms": 12000
           }
-        ],
-        "html_tamanho": 49295
+        ]
       }
     },
     {
       "numero": "2026.18000.19951.0.024703",
       "cod_protocolo": "11442112",
       "http_status": 200,
-      "duracao_segundos": 0.24,
+      "duracao_segundos": 0.7,
       "resposta": {
         "ok": true,
         "via": "cloudflare-direto",
@@ -54,14 +37,14 @@
         "numero": "2026.18000.19951.0.024703",
         "cod_protocolo": "11442112",
         "status": 200,
-        "duracao_total_ms": 195,
+        "duracao_total_ms": 628,
         "diagnostico": [
           {
             "etapa": "detalhe_direto",
             "status": 200,
             "sucesso_http": true,
-            "tamanho_resposta": 20067,
-            "duracao_ms": 195,
+            "tamanho_resposta": 20050,
+            "duracao_ms": 628,
             "pagina_semef_valida": true,
             "sinais": {
               "numero_processo": true,
@@ -79,7 +62,7 @@
             "preview": "SEMEF - Secretaria Municipal de Finanças | Prefeitura de Manaus - Versão 20150210A Cidadão Empresa Autônomo Consulta de Documentos e Processos PROCESSO : DATA DO PROCESSO : SITUAÇÃO: 2026.18000.19951.0.024703 10/08/2026 TRAMITANDO INTERESSADO: PLATINA SERVICOS DE ENGENHARIA LTDA ASSUNTO: PLATINA SERVICOS DE ENGENHARIALTDA - Solicitação de pagamento da NFS-e Nº 197 de 30/07/2026, no valor total de R$ 2.015.883,87, referentes aos serviços contratados por meio do Termo 032/2024 - 3º Termo Aditivo -"
           }
         ],
-        "html_tamanho": 20067
+        "html_tamanho": 20050
       }
     }
   ],
@@ -87,14 +70,14 @@
     {
       "numero": "2024.18000.19012.0.008302",
       "cod_protocolo": "7954846",
-      "duracao_segundos": 10.57,
-      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f1d0dd1aea0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
+      "duracao_segundos": 10.8,
+      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f1cf56231a0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
     },
     {
       "numero": "2026.18000.19951.0.024703",
       "cod_protocolo": "11442112",
       "duracao_segundos": 10.4,
-      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f1d0dd1be30>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
+      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f1cf56600b0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
     }
   ]
 }
