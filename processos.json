@@ -89,11 +89,6 @@
       "origem": "sefaz"
     },
     {
-      "numero": "2024.18000.19012.0.008302",
-      "origem": "semef",
-      "cod_protocolo": "7954846"
-    },
-    {
       "numero": "2026.18000.19951.0.024703",
       "origem": "semef",
       "cod_protocolo": "11442112"
@@ -110,6 +105,5 @@
       "numero": "01.01.028101.032701/2026-99",
       "origem": "sefaz"
     }
-  ],
-  "sincronizacao_forcada_em": "2026-08-21T12:07:00-04:00"
+  ]
 }
