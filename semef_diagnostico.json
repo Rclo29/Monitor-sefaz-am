@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-08-21T13:27:22.479500+00:00",
+  "gerado_em": "2026-08-21T14:42:22.058309+00:00",
   "worker": "https://monitor-sefaz-am.8dryc8ph6w.workers.dev",
   "testes_worker": [
     {
       "numero": "2024.18000.19012.0.008302",
       "cod_protocolo": "7954846",
       "http_status": 503,
-      "duracao_segundos": 12.09,
+      "duracao_segundos": 12.12,
       "resposta": {
         "ok": false,
         "indisponivel": true,
@@ -29,7 +29,7 @@
       "numero": "2026.18000.19951.0.024703",
       "cod_protocolo": "11442112",
       "http_status": 503,
-      "duracao_segundos": 12.06,
+      "duracao_segundos": 12.08,
       "resposta": {
         "ok": false,
         "indisponivel": true,
@@ -37,13 +37,13 @@
         "version": "semef-proxy-v2-fast-fail",
         "numero": "2026.18000.19951.0.024703",
         "cod_protocolo": "11442112",
-        "duracao_total_ms": 12000,
+        "duracao_total_ms": 12001,
         "diagnostico": [
           {
             "etapa": "detalhe_direto",
             "timeout": true,
             "erro": "Timeout após 12000 ms",
-            "duracao_ms": 12000
+            "duracao_ms": 12001
           }
         ]
       }
@@ -53,14 +53,14 @@
     {
       "numero": "2024.18000.19012.0.008302",
       "cod_protocolo": "7954846",
-      "duracao_segundos": 10.39,
-      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7efe13d0e420>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
+      "duracao_segundos": 10.4,
+      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=7954846 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fcde2e86600>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
     },
     {
       "numero": "2026.18000.19951.0.024703",
       "cod_protocolo": "11442112",
-      "duracao_segundos": 10.45,
-      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7efe13d0fbf0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
+      "duracao_segundos": 10.78,
+      "erro_cliente": "ConnectTimeout: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11442112 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fcde2e87c50>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)'))"
     }
   ]
 }
