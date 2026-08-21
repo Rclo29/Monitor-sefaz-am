@@ -1,6 +1,6 @@
 /* =========================================================
    MONITOR — SERVICE WORKER DE RECUPERAÇÃO
-   Versão: v16
+   Versão: v17
    Objetivos:
    - remover caches antigos
    - não armazenar index.html
@@ -8,9 +8,10 @@
    - ler dados.json e processos.json direto do branch main,
      sem aguardar o deploy do GitHub Pages
    - evitar preflight CORS desnecessário ao acessar o GitHub raw
+   - forçar a substituição de versões antigas do app no iPhone
    ========================================================= */
 
-const CACHE_NAME = "monitor-cache-v16";
+const CACHE_NAME = "monitor-cache-v17";
 
 const RAW_BASE =
   "https://raw.githubusercontent.com/Rclo29/Monitor-sefaz-am/main";
@@ -47,14 +48,11 @@ self.addEventListener("activate", event => {
 /* =========================================================
    DADOS DO MONITOR
 
-   O GitHub Actions grava dados.json no repositório antes de
-   o GitHub Pages terminar uma nova publicação. Para evitar
-   ler um arquivo antigo, consultamos diretamente o branch main.
-
-   IMPORTANTE:
-   Não enviamos cabeçalhos personalizados nesta requisição.
-   Isso mantém o GET como uma requisição CORS simples e evita
-   preflight que poderia fazer o Safari cair no fallback do Pages.
+   processos.json é a fonte oficial do cadastro.
+   dados.json contém apenas os resultados de consulta.
+   Ambos são lidos diretamente do branch main para impedir
+   que um card já excluído continue aparecendo por atraso do
+   GitHub Pages ou por cache antigo do Safari/PWA.
    ========================================================= */
 
 async function fetchMonitorJson(request, fileName) {
