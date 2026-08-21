@@ -10,6 +10,7 @@ on:
       - "monitor.py"
       - "monitor_runner.py"
       - "processos.json"
+      - "diagnostico_semef.py"
       - ".github/workflows/monitor.yml"
 
 permissions:
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   monitorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 6
 
     steps:
       - name: Baixar repositório
@@ -40,6 +41,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
+      - name: Diagnosticar SEMEF
+        run: python diagnostico_semef.py
+
       - name: Executar monitor
         run: python monitor_runner.py
 
@@ -48,13 +52,13 @@ jobs:
         run: |
           git config user.name "sefaz-monitor"
           git config user.email "actions@github.com"
-          git add dados.json
+          git add dados.json semef_diagnostico.json
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
             exit 0
           fi
 
-          git commit -m "Atualiza dados do Monitor SEFAZ-AM + SEMEF"
+          git commit -m "Atualiza dados e diagnóstico do Monitor SEFAZ-AM + SEMEF"
           git pull --rebase origin main
           git push origin HEAD:main
