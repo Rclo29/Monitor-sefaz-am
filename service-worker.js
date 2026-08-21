@@ -1,15 +1,16 @@
 /* =========================================================
    MONITOR — SERVICE WORKER DE RECUPERAÇÃO
-   Versão: v15
+   Versão: v16
    Objetivos:
    - remover caches antigos
    - não armazenar index.html
    - buscar sempre a versão atual na internet
    - ler dados.json e processos.json direto do branch main,
      sem aguardar o deploy do GitHub Pages
+   - evitar preflight CORS desnecessário ao acessar o GitHub raw
    ========================================================= */
 
-const CACHE_NAME = "monitor-cache-v15";
+const CACHE_NAME = "monitor-cache-v16";
 
 const RAW_BASE =
   "https://raw.githubusercontent.com/Rclo29/Monitor-sefaz-am/main";
@@ -47,14 +48,13 @@ self.addEventListener("activate", event => {
    DADOS DO MONITOR
 
    O GitHub Actions grava dados.json no repositório antes de
-   o GitHub Pages terminar uma nova publicação. Se a página
-   consultar ./dados.json nesse intervalo, pode enxergar o
-   arquivo antigo e informar incorretamente que a atualização
-   ainda não foi publicada.
+   o GitHub Pages terminar uma nova publicação. Para evitar
+   ler um arquivo antigo, consultamos diretamente o branch main.
 
-   Para estes dois JSON, consultamos diretamente o branch main.
-   Se houver qualquer falha nesse caminho, voltamos à URL
-   normal do GitHub Pages como fallback.
+   IMPORTANTE:
+   Não enviamos cabeçalhos personalizados nesta requisição.
+   Isso mantém o GET como uma requisição CORS simples e evita
+   preflight que poderia fazer o Safari cair no fallback do Pages.
    ========================================================= */
 
 async function fetchMonitorJson(request, fileName) {
@@ -65,10 +65,10 @@ async function fetchMonitorJson(request, fileName) {
   try {
 
     const response = await fetch(rawUrl, {
+      method: "GET",
+      mode: "cors",
       cache: "no-store",
-      headers: {
-        "Cache-Control": "no-cache"
-      }
+      redirect: "follow"
     });
 
     if (response.ok) {
@@ -87,8 +87,20 @@ async function fetchMonitorJson(request, fileName) {
 
     }
 
+    console.warn(
+      "Monitor: GitHub raw respondeu",
+      response.status,
+      fileName
+    );
+
   } catch (error) {
-    console.warn("Monitor: falha ao consultar JSON no branch main", error);
+
+    console.warn(
+      "Monitor: falha ao consultar JSON no branch main",
+      fileName,
+      error
+    );
+
   }
 
   return fetch(request, {
