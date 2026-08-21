@@ -1,13 +1,13 @@
 /* =========================================================
    MONITOR — SERVICE WORKER
-   Versão: v18
+   Versão: v19
    - sem cache persistente
    - dados.json/processos.json lidos diretamente pelo Worker
    - evita espera de publicação do GitHub Pages
-   - aplica divisórias visuais no Quadro geral
+   - aplica layout compacto no Quadro geral
    ========================================================= */
 
-const CACHE_NAME = "monitor-cache-v18";
+const CACHE_NAME = "monitor-cache-v19";
 const WORKER_BASE = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
 self.addEventListener("install", () => {
@@ -59,12 +59,23 @@ async function fetchPaginaComAjuste(request) {
 
   let html = await response.text();
   const extraCss = `
-<style id="quadro-geral-divisorias-v18">
-.summary-head,.summary-line{grid-template-columns:185px 76px 1fr!important;column-gap:0!important}
+<style id="quadro-geral-compacto-v19">
+.summary-table{min-width:660px!important}
+.summary-head,.summary-line{grid-template-columns:196px 68px 1fr!important;column-gap:0!important}
 .summary-head>div,.summary-line>div{min-width:0}
-.summary-sector,.summary-head>div:nth-child(2){border-left:1px solid #d8dee6;padding-left:9px;padding-right:7px}
-.summary-move,.summary-head>div:nth-child(3){border-left:1px solid #d8dee6;padding-left:9px}
-@media(max-width:390px){.summary-head,.summary-line{grid-template-columns:178px 72px 1fr!important}}
+.summary-head{padding:6px 8px!important;font-size:8.3px!important;line-height:1.15!important}
+.summary-line{padding:6px 8px!important;font-size:10.2px!important;line-height:1.18!important}
+.summary-num{padding-right:14px!important}
+.summary-sector,.summary-head>div:nth-child(2){border-left:1px solid #d8dee6;padding-left:12px!important;padding-right:4px!important}
+.summary-move,.summary-head>div:nth-child(3){border-left:1px solid #d8dee6;padding-left:7px!important}
+@media(max-width:390px){
+  .summary-table{min-width:640px!important}
+  .summary-head,.summary-line{grid-template-columns:190px 66px 1fr!important}
+  .summary-head{font-size:8px!important}
+  .summary-line{font-size:9.8px!important;padding-top:5.5px!important;padding-bottom:5.5px!important}
+  .summary-sector,.summary-head>div:nth-child(2){padding-left:11px!important;padding-right:3px!important}
+  .summary-move,.summary-head>div:nth-child(3){padding-left:6px!important}
+}
 </style>`;
 
   html = html.replace("</head>", `${extraCss}</head>`);
