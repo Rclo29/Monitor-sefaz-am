@@ -228,6 +228,13 @@
         0 0 0 3px rgba(201,52,52,.12);
     }
 
+    .status-light.unavailable {
+      background: var(--laranja);
+
+      box-shadow:
+        0 0 0 3px rgba(217,119,6,.14);
+    }
+
     .status-text {
       line-height: 1.05;
     }
@@ -258,6 +265,10 @@
 
     .status-value.offline {
       color: var(--vermelho);
+    }
+
+    .status-value.unavailable {
+      color: var(--laranja);
     }
 
     .status-divider {
@@ -1543,7 +1554,7 @@
             <div class="status-text">
 
               <span class="status-name">
-                SEFAZ-AM
+                SEFAZ
               </span>
 
               <span
@@ -1615,12 +1626,12 @@
     <div class="header-stat">
 
       <span class="header-stat-label">
-        Processos cadastrados
+        Processos SEFAZ
       </span>
 
       <span
         class="header-stat-value"
-        id="headerTotal"
+        id="headerSefaz"
       >
         —
       </span>
@@ -1630,12 +1641,12 @@
     <div class="header-stat">
 
       <span class="header-stat-label">
-        Última verificação
+        Processos SEMEF
       </span>
 
       <span
         class="header-stat-value"
-        id="headerChecked"
+        id="headerSemef"
       >
         —
       </span>
@@ -2823,7 +2834,8 @@
 
   function setSourceStatus(
     source,
-    online
+    state,
+    label = ""
   ) {
 
     const light =
@@ -2849,38 +2861,33 @@
     light.classList
       .remove(
         "online",
-        "offline"
+        "offline",
+        "unavailable"
       );
 
     text.classList
       .remove(
         "online",
-        "offline"
+        "offline",
+        "unavailable"
       );
 
-    const state =
-      online
-      ?
-      "online"
-      :
-      "offline";
+    const normalizedState =
+      ["online", "offline", "unavailable"].includes(state)
+      ? state
+      : "offline";
 
-    light.classList
-      .add(
-        state
-      );
-
-    text.classList
-      .add(
-        state
-      );
+    light.classList.add(normalizedState);
+    text.classList.add(normalizedState);
 
     text.textContent =
-      online
-      ?
-      "on-line"
-      :
-      "off-line";
+      label
+      ||
+      (normalizedState === "online"
+        ? "on-line"
+        : normalizedState === "unavailable"
+          ? "indisponível"
+          : "off-line");
 
   }
 
@@ -2910,35 +2917,41 @@
       atualizou corretamente, a fonte aparece verde.
     */
 
-    const sefazOnline =
-      sefazProcesses.length > 0
-      &&
-      sefazProcesses.some(
-        process =>
-          !isNotUpdated(
-            process
-          )
-      );
+    const sefazOk =
+      sefazProcesses.filter(
+        process => !isNotUpdated(process)
+      ).length;
 
-    const semefOnline =
-      semefProcesses.length > 0
-      &&
-      semefProcesses.some(
-        process =>
-          !isNotUpdated(
-            process
-          )
-      );
+    const sefazErro =
+      sefazProcesses.length - sefazOk;
 
-    setSourceStatus(
-      "sefaz",
-      sefazOnline
-    );
+    const semefOk =
+      semefProcesses.filter(
+        process => !isNotUpdated(process)
+      ).length;
 
-    setSourceStatus(
-      "semef",
-      semefOnline
-    );
+    const semefErro =
+      semefProcesses.length - semefOk;
+
+    if (sefazProcesses.length === 0) {
+      setSourceStatus("sefaz", "offline");
+    } else if (sefazErro > 0 && sefazOk > 0) {
+      setSourceStatus("sefaz", "unavailable", "instável");
+    } else if (sefazErro > 0) {
+      setSourceStatus("sefaz", "unavailable", "indisponível");
+    } else {
+      setSourceStatus("sefaz", "online");
+    }
+
+    if (semefProcesses.length === 0) {
+      setSourceStatus("semef", "offline");
+    } else if (semefErro > 0 && semefOk > 0) {
+      setSourceStatus("semef", "unavailable", "instável");
+    } else if (semefErro > 0) {
+      setSourceStatus("semef", "unavailable", "indisponível");
+    } else {
+      setSourceStatus("semef", "online");
+    }
 
   }
 
@@ -3067,12 +3080,12 @@
 
       setSourceStatus(
         "sefaz",
-        false
+        "offline"
       );
 
       setSourceStatus(
         "semef",
-        false
+        "offline"
       );
 
       return false;
@@ -3088,12 +3101,29 @@
 
   function updateHeader() {
 
+    const totalSefaz =
+      processes.filter(
+        process => process.origem === "sefaz"
+      ).length;
+
+    const totalSemef =
+      processes.filter(
+        process => process.origem === "semef"
+      ).length;
+
     document
       .getElementById(
-        "headerTotal"
+        "headerSefaz"
       )
       .textContent =
-        processNumbers.length;
+        totalSefaz;
+
+    document
+      .getElementById(
+        "headerSemef"
+      )
+      .textContent =
+        totalSemef;
 
     const updated =
       firstValue(
@@ -3106,17 +3136,6 @@
         ""
       );
 
-    const checked =
-      firstValue(
-        rawData,
-        [
-          "ultima_verificacao",
-          "ultima_atualizacao",
-          "updated_at"
-        ],
-        ""
-      );
-
     document
       .getElementById(
         "headerUpdated"
@@ -3124,15 +3143,6 @@
       .textContent =
         formatDateTime(
           updated
-        );
-
-    document
-      .getElementById(
-        "headerChecked"
-      )
-      .textContent =
-        formatDateTime(
-          checked
         );
 
   }
