@@ -6,7 +6,7 @@
       "status": 200,
       "via": "cloudflare-direto",
       "version": "semef-proxy-v1",
-      "html_size": 49145,
+      "html_size": 50518,
       "estrutura": [
         [
           "PROCESSO :",
@@ -122,7 +122,7 @@
       "status": 200,
       "via": "cloudflare-direto",
       "version": "semef-proxy-v1",
-      "html_size": 19399,
+      "html_size": 20167,
       "estrutura": [
         [
           "PROCESSO :",
@@ -238,7 +238,7 @@
       "status": 200,
       "via": "cloudflare-direto",
       "version": "semef-proxy-v1",
-      "html_size": 36509,
+      "html_size": 36647,
       "estrutura": [
         [
           "PROCESSO :",
@@ -329,86 +329,46 @@
   ],
   "monitor": {
     "returncode": 0,
-    "stdout": "============================================================\nMONITOR SEFAZ-AM + SEMEF\nInício: 20/08/2026 20:39:39\nLimite global: 50 segundos\n============================================================\nSEMEF via Cloudflare: 2026.18000.19951.0.024703 cloudflare-direto semef-proxy-v1\nFalha no proxy SEMEF; tentando consulta direta: 2024.18000.19012.0.008302 HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=18)\nFalha no proxy SEMEF; tentando consulta direta: 2026.18000.19951.0.014382 HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=18)\n============================================================\ndados.json atualizado.\nDuração: 50.0 segundos\nTotal: 29\nNão atualizados: 3\nTempo excedido: 2\nNovos alertas: 2\n============================================================\n",
+    "stdout": "============================================================\nMONITOR SEFAZ-AM + SEMEF\nInício: 20/08/2026 20:43:24\nLimite global: 50 segundos\n============================================================\nSEMEF via Cloudflare: 2024.18000.19012.0.008302 cloudflare-direto semef-proxy-v1 49283\nTentativa SEMEF 1/2 falhou: 2026.18000.19951.0.024703 HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=15)\nSEMEF via Cloudflare: 2026.18000.19951.0.024703 cloudflare-direto semef-proxy-v1 18932\nSEMEF via Cloudflare: 2026.18000.19951.0.014382 cloudflare-direto semef-proxy-v1 36647\n============================================================\ndados.json atualizado.\nDuração: 21.2 segundos\nTotal: 29\nNão atualizados: 0\nTempo excedido: 0\nNovos alertas: 2\n============================================================\n",
     "stderr": "",
     "total_processos": 29,
-    "erros_gerais": 3,
-    "tempo_excedido": true,
-    "duracao_segundos": 50.0,
+    "erros_gerais": 0,
+    "tempo_excedido": false,
+    "duracao_segundos": 21.2,
     "semef_total": 3,
-    "semef_erros": [
-      {
-        "numero": "2024.18000.19012.0.008302",
-        "origem": "semef",
-        "cod_protocolo": "7954846",
-        "situacao": "Erro na consulta",
-        "interessado": "",
-        "assunto": "",
-        "setor": "",
-        "evento": "",
-        "dataMovimentacao": "",
-        "erro": "Tempo excedido. O processo não foi atualizado nesta consulta.",
-        "consultado_em": "2026-08-20T20:40:29-04:00"
-      },
-      {
-        "numero": "2026.18000.19951.0.024703",
-        "origem": "semef",
-        "cod_protocolo": "11442112",
-        "situacao": "Erro na consulta",
-        "interessado": "",
-        "assunto": "",
-        "setor": "",
-        "evento": "",
-        "dataMovimentacao": "",
-        "erro": "A SEMEF retornou um processo diferente: DATA DO PROCESSO :",
-        "consultado_em": "2026-08-20T20:40:29-04:00"
-      },
-      {
-        "numero": "2026.18000.19951.0.014382",
-        "origem": "semef",
-        "cod_protocolo": "11037580",
-        "situacao": "Erro na consulta",
-        "interessado": "",
-        "assunto": "",
-        "setor": "",
-        "evento": "",
-        "dataMovimentacao": "",
-        "erro": "Tempo excedido. O processo não foi atualizado nesta consulta.",
-        "consultado_em": "2026-08-20T20:40:29-04:00"
-      }
-    ],
+    "semef_erros": [],
     "semef_processos": [
       {
         "numero": "2024.18000.19012.0.008302",
-        "situacao": "Erro na consulta",
-        "interessado": "",
-        "assunto": "",
-        "setor": "",
-        "evento": "",
-        "dataMovimentacao": "",
-        "erro": "Tempo excedido. O processo não foi atualizado nesta consulta."
+        "situacao": "TRAMITANDO",
+        "interessado": "P. S. M. VIEITAS EIRELI",
+        "assunto": "A EMPRESA P. S. M. VIEITAS EIRELI, CNPJ/MF SOB O N.º 35.718.714/0001-14, VEM REQUERER A LIQUIDAÇÃO DO VALOR DE R$178.229,01 (CENTO E SETENTA E OITO MIL DUZENTOS E VINTE E NOVE REAIS E UM CENTAVO) REFERENTE AO REAJUSTE NO VALOR DO CONTRATO Nº 007/2021. NOTA DE N° 196 EMITIDA EM 20 DE MARÇO DE 2024.",
+        "setor": "GEOR - SEMED",
+        "evento": "ANALISE E PROVIDÊNCIAS",
+        "dataMovimentacao": "23/07/2026",
+        "erro": ""
       },
       {
         "numero": "2026.18000.19951.0.024703",
-        "situacao": "Erro na consulta",
-        "interessado": "",
-        "assunto": "",
-        "setor": "",
-        "evento": "",
-        "dataMovimentacao": "",
-        "erro": "A SEMEF retornou um processo diferente: DATA DO PROCESSO :"
+        "situacao": "TRAMITANDO",
+        "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
+        "assunto": "PLATINA SERVICOS DE ENGENHARIALTDA - Solicitação de pagamento da NFS-e Nº 197 de 30/07/2026, no valor total de R$ 2.015.883,87, referentes aos serviços contratados por meio do Termo 032/2024 - 3º Termo Aditivo - Período da prestação dos serviços: 04/06/2026 a 30/06/2026.",
+        "setor": "CONTINT - SEMED",
+        "evento": "PROVIDÊNCIAS",
+        "dataMovimentacao": "20/08/2026",
+        "erro": ""
       },
       {
         "numero": "2026.18000.19951.0.014382",
-        "situacao": "Erro na consulta",
-        "interessado": "",
-        "assunto": "",
-        "setor": "",
-        "evento": "",
-        "dataMovimentacao": "",
-        "erro": "Tempo excedido. O processo não foi atualizado nesta consulta."
+        "situacao": "SOBRESTADO",
+        "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
+        "assunto": "PLATINA SERVIÇOS DE ENGENHARAIA LTDA - SOLICITAÇÃO DE PAGAMENTO REFERENTE AO CONTRATO N° 105/2025 - NOTA FISCAL N° 133 - VALOR R$ 1.510.359,43 - EMISSÃO: 05/05/2026 - PERÍODO DE ABRIL DE 2026.",
+        "setor": "GLIQ - SEMED",
+        "evento": "AGUARDANDO PAGAMENTO",
+        "dataMovimentacao": "19/08/2026",
+        "erro": ""
       }
     ]
   },
-  "ok": false
+  "ok": true
 }
