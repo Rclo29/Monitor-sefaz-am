@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-08-20T20:47:39-04:00",
-  "ultima_atualizacao": "2026-08-20T20:47:39-04:00",
+  "ultima_verificacao": "2026-08-21T07:39:11-04:00",
+  "ultima_atualizacao": "2026-08-21T07:39:11-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 36.6,
-  "tempo_excedido": false,
+  "duracao_segundos": 50.0,
+  "tempo_excedido": true,
   "limite_execucao_segundos": 50,
-  "total_processos": 29,
-  "erros": 0,
-  "processos_nao_atualizados": 0,
-  "processos_tempo_excedido": 0,
-  "novos_alertas": 2,
+  "total_processos": 28,
+  "erros": 2,
+  "processos_nao_atualizados": 2,
+  "processos_tempo_excedido": 1,
+  "novos_alertas": 0,
   "processos": [
     {
       "numero": "01.01.028101.030037/2026-43",
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.030087/2026-20",
@@ -35,7 +35,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:04-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.030283/2026-03",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:24-04:00"
     },
     {
       "numero": "01.01.028101.030287/2026-83",
@@ -61,7 +61,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.030288/2026-28",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:04-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.031074/2026-79",
@@ -87,7 +87,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.031331/2026-72",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:24-04:00"
     },
     {
       "numero": "01.01.028101.031373/2026-03",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:04-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.031077/2026-02",
@@ -126,7 +126,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:04-04:00"
+      "consultado_em": "2026-08-21T07:38:24-04:00"
     },
     {
       "numero": "01.01.028101.031217/2026-42",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:23-04:00"
     },
     {
       "numero": "01.01.028101.031129/2026-40",
@@ -152,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:06-04:00"
+      "consultado_em": "2026-08-21T07:38:25-04:00"
     },
     {
       "numero": "01.01.028101.031393/2026-84",
@@ -165,7 +165,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:06-04:00"
+      "consultado_em": "2026-08-21T07:38:25-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -178,7 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:05-04:00"
+      "consultado_em": "2026-08-21T07:38:26-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:06-04:00"
+      "consultado_em": "2026-08-21T07:38:26-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -204,7 +204,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:26-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -217,7 +217,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:26-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -230,7 +230,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:25-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -243,7 +243,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:25-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -256,7 +256,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "14/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:25-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -269,7 +269,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:25-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -282,7 +282,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:27-04:00"
     },
     {
       "numero": "01.01.013102.003068/2026-44",
@@ -295,7 +295,7 @@
       "evento": "65 - JUNTADA",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:27-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -308,7 +308,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:07-04:00"
+      "consultado_em": "2026-08-21T07:38:27-04:00"
     },
     {
       "numero": "2024.18000.19012.0.008302",
@@ -320,8 +320,8 @@
       "setor": "GEOR - SEMED",
       "evento": "ANALISE E PROVIDÊNCIAS",
       "dataMovimentacao": "23/07/2026",
-      "erro": "",
-      "consultado_em": "2026-08-20T20:47:22-04:00"
+      "erro": "Falha ao consultar a SEMEF via Cloudflare: HTTPSConnectionPool(host='monitor-sefaz-am.8dryc8ph6w.workers.dev', port=443): Read timed out. (read timeout=15)",
+      "consultado_em": "2026-08-21T07:39:11-04:00"
     },
     {
       "numero": "2026.18000.19951.0.024703",
@@ -333,21 +333,8 @@
       "setor": "CONTINT - SEMED",
       "evento": "PROVIDÊNCIAS",
       "dataMovimentacao": "20/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-20T20:47:39-04:00"
-    },
-    {
-      "numero": "2026.18000.19951.0.014382",
-      "origem": "semef",
-      "cod_protocolo": "11037580",
-      "situacao": "SOBRESTADO",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "PLATINA SERVIÇOS DE ENGENHARAIA LTDA - SOLICITAÇÃO DE PAGAMENTO REFERENTE AO CONTRATO N° 105/2025 - NOTA FISCAL N° 133 - VALOR R$ 1.510.359,43 - EMISSÃO: 05/05/2026 - PERÍODO DE ABRIL DE 2026.",
-      "setor": "GLIQ - SEMED",
-      "evento": "AGUARDANDO PAGAMENTO",
-      "dataMovimentacao": "19/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-20T20:47:39-04:00"
+      "erro": "Tempo excedido. O processo não foi atualizado nesta consulta.",
+      "consultado_em": "2026-08-21T07:39:11-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -360,7 +347,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "20/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:13-04:00"
+      "consultado_em": "2026-08-21T07:38:27-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -373,7 +360,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "20/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:13-04:00"
+      "consultado_em": "2026-08-21T07:38:28-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -386,7 +373,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "20/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-20T20:47:13-04:00"
+      "consultado_em": "2026-08-21T07:38:28-04:00"
     }
   ],
   "alertas": [
