@@ -122,3 +122,5 @@ Acesse o Monitor para consultar os detalhes.
             git commit -m "Atualiza dados do Monitor SEFAZ-AM + SEMEF"
             git push
           fi
+
+# teste direto GitHub 2026-08-21
