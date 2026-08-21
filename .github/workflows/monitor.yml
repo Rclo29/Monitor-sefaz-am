@@ -1,7 +1,10 @@
 name: Monitor SEFAZ-AM
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - ".github/workflows/monitor.yml"
 
 permissions:
   contents: write
