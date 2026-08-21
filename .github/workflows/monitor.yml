@@ -1,14 +1,12 @@
 name: Monitor SEFAZ-AM
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
   repository_dispatch:
-    types:
-      - atualizar-monitor
+    types: [atualizar-monitor]
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: monitor-sefaz-am
@@ -35,96 +33,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Executar monitor SEFAZ-AM + SEMEF
+      - name: Executar monitor
         run: python monitor_runner.py
-
-      - name: Verificar novos alertas
-        id: alertas
-        shell: bash
-        run: |
-          NOVOS=$(python -c "import json; d=json.load(open('dados.json', encoding='utf-8')); print(int(d.get('novos_alertas', 0)))")
-          echo "Quantidade de novos alertas: $NOVOS"
-          echo "novos=$NOVOS" >> "$GITHUB_OUTPUT"
 
       - name: Salvar dados atualizados
         shell: bash
         run: |
           git config user.name "sefaz-monitor"
           git config user.email "actions@github.com"
-
           git add dados.json
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
-          else
-            git commit -m "Atualiza dados do Monitor SEFAZ-AM + SEMEF"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            exit 0
           fi
 
-      - name: Criar notificação de nova movimentação
-        if: steps.alertas.outputs.novos != '0'
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          python <<'PY'
-          import json
-          import os
-          import subprocess
-
-          USUARIO_GITHUB = "Rclo29"
-
-          with open("dados.json", "r", encoding="utf-8") as arquivo:
-              dados = json.load(arquivo)
-
-          quantidade = int(dados.get("novos_alertas", 0))
-          if quantidade <= 0:
-              print("Nenhuma nova movimentação.")
-              raise SystemExit(0)
-
-          alertas = dados.get("alertas", [])[:quantidade]
-
-          for alerta in reversed(alertas):
-              numero = alerta.get("numero", "Processo não identificado")
-              origem = str(alerta.get("origem", "sefaz")).upper()
-              data = alerta.get("data_movimentacao", "")
-              setor = alerta.get("setor", "")
-              evento = alerta.get("evento", "")
-              detectado = alerta.get("data", "")
-
-              titulo = f"🔔 {origem}: nova movimentação - {numero}"
-              corpo = f"""## 🔔 Nova movimentação processual
-
-**Processo:** {numero}
-
-**Origem:** {origem}
-
-**Data da movimentação:** {data}
-
-**Setor:** {setor}
-
-**Evento:** {evento}
-
-**Detectado pelo monitor:** {detectado}
-
----
-
-Acesse o Monitor para consultar os detalhes.
-"""
-
-              print(f"Criando notificação para {numero}")
-              subprocess.run(
-                  [
-                      "gh", "issue", "create",
-                      "--title", titulo,
-                      "--body", corpo,
-                      "--assignee", USUARIO_GITHUB,
-                  ],
-                  check=False,
-                  env=os.environ.copy(),
-              )
-
-          print(f"{quantidade} notificação(ões) processada(s).")
-          PY
+          git commit -m "Atualiza dados do Monitor SEFAZ-AM + SEMEF"
+          git pull --rebase origin main
+          git push origin HEAD:main
