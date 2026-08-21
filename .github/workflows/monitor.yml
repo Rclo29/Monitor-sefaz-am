@@ -11,6 +11,10 @@ on:
       - "monitor_runner.py"
       - "processos.json"
       - "diagnostico_semef.py"
+      - "worker.js"
+      - "worker-entry.js"
+      - "worker-router.js"
+      - "wrangler.jsonc"
       - ".github/workflows/monitor.yml"
 
 permissions:
