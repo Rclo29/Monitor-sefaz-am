@@ -45,6 +45,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Relatório sem alterações."
           else
-            git commit -m "Registra resultado do teste integrado"
+            git commit -m "Registra resultado do teste integrado - diagnóstico 2"
             git push
           fi
