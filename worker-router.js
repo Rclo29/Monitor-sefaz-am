@@ -1,6 +1,6 @@
 import workerEntry from "./worker-entry.js";
 
-const VERSION = "router-sefaz-only-v2-status";
+const VERSION = "router-sefaz-only-v3-direct-data";
 const GITHUB_API = "https://api.github.com/repos/Rclo29/Monitor-sefaz-am";
 const WORKFLOW = "monitor.yml";
 const BRANCH = "main";
@@ -10,7 +10,7 @@ function json(data, status = 200) {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "no-store",
+      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
@@ -26,6 +26,30 @@ function gh(token) {
     "User-Agent": "monitor-sefaz-am",
     "Content-Type": "application/json",
   };
+}
+
+function decodeBase64Utf8(base64) {
+  const bin = atob(String(base64 || "").replace(/\n/g, ""));
+  const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+  return new TextDecoder("utf-8").decode(bytes);
+}
+
+async function arquivoJsonAtual(token, path) {
+  if (!token) return { ok: false, erro: "GITHUB_TOKEN não configurado." };
+  const r = await fetch(`${GITHUB_API}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(BRANCH)}&t=${Date.now()}`, {
+    method: "GET",
+    headers: gh(token),
+    cache: "no-store",
+  });
+  if (!r.ok) {
+    return { ok: false, erro: `GitHub retornou HTTP ${r.status} ao ler ${path}.`, statusGitHub: r.status };
+  }
+  const file = await r.json();
+  try {
+    return { ok: true, dados: JSON.parse(decodeBase64Utf8(file.content)), sha: file.sha || "" };
+  } catch (e) {
+    return { ok: false, erro: `${path} contém JSON inválido.`, detalhe: String(e?.message || e) };
+  }
 }
 
 async function disparar(token) {
@@ -45,8 +69,9 @@ async function disparar(token) {
 
 async function statusAtualizacao(token, since) {
   if (!token) return { ok: false, erro: "GITHUB_TOKEN não configurado." };
-  const r = await fetch(`${GITHUB_API}/actions/workflows/${WORKFLOW}/runs?branch=${encodeURIComponent(BRANCH)}&per_page=10`, {
+  const r = await fetch(`${GITHUB_API}/actions/workflows/${WORKFLOW}/runs?branch=${encodeURIComponent(BRANCH)}&per_page=10&t=${Date.now()}`, {
     headers: gh(token),
+    cache: "no-store",
   });
   if (!r.ok) {
     return { ok: false, erro: "Não foi possível consultar o status do GitHub Actions.", statusGitHub: r.status, detalhe: await r.text() };
@@ -65,6 +90,7 @@ async function statusAtualizacao(token, since) {
     conclusion: run.conclusion,
     created_at: run.created_at,
     updated_at: run.updated_at,
+    run_started_at: run.run_started_at,
     html_url: run.html_url,
     version: VERSION,
   };
@@ -78,6 +104,14 @@ export default {
     }
     if (request.method === "GET" && url.pathname === "/health") {
       return json({ ok: true, service: "monitor-sefaz-am", mode: "sefaz-only", version: VERSION, github_token_configurado: Boolean(env.GITHUB_TOKEN), timestamp: new Date().toISOString() });
+    }
+    if (request.method === "GET" && url.pathname === "/dados-atualizados") {
+      const r = await arquivoJsonAtual(env.GITHUB_TOKEN, "dados.json");
+      return r.ok ? json(r.dados, 200) : json(r, 502);
+    }
+    if (request.method === "GET" && url.pathname === "/processos-atualizados") {
+      const r = await arquivoJsonAtual(env.GITHUB_TOKEN, "processos.json");
+      return r.ok ? json(r.dados, 200) : json(r, 502);
     }
     if (request.method === "GET" && url.pathname === "/status-atualizacao") {
       const r = await statusAtualizacao(env.GITHUB_TOKEN, url.searchParams.get("since") || "");
