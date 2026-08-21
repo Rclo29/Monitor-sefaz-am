@@ -1,6 +1,6 @@
 import workerEntry from "./worker-entry.js";
 
-const ROUTER_VERSION = "router-v4-workflow-diagnostics";
+const ROUTER_VERSION = "router-v5-github-actions-status";
 const GITHUB_API = "https://api.github.com/repos/Rclo29/Monitor-sefaz-am";
 const WORKFLOW_FILE = "monitor.yml";
 const BRANCH = "main";
@@ -30,7 +30,82 @@ function githubHeaders(token) {
 
 function resumirDetalhe(texto) {
   const valor = String(texto || "").trim();
-  return valor.length > 800 ? `${valor.slice(0, 800)}…` : valor;
+  return valor.length > 1200 ? `${valor.slice(0, 1200)}…` : valor;
+}
+
+async function githubJSON(url, token) {
+  const resposta = await fetch(url, {
+    method: "GET",
+    headers: githubHeaders(token),
+  });
+
+  const texto = await resposta.text();
+  let dados = null;
+
+  try {
+    dados = texto ? JSON.parse(texto) : null;
+  } catch {
+    dados = texto;
+  }
+
+  return {
+    ok: resposta.ok,
+    status: resposta.status,
+    dados,
+    github_request_id: resposta.headers.get("x-github-request-id") || "",
+  };
+}
+
+async function consultarEstadoGitHubActions(token) {
+  if (!token) {
+    return {
+      ok: false,
+      erro: "GITHUB_TOKEN não configurado no Worker.",
+      router_version: ROUTER_VERSION,
+    };
+  }
+
+  const workflow = await githubJSON(
+    `${GITHUB_API}/actions/workflows/${encodeURIComponent(WORKFLOW_FILE)}`,
+    token
+  );
+
+  const runs = await githubJSON(
+    `${GITHUB_API}/actions/workflows/${encodeURIComponent(WORKFLOW_FILE)}/runs?per_page=5`,
+    token
+  );
+
+  return {
+    ok: workflow.ok,
+    router_version: ROUTER_VERSION,
+    workflow_http_status: workflow.status,
+    workflow: workflow.ok
+      ? {
+          id: workflow.dados?.id,
+          name: workflow.dados?.name,
+          path: workflow.dados?.path,
+          state: workflow.dados?.state,
+          created_at: workflow.dados?.created_at,
+          updated_at: workflow.dados?.updated_at,
+          html_url: workflow.dados?.html_url,
+        }
+      : workflow.dados,
+    runs_http_status: runs.status,
+    total_count: runs.dados?.total_count ?? null,
+    runs: Array.isArray(runs.dados?.workflow_runs)
+      ? runs.dados.workflow_runs.map((run) => ({
+          id: run.id,
+          event: run.event,
+          status: run.status,
+          conclusion: run.conclusion,
+          created_at: run.created_at,
+          updated_at: run.updated_at,
+          run_started_at: run.run_started_at,
+          head_sha: run.head_sha,
+          html_url: run.html_url,
+        }))
+      : [],
+  };
 }
 
 async function tentarWorkflowDispatch(token) {
@@ -61,22 +136,15 @@ async function tentarWorkflowDispatch(token) {
     github_request_id: resposta.headers.get("x-github-request-id") || "",
   });
 
-  if (resposta.status === 204) {
-    return {
-      ok: true,
-      metodo: "workflow_dispatch",
-      statusGitHub: 204,
-      duracao_ms,
-    };
-  }
-
-  return {
-    ok: false,
-    metodo: "workflow_dispatch",
-    statusGitHub: resposta.status,
-    duracao_ms,
-    detalhe,
-  };
+  return resposta.status === 204
+    ? { ok: true, metodo: "workflow_dispatch", statusGitHub: 204, duracao_ms }
+    : {
+        ok: false,
+        metodo: "workflow_dispatch",
+        statusGitHub: resposta.status,
+        duracao_ms,
+        detalhe,
+      };
 }
 
 async function tentarRepositoryDispatch(token) {
@@ -112,22 +180,15 @@ async function tentarRepositoryDispatch(token) {
     github_request_id: resposta.headers.get("x-github-request-id") || "",
   });
 
-  if (resposta.status === 204) {
-    return {
-      ok: true,
-      metodo: "repository_dispatch",
-      statusGitHub: 204,
-      duracao_ms,
-    };
-  }
-
-  return {
-    ok: false,
-    metodo: "repository_dispatch",
-    statusGitHub: resposta.status,
-    duracao_ms,
-    detalhe,
-  };
+  return resposta.status === 204
+    ? { ok: true, metodo: "repository_dispatch", statusGitHub: 204, duracao_ms }
+    : {
+        ok: false,
+        metodo: "repository_dispatch",
+        statusGitHub: resposta.status,
+        duracao_ms,
+        detalhe,
+      };
 }
 
 async function dispararAtualizacao(token) {
@@ -234,6 +295,22 @@ export default {
         github_token_configurado: Boolean(env.GITHUB_TOKEN),
         timestamp: new Date().toISOString(),
       });
+    }
+
+    if (request.method === "GET" && url.pathname === "/github-actions-status") {
+      try {
+        const resultado = await consultarEstadoGitHubActions(env.GITHUB_TOKEN);
+        return json(resultado, resultado.ok ? 200 : 500);
+      } catch (erro) {
+        return json(
+          {
+            ok: false,
+            erro: String(erro?.message || erro),
+            router_version: ROUTER_VERSION,
+          },
+          500
+        );
+      }
     }
 
     if (request.method === "GET" && url.pathname === "/semef-test") {
