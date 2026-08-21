@@ -1,0 +1,62 @@
+{
+  "gerado_em": "2026-08-21T12:25:00.460997+00:00",
+  "worker": "https://monitor-sefaz-am.8dryc8ph6w.workers.dev",
+  "testes": [
+    {
+      "numero": "2024.18000.19012.0.008302",
+      "cod_protocolo": "7954846",
+      "http_status": 502,
+      "duracao_segundos": 30.12,
+      "resposta": {
+        "ok": false,
+        "erro": "A SEMEF respondeu, mas a página do processo não pôde ser validada.",
+        "version": "semef-proxy-v1",
+        "numero": "2024.18000.19012.0.008302",
+        "cod_protocolo": "7954846",
+        "duracao_total_ms": 30000,
+        "diagnostico": [
+          {
+            "etapa": "detalhe_direto",
+            "erro": "The operation was aborted"
+          },
+          {
+            "etapa": "pagina_inicial",
+            "erro": "The operation was aborted"
+          },
+          {
+            "etapa": "detalhe_com_sessao",
+            "erro": "The operation was aborted"
+          }
+        ]
+      }
+    },
+    {
+      "numero": "2026.18000.19951.0.024703",
+      "cod_protocolo": "11442112",
+      "http_status": 502,
+      "duracao_segundos": 30.09,
+      "resposta": {
+        "ok": false,
+        "erro": "A SEMEF respondeu, mas a página do processo não pôde ser validada.",
+        "version": "semef-proxy-v1",
+        "numero": "2026.18000.19951.0.024703",
+        "cod_protocolo": "11442112",
+        "duracao_total_ms": 30000,
+        "diagnostico": [
+          {
+            "etapa": "detalhe_direto",
+            "erro": "The operation was aborted"
+          },
+          {
+            "etapa": "pagina_inicial",
+            "erro": "The operation was aborted"
+          },
+          {
+            "etapa": "detalhe_com_sessao",
+            "erro": "The operation was aborted"
+          }
+        ]
+      }
+    }
+  ]
+}
