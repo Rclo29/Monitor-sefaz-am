@@ -1,5 +1,5 @@
 {
   "name": "monitor-sefaz-am",
-  "main": "worker.js",
+  "main": "worker-entry.js",
   "compatibility_date": "2026-08-18"
 }
