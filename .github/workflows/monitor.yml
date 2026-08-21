@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Baixar repositório
         uses: actions/checkout@v4
 
@@ -26,8 +25,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Executar monitor SEFAZ-AM
-        run: python monitor.py
+      - name: Executar monitor SEFAZ-AM + SEMEF
+        run: python monitor_runner.py
 
       - name: Verificar novos alertas
         id: alertas
@@ -53,92 +52,54 @@ jobs:
           with open("dados.json", "r", encoding="utf-8") as arquivo:
               dados = json.load(arquivo)
 
-          quantidade = int(
-              dados.get("novos_alertas", 0)
-          )
-
+          quantidade = int(dados.get("novos_alertas", 0))
           if quantidade <= 0:
               print("Nenhuma nova movimentação.")
               raise SystemExit(0)
 
-          alertas = dados.get(
-              "alertas",
-              []
-          )[:quantidade]
+          alertas = dados.get("alertas", [])[:quantidade]
 
           for alerta in reversed(alertas):
+              numero = alerta.get("numero", "Processo não identificado")
+              origem = str(alerta.get("origem", "sefaz")).upper()
+              data = alerta.get("data_movimentacao", "")
+              setor = alerta.get("setor", "")
+              evento = alerta.get("evento", "")
+              detectado = alerta.get("data", "")
 
-              numero = alerta.get(
-                  "numero",
-                  "Processo não identificado"
-              )
-
-              data = alerta.get(
-                  "data_movimentacao",
-                  ""
-              )
-
-              setor = alerta.get(
-                  "setor",
-                  ""
-              )
-
-              evento = alerta.get(
-                  "evento",
-                  ""
-              )
-
-              detectado = alerta.get(
-                  "data",
-                  ""
-              )
-
-              titulo = (
-                  f"🔔 SEFAZ-AM: nova movimentação - {numero}"
-              )
-
+              titulo = f"🔔 {origem}: nova movimentação - {numero}"
               corpo = f"""## 🔔 Nova movimentação processual
 
-          **Processo:** {numero}
+**Processo:** {numero}
 
-          **Data da movimentação:** {data}
+**Origem:** {origem}
 
-          **Setor:** {setor}
+**Data da movimentação:** {data}
 
-          **Evento:** {evento}
+**Setor:** {setor}
 
-          **Detectado pelo monitor:** {detectado}
+**Evento:** {evento}
 
-          ---
+**Detectado pelo monitor:** {detectado}
 
-          Acesse o Monitor SEFAZ-AM para consultar os detalhes.
+---
 
-          Monitor automático SEFAZ-AM
-          """
+Acesse o Monitor para consultar os detalhes.
+"""
 
-              print(
-                  f"Criando notificação para {numero}"
-              )
-
+              print(f"Criando notificação para {numero}")
               subprocess.run(
                   [
-                      "gh",
-                      "issue",
-                      "create",
-                      "--title",
-                      titulo,
-                      "--body",
-                      corpo,
-                      "--assignee",
-                      USUARIO_GITHUB,
+                      "gh", "issue", "create",
+                      "--title", titulo,
+                      "--body", corpo,
+                      "--assignee", USUARIO_GITHUB,
                   ],
                   check=True,
                   env=os.environ.copy(),
               )
 
-          print(
-              f"{quantidade} notificação(ões) criada(s)."
-          )
+          print(f"{quantidade} notificação(ões) criada(s).")
           PY
 
       - name: Salvar alterações
@@ -152,6 +113,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
-            git commit -m "Atualiza dados do Monitor SEFAZ-AM"
+            git commit -m "Atualiza dados do Monitor SEFAZ-AM + SEMEF"
             git push
           fi
