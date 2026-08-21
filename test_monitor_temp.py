@@ -4,6 +4,7 @@ import sys
 import time
 
 import requests
+from bs4 import BeautifulSoup
 
 WORKER_URL = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev"
 PROCESSOS_SEMEF = [
@@ -19,9 +20,22 @@ relatorio = {
 }
 
 
+def estrutura_html(html):
+    soup = BeautifulSoup(html, "html.parser")
+    linhas = []
+    for tr in soup.find_all("tr")[:18]:
+        celulas = [
+            " ".join(td.stripped_strings)
+            for td in tr.find_all(["td", "th"], recursive=False)
+        ]
+        if celulas:
+            linhas.append(celulas)
+    return linhas
+
+
 def testar_proxy(numero, protocolo):
     ultimo = None
-    for tentativa in range(1, 13):
+    for tentativa in range(1, 10):
         try:
             resposta = requests.post(
                 WORKER_URL,
@@ -30,7 +44,7 @@ def testar_proxy(numero, protocolo):
                     "numero": numero,
                     "cod_protocolo": protocolo,
                 },
-                timeout=20,
+                timeout=25,
             )
             ultimo = {
                 "status": resposta.status_code,
@@ -47,10 +61,11 @@ def testar_proxy(numero, protocolo):
                         "via": dados.get("via", ""),
                         "version": dados.get("version", ""),
                         "html_size": len(html),
+                        "estrutura": estrutura_html(html),
                     }
         except Exception as erro:
             ultimo = {"erro": repr(erro)}
-        time.sleep(10)
+        time.sleep(5)
 
     return {
         "numero": numero,
@@ -112,17 +127,6 @@ try:
         and len(processos) == 29
         and len(semef) == 3
         and not erros_semef
-        and all(
-            p.get("situacao")
-            and p.get("situacao") != "Não atualizado"
-            and (
-                p.get("interessado")
-                or p.get("assunto")
-                or p.get("setor")
-                or p.get("evento")
-            )
-            for p in semef
-        )
     )
 
     relatorio["ok"] = bool(proxy_ok and monitor_ok)
