@@ -9,9 +9,17 @@ from bs4 import BeautifulSoup
 import monitor
 
 WORKER_URL = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev"
-WORKER_TIMEOUT = 15
-WORKER_TENTATIVAS = 2
+
+# O Worker da SEMEF já faz as tentativas internas (direto, home/cookie e sessão).
+# Por isso aguardamos a resposta completa dele e evitamos repetir toda a sequência
+# do lado do GitHub, o que anteriormente podia consumir o limite global de 50 s.
+WORKER_TIMEOUT = 35
+WORKER_TENTATIVAS = 1
 SEMEF_LOCK = threading.Lock()
+
+# O limite anterior de 50 s era artificial e podia encerrar a execução enquanto
+# a SEMEF ainda estava respondendo. O GitHub Actions tem folga muito maior.
+monitor.TEMPO_MAXIMO_EXECUCAO = 120
 
 
 def texto(valor):
@@ -30,7 +38,7 @@ def valor_valido(valor):
 def obter_html_worker(numero, cod_protocolo):
     ultimo_erro = None
 
-    # O SIGED mostrou instabilidade quando recebeu três consultas simultâneas.
+    # O SIGED mostrou instabilidade quando recebeu consultas simultâneas.
     # Somente as consultas SEMEF passam por este lock; a SEFAZ continua paralela.
     with SEMEF_LOCK:
         for tentativa in range(1, WORKER_TENTATIVAS + 1):
@@ -124,9 +132,6 @@ def extrair_cabecalho(linhas):
     for indice, linha in enumerate(linhas):
         chaves = [chave(c) for c in linha]
 
-        # Padrão real do SIGED:
-        # linha de rótulos: PROCESSO | DATA DO PROCESSO | SITUAÇÃO
-        # linha seguinte:   número   | data             | situação
         if indice + 1 < len(linhas):
             seguinte = linhas[indice + 1]
             if len(seguinte) >= len(linha):
@@ -136,7 +141,6 @@ def extrair_cabecalho(linhas):
                         if not resultado[campo]:
                             resultado[campo] = texto(seguinte[posicao])
 
-        # Rótulos de uma coluna também têm o valor na linha seguinte.
         if len(linha) == 1 and indice + 1 < len(linhas):
             campo = mapas.get(chaves[0])
             seguinte = linhas[indice + 1]
@@ -265,8 +269,6 @@ def consultar_semef_corrigido(cadastro):
     }
 
 
-# Mantém todo o restante do monitor original intacto e troca somente
-# a consulta SEMEF pela implementação validada acima.
 monitor.consultar_semef = consultar_semef_corrigido
 
 
