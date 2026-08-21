@@ -1,16 +1,13 @@
-name: Monitor SEFAZ-AM
+name: Monitor SEFAZ
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types: [atualizar-monitor]
   push:
     branches: [main]
     paths:
       - "monitor.py"
       - "monitor_runner.py"
       - "processos.json"
-      - "diagnostico_semef.py"
       - "worker.js"
       - "worker-entry.js"
       - "worker-router.js"
@@ -28,7 +25,6 @@ jobs:
   monitorar:
     runs-on: ubuntu-latest
     timeout-minutes: 6
-
     steps:
       - name: Baixar repositório
         uses: actions/checkout@v4
@@ -45,10 +41,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Diagnosticar SEMEF
-        run: python diagnostico_semef.py
-
-      - name: Executar monitor
+      - name: Executar monitor SEFAZ
         run: python monitor_runner.py
 
       - name: Salvar dados atualizados
@@ -56,13 +49,13 @@ jobs:
         run: |
           git config user.name "sefaz-monitor"
           git config user.email "actions@github.com"
-          git add dados.json semef_diagnostico.json
+          git add dados.json
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
             exit 0
           fi
 
-          git commit -m "Atualiza dados e diagnóstico do Monitor SEFAZ-AM + SEMEF"
+          git commit -m "Atualiza dados do Monitor SEFAZ"
           git pull --rebase origin main
           git push origin HEAD:main
