@@ -2,8 +2,8 @@ import workerOriginal from "./worker.js";
 
 const SEMEF_HOME_URL = "https://sigedweb.manaus.am.gov.br/protonweb/";
 const SEMEF_DETALHE_URL = "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx";
-const SEMEF_TIMEOUT_MS = 10000;
-const VERSION = "semef-proxy-v1";
+const SEMEF_TIMEOUT_MS = 12000;
+const VERSION = "semef-proxy-v2-fast-fail";
 
 function normalizarNumero(valor) {
   return String(valor || "").trim().replace(/\s+/g, "");
@@ -57,18 +57,26 @@ function avaliarPagina(html, numero) {
     consulta_documentos: texto.includes("consulta de documentos"),
   };
 
-  let pontos = 0;
-  for (const [chave, valor] of Object.entries(sinais)) {
-    if (chave !== "numero_processo" && valor) pontos += 1;
-  }
+  const sinaisDetalhe = [
+    sinais.situacao,
+    sinais.interessado,
+    sinais.assunto,
+    sinais.localizacao,
+    sinais.historico,
+    sinais.despacho,
+  ].filter(Boolean).length;
 
   const valida =
     html.length > 5000 &&
     sinais.semef &&
     sinais.processo &&
-    (numeroEncontrado || pontos >= 4);
+    (numeroEncontrado || sinaisDetalhe >= 3);
 
-  return { valida, sinais, preview: visivel.slice(0, 700) };
+  return {
+    valida,
+    sinais,
+    preview: visivel.slice(0, 700),
+  };
 }
 
 function jsonResponse(dados, status, origin) {
@@ -88,8 +96,19 @@ function jsonResponse(dados, status, origin) {
 async function fetchComTimeout(url, options, timeoutMs) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
+
   try {
-    return await fetch(url, { ...options, signal: controller.signal });
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+  } catch (erro) {
+    if (controller.signal.aborted) {
+      const e = new Error(`Timeout após ${timeoutMs} ms`);
+      e.name = "TimeoutError";
+      throw e;
+    }
+    throw erro;
   } finally {
     clearTimeout(timer);
   }
@@ -100,22 +119,26 @@ function extrairCookie(headers) {
     if (typeof headers.getSetCookie === "function") {
       const cookies = headers.getSetCookie();
       if (Array.isArray(cookies)) {
-        return cookies.map(v => String(v).split(";")[0]).filter(Boolean).join("; ");
+        return cookies
+          .map(v => String(v).split(";")[0])
+          .filter(Boolean)
+          .join("; ");
       }
     }
   } catch {}
 
   const valor = headers.get("set-cookie");
   if (!valor) return "";
-  return valor.split(",").map(v => v.trim().split(";")[0]).filter(Boolean).join("; ");
+
+  return valor
+    .split(",")
+    .map(v => v.trim().split(";")[0])
+    .filter(Boolean)
+    .join("; ");
 }
 
-async function consultarSemef(numero, protocolo) {
-  const url = `${SEMEF_DETALHE_URL}?origem=1&cod_protocolo=${encodeURIComponent(protocolo)}`;
-  const inicio = Date.now();
-  const diagnostico = [];
-
-  const headersBase = {
+function headersBase() {
+  return {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
@@ -123,102 +146,187 @@ async function consultarSemef(numero, protocolo) {
     "Pragma": "no-cache",
     "Referer": SEMEF_HOME_URL,
   };
+}
 
-  async function tentar(etapa, headers) {
-    const ini = Date.now();
-    const resposta = await fetchComTimeout(url, {
-      method: "GET",
-      headers,
-      redirect: "follow",
-    }, SEMEF_TIMEOUT_MS);
+async function tentarDetalhe(url, numero, headers, etapa, diagnostico) {
+  const inicio = Date.now();
+
+  try {
+    const resposta = await fetchComTimeout(
+      url,
+      {
+        method: "GET",
+        headers,
+        redirect: "follow",
+      },
+      SEMEF_TIMEOUT_MS
+    );
 
     const html = await resposta.text();
     const avaliacao = avaliarPagina(html, numero);
+
     diagnostico.push({
       etapa,
       status: resposta.status,
       sucesso_http: resposta.ok,
       tamanho_resposta: html.length,
-      duracao_ms: Date.now() - ini,
+      duracao_ms: Date.now() - inicio,
       pagina_semef_valida: avaliacao.valida,
       sinais: avaliacao.sinais,
       preview: avaliacao.preview,
     });
 
     if (resposta.ok && avaliacao.valida) {
-      return { html, resposta };
-    }
-    return null;
-  }
-
-  try {
-    const direto = await tentar("detalhe_direto", headersBase);
-    if (direto) {
       return {
         ok: true,
-        via: "cloudflare-direto",
-        version: VERSION,
-        numero,
-        cod_protocolo: protocolo,
-        status: direto.resposta.status,
-        duracao_total_ms: Date.now() - inicio,
-        diagnostico,
-        html: direto.html,
+        html,
+        status: resposta.status,
       };
     }
+
+    return {
+      ok: false,
+      timeout: false,
+    };
   } catch (erro) {
-    diagnostico.push({ etapa: "detalhe_direto", erro: String(erro?.message || erro) });
+    const timeout = erro?.name === "TimeoutError";
+
+    diagnostico.push({
+      etapa,
+      timeout,
+      erro: String(erro?.message || erro),
+      duracao_ms: Date.now() - inicio,
+    });
+
+    return {
+      ok: false,
+      timeout,
+    };
+  }
+}
+
+async function consultarSemef(numero, protocolo) {
+  const url = `${SEMEF_DETALHE_URL}?origem=1&cod_protocolo=${encodeURIComponent(protocolo)}`;
+  const inicioTotal = Date.now();
+  const diagnostico = [];
+  const base = headersBase();
+
+  // 1) Acesso direto. Quando o próprio host não responde, encerramos rápido.
+  const direto = await tentarDetalhe(
+    url,
+    numero,
+    base,
+    "detalhe_direto",
+    diagnostico
+  );
+
+  if (direto.ok) {
+    return {
+      ok: true,
+      via: "cloudflare-direto",
+      version: VERSION,
+      numero,
+      cod_protocolo: protocolo,
+      status: direto.status,
+      duracao_total_ms: Date.now() - inicioTotal,
+      diagnostico,
+      html: direto.html,
+    };
   }
 
+  // Se nem a conexão direta foi estabelecida, abrir home/sessão só triplica o tempo
+  // e não melhora a disponibilidade. Retornamos imediatamente para o monitor usar
+  // os últimos dados válidos sem atrasar toda a atualização.
+  if (direto.timeout) {
+    return {
+      ok: false,
+      indisponivel: true,
+      erro: "Servidor da SEMEF não respondeu dentro do tempo limite.",
+      version: VERSION,
+      numero,
+      cod_protocolo: protocolo,
+      duracao_total_ms: Date.now() - inicioTotal,
+      diagnostico,
+    };
+  }
+
+  // 2) O host respondeu, porém a página direta não foi validada. Nesse caso vale
+  // tentar estabelecer sessão/cookie e repetir o detalhe.
   let cookie = "";
+  let referer = SEMEF_HOME_URL;
+
   try {
-    const ini = Date.now();
-    const home = await fetchComTimeout(SEMEF_HOME_URL, {
-      method: "GET",
-      headers: headersBase,
-      redirect: "follow",
-    }, SEMEF_TIMEOUT_MS);
+    const inicio = Date.now();
+    const home = await fetchComTimeout(
+      SEMEF_HOME_URL,
+      {
+        method: "GET",
+        headers: base,
+        redirect: "follow",
+      },
+      SEMEF_TIMEOUT_MS
+    );
+
     await home.text();
     cookie = extrairCookie(home.headers);
+    referer = home.url || SEMEF_HOME_URL;
+
     diagnostico.push({
       etapa: "pagina_inicial",
       status: home.status,
       sucesso_http: home.ok,
       cookie_recebido: Boolean(cookie),
-      duracao_ms: Date.now() - ini,
+      duracao_ms: Date.now() - inicio,
     });
   } catch (erro) {
-    diagnostico.push({ etapa: "pagina_inicial", erro: String(erro?.message || erro) });
+    diagnostico.push({
+      etapa: "pagina_inicial",
+      timeout: erro?.name === "TimeoutError",
+      erro: String(erro?.message || erro),
+    });
   }
 
-  try {
-    const headers = { ...headersBase };
-    if (cookie) headers.Cookie = cookie;
-    const sessao = await tentar("detalhe_com_sessao", headers);
-    if (sessao) {
-      return {
-        ok: true,
-        via: cookie ? "cloudflare-sessao" : "cloudflare-segunda-tentativa",
-        version: VERSION,
-        numero,
-        cod_protocolo: protocolo,
-        status: sessao.resposta.status,
-        duracao_total_ms: Date.now() - inicio,
-        diagnostico,
-        html: sessao.html,
-      };
-    }
-  } catch (erro) {
-    diagnostico.push({ etapa: "detalhe_com_sessao", erro: String(erro?.message || erro) });
+  const headersSessao = {
+    ...base,
+    Referer: referer,
+  };
+
+  if (cookie) {
+    headersSessao.Cookie = cookie;
+  }
+
+  const sessao = await tentarDetalhe(
+    url,
+    numero,
+    headersSessao,
+    "detalhe_com_sessao",
+    diagnostico
+  );
+
+  if (sessao.ok) {
+    return {
+      ok: true,
+      via: cookie ? "cloudflare-sessao" : "cloudflare-segunda-tentativa",
+      version: VERSION,
+      numero,
+      cod_protocolo: protocolo,
+      status: sessao.status,
+      duracao_total_ms: Date.now() - inicioTotal,
+      diagnostico,
+      html: sessao.html,
+    };
   }
 
   return {
     ok: false,
-    erro: "A SEMEF respondeu, mas a página do processo não pôde ser validada.",
+    indisponivel: Boolean(sessao.timeout),
+    erro: sessao.timeout
+      ? "Servidor da SEMEF não respondeu dentro do tempo limite."
+      : "A SEMEF respondeu, mas a página do processo não pôde ser validada.",
     version: VERSION,
     numero,
     cod_protocolo: protocolo,
-    duracao_total_ms: Date.now() - inicio,
+    duracao_total_ms: Date.now() - inicioTotal,
     diagnostico,
   };
 }
@@ -237,20 +345,44 @@ export default {
         if (acao === "consultar_semef") {
           const origin = request.headers.get("Origin") || "*";
           const numero = normalizarNumero(body.numero || "");
-          const protocolo = normalizarProtocolo(body.cod_protocolo || body.codProtocolo || "");
+          const protocolo = normalizarProtocolo(
+            body.cod_protocolo || body.codProtocolo || ""
+          );
 
           if (!/^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$/.test(numero)) {
-            return jsonResponse({ ok: false, erro: "Número de processo SEMEF inválido.", version: VERSION }, 400, origin);
+            return jsonResponse(
+              {
+                ok: false,
+                erro: "Número de processo SEMEF inválido.",
+                version: VERSION,
+              },
+              400,
+              origin
+            );
           }
+
           if (!protocolo) {
-            return jsonResponse({ ok: false, erro: "Código interno do protocolo SEMEF não informado.", version: VERSION }, 400, origin);
+            return jsonResponse(
+              {
+                ok: false,
+                erro: "Código interno do protocolo SEMEF não informado.",
+                version: VERSION,
+              },
+              400,
+              origin
+            );
           }
 
           const resultado = await consultarSemef(numero, protocolo);
-          return jsonResponse(resultado, resultado.ok ? 200 : 502, origin);
+
+          return jsonResponse(
+            resultado,
+            resultado.ok ? 200 : (resultado.indisponivel ? 503 : 502),
+            origin
+          );
         }
       } catch {
-        // Para qualquer outra ação, mantém exatamente a lógica existente.
+        // Qualquer outra ação continua usando exatamente a lógica existente.
       }
     }
 
