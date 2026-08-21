@@ -1,13 +1,18 @@
 /* =========================================================
    MONITOR — SERVICE WORKER DE RECUPERAÇÃO
-   Versão: v14
-   Objetivo:
+   Versão: v15
+   Objetivos:
    - remover caches antigos
    - não armazenar index.html
    - buscar sempre a versão atual na internet
+   - ler dados.json e processos.json direto do branch main,
+     sem aguardar o deploy do GitHub Pages
    ========================================================= */
 
-const CACHE_NAME = "monitor-cache-v14";
+const CACHE_NAME = "monitor-cache-v15";
+
+const RAW_BASE =
+  "https://raw.githubusercontent.com/Rclo29/Monitor-sefaz-am/main";
 
 /* =========================================================
    INSTALAÇÃO
@@ -39,9 +44,60 @@ self.addEventListener("activate", event => {
 });
 
 /* =========================================================
+   DADOS DO MONITOR
+
+   O GitHub Actions grava dados.json no repositório antes de
+   o GitHub Pages terminar uma nova publicação. Se a página
+   consultar ./dados.json nesse intervalo, pode enxergar o
+   arquivo antigo e informar incorretamente que a atualização
+   ainda não foi publicada.
+
+   Para estes dois JSON, consultamos diretamente o branch main.
+   Se houver qualquer falha nesse caminho, voltamos à URL
+   normal do GitHub Pages como fallback.
+   ========================================================= */
+
+async function fetchMonitorJson(request, fileName) {
+
+  const rawUrl =
+    `${RAW_BASE}/${fileName}?t=${Date.now()}`;
+
+  try {
+
+    const response = await fetch(rawUrl, {
+      cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache"
+      }
+    });
+
+    if (response.ok) {
+
+      const body = await response.arrayBuffer();
+
+      return new Response(body, {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+          "Pragma": "no-cache",
+          "Expires": "0"
+        }
+      });
+
+    }
+
+  } catch (error) {
+    console.warn("Monitor: falha ao consultar JSON no branch main", error);
+  }
+
+  return fetch(request, {
+    cache: "no-store"
+  });
+}
+
+/* =========================================================
    FETCH
-   Não interfere nas requisições.
-   Tudo será carregado diretamente da internet.
    ========================================================= */
 
 self.addEventListener("fetch", event => {
@@ -50,8 +106,30 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+  const url = new URL(event.request.url);
+
+  if (url.origin === self.location.origin) {
+
+    if (url.pathname.endsWith("/dados.json")) {
+      event.respondWith(
+        fetchMonitorJson(event.request, "dados.json")
+      );
+      return;
+    }
+
+    if (url.pathname.endsWith("/processos.json")) {
+      event.respondWith(
+        fetchMonitorJson(event.request, "processos.json")
+      );
+      return;
+    }
+
+  }
+
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, {
+      cache: "no-store"
+    })
   );
 
 });
