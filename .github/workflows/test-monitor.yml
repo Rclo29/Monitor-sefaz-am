@@ -1,0 +1,97 @@
+name: Teste temporário do Monitor
+
+on:
+  push:
+    paths:
+      - ".github/workflows/test-monitor.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Aguardar e testar proxy SEMEF
+        shell: bash
+        run: |
+          python <<'PY'
+          import json
+          import time
+          import requests
+
+          url = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev"
+          payload = {
+              "acao": "consultar_semef",
+              "numero": "2024.18000.19012.0.008302",
+              "cod_protocolo": "7954846",
+          }
+
+          ultimo = None
+          for tentativa in range(1, 13):
+              try:
+                  r = requests.post(url, json=payload, timeout=20)
+                  ultimo = (r.status_code, r.text[:1200])
+                  print("Tentativa", tentativa, "HTTP", r.status_code)
+                  if r.status_code == 200:
+                      data = r.json()
+                      html = data.get("html", "")
+                      assert data.get("ok") is True, data
+                      assert "2024.18000.19012.0.008302" in html, "Número SEMEF não encontrado no HTML"
+                      print("Proxy SEMEF OK:", data.get("via"), data.get("version"), len(html))
+                      break
+              except Exception as exc:
+                  ultimo = repr(exc)
+                  print("Tentativa", tentativa, "falhou:", exc)
+              time.sleep(10)
+          else:
+              raise SystemExit(f"Proxy SEMEF não ficou pronto: {ultimo}")
+          PY
+
+      - name: Executar monitor completo
+        run: python monitor_runner.py
+
+      - name: Validar resultado completo
+        run: |
+          python <<'PY'
+          import json
+
+          with open("dados.json", encoding="utf-8") as f:
+              dados = json.load(f)
+
+          processos = dados.get("processos", [])
+          assert dados.get("total_processos") == 29, dados.get("total_processos")
+          assert len(processos) == 29, len(processos)
+
+          semef = [p for p in processos if p.get("origem") == "semef"]
+          assert len(semef) == 3, len(semef)
+
+          erros_semef = [p for p in semef if p.get("erro")]
+          if erros_semef:
+              raise AssertionError(f"SEMEF com erro: {erros_semef}")
+
+          for p in semef:
+              assert p.get("situacao") and p.get("situacao") != "Não atualizado", p
+              assert p.get("interessado") or p.get("assunto") or p.get("setor") or p.get("evento"), p
+
+          print("TOTAL:", len(processos))
+          print("ERROS GERAIS:", dados.get("erros"))
+          print("SEMEF OK:")
+          for p in semef:
+              print(p.get("numero"), p.get("situacao"), p.get("setor"), p.get("dataMovimentacao"))
+          PY
