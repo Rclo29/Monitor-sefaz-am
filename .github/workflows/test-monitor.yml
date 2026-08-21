@@ -30,7 +30,7 @@ jobs:
       - name: Executar teste integrado
         run: python test_monitor_temp.py
 
-      - name: Salvar relatório do teste
+      - name: Salvar dados validados e relatório
         if: always()
         shell: bash
         run: |
@@ -40,11 +40,11 @@ jobs:
 
           git config user.name "monitor-test"
           git config user.email "actions@github.com"
-          git add test-results.json
+          git add dados.json test-results.json
 
           if git diff --cached --quiet; then
-            echo "Relatório sem alterações."
+            echo "Sem alterações para salvar."
           else
-            git commit -m "Registra resultado do teste integrado - parser SEMEF corrigido"
+            git commit -m "Aplica resultado validado do Monitor SEFAZ-AM + SEMEF"
             git push
           fi
