@@ -1,65 +1,48 @@
 /* =========================================================
    MONITOR — SERVICE WORKER
-   Versão: v19
+   Versão: v20
    - sem cache persistente
    - dados.json/processos.json lidos diretamente pelo Worker
    - evita espera de publicação do GitHub Pages
    - aplica layout compacto no Quadro geral
+   - corrige botão Consultar na SEFAZ para consulta direta oficial
    ========================================================= */
 
-const CACHE_NAME = "monitor-cache-v19";
+const CACHE_NAME = "monitor-cache-v20";
 const WORKER_BASE = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev";
 
-self.addEventListener("install", () => {
-  self.skipWaiting();
-});
-
+self.addEventListener("install", () => { self.skipWaiting(); });
 self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys()
-      .then(names => Promise.all(names.map(name => caches.delete(name))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys().then(names => Promise.all(names.map(name => caches.delete(name)))).then(() => self.clients.claim()));
 });
 
 async function fetchJsonDireto(request, endpoint) {
   try {
-    const response = await fetch(`${WORKER_BASE}/${endpoint}?t=${Date.now()}`, {
-      method: "GET",
-      mode: "cors",
-      cache: "no-store",
-      redirect: "follow"
-    });
-
+    const response = await fetch(`${WORKER_BASE}/${endpoint}?t=${Date.now()}`, {method:"GET",mode:"cors",cache:"no-store",redirect:"follow"});
     if (response.ok) {
       const body = await response.arrayBuffer();
-      return new Response(body, {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
-          "Pragma": "no-cache",
-          "Expires": "0"
-        }
-      });
+      return new Response(body,{status:200,headers:{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store, no-cache, must-revalidate, max-age=0","Pragma":"no-cache","Expires":"0"}});
     }
-  } catch (error) {
-    console.warn("Monitor: falha ao buscar JSON direto pelo Worker", endpoint, error);
-  }
-
-  return fetch(request, { cache: "no-store" });
+  } catch (error) { console.warn("Monitor: falha ao buscar JSON direto pelo Worker", endpoint, error); }
+  return fetch(request,{cache:"no-store"});
 }
 
 async function fetchPaginaComAjuste(request) {
-  const response = await fetch(request, { cache: "no-store" });
+  const response = await fetch(request,{cache:"no-store"});
   if (!response.ok) return response;
-
-  const contentType = response.headers.get("content-type") || "";
+  const contentType=response.headers.get("content-type")||"";
   if (!contentType.includes("text/html")) return response;
+  let html=await response.text();
 
-  let html = await response.text();
-  const extraCss = `
-<style id="quadro-geral-compacto-v19">
+  // Corrige definitivamente o endereço antigo usado nos cards.
+  // A SEFAZ aceita o número do processo diretamente no path da URL.
+  html=html.replaceAll(
+    'https://sistemas.sefaz.am.gov.br/sgp-am/consulta-processo.do?metodo=detalhar&numeroProcesso=${encodeURIComponent(p.numero)}',
+    'https://online.sefaz.am.gov.br/processo/${encodeURIComponent(p.numero)}'
+  );
+
+  const extraCss=`
+<style id="quadro-geral-compacto-v20">
 .summary-table{min-width:660px!important}
 .summary-head,.summary-line{grid-template-columns:196px 68px 1fr!important;column-gap:0!important}
 .summary-head>div,.summary-line>div{min-width:0}
@@ -68,49 +51,19 @@ async function fetchPaginaComAjuste(request) {
 .summary-num{padding-right:14px!important}
 .summary-sector,.summary-head>div:nth-child(2){border-left:1px solid #d8dee6;padding-left:12px!important;padding-right:4px!important}
 .summary-move,.summary-head>div:nth-child(3){border-left:1px solid #d8dee6;padding-left:7px!important}
-@media(max-width:390px){
-  .summary-table{min-width:640px!important}
-  .summary-head,.summary-line{grid-template-columns:190px 66px 1fr!important}
-  .summary-head{font-size:8px!important}
-  .summary-line{font-size:9.8px!important;padding-top:5.5px!important;padding-bottom:5.5px!important}
-  .summary-sector,.summary-head>div:nth-child(2){padding-left:11px!important;padding-right:3px!important}
-  .summary-move,.summary-head>div:nth-child(3){padding-left:6px!important}
-}
+@media(max-width:390px){.summary-table{min-width:640px!important}.summary-head,.summary-line{grid-template-columns:190px 66px 1fr!important}.summary-head{font-size:8px!important}.summary-line{font-size:9.8px!important;padding-top:5.5px!important;padding-bottom:5.5px!important}.summary-sector,.summary-head>div:nth-child(2){padding-left:11px!important;padding-right:3px!important}.summary-move,.summary-head>div:nth-child(3){padding-left:6px!important}}
 </style>`;
-
-  html = html.replace("</head>", `${extraCss}</head>`);
-
-  return new Response(html, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: {
-      "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
-    }
-  });
+  html=html.replace("</head>",`${extraCss}</head>`);
+  return new Response(html,{status:response.status,statusText:response.statusText,headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store, no-cache, must-revalidate, max-age=0"}});
 }
 
-self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
-
-  const url = new URL(event.request.url);
-
-  if (url.origin === self.location.origin) {
-    if (url.pathname.endsWith("/dados.json")) {
-      event.respondWith(fetchJsonDireto(event.request, "dados-atualizados"));
-      return;
-    }
-
-    if (url.pathname.endsWith("/processos.json")) {
-      event.respondWith(fetchJsonDireto(event.request, "processos-atualizados"));
-      return;
-    }
-
-    if (event.request.mode === "navigate" || url.pathname.endsWith("/index.html") || url.pathname.endsWith("/Monitor-sefaz-am/")) {
-      event.respondWith(fetchPaginaComAjuste(event.request));
-      return;
-    }
+self.addEventListener("fetch",event=>{
+  if(event.request.method!=="GET")return;
+  const url=new URL(event.request.url);
+  if(url.origin===self.location.origin){
+    if(url.pathname.endsWith("/dados.json")){event.respondWith(fetchJsonDireto(event.request,"dados-atualizados"));return;}
+    if(url.pathname.endsWith("/processos.json")){event.respondWith(fetchJsonDireto(event.request,"processos-atualizados"));return;}
+    if(event.request.mode==="navigate"||url.pathname.endsWith("/index.html")||url.pathname.endsWith("/Monitor-sefaz-am/")){event.respondWith(fetchPaginaComAjuste(event.request));return;}
   }
-
-  event.respondWith(fetch(event.request, { cache: "no-store" }));
+  event.respondWith(fetch(event.request,{cache:"no-store"}));
 });
