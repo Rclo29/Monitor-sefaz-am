@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-08-24T16:01:23-04:00",
-  "ultima_atualizacao": "2026-08-24T16:01:23-04:00",
+  "ultima_verificacao": "2026-08-24T19:30:40-04:00",
+  "ultima_atualizacao": "2026-08-24T19:30:40-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 5.6,
+  "duracao_segundos": 6.4,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 28,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 2,
+  "novos_alertas": 8,
   "processos": [
     {
       "numero": "01.01.028101.030037/2026-43",
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:19-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.030087/2026-20",
@@ -35,7 +35,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:19-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.030283/2026-03",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:20-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.030287/2026-83",
@@ -57,11 +57,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:20-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.030288/2026-28",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:20-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.031074/2026-79",
@@ -87,7 +87,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:20-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.031331/2026-72",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:19-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.031373/2026-03",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:20-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.031077/2026-02",
@@ -122,11 +122,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:19-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.031217/2026-42",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:19-04:00"
+      "consultado_em": "2026-08-24T19:30:37-04:00"
     },
     {
       "numero": "01.01.028101.031129/2026-40",
@@ -152,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:38-04:00"
     },
     {
       "numero": "01.01.028101.031393/2026-84",
@@ -165,7 +165,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -178,7 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -200,11 +200,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -213,11 +213,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -226,11 +226,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -239,11 +239,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -252,11 +252,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:21-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -265,11 +265,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:39-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -282,7 +282,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -295,7 +295,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -308,7 +308,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -321,7 +321,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -334,7 +334,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.030035/2026-54",
@@ -347,7 +347,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.030041/2026-01",
@@ -360,7 +360,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:22-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     },
     {
       "numero": "01.01.028101.030043/2026-09",
@@ -373,10 +373,98 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-24T16:01:23-04:00"
+      "consultado_em": "2026-08-24T19:30:40-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.030858/2026-80",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.030855/2026-46",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.030453/2026-41",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.030450/2026-08",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.030125/2026-45",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.030118/2026-43",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.031077/2026-02",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
+    {
+      "numero": "01.01.028101.030287/2026-83",
+      "origem": "sefaz",
+      "data": "2026-08-24T19:30:40-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
+      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "24/08/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
     {
       "numero": "01.01.028101.032673/2026-00",
       "origem": "sefaz",
