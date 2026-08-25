@@ -1,13 +1,13 @@
 {
-  "ultima_verificacao": "2026-08-25T09:00:56-04:00",
-  "ultima_atualizacao": "2026-08-25T09:00:56-04:00",
+  "ultima_verificacao": "2026-08-25T09:01:42-04:00",
+  "ultima_atualizacao": "2026-08-25T09:01:42-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 10.7,
+  "duracao_segundos": 6.0,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 28,
-  "erros": 2,
-  "processos_nao_atualizados": 2,
+  "erros": 0,
+  "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
   "novos_alertas": 0,
   "processos": [
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:38-04:00"
     },
     {
       "numero": "01.01.028101.030087/2026-20",
@@ -35,7 +35,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:37-04:00"
     },
     {
       "numero": "01.01.028101.030283/2026-03",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:38-04:00"
     },
     {
       "numero": "01.01.028101.030287/2026-83",
@@ -61,7 +61,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:37-04:00"
     },
     {
       "numero": "01.01.028101.030288/2026-28",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:38-04:00"
     },
     {
       "numero": "01.01.028101.031074/2026-79",
@@ -87,7 +87,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:38-04:00"
     },
     {
       "numero": "01.01.028101.031331/2026-72",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:38-04:00"
     },
     {
       "numero": "01.01.028101.031373/2026-03",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:37-04:00"
     },
     {
       "numero": "01.01.028101.031077/2026-02",
@@ -126,7 +126,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:37-04:00"
     },
     {
       "numero": "01.01.028101.031217/2026-42",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:47-04:00"
+      "consultado_em": "2026-08-25T09:01:38-04:00"
     },
     {
       "numero": "01.01.028101.031129/2026-40",
@@ -152,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:55-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.031393/2026-84",
@@ -164,8 +164,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=8)",
-      "consultado_em": "2026-08-25T09:00:56-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -178,7 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:54-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "17/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:48-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -203,8 +203,8 @@
       "setor": "GEFIN/SEFAZ",
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=8)",
-      "consultado_em": "2026-08-25T09:00:56-04:00"
+      "erro": "",
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -217,7 +217,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:48-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -230,7 +230,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:49-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -243,7 +243,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:48-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -256,7 +256,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:49-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -269,7 +269,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:49-04:00"
+      "consultado_em": "2026-08-25T09:01:40-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -282,7 +282,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "18/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:50-04:00"
+      "consultado_em": "2026-08-25T09:01:41-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -295,7 +295,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:50-04:00"
+      "consultado_em": "2026-08-25T09:01:41-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -308,7 +308,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:50-04:00"
+      "consultado_em": "2026-08-25T09:01:41-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -321,7 +321,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:50-04:00"
+      "consultado_em": "2026-08-25T09:01:41-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -334,7 +334,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "24/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:50-04:00"
+      "consultado_em": "2026-08-25T09:01:41-04:00"
     },
     {
       "numero": "01.01.028101.030035/2026-54",
@@ -347,7 +347,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:50-04:00"
+      "consultado_em": "2026-08-25T09:01:42-04:00"
     },
     {
       "numero": "01.01.028101.030041/2026-01",
@@ -360,7 +360,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:52-04:00"
+      "consultado_em": "2026-08-25T09:01:42-04:00"
     },
     {
       "numero": "01.01.028101.030043/2026-09",
@@ -373,7 +373,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-25T09:00:52-04:00"
+      "consultado_em": "2026-08-25T09:01:41-04:00"
     }
   ],
   "alertas": [
