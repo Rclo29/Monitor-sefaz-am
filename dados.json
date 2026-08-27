@@ -1,55 +1,16 @@
 {
-  "ultima_verificacao": "2026-08-27T16:14:10-04:00",
-  "ultima_atualizacao": "2026-08-27T16:14:10-04:00",
+  "ultima_verificacao": "2026-08-27T16:14:46-04:00",
+  "ultima_atualizacao": "2026-08-27T16:14:46-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 5.0,
+  "duracao_segundos": 4.0,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 20,
+  "total_processos": 17,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
   "novos_alertas": 0,
   "processos": [
-    {
-      "numero": "01.01.028101.031077/2026-02",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "25/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
-    },
-    {
-      "numero": "01.01.028101.031217/2026-42",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "25/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
-    },
-    {
-      "numero": "01.01.028101.031129/2026-40",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "25/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
-    },
     {
       "numero": "01.01.028101.031393/2026-84",
       "origem": "sefaz",
@@ -61,7 +22,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -74,7 +35,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -87,7 +48,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -100,7 +61,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -113,7 +74,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -126,7 +87,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -139,7 +100,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:08-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -152,7 +113,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -165,7 +126,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:09-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -178,7 +139,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:09-04:00"
+      "consultado_em": "2026-08-27T16:14:44-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -191,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:45-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -204,7 +165,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:09-04:00"
+      "consultado_em": "2026-08-27T16:14:45-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -217,7 +178,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:45-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -230,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:45-04:00"
     },
     {
       "numero": "01.01.028101.030035/2026-54",
@@ -243,7 +204,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:45-04:00"
     },
     {
       "numero": "01.01.028101.030041/2026-01",
@@ -256,7 +217,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:46-04:00"
     },
     {
       "numero": "01.01.028101.030043/2026-09",
@@ -269,7 +230,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:10-04:00"
+      "consultado_em": "2026-08-27T16:14:46-04:00"
     }
   ],
   "alertas": [
@@ -297,17 +258,6 @@
     },
     {
       "numero": "01.01.028101.031393/2026-84",
-      "origem": "sefaz",
-      "data": "2026-08-25T18:23:56-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "25/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_atual": "25/08/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "25/08/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
-      "numero": "01.01.028101.031217/2026-42",
       "origem": "sefaz",
       "data": "2026-08-25T18:23:56-04:00",
       "mensagem": "Nova movimentação: 68 - SOBRESTADO",
@@ -417,28 +367,6 @@
       "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
     },
     {
-      "numero": "01.01.028101.031129/2026-40",
-      "origem": "sefaz",
-      "data": "2026-08-25T13:59:30-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "18/08/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "25/08/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "25/08/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
-      "numero": "01.01.028101.031217/2026-42",
-      "origem": "sefaz",
-      "data": "2026-08-25T13:59:30-04:00",
-      "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_anterior": "18/08/2026|GEFIN|59 - TRAMITANDO",
-      "movimentacao_atual": "25/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "data_movimentacao": "25/08/2026",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
-    },
-    {
       "numero": "01.01.028101.032701/2026-99",
       "origem": "sefaz",
       "data": "2026-08-25T10:28:25-04:00",
@@ -527,17 +455,6 @@
       "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
     },
     {
-      "numero": "01.01.028101.031077/2026-02",
-      "origem": "sefaz",
-      "data": "2026-08-25T10:28:25-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_atual": "25/08/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "25/08/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
       "numero": "01.01.028101.030858/2026-80",
       "origem": "sefaz",
       "data": "2026-08-24T19:30:40-04:00",
@@ -594,17 +511,6 @@
     },
     {
       "numero": "01.01.028101.030118/2026-43",
-      "origem": "sefaz",
-      "data": "2026-08-24T19:30:40-04:00",
-      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_anterior": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_atual": "24/08/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "data_movimentacao": "24/08/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.031077/2026-02",
       "origem": "sefaz",
       "data": "2026-08-24T19:30:40-04:00",
       "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
@@ -708,17 +614,6 @@
       "data": "2026-08-24T14:24:45-04:00",
       "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
       "movimentacao_anterior": "24/08/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
-      "movimentacao_atual": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "data_movimentacao": "24/08/2026",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.031077/2026-02",
-      "origem": "sefaz",
-      "data": "2026-08-24T14:24:45-04:00",
-      "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_anterior": "17/08/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "movimentacao_atual": "24/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
       "data_movimentacao": "24/08/2026",
       "setor": "G000050",
