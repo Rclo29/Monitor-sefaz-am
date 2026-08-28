@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-08-28T08:10:49-04:00",
-  "ultima_atualizacao": "2026-08-28T08:10:49-04:00",
+  "ultima_verificacao": "2026-08-28T10:51:36-04:00",
+  "ultima_atualizacao": "2026-08-28T10:51:36-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 1.8,
+  "duracao_segundos": 2.2,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 4,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 2,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-28T08:10:49-04:00"
+      "consultado_em": "2026-08-28T10:51:36-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -31,11 +31,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G249052",
-      "evento": "190 - PARA ASSINATURA DIGITAL",
-      "dataMovimentacao": "25/08/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
+      "dataMovimentacao": "28/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-28T08:10:49-04:00"
+      "consultado_em": "2026-08-28T10:51:36-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -44,11 +44,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G249052",
-      "evento": "190 - PARA ASSINATURA DIGITAL",
-      "dataMovimentacao": "25/08/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
+      "dataMovimentacao": "28/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-28T08:10:49-04:00"
+      "consultado_em": "2026-08-28T10:51:36-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -61,10 +61,32 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-28T08:10:49-04:00"
+      "consultado_em": "2026-08-28T10:51:36-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.032673/2026-00",
+      "origem": "sefaz",
+      "data": "2026-08-28T10:51:36-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "25/08/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "28/08/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "28/08/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.032668/2026-05",
+      "origem": "sefaz",
+      "data": "2026-08-28T10:51:36-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "25/08/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "28/08/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "28/08/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
     {
       "numero": "01.01.028101.032701/2026-99",
       "origem": "sefaz",
