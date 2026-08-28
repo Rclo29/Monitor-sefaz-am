@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-08-27T16:14:46-04:00",
-  "ultima_atualizacao": "2026-08-27T16:14:46-04:00",
+  "ultima_verificacao": "2026-08-27T21:02:00-04:00",
+  "ultima_atualizacao": "2026-08-27T21:02:00-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 4.0,
+  "duracao_segundos": 16.7,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 17,
@@ -22,7 +22,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.031411/2026-28",
@@ -35,7 +35,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:59-04:00"
     },
     {
       "numero": "01.01.028101.030117/2026-07",
@@ -48,7 +48,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.030118/2026-43",
@@ -61,7 +61,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.030125/2026-45",
@@ -74,7 +74,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:59-04:00"
     },
     {
       "numero": "01.01.028101.030450/2026-08",
@@ -87,7 +87,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.030453/2026-41",
@@ -100,7 +100,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.030855/2026-46",
@@ -113,7 +113,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:59-04:00"
     },
     {
       "numero": "01.01.028101.030858/2026-80",
@@ -126,7 +126,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.030869/2026-60",
@@ -139,7 +139,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:44-04:00"
+      "consultado_em": "2026-08-27T21:01:58-04:00"
     },
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -152,7 +152,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:45-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -165,7 +165,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:45-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -178,7 +178,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:45-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:45-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     },
     {
       "numero": "01.01.028101.030035/2026-54",
@@ -204,7 +204,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:45-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     },
     {
       "numero": "01.01.028101.030041/2026-01",
@@ -217,7 +217,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:46-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     },
     {
       "numero": "01.01.028101.030043/2026-09",
@@ -230,7 +230,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T16:14:46-04:00"
+      "consultado_em": "2026-08-27T21:02:00-04:00"
     }
   ],
   "alertas": [
