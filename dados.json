@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-08-27T21:03:56-04:00",
-  "ultima_atualizacao": "2026-08-27T21:03:56-04:00",
+  "ultima_verificacao": "2026-08-27T21:04:24-04:00",
+  "ultima_atualizacao": "2026-08-27T21:04:24-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.3,
+  "duracao_segundos": 2.4,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 5,
+  "total_processos": 4,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:56-04:00"
+      "consultado_em": "2026-08-27T21:04:24-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -35,7 +35,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:55-04:00"
+      "consultado_em": "2026-08-27T21:04:24-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -48,7 +48,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:56-04:00"
+      "consultado_em": "2026-08-27T21:04:24-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -61,20 +61,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:55-04:00"
-    },
-    {
-      "numero": "01.01.028101.030043/2026-09",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "11/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T21:03:56-04:00"
+      "consultado_em": "2026-08-27T21:04:24-04:00"
     }
   ],
   "alertas": [
