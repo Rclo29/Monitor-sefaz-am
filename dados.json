@@ -1,29 +1,16 @@
 {
-  "ultima_verificacao": "2026-08-27T21:03:23-04:00",
-  "ultima_atualizacao": "2026-08-27T21:03:23-04:00",
+  "ultima_verificacao": "2026-08-27T21:03:56-04:00",
+  "ultima_atualizacao": "2026-08-27T21:03:56-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 1.7,
+  "duracao_segundos": 2.3,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 8,
+  "total_processos": 5,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
   "novos_alertas": 0,
   "processos": [
-    {
-      "numero": "01.01.028101.030869/2026-60",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "25/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
-    },
     {
       "numero": "01.01.028101.000655/2026-69",
       "origem": "sefaz",
@@ -35,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
+      "consultado_em": "2026-08-27T21:03:56-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -48,7 +35,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
+      "consultado_em": "2026-08-27T21:03:55-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -61,7 +48,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
+      "consultado_em": "2026-08-27T21:03:56-04:00"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
@@ -74,33 +61,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "25/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
-    },
-    {
-      "numero": "01.01.028101.030035/2026-54",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "11/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
-    },
-    {
-      "numero": "01.01.028101.030041/2026-01",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "11/08/2026",
-      "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
+      "consultado_em": "2026-08-27T21:03:55-04:00"
     },
     {
       "numero": "01.01.028101.030043/2026-09",
@@ -113,21 +74,10 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "11/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-27T21:03:23-04:00"
+      "consultado_em": "2026-08-27T21:03:56-04:00"
     }
   ],
   "alertas": [
-    {
-      "numero": "01.01.028101.030869/2026-60",
-      "origem": "sefaz",
-      "data": "2026-08-25T18:23:56-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "25/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_atual": "25/08/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "25/08/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
     {
       "numero": "01.01.028101.032701/2026-99",
       "origem": "sefaz",
@@ -182,17 +132,6 @@
       "data_movimentacao": "25/08/2026",
       "setor": "G012496",
       "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.030869/2026-60",
-      "origem": "sefaz",
-      "data": "2026-08-25T13:59:30-04:00",
-      "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_anterior": "18/08/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "25/08/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "data_movimentacao": "25/08/2026",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
     },
     {
       "numero": "01.01.028101.032701/2026-99",
