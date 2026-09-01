@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-08-31T17:51:29-04:00",
-  "ultima_atualizacao": "2026-08-31T17:51:29-04:00",
+  "ultima_verificacao": "2026-09-01T09:32:11-04:00",
+  "ultima_atualizacao": "2026-09-01T09:32:11-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.7,
+  "duracao_segundos": 1.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 4,
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-31T17:51:29-04:00"
+      "consultado_em": "2026-09-01T09:32:11-04:00"
     },
     {
       "numero": "01.01.028101.032668/2026-05",
@@ -35,7 +35,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "28/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-31T17:51:29-04:00"
+      "consultado_em": "2026-09-01T09:32:11-04:00"
     },
     {
       "numero": "01.01.028101.032673/2026-00",
@@ -48,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "28/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-31T17:51:29-04:00"
+      "consultado_em": "2026-09-01T09:32:11-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -61,7 +61,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/08/2026",
       "erro": "",
-      "consultado_em": "2026-08-31T17:51:29-04:00"
+      "consultado_em": "2026-09-01T09:32:11-04:00"
     }
   ],
   "alertas": [
