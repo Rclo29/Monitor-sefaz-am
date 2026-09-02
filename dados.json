@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-09-02T06:28:47-04:00",
-  "ultima_atualizacao": "2026-09-02T06:28:47-04:00",
+  "ultima_verificacao": "2026-09-02T08:36:36-04:00",
+  "ultima_atualizacao": "2026-09-02T08:36:36-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 3.2,
+  "duracao_segundos": 2.0,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 3,
+  "total_processos": 2,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -22,20 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-09-02T06:28:47-04:00"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "dataMovimentacao": "01/09/2026",
-      "erro": "",
-      "consultado_em": "2026-09-02T06:28:47-04:00"
+      "consultado_em": "2026-09-02T08:36:36-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -48,98 +35,10 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/08/2026",
       "erro": "",
-      "consultado_em": "2026-09-02T06:28:47-04:00"
+      "consultado_em": "2026-09-02T08:36:36-04:00"
     }
   ],
   "alertas": [
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-09-01T12:09:38-04:00",
-      "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_anterior": "28/08/2026|GEFIN|59 - TRAMITANDO",
-      "movimentacao_atual": "01/09/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "data_movimentacao": "01/09/2026",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-28T19:16:15-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/08/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "28/08/2026|GEFIN|59 - TRAMITANDO",
-      "data_movimentacao": "28/08/2026",
-      "setor": "GEFIN",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-28T11:20:41-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "28/08/2026|G014150|59 - TRAMITANDO",
-      "movimentacao_atual": "28/08/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "28/08/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-28T10:51:36-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "25/08/2026|G249052|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "28/08/2026|G014150|59 - TRAMITANDO",
-      "data_movimentacao": "28/08/2026",
-      "setor": "G014150",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-25T13:59:30-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "24/08/2026|T015481|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "25/08/2026|G249052|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "25/08/2026",
-      "setor": "G249052",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-24T16:01:23-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "20/08/2026|GSERV|59 - TRAMITANDO",
-      "movimentacao_atual": "24/08/2026|T015481|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "24/08/2026",
-      "setor": "T015481",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-20T20:47:39-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "20/08/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "20/08/2026|GSERV|59 - TRAMITANDO",
-      "data_movimentacao": "20/08/2026",
-      "setor": "GSERV",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.032673/2026-00",
-      "origem": "sefaz",
-      "data": "2026-08-20T16:16:47-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "20/08/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "20/08/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "20/08/2026",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
     {
       "numero": "01.01.028101.000655/2026-69",
       "data": "2026-08-19T14:36:43-04:00",
