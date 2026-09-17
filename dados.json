@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-09-16T15:55:42-04:00",
-  "ultima_atualizacao": "2026-09-16T15:55:42-04:00",
+  "ultima_verificacao": "2026-09-17T19:16:58-04:00",
+  "ultima_atualizacao": "2026-09-17T19:16:58-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.5,
+  "duracao_segundos": 2.8,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 2,
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-09-16T15:55:42-04:00"
+      "consultado_em": "2026-09-17T19:16:57-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,7 +35,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "15/09/2026",
       "erro": "",
-      "consultado_em": "2026-09-16T15:55:42-04:00"
+      "consultado_em": "2026-09-17T19:16:58-04:00"
     }
   ],
   "alertas": [
