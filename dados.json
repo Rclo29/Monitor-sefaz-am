@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-09-17T19:16:58-04:00",
-  "ultima_atualizacao": "2026-09-17T19:16:58-04:00",
+  "ultima_verificacao": "2026-09-30T19:46:52-04:00",
+  "ultima_atualizacao": "2026-09-30T19:46:52-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.8,
+  "duracao_segundos": 2.1,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 2,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 1,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -22,7 +22,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "19/08/2026",
       "erro": "",
-      "consultado_em": "2026-09-17T19:16:57-04:00"
+      "consultado_em": "2026-09-30T19:46:52-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -31,14 +31,25 @@
       "situacao": "Aberto",
       "interessado": "SUPERINTENDÊNCIA ESTADUAL DE HABITAÇÃO - SUHAB",
       "assunto": "1028 - RECEBIMENTOS DE OFÍCIOS",
-      "setor": "G154118",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "15/09/2026",
+      "setor": "G796597",
+      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "dataMovimentacao": "29/09/2026",
       "erro": "",
-      "consultado_em": "2026-09-17T19:16:58-04:00"
+      "consultado_em": "2026-09-30T19:46:52-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.03.043201.004092/2026-14",
+      "origem": "sefaz",
+      "data": "2026-09-30T19:46:52-04:00",
+      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_anterior": "15/09/2026|G154118|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "29/09/2026|G796597|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "data_movimentacao": "29/09/2026",
+      "setor": "G796597",
+      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
+    },
     {
       "numero": "01.03.043201.004092/2026-14",
       "origem": "sefaz",
