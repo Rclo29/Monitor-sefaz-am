@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-05T15:14:12-04:00",
-  "ultima_atualizacao": "2026-10-05T15:14:12-04:00",
+  "ultima_verificacao": "2026-10-06T08:21:03-04:00",
+  "ultima_atualizacao": "2026-10-06T08:21:03-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.4,
+  "duracao_segundos": 1.5,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 2,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 1,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -18,11 +18,11 @@
       "situacao": "Aberto",
       "interessado": "DEPARTAMENTO DE INFRAESTRUTURA - DEINFRA/SEDUC",
       "assunto": "704 - SOLICITANDO CONTRATACAO",
-      "setor": "GEOR",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "dataMovimentacao": "02/10/2026",
+      "setor": "G247619",
+      "evento": "59 - TRAMITANDO",
+      "dataMovimentacao": "06/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-05T15:14:12-04:00"
+      "consultado_em": "2026-10-06T08:21:03-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,10 +35,21 @@
       "evento": "14 - EMITIR PARECER",
       "dataMovimentacao": "02/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-05T15:14:12-04:00"
+      "consultado_em": "2026-10-06T08:21:03-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.000655/2026-69",
+      "origem": "sefaz",
+      "data": "2026-10-06T08:21:03-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "02/10/2026|GEOR|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "06/10/2026|G247619|59 - TRAMITANDO",
+      "data_movimentacao": "06/10/2026",
+      "setor": "G247619",
+      "evento": "59 - TRAMITANDO"
+    },
     {
       "numero": "01.03.043201.004092/2026-14",
       "origem": "sefaz",
