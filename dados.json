@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-15T15:36:54-04:00",
-  "ultima_atualizacao": "2026-10-15T15:36:54-04:00",
+  "ultima_verificacao": "2026-10-15T17:15:40-04:00",
+  "ultima_atualizacao": "2026-10-15T17:15:40-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 4.7,
+  "duracao_segundos": 6.4,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 26,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 18,
+  "novos_alertas": 8,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "08/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:35-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -31,11 +31,11 @@
       "situacao": "Aberto",
       "interessado": "SUPERINTENDÊNCIA ESTADUAL DE HABITAÇÃO - SUHAB",
       "assunto": "1028 - RECEBIMENTOS DE OFÍCIOS",
-      "setor": "PROTOCOLO",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "PROJUR-FEH",
+      "evento": "1 - REGISTRO NO PROTOCOLO GERAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:36-04:00"
     },
     {
       "numero": "01.01.028101.038167/2026-24",
@@ -44,11 +44,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:35-04:00"
     },
     {
       "numero": "01.01.028101.038168/2026-79",
@@ -57,11 +57,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:36-04:00"
     },
     {
       "numero": "01.01.028101.038169/2026-13",
@@ -70,11 +70,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:51-04:00"
+      "consultado_em": "2026-10-15T17:15:35-04:00"
     },
     {
       "numero": "01.01.028101.038170/2026-48",
@@ -83,11 +83,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:36-04:00"
     },
     {
       "numero": "01.01.028101.038171/2026-92",
@@ -96,11 +96,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:51-04:00"
+      "consultado_em": "2026-10-15T17:15:37-04:00"
     },
     {
       "numero": "01.01.028101.038414/2026-92",
@@ -109,11 +109,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:51-04:00"
+      "consultado_em": "2026-10-15T17:15:37-04:00"
     },
     {
       "numero": "01.01.028101.038421/2026-94",
@@ -126,7 +126,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:37-04:00"
     },
     {
       "numero": "01.01.028101.038416/2026-81",
@@ -139,7 +139,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:52-04:00"
+      "consultado_em": "2026-10-15T17:15:36-04:00"
     },
     {
       "numero": "01.01.028101.038417/2026-26",
@@ -152,7 +152,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:37-04:00"
     },
     {
       "numero": "01.01.028101.038418/2026-70",
@@ -165,7 +165,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:38-04:00"
     },
     {
       "numero": "01.01.028101.038340/2026-94",
@@ -178,7 +178,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:37-04:00"
     },
     {
       "numero": "01.01.028101.038341/2026-39",
@@ -191,7 +191,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:37-04:00"
     },
     {
       "numero": "01.01.028101.038362/2026-54",
@@ -204,7 +204,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:38-04:00"
     },
     {
       "numero": "01.01.028101.038342/2026-83",
@@ -217,7 +217,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:38-04:00"
     },
     {
       "numero": "01.01.028101.038343/2026-28",
@@ -230,7 +230,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:38-04:00"
     },
     {
       "numero": "01.01.028101.038344/2026-72",
@@ -243,7 +243,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:39-04:00"
     },
     {
       "numero": "01.01.028101.038345/2026-17",
@@ -252,11 +252,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:39-04:00"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -269,7 +269,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:53-04:00"
+      "consultado_em": "2026-10-15T17:15:39-04:00"
     },
     {
       "numero": "01.01.028101.038440/2026-10",
@@ -282,7 +282,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:54-04:00"
+      "consultado_em": "2026-10-15T17:15:39-04:00"
     },
     {
       "numero": "01.01.028101.038442/2026-00",
@@ -295,7 +295,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:54-04:00"
+      "consultado_em": "2026-10-15T17:15:40-04:00"
     },
     {
       "numero": "01.01.028101.038448/2026-87",
@@ -308,7 +308,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:54-04:00"
+      "consultado_em": "2026-10-15T17:15:39-04:00"
     },
     {
       "numero": "01.01.028101.038534/2026-90",
@@ -321,7 +321,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:54-04:00"
+      "consultado_em": "2026-10-15T17:15:40-04:00"
     },
     {
       "numero": "01.01.028101.038626/2026-70",
@@ -334,7 +334,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:54-04:00"
+      "consultado_em": "2026-10-15T17:15:40-04:00"
     },
     {
       "numero": "01.01.028101.038629/2026-03",
@@ -347,10 +347,98 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "15/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-15T15:36:54-04:00"
+      "consultado_em": "2026-10-15T17:15:40-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.038345/2026-17",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.038414/2026-92",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.038171/2026-92",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.038170/2026-48",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.038169/2026-13",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.038168/2026-79",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.038167/2026-24",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "15/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|G014150|59 - TRAMITANDO",
+      "data_movimentacao": "15/10/2026",
+      "setor": "G014150",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.03.043201.004092/2026-14",
+      "origem": "sefaz",
+      "data": "2026-10-15T17:15:40-04:00",
+      "mensagem": "Nova movimentação: 1 - REGISTRO NO PROTOCOLO GERAL",
+      "movimentacao_anterior": "15/10/2026|PROTOCOLO|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "15/10/2026|PROJUR-FEH|1 - REGISTRO NO PROTOCOLO GERAL",
+      "data_movimentacao": "15/10/2026",
+      "setor": "PROJUR-FEH",
+      "evento": "1 - REGISTRO NO PROTOCOLO GERAL"
+    },
     {
       "numero": "01.01.028101.038629/2026-03",
       "origem": "sefaz",
@@ -1362,92 +1450,6 @@
       "data_movimentacao": "08/10/2026",
       "setor": "GEOR",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-07T17:45:21-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "06/10/2026|G247619|59 - TRAMITANDO",
-      "movimentacao_atual": "07/10/2026|G799430|59 - TRAMITANDO",
-      "data_movimentacao": "07/10/2026",
-      "setor": "G799430",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-06T08:21:03-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "02/10/2026|GEOR|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "06/10/2026|G247619|59 - TRAMITANDO",
-      "data_movimentacao": "06/10/2026",
-      "setor": "G247619",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.03.043201.004092/2026-14",
-      "origem": "sefaz",
-      "data": "2026-10-03T06:31:35-04:00",
-      "mensagem": "Nova movimentação: 14 - EMITIR PARECER",
-      "movimentacao_anterior": "29/09/2026|G796597|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "02/10/2026|DITEC-FEH|14 - EMITIR PARECER",
-      "data_movimentacao": "02/10/2026",
-      "setor": "DITEC-FEH",
-      "evento": "14 - EMITIR PARECER"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-03T06:31:35-04:00",
-      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_anterior": "19/08/2026|G249052|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "02/10/2026|GEOR|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "data_movimentacao": "02/10/2026",
-      "setor": "GEOR",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
-      "numero": "01.03.043201.004092/2026-14",
-      "origem": "sefaz",
-      "data": "2026-09-30T19:46:52-04:00",
-      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_anterior": "15/09/2026|G154118|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "29/09/2026|G796597|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "data_movimentacao": "29/09/2026",
-      "setor": "G796597",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
-      "numero": "01.03.043201.004092/2026-14",
-      "origem": "sefaz",
-      "data": "2026-09-15T13:13:49-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "28/08/2026|DEADM|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "15/09/2026|G154118|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "15/09/2026",
-      "setor": "G154118",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "data": "2026-08-19T14:36:43-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "19/08/2026|DEINFRA|59 - TRAMITANDO",
-      "movimentacao_atual": "19/08/2026|G249052|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "19/08/2026",
-      "setor": "G249052",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "data": "2026-08-19T11:11:12-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "19/08/2026|G197240|59 - TRAMITANDO",
-      "movimentacao_atual": "19/08/2026|DEINFRA|59 - TRAMITANDO",
-      "data_movimentacao": "19/08/2026",
-      "setor": "DEINFRA",
-      "evento": "59 - TRAMITANDO"
     }
   ]
 }
