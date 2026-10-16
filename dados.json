@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-16T09:53:31-04:00",
-  "ultima_atualizacao": "2026-10-16T09:53:31-04:00",
+  "ultima_verificacao": "2026-10-16T11:09:29-04:00",
+  "ultima_atualizacao": "2026-10-16T11:09:29-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 6.6,
+  "duracao_segundos": 12.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 26,
-  "erros": 0,
-  "processos_nao_atualizados": 0,
+  "erros": 26,
+  "processos_nao_atualizados": 26,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 16,
+  "novos_alertas": 0,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -21,8 +21,8 @@
       "setor": "GEOR",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "08/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.000655/2026-69 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a199880>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -34,8 +34,8 @@
       "setor": "PROJUR-FEH",
       "evento": "1 - REGISTRO NO PROTOCOLO GERAL",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.03.043201.004092/2026-14 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a199d00>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038167/2026-24",
@@ -47,8 +47,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038167/2026-24 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a199520>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038168/2026-79",
@@ -60,8 +60,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038168/2026-79 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19a3c0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038169/2026-13",
@@ -73,8 +73,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038169/2026-13 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19acc0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038170/2026-48",
@@ -86,8 +86,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038170/2026-48 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19b710>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038171/2026-92",
@@ -99,8 +99,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038171/2026-92 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c04d0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038414/2026-92",
@@ -112,8 +112,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038414/2026-92 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c0fe0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038421/2026-94",
@@ -125,8 +125,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038421/2026-94 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c1b50>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038416/2026-81",
@@ -138,8 +138,8 @@
       "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:27-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038416/2026-81 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c2690>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038417/2026-26",
@@ -151,8 +151,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038417/2026-26 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c2f60>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038418/2026-70",
@@ -164,8 +164,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038418/2026-70 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c38c0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038340/2026-94",
@@ -177,8 +177,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:28-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038340/2026-94 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a199490>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038341/2026-39",
@@ -190,8 +190,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038341/2026-39 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1997c0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038362/2026-54",
@@ -203,8 +203,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038362/2026-54 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19b4d0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038342/2026-83",
@@ -216,8 +216,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038342/2026-83 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19b200>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038343/2026-28",
@@ -229,8 +229,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038343/2026-28 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c24b0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038344/2026-72",
@@ -242,8 +242,8 @@
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038344/2026-72 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1c1b20>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038345/2026-17",
@@ -255,8 +255,8 @@
       "setor": "G014150",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "15/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038345/2026-17 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1ed460>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -268,8 +268,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:29-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038437/2026-05 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1eddf0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038440/2026-10",
@@ -281,8 +281,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:31-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038440/2026-10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19bc50>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038442/2026-00",
@@ -294,8 +294,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:31-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038442/2026-00 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19b9e0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038448/2026-87",
@@ -307,8 +307,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:31-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038448/2026-87 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a19a7b0>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038534/2026-90",
@@ -320,8 +320,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:31-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038534/2026-90 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a173f50>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038626/2026-70",
@@ -333,8 +333,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:31-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038626/2026-70 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1eee10>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     },
     {
       "numero": "01.01.028101.038629/2026-03",
@@ -346,8 +346,8 @@
       "setor": "GECC",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-16T09:53:31-04:00"
+      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Max retries exceeded with url: /processo/01.01.028101.038629/2026-03 (Caused by ConnectTimeoutError(<HTTPSConnection(host='online.sefaz.am.gov.br', port=443) at 0x7fa10a1ef050>, 'Connection to online.sefaz.am.gov.br timed out. (connect timeout=4)'))",
+      "consultado_em": "2026-10-16T11:09:29-04:00"
     }
   ],
   "alertas": [
