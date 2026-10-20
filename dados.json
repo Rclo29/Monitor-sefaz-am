@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-10-19T14:07:18-04:00",
-  "ultima_atualizacao": "2026-10-19T14:07:18-04:00",
+  "ultima_verificacao": "2026-10-19T21:43:37-04:00",
+  "ultima_atualizacao": "2026-10-19T21:43:37-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 7.5,
+  "duracao_segundos": 5.0,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 26,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "08/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:13-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,7 +35,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:13-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.01.028101.038167/2026-24",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:13-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038168/2026-79",
@@ -61,7 +61,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:12-04:00"
+      "consultado_em": "2026-10-19T21:43:34-04:00"
     },
     {
       "numero": "01.01.028101.038169/2026-13",
@@ -74,7 +74,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:12-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.01.028101.038170/2026-48",
@@ -87,7 +87,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:13-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.01.028101.038171/2026-92",
@@ -100,7 +100,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:12-04:00"
+      "consultado_em": "2026-10-19T21:43:34-04:00"
     },
     {
       "numero": "01.01.028101.038414/2026-92",
@@ -113,7 +113,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:12-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.01.028101.038421/2026-94",
@@ -126,7 +126,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "19/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:13-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.01.028101.038416/2026-81",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:13-04:00"
+      "consultado_em": "2026-10-19T21:43:35-04:00"
     },
     {
       "numero": "01.01.028101.038417/2026-26",
@@ -152,7 +152,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "19/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:15-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038418/2026-70",
@@ -165,7 +165,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:15-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038340/2026-94",
@@ -178,7 +178,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:14-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038341/2026-39",
@@ -191,7 +191,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:14-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038362/2026-54",
@@ -204,7 +204,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:15-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038342/2026-83",
@@ -217,7 +217,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:15-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038343/2026-28",
@@ -230,7 +230,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:15-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038344/2026-72",
@@ -243,7 +243,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:15-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038345/2026-17",
@@ -256,7 +256,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:14-04:00"
+      "consultado_em": "2026-10-19T21:43:36-04:00"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -269,7 +269,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:18-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     },
     {
       "numero": "01.01.028101.038440/2026-10",
@@ -282,7 +282,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:16-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     },
     {
       "numero": "01.01.028101.038442/2026-00",
@@ -291,11 +291,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G190877",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "16/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "19/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:16-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     },
     {
       "numero": "01.01.028101.038448/2026-87",
@@ -308,7 +308,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:17-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     },
     {
       "numero": "01.01.028101.038534/2026-90",
@@ -321,7 +321,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:16-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     },
     {
       "numero": "01.01.028101.038626/2026-70",
@@ -334,7 +334,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:16-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     },
     {
       "numero": "01.01.028101.038629/2026-03",
@@ -343,14 +343,36 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G190877",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "16/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "19/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-19T14:07:17-04:00"
+      "consultado_em": "2026-10-19T21:43:37-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.038629/2026-03",
+      "origem": "sefaz",
+      "data": "2026-10-19T21:43:37-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "16/10/2026|G190877|59 - TRAMITANDO",
+      "movimentacao_atual": "19/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "19/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.038442/2026-00",
+      "origem": "sefaz",
+      "data": "2026-10-19T21:43:37-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "16/10/2026|G190877|59 - TRAMITANDO",
+      "movimentacao_atual": "19/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "19/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
     {
       "numero": "01.01.028101.038417/2026-26",
       "origem": "sefaz",
@@ -1428,28 +1450,6 @@
       "data_movimentacao": "14/10/2026",
       "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.03.043201.004092/2026-14",
-      "origem": "sefaz",
-      "data": "2026-10-14T17:35:00-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "13/10/2026|GEOF-FEH|2 - ACOMPANHAR PROCESSAMENTO E ENCAMINHAR AO SETOR",
-      "movimentacao_atual": "14/10/2026|G154118|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "14/10/2026",
-      "setor": "G154118",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "data": "2026-10-14T13:32:57-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "14/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "14/10/2026|T015481|59 - TRAMITANDO",
-      "data_movimentacao": "14/10/2026",
-      "setor": "T015481",
-      "evento": "59 - TRAMITANDO"
     }
   ]
 }
