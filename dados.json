@@ -1,6 +1,6 @@
 {
-  "ultima_verificacao": "2026-10-26T09:12:41-04:00",
-  "ultima_atualizacao": "2026-10-26T09:12:41-04:00",
+  "ultima_verificacao": "2026-10-26T11:29:24-04:00",
+  "ultima_atualizacao": "2026-10-26T11:29:24-04:00",
   "timezone": "America/Manaus",
   "duracao_segundos": 1.9,
   "tempo_excedido": false,
@@ -9,7 +9,7 @@
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 2,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -18,11 +18,11 @@
       "situacao": "Aberto",
       "interessado": "DEPARTAMENTO DE INFRAESTRUTURA - DEINFRA/SEDUC",
       "assunto": "704 - SOLICITANDO CONTRATACAO",
-      "setor": "UCI",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "setor": "GECC",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:12:41-04:00"
+      "consultado_em": "2026-10-26T11:29:24-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,7 +35,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:12:41-04:00"
+      "consultado_em": "2026-10-26T11:29:24-04:00"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -44,14 +44,36 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G014150",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "23/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:12:41-04:00"
+      "consultado_em": "2026-10-26T11:29:24-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.038437/2026-05",
+      "origem": "sefaz",
+      "data": "2026-10-26T11:29:24-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "23/10/2026|G014150|59 - TRAMITANDO",
+      "movimentacao_atual": "26/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "26/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.000655/2026-69",
+      "origem": "sefaz",
+      "data": "2026-10-26T11:29:24-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "26/10/2026|UCI|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "26/10/2026|GECC|59 - TRAMITANDO",
+      "data_movimentacao": "26/10/2026",
+      "setor": "GECC",
+      "evento": "59 - TRAMITANDO"
+    },
     {
       "numero": "01.01.028101.000655/2026-69",
       "origem": "sefaz",
