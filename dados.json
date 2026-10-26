@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-26T09:00:44-04:00",
-  "ultima_atualizacao": "2026-10-26T09:00:44-04:00",
+  "ultima_verificacao": "2026-10-26T09:11:03-04:00",
+  "ultima_atualizacao": "2026-10-26T09:11:03-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 6.9,
+  "duracao_segundos": 5.8,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 26,
+  "total_processos": 22,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 1,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -18,11 +18,11 @@
       "situacao": "Aberto",
       "interessado": "DEPARTAMENTO DE INFRAESTRUTURA - DEINFRA/SEDUC",
       "assunto": "704 - SOLICITANDO CONTRATACAO",
-      "setor": "GEOR",
-      "evento": "109 - PEDIDO DE DILIGENCIA",
-      "dataMovimentacao": "23/10/2026",
+      "setor": "UCI",
+      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:39-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,7 +35,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "16/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:40-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.01.028101.038167/2026-24",
@@ -48,7 +48,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:39-04:00"
+      "consultado_em": "2026-10-26T09:10:59-04:00"
     },
     {
       "numero": "01.01.028101.038168/2026-79",
@@ -61,7 +61,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:39-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.01.028101.038169/2026-13",
@@ -74,7 +74,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:39-04:00"
+      "consultado_em": "2026-10-26T09:10:59-04:00"
     },
     {
       "numero": "01.01.028101.038170/2026-48",
@@ -87,7 +87,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:40-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.01.028101.038171/2026-92",
@@ -100,7 +100,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:40-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.01.028101.038414/2026-92",
@@ -113,7 +113,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:44-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.01.028101.038421/2026-94",
@@ -126,7 +126,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "22/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:39-04:00"
+      "consultado_em": "2026-10-26T09:10:59-04:00"
     },
     {
       "numero": "01.01.028101.038416/2026-81",
@@ -139,7 +139,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "22/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:39-04:00"
+      "consultado_em": "2026-10-26T09:11:00-04:00"
     },
     {
       "numero": "01.01.028101.038417/2026-26",
@@ -152,7 +152,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:41-04:00"
+      "consultado_em": "2026-10-26T09:11:02-04:00"
     },
     {
       "numero": "01.01.028101.038418/2026-70",
@@ -165,7 +165,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:41-04:00"
+      "consultado_em": "2026-10-26T09:11:01-04:00"
     },
     {
       "numero": "01.01.028101.038340/2026-94",
@@ -178,7 +178,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:41-04:00"
+      "consultado_em": "2026-10-26T09:11:02-04:00"
     },
     {
       "numero": "01.01.028101.038341/2026-39",
@@ -191,7 +191,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:41-04:00"
+      "consultado_em": "2026-10-26T09:11:01-04:00"
     },
     {
       "numero": "01.01.028101.038362/2026-54",
@@ -204,7 +204,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:41-04:00"
+      "consultado_em": "2026-10-26T09:11:01-04:00"
     },
     {
       "numero": "01.01.028101.038342/2026-83",
@@ -217,7 +217,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:41-04:00"
+      "consultado_em": "2026-10-26T09:11:02-04:00"
     },
     {
       "numero": "01.01.028101.038343/2026-28",
@@ -230,7 +230,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
+      "consultado_em": "2026-10-26T09:11:01-04:00"
     },
     {
       "numero": "01.01.028101.038344/2026-72",
@@ -243,7 +243,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
+      "consultado_em": "2026-10-26T09:11:01-04:00"
     },
     {
       "numero": "01.01.028101.038345/2026-17",
@@ -256,7 +256,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "21/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
+      "consultado_em": "2026-10-26T09:11:02-04:00"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -269,33 +269,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "23/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
-    },
-    {
-      "numero": "01.01.028101.038440/2026-10",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "21/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
-    },
-    {
-      "numero": "01.01.028101.038442/2026-00",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "21/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-26T09:00:43-04:00"
+      "consultado_em": "2026-10-26T09:11:01-04:00"
     },
     {
       "numero": "01.01.028101.038448/2026-87",
@@ -308,7 +282,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "23/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
+      "consultado_em": "2026-10-26T09:11:03-04:00"
     },
     {
       "numero": "01.01.028101.038534/2026-90",
@@ -321,46 +295,20 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "22/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
-    },
-    {
-      "numero": "01.01.028101.038626/2026-70",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "23/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-26T09:00:42-04:00"
-    },
-    {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "21/10/2026",
-      "erro": "",
-      "consultado_em": "2026-10-26T09:00:43-04:00"
+      "consultado_em": "2026-10-26T09:11:03-04:00"
     }
   ],
   "alertas": [
     {
-      "numero": "01.01.028101.038626/2026-70",
+      "numero": "01.01.028101.000655/2026-69",
       "origem": "sefaz",
-      "data": "2026-10-22T20:08:54-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "22/10/2026|GEFIN|59 - TRAMITANDO",
-      "movimentacao_atual": "22/10/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
-      "data_movimentacao": "22/10/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "59 - TRAMITANDO"
+      "data": "2026-10-26T09:11:03-04:00",
+      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_anterior": "23/10/2026|GEOR|109 - PEDIDO DE DILIGENCIA",
+      "movimentacao_atual": "26/10/2026|UCI|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "data_movimentacao": "26/10/2026",
+      "setor": "UCI",
+      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
       "numero": "01.01.028101.038448/2026-87",
@@ -429,28 +377,6 @@
       "evento": "59 - TRAMITANDO"
     },
     {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "data": "2026-10-22T09:11:02-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "21/10/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_atual": "21/10/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
-      "numero": "01.01.028101.038626/2026-70",
-      "origem": "sefaz",
-      "data": "2026-10-22T09:11:02-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "21/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "22/10/2026|GEFIN|59 - TRAMITANDO",
-      "data_movimentacao": "22/10/2026",
-      "setor": "GEFIN",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.038534/2026-90",
       "origem": "sefaz",
       "data": "2026-10-22T09:11:02-04:00",
@@ -471,28 +397,6 @@
       "data_movimentacao": "22/10/2026",
       "setor": "GEFIN",
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.038442/2026-00",
-      "origem": "sefaz",
-      "data": "2026-10-22T09:11:02-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "21/10/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_atual": "21/10/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
-      "numero": "01.01.028101.038440/2026-10",
-      "origem": "sefaz",
-      "data": "2026-10-22T09:11:02-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "21/10/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_atual": "21/10/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
     },
     {
       "numero": "01.01.028101.038418/2026-70",
@@ -583,28 +487,6 @@
       "evento": "59 - TRAMITANDO"
     },
     {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "data": "2026-10-21T15:23:20-04:00",
-      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_anterior": "21/10/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "21/10/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.038626/2026-70",
-      "origem": "sefaz",
-      "data": "2026-10-21T15:23:20-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "16/10/2026|G190877|59 - TRAMITANDO",
-      "movimentacao_atual": "21/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "21/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
       "numero": "01.01.028101.038534/2026-90",
       "origem": "sefaz",
       "data": "2026-10-21T15:23:20-04:00",
@@ -625,28 +507,6 @@
       "data_movimentacao": "21/10/2026",
       "setor": "G257068",
       "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.038442/2026-00",
-      "origem": "sefaz",
-      "data": "2026-10-21T15:23:20-04:00",
-      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_anterior": "21/10/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "21/10/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.038440/2026-10",
-      "origem": "sefaz",
-      "data": "2026-10-21T15:23:20-04:00",
-      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "movimentacao_anterior": "21/10/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "21/10/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -770,40 +630,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "data": "2026-10-21T11:00:24-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "19/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "21/10/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
       "numero": "01.01.028101.038534/2026-90",
-      "origem": "sefaz",
-      "data": "2026-10-21T11:00:24-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "20/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "21/10/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.038442/2026-00",
-      "origem": "sefaz",
-      "data": "2026-10-21T11:00:24-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "19/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "21/10/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.038440/2026-10",
       "origem": "sefaz",
       "data": "2026-10-21T11:00:24-04:00",
       "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
@@ -1012,17 +839,6 @@
       "evento": "190 - PARA ASSINATURA DIGITAL"
     },
     {
-      "numero": "01.01.028101.038440/2026-10",
-      "origem": "sefaz",
-      "data": "2026-10-20T16:41:28-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "16/10/2026|G190877|59 - TRAMITANDO",
-      "movimentacao_atual": "20/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "20/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
       "numero": "01.01.028101.038437/2026-05",
       "origem": "sefaz",
       "data": "2026-10-20T16:41:28-04:00",
@@ -1199,28 +1015,6 @@
       "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
     },
     {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "data": "2026-10-19T21:43:37-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "16/10/2026|G190877|59 - TRAMITANDO",
-      "movimentacao_atual": "19/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "19/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.038442/2026-00",
-      "origem": "sefaz",
-      "data": "2026-10-19T21:43:37-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "16/10/2026|G190877|59 - TRAMITANDO",
-      "movimentacao_atual": "19/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "19/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
       "numero": "01.01.028101.038417/2026-26",
       "origem": "sefaz",
       "data": "2026-10-19T14:07:18-04:00",
@@ -1243,28 +1037,6 @@
       "evento": "190 - PARA ASSINATURA DIGITAL"
     },
     {
-      "numero": "01.01.028101.038629/2026-03",
-      "origem": "sefaz",
-      "data": "2026-10-19T08:57:32-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "16/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "16/10/2026|G190877|59 - TRAMITANDO",
-      "data_movimentacao": "16/10/2026",
-      "setor": "G190877",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.038626/2026-70",
-      "origem": "sefaz",
-      "data": "2026-10-19T08:57:32-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "16/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "16/10/2026|G190877|59 - TRAMITANDO",
-      "data_movimentacao": "16/10/2026",
-      "setor": "G190877",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.038534/2026-90",
       "origem": "sefaz",
       "data": "2026-10-19T08:57:32-04:00",
@@ -1277,28 +1049,6 @@
     },
     {
       "numero": "01.01.028101.038448/2026-87",
-      "origem": "sefaz",
-      "data": "2026-10-19T08:57:32-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "16/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "16/10/2026|G190877|59 - TRAMITANDO",
-      "data_movimentacao": "16/10/2026",
-      "setor": "G190877",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.038442/2026-00",
-      "origem": "sefaz",
-      "data": "2026-10-19T08:57:32-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "16/10/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "16/10/2026|G190877|59 - TRAMITANDO",
-      "data_movimentacao": "16/10/2026",
-      "setor": "G190877",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.038440/2026-10",
       "origem": "sefaz",
       "data": "2026-10-19T08:57:32-04:00",
       "mensagem": "Nova movimentação: 59 - TRAMITANDO",
