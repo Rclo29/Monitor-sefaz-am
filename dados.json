@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-28T11:26:54-04:00",
-  "ultima_atualizacao": "2026-10-28T11:26:54-04:00",
+  "ultima_verificacao": "2026-10-28T13:58:03-04:00",
+  "ultima_atualizacao": "2026-10-28T13:58:03-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 3.3,
+  "duracao_segundos": 6.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 16,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 1,
+  "novos_alertas": 9,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -22,7 +22,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:53-04:00"
+      "consultado_em": "2026-10-28T13:58:00-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -31,11 +31,11 @@
       "situacao": "Aberto",
       "interessado": "SUPERINTENDÊNCIA ESTADUAL DE HABITAÇÃO - SUHAB",
       "assunto": "1028 - RECEBIMENTOS DE OFÍCIOS",
-      "setor": "G248196",
+      "setor": "PROJUR-FEH",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "dataMovimentacao": "16/10/2026",
+      "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:53-04:00"
+      "consultado_em": "2026-10-28T13:57:59-04:00"
     },
     {
       "numero": "01.01.028101.038437/2026-05",
@@ -48,7 +48,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "27/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:53-04:00"
+      "consultado_em": "2026-10-28T13:58:00-04:00"
     },
     {
       "numero": "01.01.028101.040585/2026-81",
@@ -57,11 +57,11 @@
       "situacao": "Aberto",
       "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G263943",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "27/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:52-04:00"
+      "consultado_em": "2026-10-28T13:57:59-04:00"
     },
     {
       "numero": "01.01.028101.040586/2026-26",
@@ -70,11 +70,11 @@
       "situacao": "Aberto",
       "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G263943",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "27/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:53-04:00"
+      "consultado_em": "2026-10-28T13:58:00-04:00"
     },
     {
       "numero": "01.01.028101.040587/2026-70",
@@ -83,11 +83,11 @@
       "situacao": "Aberto",
       "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G263943",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "27/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:53-04:00"
+      "consultado_em": "2026-10-28T13:57:59-04:00"
     },
     {
       "numero": "01.01.028101.040588/2026-15",
@@ -96,11 +96,11 @@
       "situacao": "Aberto",
       "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G263943",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "27/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL",
+      "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:52-04:00"
+      "consultado_em": "2026-10-28T13:58:00-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "27/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:52-04:00"
+      "consultado_em": "2026-10-28T13:58:00-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -126,7 +126,7 @@
       "evento": "203 - DOCUMENTO ORIGINADO NO SETOR",
       "dataMovimentacao": "27/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:52-04:00"
+      "consultado_em": "2026-10-28T13:57:59-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "27/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:53-04:00"
+      "consultado_em": "2026-10-28T13:58:00-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -152,7 +152,7 @@
       "evento": "203 - DOCUMENTO ORIGINADO NO SETOR",
       "dataMovimentacao": "27/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:54-04:00"
+      "consultado_em": "2026-10-28T13:58:03-04:00"
     },
     {
       "numero": "01.01.028101.040369/2026-36",
@@ -165,7 +165,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "27/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:54-04:00"
+      "consultado_em": "2026-10-28T13:58:03-04:00"
     },
     {
       "numero": "01.01.028101.040399/2026-42",
@@ -174,11 +174,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:54-04:00"
+      "consultado_em": "2026-10-28T13:58:03-04:00"
     },
     {
       "numero": "01.01.028101.040400/2026-39",
@@ -187,11 +187,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GSERV",
+      "setor": "T015481",
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:54-04:00"
+      "consultado_em": "2026-10-28T13:58:03-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -200,11 +200,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:54-04:00"
+      "consultado_em": "2026-10-28T13:58:03-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -213,14 +213,113 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-28T11:26:54-04:00"
+      "consultado_em": "2026-10-28T13:58:03-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.040402/2026-28",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "28/10/2026|T015481|59 - TRAMITANDO",
+      "data_movimentacao": "28/10/2026",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.040401/2026-83",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "28/10/2026|T015481|59 - TRAMITANDO",
+      "data_movimentacao": "28/10/2026",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.040400/2026-39",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "28/10/2026|GSERV|59 - TRAMITANDO",
+      "movimentacao_atual": "28/10/2026|T015481|59 - TRAMITANDO",
+      "data_movimentacao": "28/10/2026",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.040399/2026-42",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "28/10/2026|T015481|59 - TRAMITANDO",
+      "data_movimentacao": "28/10/2026",
+      "setor": "T015481",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.040588/2026-15",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
+      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "28/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040587/2026-70",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
+      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "28/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040586/2026-26",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
+      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "28/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040585/2026-81",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
+      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "28/10/2026",
+      "setor": "G257068",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.03.043201.004092/2026-14",
+      "origem": "sefaz",
+      "data": "2026-10-28T13:58:03-04:00",
+      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_anterior": "16/10/2026|G248196|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "movimentacao_atual": "28/10/2026|PROJUR-FEH|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "data_movimentacao": "28/10/2026",
+      "setor": "PROJUR-FEH",
+      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
+    },
     {
       "numero": "01.01.028101.040400/2026-39",
       "origem": "sefaz",
