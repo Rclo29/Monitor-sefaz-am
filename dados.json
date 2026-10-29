@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-29T16:04:43-04:00",
-  "ultima_atualizacao": "2026-10-29T16:04:43-04:00",
+  "ultima_verificacao": "2026-10-29T17:13:19-04:00",
+  "ultima_atualizacao": "2026-10-29T17:13:19-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 5.4,
+  "duracao_segundos": 3.1,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 15,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 5,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -22,7 +22,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,7 +35,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040585/2026-81",
@@ -48,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040586/2026-26",
@@ -61,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040587/2026-70",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040588/2026-15",
@@ -87,7 +87,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -100,7 +100,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -113,7 +113,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -126,7 +126,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -139,7 +139,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:40-04:00"
+      "consultado_em": "2026-10-29T17:13:18-04:00"
     },
     {
       "numero": "01.01.028101.040369/2026-36",
@@ -148,11 +148,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G012496",
+      "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:42-04:00"
+      "consultado_em": "2026-10-29T17:13:19-04:00"
     },
     {
       "numero": "01.01.028101.040399/2026-42",
@@ -161,11 +161,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G012496",
+      "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:43-04:00"
+      "consultado_em": "2026-10-29T17:13:19-04:00"
     },
     {
       "numero": "01.01.028101.040400/2026-39",
@@ -174,11 +174,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G012496",
+      "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:43-04:00"
+      "consultado_em": "2026-10-29T17:13:19-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -187,11 +187,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G012496",
+      "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:42-04:00"
+      "consultado_em": "2026-10-29T17:13:19-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -200,14 +200,69 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "G012496",
+      "setor": "G249052",
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-29T16:04:43-04:00"
+      "consultado_em": "2026-10-29T17:13:19-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.040402/2026-28",
+      "origem": "sefaz",
+      "data": "2026-10-29T17:13:19-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "29/10/2026",
+      "setor": "G249052",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040401/2026-83",
+      "origem": "sefaz",
+      "data": "2026-10-29T17:13:19-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "29/10/2026",
+      "setor": "G249052",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040400/2026-39",
+      "origem": "sefaz",
+      "data": "2026-10-29T17:13:19-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "29/10/2026",
+      "setor": "G249052",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040399/2026-42",
+      "origem": "sefaz",
+      "data": "2026-10-29T17:13:19-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "29/10/2026",
+      "setor": "G249052",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
+    {
+      "numero": "01.01.028101.040369/2026-36",
+      "origem": "sefaz",
+      "data": "2026-10-29T17:13:19-04:00",
+      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
+      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
+      "data_movimentacao": "29/10/2026",
+      "setor": "G249052",
+      "evento": "190 - PARA ASSINATURA DIGITAL"
+    },
     {
       "numero": "01.01.028101.040402/2026-28",
       "origem": "sefaz",
