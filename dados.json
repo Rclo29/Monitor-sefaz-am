@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-10-30T07:49:40-04:00",
-  "ultima_atualizacao": "2026-10-30T07:49:40-04:00",
+  "ultima_verificacao": "2026-10-30T08:07:16-04:00",
+  "ultima_atualizacao": "2026-10-30T08:07:16-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 6.5,
+  "duracao_segundos": 4.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 15,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 4,
+  "novos_alertas": 0,
   "processos": [
     {
       "numero": "01.01.028101.000655/2026-69",
@@ -22,7 +22,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:35-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,7 +35,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:35-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040585/2026-81",
@@ -48,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:36-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040586/2026-26",
@@ -61,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:35-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040587/2026-70",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:40-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040588/2026-15",
@@ -87,7 +87,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:36-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -100,7 +100,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:35-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -113,7 +113,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:35-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -126,7 +126,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:36-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -139,7 +139,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:35-04:00"
+      "consultado_em": "2026-10-30T08:07:14-04:00"
     },
     {
       "numero": "01.01.028101.040369/2026-36",
@@ -152,7 +152,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:37-04:00"
+      "consultado_em": "2026-10-30T08:07:16-04:00"
     },
     {
       "numero": "01.01.028101.040399/2026-42",
@@ -165,7 +165,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:37-04:00"
+      "consultado_em": "2026-10-30T08:07:16-04:00"
     },
     {
       "numero": "01.01.028101.040400/2026-39",
@@ -178,7 +178,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:37-04:00"
+      "consultado_em": "2026-10-30T08:07:16-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -191,7 +191,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:37-04:00"
+      "consultado_em": "2026-10-30T08:07:16-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -204,7 +204,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "29/10/2026",
       "erro": "",
-      "consultado_em": "2026-10-30T07:49:37-04:00"
+      "consultado_em": "2026-10-30T08:07:16-04:00"
     }
   ],
   "alertas": [
