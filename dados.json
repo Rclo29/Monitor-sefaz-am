@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-03T15:33:36-04:00",
-  "ultima_atualizacao": "2026-11-03T15:33:36-04:00",
+  "ultima_verificacao": "2026-11-03T16:21:00-04:00",
+  "ultima_atualizacao": "2026-11-03T16:21:00-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 3.8,
+  "duracao_segundos": 3.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 14,
+  "total_processos": 11,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -22,7 +22,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "26/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:59-04:00"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -35,46 +35,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
-    },
-    {
-      "numero": "01.01.028101.040586/2026-26",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEMAN",
-      "evento": "104 - ARQUIVAR",
-      "dataMovimentacao": "03/11/2026",
-      "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
-    },
-    {
-      "numero": "01.01.028101.040587/2026-70",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEMAN",
-      "evento": "104 - ARQUIVAR",
-      "dataMovimentacao": "03/11/2026",
-      "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
-    },
-    {
-      "numero": "01.01.028101.040588/2026-15",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "CPF 003.576.112-17 ANDRIOLLY MACIEL RABELO",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEMAN",
-      "evento": "104 - ARQUIVAR",
-      "dataMovimentacao": "03/11/2026",
-      "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:59-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -87,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -100,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:59-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -113,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -126,7 +87,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040369/2026-36",
@@ -139,7 +100,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:34-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040399/2026-42",
@@ -152,7 +113,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:36-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040400/2026-39",
@@ -165,7 +126,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:35-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -178,7 +139,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:35-04:00"
+      "consultado_em": "2026-11-03T16:20:58-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -191,43 +152,10 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T15:33:35-04:00"
+      "consultado_em": "2026-11-03T16:21:00-04:00"
     }
   ],
   "alertas": [
-    {
-      "numero": "01.01.028101.040588/2026-15",
-      "origem": "sefaz",
-      "data": "2026-11-03T14:43:09-04:00",
-      "mensagem": "Nova movimentação: 104 - ARQUIVAR",
-      "movimentacao_anterior": "29/10/2026|G233752|59 - TRAMITANDO",
-      "movimentacao_atual": "03/11/2026|GEMAN|104 - ARQUIVAR",
-      "data_movimentacao": "03/11/2026",
-      "setor": "GEMAN",
-      "evento": "104 - ARQUIVAR"
-    },
-    {
-      "numero": "01.01.028101.040587/2026-70",
-      "origem": "sefaz",
-      "data": "2026-11-03T14:43:09-04:00",
-      "mensagem": "Nova movimentação: 104 - ARQUIVAR",
-      "movimentacao_anterior": "29/10/2026|G233752|59 - TRAMITANDO",
-      "movimentacao_atual": "03/11/2026|GEMAN|104 - ARQUIVAR",
-      "data_movimentacao": "03/11/2026",
-      "setor": "GEMAN",
-      "evento": "104 - ARQUIVAR"
-    },
-    {
-      "numero": "01.01.028101.040586/2026-26",
-      "origem": "sefaz",
-      "data": "2026-11-03T14:43:09-04:00",
-      "mensagem": "Nova movimentação: 104 - ARQUIVAR",
-      "movimentacao_anterior": "29/10/2026|G233752|59 - TRAMITANDO",
-      "movimentacao_atual": "03/11/2026|GEMAN|104 - ARQUIVAR",
-      "data_movimentacao": "03/11/2026",
-      "setor": "GEMAN",
-      "evento": "104 - ARQUIVAR"
-    },
     {
       "numero": "01.01.028101.040402/2026-28",
       "origem": "sefaz",
@@ -526,39 +454,6 @@
       "evento": "190 - PARA ASSINATURA DIGITAL"
     },
     {
-      "numero": "01.01.028101.040588/2026-15",
-      "origem": "sefaz",
-      "data": "2026-10-29T09:14:45-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "29/10/2026|G233752|59 - TRAMITANDO",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G233752",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040587/2026-70",
-      "origem": "sefaz",
-      "data": "2026-10-29T09:14:45-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "29/10/2026|G233752|59 - TRAMITANDO",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G233752",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040586/2026-26",
-      "origem": "sefaz",
-      "data": "2026-10-29T09:14:45-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "29/10/2026|G233752|59 - TRAMITANDO",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G233752",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.040696/2026-98",
       "origem": "sefaz",
       "data": "2026-10-28T22:33:33-04:00",
@@ -579,39 +474,6 @@
       "data_movimentacao": "28/10/2026",
       "setor": "G274461",
       "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040588/2026-15",
-      "origem": "sefaz",
-      "data": "2026-10-28T22:33:33-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "28/10/2026",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.040587/2026-70",
-      "origem": "sefaz",
-      "data": "2026-10-28T22:33:33-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "28/10/2026",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.040586/2026-26",
-      "origem": "sefaz",
-      "data": "2026-10-28T22:33:33-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "28/10/2026",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -656,39 +518,6 @@
       "data_movimentacao": "28/10/2026",
       "setor": "T015481",
       "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040588/2026-15",
-      "origem": "sefaz",
-      "data": "2026-10-28T13:58:03-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
-      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "28/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040587/2026-70",
-      "origem": "sefaz",
-      "data": "2026-10-28T13:58:03-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
-      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "28/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040586/2026-26",
-      "origem": "sefaz",
-      "data": "2026-10-28T13:58:03-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "27/10/2026|G263943|59 - TRAMITANDO",
-      "movimentacao_atual": "28/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "28/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
