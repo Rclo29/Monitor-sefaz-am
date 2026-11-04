@@ -1,29 +1,16 @@
 {
-  "ultima_verificacao": "2026-11-03T23:18:24-04:00",
-  "ultima_atualizacao": "2026-11-03T23:18:24-04:00",
+  "ultima_verificacao": "2026-11-03T23:19:22-04:00",
+  "ultima_atualizacao": "2026-11-03T23:19:22-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 3.5,
+  "duracao_segundos": 3.1,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 15,
+  "total_processos": 14,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 8,
+  "novos_alertas": 0,
   "processos": [
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "DEPARTAMENTO DE INFRAESTRUTURA - DEINFRA/SEDUC",
-      "assunto": "704 - SOLICITANDO CONTRATACAO",
-      "setor": "GECC",
-      "evento": "59 - TRAMITANDO",
-      "dataMovimentacao": "26/10/2026",
-      "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
-    },
     {
       "numero": "01.03.043201.004092/2026-14",
       "origem": "sefaz",
@@ -35,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -48,7 +35,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:22-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -61,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -74,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:22-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -87,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040369/2026-36",
@@ -100,7 +87,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040399/2026-42",
@@ -113,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:22-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040400/2026-39",
@@ -126,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -139,7 +126,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -152,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:23-04:00"
+      "consultado_em": "2026-11-03T23:19:20-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -165,7 +152,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:24-04:00"
+      "consultado_em": "2026-11-03T23:19:21-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -178,7 +165,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:24-04:00"
+      "consultado_em": "2026-11-03T23:19:21-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -191,7 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:24-04:00"
+      "consultado_em": "2026-11-03T23:19:22-04:00"
     },
     {
       "numero": "01.01.025101.041079/2026-00",
@@ -204,7 +191,7 @@
       "evento": "",
       "dataMovimentacao": "",
       "erro": "",
-      "consultado_em": "2026-11-03T23:18:24-04:00"
+      "consultado_em": "2026-11-03T23:19:21-04:00"
     }
   ],
   "alertas": [
@@ -680,72 +667,6 @@
       "data_movimentacao": "28/10/2026",
       "setor": "GSERV",
       "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-26T11:29:24-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "26/10/2026|UCI|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "26/10/2026|GECC|59 - TRAMITANDO",
-      "data_movimentacao": "26/10/2026",
-      "setor": "GECC",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-26T09:11:03-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "23/10/2026|GEOR|109 - PEDIDO DE DILIGENCIA",
-      "movimentacao_atual": "26/10/2026|UCI|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "26/10/2026",
-      "setor": "UCI",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-22T12:00:38-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "21/10/2026|G000050|269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI",
-      "movimentacao_atual": "22/10/2026|G184077|59 - TRAMITANDO",
-      "data_movimentacao": "22/10/2026",
-      "setor": "G184077",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-21T18:17:52-04:00",
-      "mensagem": "Nova movimentação: 269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI",
-      "movimentacao_anterior": "21/10/2026|G000134|269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI",
-      "movimentacao_atual": "21/10/2026|G000050|269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI",
-      "data_movimentacao": "21/10/2026",
-      "setor": "G000050",
-      "evento": "269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-21T18:15:09-04:00",
-      "mensagem": "Nova movimentação: 269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI",
-      "movimentacao_anterior": "21/10/2026|GEOR|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "21/10/2026|G000134|269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI",
-      "data_movimentacao": "21/10/2026",
-      "setor": "G000134",
-      "evento": "269 - VALIDAR REGISTRO DA NE NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.000655/2026-69",
-      "origem": "sefaz",
-      "data": "2026-10-21T15:23:20-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "08/10/2026|GEOR|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "21/10/2026|GEOR|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "21/10/2026",
-      "setor": "GEOR",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
