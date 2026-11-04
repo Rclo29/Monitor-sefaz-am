@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-03T23:20:27-04:00",
-  "ultima_atualizacao": "2026-11-03T23:20:27-04:00",
+  "ultima_verificacao": "2026-11-03T23:21:09-04:00",
+  "ultima_atualizacao": "2026-11-03T23:21:09-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 4.1,
+  "duracao_segundos": 8.8,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 15,
+  "total_processos": 14,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -35,7 +35,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "30/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:01-04:00"
     },
     {
       "numero": "01.01.028101.040369/2026-36",
@@ -87,7 +87,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.040399/2026-42",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:01-04:00"
     },
     {
       "numero": "01.01.028101.040400/2026-39",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -126,7 +126,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:01-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -139,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:25-04:00"
+      "consultado_em": "2026-11-03T23:21:02-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -152,7 +152,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:27-04:00"
+      "consultado_em": "2026-11-03T23:21:09-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -165,7 +165,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:27-04:00"
+      "consultado_em": "2026-11-03T23:21:09-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -178,20 +178,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:27-04:00"
-    },
-    {
-      "numero": "01.01.025101.041079/2026-00",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Não identificada",
-      "interessado": "",
-      "assunto": "",
-      "setor": "",
-      "evento": "",
-      "dataMovimentacao": "",
-      "erro": "",
-      "consultado_em": "2026-11-03T23:20:27-04:00"
+      "consultado_em": "2026-11-03T23:21:09-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -204,7 +191,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "03/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-03T23:20:27-04:00"
+      "consultado_em": "2026-11-03T23:21:09-04:00"
     }
   ],
   "alertas": [
