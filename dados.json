@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-11-05T16:45:43-04:00",
-  "ultima_atualizacao": "2026-11-05T16:45:43-04:00",
+  "ultima_verificacao": "2026-11-05T16:53:20-04:00",
+  "ultima_atualizacao": "2026-11-05T16:53:20-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 51.2,
+  "duracao_segundos": 87.3,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 10,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -35,7 +35,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +48,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +61,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,7 +74,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:55-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -87,7 +87,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:55-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -100,7 +100,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -113,7 +113,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:54-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -126,7 +126,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:44:54-04:00"
+      "consultado_em": "2026-11-05T16:51:55-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -138,9 +138,8 @@
       "setor": "PGM - PA",
       "evento": "GPG/PGM/P.A",
       "dataMovimentacao": "05/11/2026",
-      "erro": "Consulta remota SIGEDWEB indisponível no GitHub Actions; informações de 05/11/2026 conferidas por captura de tela, não atualizadas automaticamente.",
-      "consultado_em": "2026-11-05T16:45:43-04:00",
-      "fonte_ultima_movimentacao": "Captura de tela SIGEDWEB fornecida em 05/11/2026"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f8b8ada2270>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=8)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f8b8ac47500>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=8)')) | Falha...",
+      "consultado_em": "2026-11-05T16:53:20-04:00"
     }
   ],
   "alertas": [
