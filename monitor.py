@@ -1574,6 +1574,22 @@ def obter_html_semef(
                 )
             )
 
+        # Alternativa: rota Cloudflare (rede distinta do GitHub Actions).
+        # A rota precisa estar publicada antes de funcionar.
+        try:
+            proxy = "https://monitor-sefaz-am.8dryc8ph6w.workers.dev/siged-consulta"
+            resposta = sessao.get(
+                proxy,
+                params={"cod_protocolo": cod_protocolo},
+                timeout=(5, 18),
+            )
+            resposta.raise_for_status()
+            if resposta.content and resposta_semef_parece_valida(resposta.content):
+                return resposta.content
+            erros.append("Cloudflare respondeu sem histórico SIGED válido.")
+        except Exception as erro:
+            erros.append("Consulta alternativa Cloudflare: " + texto_limpo(erro))
+
         detalhe = " | ".join(
             erros
         )
