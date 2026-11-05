@@ -19,6 +19,7 @@ function gh(token) {
   return { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}`, "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "monitor-sefaz-am", "Content-Type": "application/json" };
 }
 function normalizarNumero(v) { return String(v || "").trim().replace(/\s+/g, ""); }
+function validarSemef(numero) { return /^\d{4}\.\d{5}\.\d{5}\.\d\.\d{6}$/.test(numero); }
 function validarSefaz(numero) { return /^\d{2}\.\d{2}\.\d{6}\.\d{6}\/\d{4}-\d{2}$/.test(numero); }
 function decode64(v) { const bin = atob(String(v || "").replace(/\n/g, "")); return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
 function encode64(v) { const bytes = new TextEncoder().encode(v); let bin = ""; for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode(...bytes.subarray(i, i + 8192)); return btoa(bin); }
@@ -28,7 +29,7 @@ async function lerProcessos(token) {
   if (!r.ok) throw new Error(`GitHub HTTP ${r.status}: ${await r.text()}`);
   const f = await r.json();
   const d = JSON.parse(decode64(f.content));
-  const processos = Array.isArray(d.processos) ? d.processos.map(item => typeof item === "string" ? { numero: normalizarNumero(item), origem: "sefaz" } : { numero: normalizarNumero(item?.numero), origem: "sefaz" }).filter(item => item.numero && validarSefaz(item.numero)) : [];
+  const processos = Array.isArray(d.processos) ? d.processos.map(item => typeof item === "string" ? { numero: normalizarNumero(item), origem: "sefaz" } : { numero: normalizarNumero(item?.numero), origem: item?.origem === "semef" ? "semef" : "sefaz", cod_protocolo: String(item?.cod_protocolo || "") }).filter(item => item.numero && (item.origem === "semef" ? validarSemef(item.numero) : validarSefaz(item.numero))) : [];
   return { sha: f.sha, processos };
 }
 async function gravarProcessos(token, processos, sha, message) {
@@ -41,10 +42,10 @@ async function dispararWorkflow(token) {
   const r = await fetch(`${API}/actions/workflows/monitor.yml/dispatches`, { method: "POST", headers: gh(token), body: JSON.stringify({ ref: BRANCH }) });
   return { ok: r.status === 204, statusGitHub: r.status, detalhe: r.status === 204 ? "" : await r.text() };
 }
-async function adicionar(token, numero) {
+async function adicionar(token, numero, origem = "sefaz", cod_protocolo = "") {
   const atual = await lerProcessos(token);
   if (atual.processos.some(p => p.numero === numero)) return { ok: false, erro: "Este processo já está cadastrado." };
-  const processos = [...atual.processos, { numero, origem: "sefaz" }];
+  const processos = [...atual.processos, { numero, origem, ...(origem === "semef" ? { cod_protocolo } : {}) }];
   await gravarProcessos(token, processos, atual.sha, `Adiciona processo ${numero}`);
   const workflow = await dispararWorkflow(token);
   return { ok: true, mensagem: "Processo SEFAZ adicionado.", numero, total: processos.length, consultaIniciada: workflow.ok };
@@ -73,8 +74,12 @@ export default {
         return json(r.ok ? { ok: true, mensagem: "Atualização iniciada." } : { ok: false, erro: "GitHub recusou a atualização.", ...r }, r.ok ? 200 : 500, origin);
       }
       if (acao === "adicionar") {
-        if (!validarSefaz(numero)) return json({ ok: false, erro: "Formato SEFAZ inválido. Exemplo: 01.01.028101.030037/2026-43" }, 400, origin);
-        const r = await adicionar(env.GITHUB_TOKEN, numero); return json(r, r.ok ? 200 : 400, origin);
+        const origem = String(body?.origem || "sefaz").toLowerCase();
+        const codigo = String(body?.cod_protocolo || "").trim();
+        if (origem !== "sefaz" && origem !== "semef") return json({ok:false,erro:"Origem inválida"},400,origin);
+        if (origem === "sefaz" && !validarSefaz(numero)) return json({ok:false,erro:"Formato SEFAZ inválido"},400,origin);
+        if (origem === "semef" && (!validarSemef(numero) || !/^\d+$/.test(codigo))) return json({ok:false,erro:"Informe número municipal e código SIGED válidos"},400,origin);
+        const r = await adicionar(env.GITHUB_TOKEN, numero, origem, codigo); return json(r, r.ok ? 200 : 400, origin);
       }
       if (acao === "excluir") {
         if (!numero) return json({ ok: false, erro: "Número do processo não informado." }, 400, origin);
