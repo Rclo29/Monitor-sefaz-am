@@ -132,14 +132,15 @@
       "numero": "2026.20000.20009.9.031822",
       "origem": "semef",
       "cod_protocolo": "11711333",
-      "situacao": "Não atualizado",
+      "situacao": "TRAMITANDO",
       "interessado": "",
       "assunto": "",
-      "setor": "",
-      "evento": "",
-      "dataMovimentacao": "",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f06ddb41580>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=8)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f06dc8421b0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=8)')) | Falha...",
-      "consultado_em": "2026-11-05T16:45:43-04:00"
+      "setor": "PGM - PA",
+      "evento": "GPG/PGM/P.A",
+      "dataMovimentacao": "05/11/2026",
+      "erro": "Consulta remota SIGEDWEB indisponível no GitHub Actions; informações de 05/11/2026 conferidas por captura de tela, não atualizadas automaticamente.",
+      "consultado_em": "2026-11-05T16:45:43-04:00",
+      "fonte_ultima_movimentacao": "Captura de tela SIGEDWEB fornecida em 05/11/2026"
     }
   ],
   "alertas": [
