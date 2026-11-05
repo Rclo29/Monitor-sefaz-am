@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-05T10:25:35-04:00",
-  "ultima_atualizacao": "2026-11-05T10:25:35-04:00",
+  "ultima_verificacao": "2026-11-05T10:34:18-04:00",
+  "ultima_atualizacao": "2026-11-05T10:34:18-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 4.1,
+  "duracao_segundos": 3.7,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 13,
+  "total_processos": 11,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:34-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -35,7 +35,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:34-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:33-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:33-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,33 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:34-04:00"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "05/11/2026",
-      "erro": "",
-      "consultado_em": "2026-11-05T10:25:34-04:00"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "05/11/2026",
-      "erro": "",
-      "consultado_em": "2026-11-05T10:25:33-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.040401/2026-83",
@@ -113,7 +87,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:34-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.040402/2026-28",
@@ -126,7 +100,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:33-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -139,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:33-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -152,7 +126,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:35-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -165,7 +139,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:35-04:00"
+      "consultado_em": "2026-11-05T10:34:17-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -178,7 +152,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:25:35-04:00"
+      "consultado_em": "2026-11-05T10:34:18-04:00"
     }
   ],
   "alertas": [
@@ -249,28 +223,6 @@
       "evento": "68 - SOBRESTADO"
     },
     {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-05T10:15:26-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "04/11/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_atual": "05/11/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "05/11/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
-      "origem": "sefaz",
-      "data": "2026-11-05T10:15:26-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "04/11/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_atual": "05/11/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "05/11/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
       "numero": "01.01.028101.040696/2026-98",
       "origem": "sefaz",
       "data": "2026-11-05T10:15:26-04:00",
@@ -370,28 +322,6 @@
       "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
     },
     {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-04T17:21:06-04:00",
-      "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_anterior": "04/11/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
-      "movimentacao_atual": "04/11/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "data_movimentacao": "04/11/2026",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
-      "origem": "sefaz",
-      "data": "2026-11-04T17:21:06-04:00",
-      "mensagem": "Nova movimentação: 191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "movimentacao_anterior": "04/11/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
-      "movimentacao_atual": "04/11/2026|G000050|191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI",
-      "data_movimentacao": "04/11/2026",
-      "setor": "G000050",
-      "evento": "191 - VALIDAR REGISTRO DE NL NO SISTEMA AFI"
-    },
-    {
       "numero": "01.01.028101.040591/2026-39",
       "origem": "sefaz",
       "data": "2026-11-04T17:21:06-04:00",
@@ -447,28 +377,6 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-04T16:29:40-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "04/11/2026|DEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "04/11/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
-      "data_movimentacao": "04/11/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
-      "origem": "sefaz",
-      "data": "2026-11-04T16:29:40-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "04/11/2026|DEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "04/11/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
-      "data_movimentacao": "04/11/2026",
-      "setor": "GEFIN/SEFAZ",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.041074/2026-87",
       "origem": "sefaz",
       "data": "2026-11-04T15:53:12-04:00",
@@ -492,28 +400,6 @@
     },
     {
       "numero": "01.01.028101.040401/2026-83",
-      "origem": "sefaz",
-      "data": "2026-11-04T15:53:12-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "04/11/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "04/11/2026|DEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "04/11/2026",
-      "setor": "DEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-04T15:53:12-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "04/11/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "04/11/2026|DEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "04/11/2026",
-      "setor": "DEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
       "origem": "sefaz",
       "data": "2026-11-04T15:53:12-04:00",
       "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
@@ -558,28 +444,6 @@
     },
     {
       "numero": "01.01.028101.040401/2026-83",
-      "origem": "sefaz",
-      "data": "2026-11-04T15:19:10-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "03/11/2026|G014150|59 - TRAMITANDO",
-      "movimentacao_atual": "04/11/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "04/11/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-04T15:19:10-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "03/11/2026|G014150|59 - TRAMITANDO",
-      "movimentacao_atual": "04/11/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "04/11/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
       "origem": "sefaz",
       "data": "2026-11-04T15:19:10-04:00",
       "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
@@ -667,28 +531,6 @@
       "evento": "59 - TRAMITANDO"
     },
     {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-03T23:18:24-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "03/11/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "03/11/2026|G014150|59 - TRAMITANDO",
-      "data_movimentacao": "03/11/2026",
-      "setor": "G014150",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
-      "origem": "sefaz",
-      "data": "2026-11-03T23:18:24-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "03/11/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "03/11/2026|G014150|59 - TRAMITANDO",
-      "data_movimentacao": "03/11/2026",
-      "setor": "G014150",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.040402/2026-28",
       "origem": "sefaz",
       "data": "2026-11-03T12:16:46-04:00",
@@ -701,28 +543,6 @@
     },
     {
       "numero": "01.01.028101.040401/2026-83",
-      "origem": "sefaz",
-      "data": "2026-11-03T12:16:46-04:00",
-      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_anterior": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "03/11/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "data_movimentacao": "03/11/2026",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-11-03T12:16:46-04:00",
-      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_anterior": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "03/11/2026|GECC|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "data_movimentacao": "03/11/2026",
-      "setor": "GECC",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
       "origem": "sefaz",
       "data": "2026-11-03T12:16:46-04:00",
       "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
@@ -843,28 +663,6 @@
       "evento": "190 - PARA ASSINATURA DIGITAL"
     },
     {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-10-29T17:13:19-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G249052",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
-      "origem": "sefaz",
-      "data": "2026-10-29T17:13:19-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "29/10/2026|G249052|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G249052",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
       "numero": "01.01.028101.040402/2026-28",
       "origem": "sefaz",
       "data": "2026-10-29T15:09:26-04:00",
@@ -877,28 +675,6 @@
     },
     {
       "numero": "01.01.028101.040401/2026-83",
-      "origem": "sefaz",
-      "data": "2026-10-29T15:09:26-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "28/10/2026|T015481|59 - TRAMITANDO",
-      "movimentacao_atual": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G012496",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-10-29T15:09:26-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "28/10/2026|T015481|59 - TRAMITANDO",
-      "movimentacao_atual": "29/10/2026|G012496|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G012496",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
       "origem": "sefaz",
       "data": "2026-10-29T15:09:26-04:00",
       "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
@@ -987,28 +763,6 @@
     },
     {
       "numero": "01.01.028101.040401/2026-83",
-      "origem": "sefaz",
-      "data": "2026-10-28T13:58:03-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "28/10/2026|T015481|59 - TRAMITANDO",
-      "data_movimentacao": "28/10/2026",
-      "setor": "T015481",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-10-28T13:58:03-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/10/2026|GSERV|59 - TRAMITANDO",
-      "movimentacao_atual": "28/10/2026|T015481|59 - TRAMITANDO",
-      "data_movimentacao": "28/10/2026",
-      "setor": "T015481",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
-      "numero": "01.01.028101.040399/2026-42",
       "origem": "sefaz",
       "data": "2026-10-28T13:58:03-04:00",
       "mensagem": "Nova movimentação: 59 - TRAMITANDO",
@@ -1028,17 +782,6 @@
       "data_movimentacao": "28/10/2026",
       "setor": "PROJUR-FEH",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
-      "numero": "01.01.028101.040400/2026-39",
-      "origem": "sefaz",
-      "data": "2026-10-28T11:26:54-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "28/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "28/10/2026|GSERV|59 - TRAMITANDO",
-      "data_movimentacao": "28/10/2026",
-      "setor": "GSERV",
-      "evento": "59 - TRAMITANDO"
     },
     {
       "numero": "01.03.043201.004092/2026-14",
