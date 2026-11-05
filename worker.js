@@ -48,7 +48,7 @@ async function adicionar(token, numero, origem = "sefaz", cod_protocolo = "") {
   const processos = [...atual.processos, { numero, origem, ...(origem === "semef" ? { cod_protocolo } : {}) }];
   await gravarProcessos(token, processos, atual.sha, `Adiciona processo ${numero}`);
   const workflow = await dispararWorkflow(token);
-  return { ok: true, mensagem: "Processo SEFAZ adicionado.", numero, total: processos.length, consultaIniciada: workflow.ok };
+  return { ok: true, mensagem: "Processo adicionado.", numero, total: processos.length, consultaIniciada: workflow.ok };
 }
 async function excluir(token, numero) {
   const atual = await lerProcessos(token);
