@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-11-05T16:07:09-04:00",
-  "ultima_atualizacao": "2026-11-05T16:07:09-04:00",
+  "ultima_verificacao": "2026-11-05T16:12:08-04:00",
+  "ultima_atualizacao": "2026-11-05T16:12:08-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.2,
+  "duracao_segundos": 49.7,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 10,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -35,7 +35,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +48,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:09-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +61,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,7 +74,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -87,7 +87,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -100,7 +100,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -113,7 +113,7 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:09-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -126,20 +126,20 @@
       "evento": "190 - PARA ASSINATURA DIGITAL",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T16:07:08-04:00"
+      "consultado_em": "2026-11-05T16:11:21-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
       "origem": "semef",
-      "cod_protocolo": "",
+      "cod_protocolo": "11711333",
       "situacao": "Não atualizado",
       "interessado": "",
       "assunto": "",
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "Processo SEMEF sem código de protocolo.",
-      "consultado_em": "2026-11-05T16:07:09-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f013492c110>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=8)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f0130742990>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=8)')) | Falha...",
+      "consultado_em": "2026-11-05T16:12:08-04:00"
     }
   ],
   "alertas": [
