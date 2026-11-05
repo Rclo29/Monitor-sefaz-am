@@ -1581,7 +1581,7 @@ def obter_html_semef(
             resposta = sessao.get(
                 proxy,
                 params={"cod_protocolo": cod_protocolo},
-                timeout=(5, 18),
+                timeout=(3, 8),
             )
             resposta.raise_for_status()
             if resposta.content and resposta_semef_parece_valida(resposta.content):
