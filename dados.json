@@ -1,6 +1,6 @@
 {
-  "ultima_verificacao": "2026-11-05T10:34:59-04:00",
-  "ultima_atualizacao": "2026-11-05T10:34:59-04:00",
+  "ultima_verificacao": "2026-11-05T10:38:25-04:00",
+  "ultima_atualizacao": "2026-11-05T10:38:25-04:00",
   "timezone": "America/Manaus",
   "duracao_segundos": 2.1,
   "tempo_excedido": false,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -35,7 +35,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +48,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +61,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,7 +74,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -87,7 +87,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -100,7 +100,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -113,7 +113,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -126,7 +126,7 @@
       "evento": "59 - TRAMITANDO",
       "dataMovimentacao": "05/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-05T10:34:59-04:00"
+      "consultado_em": "2026-11-05T10:38:25-04:00"
     }
   ],
   "alertas": [
