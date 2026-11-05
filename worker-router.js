@@ -102,6 +102,17 @@ export default {
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Max-Age": "86400" } });
     }
+    if (request.method === "GET" && url.pathname === "/siged-consulta") {
+      const codigo = url.searchParams.get("cod_protocolo") || "";
+      if (!/^\d{1,15}$/.test(codigo)) return json({ok:false,erro:"Código SIGED inválido"},400);
+      const destino = "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=" + encodeURIComponent(codigo);
+      try {
+        const resposta = await fetch(destino,{method:"GET",redirect:"follow",headers:{"Accept":"text/html,application/xhtml+xml","User-Agent":"Mozilla/5.0"}});
+        const html = await resposta.text();
+        if (!resposta.ok || !/Hist[oó]rico|Consulta de Documentos|DESPACHO MOVIMENTA/i.test(html)) return json({ok:false,erro:"SIGED não retornou a página de consulta",http:resposta.status},502);
+        return new Response(html,{status:200,headers:{"Content-Type":"text/html; charset=utf-8","Access-Control-Allow-Origin":"*","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
+      } catch(e) {return json({ok:false,erro:"SIGED inacessível a partir do Cloudflare",detalhe:String(e?.message||e)},502)}
+    }
     if (request.method === "GET" && url.pathname === "/health") {
       return json({ ok: true, service: "monitor-sefaz-am", mode: "sefaz-only", version: VERSION, github_token_configurado: Boolean(env.GITHUB_TOKEN), timestamp: new Date().toISOString() });
     }
