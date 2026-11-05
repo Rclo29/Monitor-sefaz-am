@@ -109,7 +109,7 @@ export default {
       try {
         const resposta = await fetch(destino,{method:"GET",redirect:"follow",headers:{"Accept":"text/html,application/xhtml+xml","User-Agent":"Mozilla/5.0"}});
         const html = await resposta.text();
-        if (!resposta.ok || !/Hist[oó]rico|Consulta de Documentos|DESPACHO MOVIMENTA/i.test(html)) return json({ok:false,erro:"SIGED não retornou a página de consulta",http:resposta.status},502);
+        if (!resposta.ok || !/Hist[oó]rico|Consulta de Documentos|DESPACHO MOVIMENTA/i.test(html)) { const titulo = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "").replace(/<[^>]+>/g," ").trim().slice(0,160); const texto = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi," ").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim().slice(0,280); return json({ok:false,erro:"SIGED não retornou a página de consulta",http:resposta.status,url_final:resposta.url,titulo,amostra:texto,tamanho:html.length},502); }
         return new Response(html,{status:200,headers:{"Content-Type":"text/html; charset=utf-8","Access-Control-Allow-Origin":"*","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
       } catch(e) {return json({ok:false,erro:"SIGED inacessível a partir do Cloudflare",detalhe:String(e?.message||e)},502)}
     }
