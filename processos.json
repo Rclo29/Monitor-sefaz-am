@@ -38,7 +38,9 @@
     },
     {
       "numero": "2026.20000.20009.9.031822",
-      "origem": "semef"
+      "origem": "semef",
+      "cod_protocolo": "11711333",
+      "url": "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333"
     }
   ]
 }
