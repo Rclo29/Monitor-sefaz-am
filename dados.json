@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-11-09T15:28:58-04:00",
-  "ultima_atualizacao": "2026-11-09T15:28:58-04:00",
+  "ultima_verificacao": "2026-11-09T18:33:31-04:00",
+  "ultima_atualizacao": "2026-11-09T18:33:31-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 18.0,
+  "duracao_segundos": 18.8,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 10,
   "erros": 1,
   "processos_nao_atualizados": 1,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 2,
   "processos": [
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:15-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -35,7 +35,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:15-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +48,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:16-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +61,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:15-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -71,10 +71,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN/SEFAZ",
-      "evento": "59 - TRAMITANDO",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:15-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -87,7 +87,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:15-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -100,7 +100,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:16-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -113,7 +113,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:42-04:00"
+      "consultado_em": "2026-11-09T18:33:16-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -123,10 +123,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN/SEFAZ",
-      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "evento": "185 - PARA CORRIGIR",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T15:28:43-04:00"
+      "consultado_em": "2026-11-09T18:33:15-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -138,11 +138,33 @@
       "setor": "PGM - PA",
       "evento": "GPG/PGM/P.A",
       "dataMovimentacao": "05/11/2026",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f34498d61e0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f34485d7da0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
-      "consultado_em": "2026-11-09T15:28:58-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f13443c9f10>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f134322ede0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
+      "consultado_em": "2026-11-09T18:33:31-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.041079/2026-00",
+      "origem": "sefaz",
+      "data": "2026-11-09T18:33:31-04:00",
+      "mensagem": "Nova movimentação: 185 - PARA CORRIGIR",
+      "movimentacao_anterior": "09/11/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_atual": "09/11/2026|GEFIN/SEFAZ|185 - PARA CORRIGIR",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "185 - PARA CORRIGIR"
+    },
+    {
+      "numero": "01.01.028101.040696/2026-98",
+      "origem": "sefaz",
+      "data": "2026-11-09T18:33:31-04:00",
+      "mensagem": "Nova movimentação: 192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "movimentacao_anterior": "09/11/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
+      "movimentacao_atual": "09/11/2026|GEFIN/SEFAZ|192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI"
+    },
     {
       "numero": "01.01.028101.041079/2026-00",
       "origem": "sefaz",
