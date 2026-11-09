@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-11-09T09:44:37-04:00",
-  "ultima_atualizacao": "2026-11-09T09:44:37-04:00",
+  "ultima_verificacao": "2026-11-09T14:38:22-04:00",
+  "ultima_atualizacao": "2026-11-09T14:38:22-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 19.1,
+  "duracao_segundos": 18.0,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 10,
   "erros": 1,
   "processos_nao_atualizados": 1,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 0,
+  "novos_alertas": 6,
   "processos": [
     {
       "numero": "01.03.043201.004092/2026-14",
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:05-04:00"
     },
     {
       "numero": "01.01.028101.040590/2026-94",
@@ -32,10 +32,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "06/11/2026",
+      "evento": "68 - SOBRESTADO",
+      "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:06-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -45,10 +45,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "06/11/2026",
+      "evento": "68 - SOBRESTADO",
+      "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:06-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -58,10 +58,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "06/11/2026",
+      "evento": "68 - SOBRESTADO",
+      "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:21-04:00"
+      "consultado_em": "2026-11-09T14:38:05-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,7 +74,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "06/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:05-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -83,11 +83,11 @@
       "situacao": "Aberto",
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "06/11/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "59 - TRAMITANDO",
+      "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:21-04:00"
+      "consultado_em": "2026-11-09T14:38:05-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -97,10 +97,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "06/11/2026",
+      "evento": "68 - SOBRESTADO",
+      "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:06-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -110,10 +110,10 @@
       "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
       "assunto": "137 - PAGAMENTO DE FORNECEDORES",
       "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "dataMovimentacao": "06/11/2026",
+      "evento": "68 - SOBRESTADO",
+      "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:05-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -126,7 +126,7 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "dataMovimentacao": "06/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T09:44:20-04:00"
+      "consultado_em": "2026-11-09T14:38:05-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -138,11 +138,77 @@
       "setor": "PGM - PA",
       "evento": "GPG/PGM/P.A",
       "dataMovimentacao": "05/11/2026",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f5d923cdd30>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f5d9018dfd0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
-      "consultado_em": "2026-11-09T09:44:37-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f684196d8b0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7f684196d700>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
+      "consultado_em": "2026-11-09T14:38:22-04:00"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.01.028101.041074/2026-87",
+      "origem": "sefaz",
+      "data": "2026-11-09T14:38:22-04:00",
+      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
+      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "09/11/2026|GEFIN|68 - SOBRESTADO",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN",
+      "evento": "68 - SOBRESTADO"
+    },
+    {
+      "numero": "01.01.028101.041073/2026-32",
+      "origem": "sefaz",
+      "data": "2026-11-09T14:38:22-04:00",
+      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
+      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "09/11/2026|GEFIN|68 - SOBRESTADO",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN",
+      "evento": "68 - SOBRESTADO"
+    },
+    {
+      "numero": "01.01.028101.041072/2026-98",
+      "origem": "sefaz",
+      "data": "2026-11-09T14:38:22-04:00",
+      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
+      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "09/11/2026|GEFIN/SEFAZ|59 - TRAMITANDO",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN/SEFAZ",
+      "evento": "59 - TRAMITANDO"
+    },
+    {
+      "numero": "01.01.028101.040591/2026-39",
+      "origem": "sefaz",
+      "data": "2026-11-09T14:38:22-04:00",
+      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
+      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "09/11/2026|GEFIN|68 - SOBRESTADO",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN",
+      "evento": "68 - SOBRESTADO"
+    },
+    {
+      "numero": "01.01.028101.040692/2026-00",
+      "origem": "sefaz",
+      "data": "2026-11-09T14:38:22-04:00",
+      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
+      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "09/11/2026|GEFIN|68 - SOBRESTADO",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN",
+      "evento": "68 - SOBRESTADO"
+    },
+    {
+      "numero": "01.01.028101.040590/2026-94",
+      "origem": "sefaz",
+      "data": "2026-11-09T14:38:22-04:00",
+      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
+      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_atual": "09/11/2026|GEFIN|68 - SOBRESTADO",
+      "data_movimentacao": "09/11/2026",
+      "setor": "GEFIN",
+      "evento": "68 - SOBRESTADO"
+    },
     {
       "numero": "01.01.028101.041079/2026-00",
       "origem": "sefaz",
