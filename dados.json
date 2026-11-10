@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-09T21:09:04-04:00",
-  "ultima_atualizacao": "2026-11-09T21:09:04-04:00",
+  "ultima_verificacao": "2026-11-09T21:25:05-04:00",
+  "ultima_atualizacao": "2026-11-09T21:25:05-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 19.6,
+  "duracao_segundos": 18.9,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 10,
+  "total_processos": 9,
   "erros": 1,
   "processos_nao_atualizados": 1,
   "processos_tempo_excedido": 0,
@@ -22,20 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
-    },
-    {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "cod_protocolo": "",
-      "situacao": "Aberto",
-      "interessado": "PLATINA SERVICOS DE ENGENHARIA LTDA",
-      "assunto": "137 - PAGAMENTO DE FORNECEDORES",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO",
-      "dataMovimentacao": "09/11/2026",
-      "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.040692/2026-00",
@@ -48,7 +35,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.040591/2026-39",
@@ -61,7 +48,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.040696/2026-98",
@@ -74,7 +61,7 @@
       "evento": "192 - REGISTRO DE NL VALIDADO NO SISTEMA AFI",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.041072/2026-98",
@@ -87,7 +74,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.041073/2026-32",
@@ -100,7 +87,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.041074/2026-87",
@@ -113,7 +100,7 @@
       "evento": "68 - SOBRESTADO",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "01.01.028101.041079/2026-00",
@@ -126,7 +113,7 @@
       "evento": "185 - PARA CORRIGIR",
       "dataMovimentacao": "09/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-09T21:08:48-04:00"
+      "consultado_em": "2026-11-09T21:24:48-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -138,8 +125,8 @@
       "setor": "PGM - PA",
       "evento": "GPG/PGM/P.A",
       "dataMovimentacao": "05/11/2026",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe6b54d1d90>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe6b54affe0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
-      "consultado_em": "2026-11-09T21:09:04-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe91e5655e0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7fe91e3eee70>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
+      "consultado_em": "2026-11-09T21:25:05-04:00"
     }
   ],
   "alertas": [
@@ -243,17 +230,6 @@
       "evento": "68 - SOBRESTADO"
     },
     {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-11-09T14:38:22-04:00",
-      "mensagem": "Nova movimentação: 68 - SOBRESTADO",
-      "movimentacao_anterior": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "09/11/2026|GEFIN|68 - SOBRESTADO",
-      "data_movimentacao": "09/11/2026",
-      "setor": "GEFIN",
-      "evento": "68 - SOBRESTADO"
-    },
-    {
       "numero": "01.01.028101.041079/2026-00",
       "origem": "sefaz",
       "data": "2026-11-06T09:57:13-04:00",
@@ -331,17 +307,6 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-11-06T09:57:13-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "05/11/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "06/11/2026|GEFIN|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "06/11/2026",
-      "setor": "GEFIN",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
       "numero": "01.01.028101.041079/2026-00",
       "origem": "sefaz",
       "data": "2026-11-05T12:11:25-04:00",
@@ -409,17 +374,6 @@
     },
     {
       "numero": "01.01.028101.040692/2026-00",
-      "origem": "sefaz",
-      "data": "2026-11-05T12:11:25-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "05/11/2026|G014150|59 - TRAMITANDO",
-      "movimentacao_atual": "05/11/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "05/11/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040590/2026-94",
       "origem": "sefaz",
       "data": "2026-11-05T12:11:25-04:00",
       "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
@@ -507,17 +461,6 @@
       "evento": "59 - TRAMITANDO"
     },
     {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-11-05T10:15:26-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "04/11/2026|G249052|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_atual": "05/11/2026|G014150|59 - TRAMITANDO",
-      "data_movimentacao": "05/11/2026",
-      "setor": "G014150",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.041079/2026-00",
       "origem": "sefaz",
       "data": "2026-11-04T17:21:06-04:00",
@@ -562,17 +505,6 @@
       "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
     },
     {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-11-04T17:21:06-04:00",
-      "mensagem": "Nova movimentação: 50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "movimentacao_anterior": "04/11/2026|G027346|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "04/11/2026|G249052|50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
-      "data_movimentacao": "04/11/2026",
-      "setor": "G249052",
-      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO"
-    },
-    {
       "numero": "01.01.028101.041072/2026-98",
       "origem": "sefaz",
       "data": "2026-11-04T16:29:40-04:00",
@@ -589,17 +521,6 @@
       "data": "2026-11-04T15:53:12-04:00",
       "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "movimentacao_anterior": "03/11/2026|G233752|59 - TRAMITANDO",
-      "movimentacao_atual": "04/11/2026|G027346|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "04/11/2026",
-      "setor": "G027346",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-11-04T15:53:12-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "30/10/2026|G233752|59 - TRAMITANDO",
       "movimentacao_atual": "04/11/2026|G027346|245 - PARA ANÁLISE E PROVIDÊNCIAS",
       "data_movimentacao": "04/11/2026",
       "setor": "G027346",
@@ -705,17 +626,6 @@
       "evento": "59 - TRAMITANDO"
     },
     {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-10-31T13:46:49-04:00",
-      "mensagem": "Nova movimentação: 59 - TRAMITANDO",
-      "movimentacao_anterior": "29/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_atual": "30/10/2026|G233752|59 - TRAMITANDO",
-      "data_movimentacao": "30/10/2026",
-      "setor": "G233752",
-      "evento": "59 - TRAMITANDO"
-    },
-    {
       "numero": "01.01.028101.040696/2026-98",
       "origem": "sefaz",
       "data": "2026-10-30T07:49:40-04:00",
@@ -739,17 +649,6 @@
     },
     {
       "numero": "01.01.028101.040692/2026-00",
-      "origem": "sefaz",
-      "data": "2026-10-30T07:49:40-04:00",
-      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "movimentacao_anterior": "29/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_atual": "29/10/2026|DEINFRA|245 - PARA ANÁLISE E PROVIDÊNCIAS",
-      "data_movimentacao": "29/10/2026",
-      "setor": "DEINFRA",
-      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
-    },
-    {
-      "numero": "01.01.028101.040590/2026-94",
       "origem": "sefaz",
       "data": "2026-10-30T07:49:40-04:00",
       "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
@@ -787,17 +686,6 @@
       "data": "2026-10-29T15:09:26-04:00",
       "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
       "movimentacao_anterior": "28/10/2026|G274461|59 - TRAMITANDO",
-      "movimentacao_atual": "29/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
-      "data_movimentacao": "29/10/2026",
-      "setor": "G257068",
-      "evento": "190 - PARA ASSINATURA DIGITAL"
-    },
-    {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz",
-      "data": "2026-10-29T15:09:26-04:00",
-      "mensagem": "Nova movimentação: 190 - PARA ASSINATURA DIGITAL",
-      "movimentacao_anterior": "27/10/2026|G274461|59 - TRAMITANDO",
       "movimentacao_atual": "29/10/2026|G257068|190 - PARA ASSINATURA DIGITAL",
       "data_movimentacao": "29/10/2026",
       "setor": "G257068",
