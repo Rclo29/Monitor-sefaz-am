@@ -2,45 +2,48 @@
   "processos": [
     {
       "numero": "01.03.043201.004092/2026-14",
-      "origem": "sefaz"
-    },
-    {
-      "numero": "01.01.028101.040590/2026-94",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.040692/2026-00",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.040591/2026-39",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.040696/2026-98",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.041072/2026-98",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.041073/2026-32",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.041074/2026-87",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "01.01.028101.041079/2026-00",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
     },
     {
       "numero": "2026.20000.20009.9.031822",
       "origem": "semef",
-      "cod_protocolo": "11711333",
-      "url": "https://sigedweb.manaus.am.gov.br/protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333"
+      "cod_protocolo": "11711333"
     }
   ]
 }
