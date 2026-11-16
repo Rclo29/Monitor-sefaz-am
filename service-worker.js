@@ -1,5 +1,5 @@
 /* Monitor SEFAZ-AM: rede sempre atualizada, sem injeção de scripts. */
-const CACHE_NAME = "monitor-clean-v25";
+const CACHE_NAME = "monitor-clean-v26";
 self.addEventListener("install", event => { self.skipWaiting(); });
 self.addEventListener("activate", event => { event.waitUntil((async () => { const keys = await caches.keys(); await Promise.all(keys.map(k => caches.delete(k))); await self.clients.claim(); })()); });
 self.addEventListener("fetch", event => {
