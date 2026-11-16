@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-16T10:24:57-04:00",
-  "ultima_atualizacao": "2026-11-16T10:24:57-04:00",
+  "ultima_verificacao": "2026-11-16T12:12:58-04:00",
+  "ultima_atualizacao": "2026-11-16T12:12:58-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 1.6,
+  "duracao_segundos": 1.5,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 3,
+  "total_processos": 4,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-16T10:24:57-04:00"
+      "consultado_em": "2026-11-16T12:12:58-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -50,6 +50,20 @@
       "dataMovimentacao": "",
       "erro": "",
       "consultado_em": "2026-11-16T10:12:45-04:00",
+      "modo_consulta": "direta"
+    },
+    {
+      "numero": "2026.18000.19951.0.033759",
+      "origem": "semef",
+      "cod_protocolo": "11820750",
+      "situacao": "Consulta direta",
+      "interessado": "",
+      "assunto": "",
+      "setor": "",
+      "evento": "",
+      "dataMovimentacao": "",
+      "erro": "",
+      "consultado_em": "",
       "modo_consulta": "direta"
     }
   ],
