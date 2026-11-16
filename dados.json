@@ -1,13 +1,13 @@
 {
-  "ultima_verificacao": "2026-11-16T10:23:31-04:00",
-  "ultima_atualizacao": "2026-11-16T10:23:31-04:00",
+  "ultima_verificacao": "2026-11-16T10:24:57-04:00",
+  "ultima_atualizacao": "2026-11-16T10:24:57-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 9.8,
+  "duracao_segundos": 1.6,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 3,
-  "erros": 1,
-  "processos_nao_atualizados": 1,
+  "erros": 0,
+  "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
   "novos_alertas": 0,
   "processos": [
@@ -21,8 +21,8 @@
       "setor": "PROJUR-FEH",
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
-      "erro": "HTTPSConnectionPool(host='online.sefaz.am.gov.br', port=443): Read timed out. (read timeout=8)",
-      "consultado_em": "2026-11-16T10:23:31-04:00"
+      "erro": "",
+      "consultado_em": "2026-11-16T10:24:57-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
