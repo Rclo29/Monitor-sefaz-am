@@ -2528,7 +2528,9 @@ def main():
     fila_entrada = queue.Queue()
     fila_saida = queue.Queue()
 
-    for cadastro in cadastros:
+    consultas = [c for c in cadastros if c.get("origem") != "semef"]
+
+    for cadastro in consultas:
 
         fila_entrada.put(
             cadastro
@@ -2537,7 +2539,7 @@ def main():
     quantidade_workers = min(
         MAX_WORKERS,
         len(
-            cadastros
+            consultas
         ),
     )
 
@@ -2573,7 +2575,7 @@ def main():
         )
         <
         len(
-            cadastros
+            consultas
         )
     ):
 
@@ -2633,6 +2635,15 @@ def main():
         anterior = mapa_anterior.get(
             numero
         )
+
+        if cadastro.get("origem") == "semef":
+            # Cadastro visual: não acessa o SIGED nem registra tentativa/sucesso.
+            atual = {**estrutura_vazia(cadastro), **(anterior or {}), **cadastro}
+            atual.update(erro="", modo_consulta="direta")
+            if atual.get("situacao") in ("", "Não atualizado", "Aguardando primeira consulta"):
+                atual["situacao"] = "Consulta direta"
+            processos_finais.append(atual)
+            continue
 
         resposta = recebidos.get(
             numero
