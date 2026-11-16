@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-11-16T10:03:21-04:00",
-  "ultima_atualizacao": "2026-11-16T10:03:21-04:00",
+  "ultima_verificacao": "2026-11-16T10:12:45-04:00",
+  "ultima_atualizacao": "2026-11-16T10:12:45-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 17.5,
+  "duracao_segundos": 39.7,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 3,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-16T10:03:05-04:00"
+      "consultado_em": "2026-11-16T10:12:08-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -34,8 +34,8 @@
       "setor": "PGM - PA",
       "evento": "GPG/PGM/P.A",
       "dataMovimentacao": "05/11/2026",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7ca7d9f7f500>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7ca7d8e49580>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
-      "consultado_em": "2026-11-16T10:03:21-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x70aeb9aa7a10>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x70aeb8970b30>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)')) | Fal...",
+      "consultado_em": "2026-11-16T10:12:45-04:00"
     },
     {
       "numero": "2026.20000.20011.9.034126",
@@ -47,8 +47,8 @@
       "setor": "",
       "evento": "",
       "dataMovimentacao": "",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11825210 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7ca7d9f7fb60>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7ca7da9c6ed0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
-      "consultado_em": "2026-11-16T10:03:21-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11825210 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x70aeb9aa7740>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x70aeb8971520>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=10)')) | Fal...",
+      "consultado_em": "2026-11-16T10:12:45-04:00"
     }
   ],
   "alertas": [
