@@ -1,13 +1,13 @@
 {
-  "ultima_verificacao": "2026-11-16T08:34:14-04:00",
-  "ultima_atualizacao": "2026-11-16T08:34:14-04:00",
+  "ultima_verificacao": "2026-11-16T10:02:01-04:00",
+  "ultima_atualizacao": "2026-11-16T10:02:01-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 18.7,
+  "duracao_segundos": 17.5,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 2,
-  "erros": 1,
-  "processos_nao_atualizados": 1,
+  "total_processos": 3,
+  "erros": 2,
+  "processos_nao_atualizados": 2,
   "processos_tempo_excedido": 0,
   "novos_alertas": 0,
   "processos": [
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-16T08:33:58-04:00"
+      "consultado_em": "2026-11-16T10:01:45-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
@@ -34,8 +34,21 @@
       "setor": "PGM - PA",
       "evento": "GPG/PGM/P.A",
       "dataMovimentacao": "05/11/2026",
-      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7b7643562fc0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7b7643561e80>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
-      "consultado_em": "2026-11-16T08:34:14-04:00"
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11711333 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7e980777eae0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7e98080b0b60>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
+      "consultado_em": "2026-11-16T10:02:01-04:00"
+    },
+    {
+      "numero": "2026.20000.20011.9.034126",
+      "origem": "semef",
+      "cod_protocolo": "11825210",
+      "situacao": "Não atualizado",
+      "interessado": "",
+      "assunto": "",
+      "setor": "",
+      "evento": "",
+      "dataMovimentacao": "",
+      "erro": "Não foi possível consultar a SEMEF após as tentativas disponíveis. Falha no acesso direto: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/detalhe.aspx?origem=1&cod_protocolo=11825210 (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7e980777f7d0>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha ao abrir a página inicial: HTTPSConnectionPool(host='sigedweb.manaus.am.gov.br', port=443): Max retries exceeded with url: /protonweb/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='sigedweb.manaus.am.gov.br', port=443) at 0x7e9804644c20>, 'Connection to sigedweb.manaus.am.gov.br timed out. (connect timeout=3)')) | Falha...",
+      "consultado_em": "2026-11-16T10:02:01-04:00"
     }
   ],
   "alertas": [
