@@ -1,8 +1,8 @@
 {
-  "ultima_verificacao": "2026-11-16T12:13:36-04:00",
-  "ultima_atualizacao": "2026-11-16T12:13:36-04:00",
+  "ultima_verificacao": "2026-11-17T08:05:55-04:00",
+  "ultima_atualizacao": "2026-11-17T08:05:55-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.5,
+  "duracao_segundos": 2.0,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 4,
@@ -22,7 +22,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "28/10/2026",
       "erro": "",
-      "consultado_em": "2026-11-16T12:13:36-04:00"
+      "consultado_em": "2026-11-17T08:05:55-04:00"
     },
     {
       "numero": "2026.20000.20009.9.031822",
