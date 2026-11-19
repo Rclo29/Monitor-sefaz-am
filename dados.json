@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-19T13:01:15-04:00",
-  "ultima_atualizacao": "2026-11-19T13:01:15-04:00",
+  "ultima_verificacao": "2026-11-19T14:36:55-04:00",
+  "ultima_atualizacao": "2026-11-19T14:36:55-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 0.0,
+  "duracao_segundos": 2.7,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 3,
+  "total_processos": 4,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -52,6 +52,19 @@
       "erro": "",
       "consultado_em": "",
       "modo_consulta": "direta"
+    },
+    {
+      "numero": "01.03.043201.010026/2026-83",
+      "origem": "sefaz",
+      "cod_protocolo": "",
+      "situacao": "Aberto",
+      "interessado": "SUPERINTENDÊNCIA ESTADUAL DE HABITAÇÃO - SUHAB",
+      "assunto": "1028 - RECEBIMENTOS DE OFÍCIOS",
+      "setor": "DITEC",
+      "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
+      "dataMovimentacao": "19/11/2026",
+      "erro": "",
+      "consultado_em": "2026-11-19T14:36:55-04:00"
     }
   ],
   "alertas": []
