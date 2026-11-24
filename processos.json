@@ -17,7 +17,13 @@
     },
     {
       "numero": "01.03.043201.010026/2026-83",
-      "origem": "sefaz"
+      "origem": "sefaz",
+      "cod_protocolo": ""
+    },
+    {
+      "numero": "2026.18000.19951.0.034365",
+      "origem": "semef",
+      "cod_protocolo": "11843828"
     }
   ]
 }
