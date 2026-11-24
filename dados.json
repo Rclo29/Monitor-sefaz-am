@@ -1,15 +1,15 @@
 {
-  "ultima_verificacao": "2026-11-24T12:32:27-04:00",
-  "ultima_atualizacao": "2026-11-24T12:32:27-04:00",
+  "ultima_verificacao": "2026-11-24T12:32:45-04:00",
+  "ultima_atualizacao": "2026-11-24T12:32:45-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.3,
+  "duracao_segundos": 1.8,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
   "total_processos": 5,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
-  "novos_alertas": 1,
+  "novos_alertas": 0,
   "processos": [
     {
       "numero": "2026.20000.20009.9.031822",
@@ -64,7 +64,7 @@
       "evento": "50 - CONHECIMENTO E PROVIDENCIAS, NOS TERMOS DO DESPACHO ANEXO",
       "dataMovimentacao": "24/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-24T12:32:27-04:00"
+      "consultado_em": "2026-11-24T12:32:45-04:00"
     },
     {
       "numero": "2026.18000.19951.0.034365",
