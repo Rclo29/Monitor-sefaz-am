@@ -1,11 +1,11 @@
 {
-  "ultima_verificacao": "2026-11-24T15:53:15-04:00",
-  "ultima_atualizacao": "2026-11-24T15:53:15-04:00",
+  "ultima_verificacao": "2026-11-27T12:49:42-04:00",
+  "ultima_atualizacao": "2026-11-27T12:49:42-04:00",
   "timezone": "America/Manaus",
-  "duracao_segundos": 2.4,
+  "duracao_segundos": 2.1,
   "tempo_excedido": false,
   "limite_execucao_segundos": 120,
-  "total_processos": 4,
+  "total_processos": 5,
   "erros": 0,
   "processos_nao_atualizados": 0,
   "processos_tempo_excedido": 0,
@@ -46,11 +46,11 @@
       "situacao": "Aberto",
       "interessado": "SUPERINTENDÊNCIA ESTADUAL DE HABITAÇÃO - SUHAB",
       "assunto": "1028 - RECEBIMENTOS DE OFÍCIOS",
-      "setor": "PROJUR",
-      "evento": "2 - ACOMPANHAR PROCESSAMENTO E ENCAMINHAR AO SETOR",
-      "dataMovimentacao": "24/11/2026",
+      "setor": "G267177",
+      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "dataMovimentacao": "27/11/2026",
       "erro": "",
-      "consultado_em": "2026-11-24T15:53:15-04:00"
+      "consultado_em": "2026-11-27T12:49:42-04:00"
     },
     {
       "numero": "2026.18000.19951.0.034365",
@@ -65,9 +65,34 @@
       "erro": "",
       "consultado_em": "",
       "modo_consulta": "direta"
+    },
+    {
+      "numero": "2026.20000.20025.9.035396",
+      "origem": "semef",
+      "cod_protocolo": "11878670",
+      "situacao": "Consulta direta",
+      "interessado": "",
+      "assunto": "",
+      "setor": "",
+      "evento": "",
+      "dataMovimentacao": "",
+      "erro": "",
+      "consultado_em": "",
+      "modo_consulta": "direta"
     }
   ],
   "alertas": [
+    {
+      "numero": "01.03.043201.010026/2026-83",
+      "origem": "sefaz",
+      "data": "2026-11-27T12:49:42-04:00",
+      "mensagem": "Nova movimentação: 245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "movimentacao_anterior": "24/11/2026|PROJUR|2 - ACOMPANHAR PROCESSAMENTO E ENCAMINHAR AO SETOR",
+      "movimentacao_atual": "27/11/2026|G267177|245 - PARA ANÁLISE E PROVIDÊNCIAS",
+      "data_movimentacao": "27/11/2026",
+      "setor": "G267177",
+      "evento": "245 - PARA ANÁLISE E PROVIDÊNCIAS"
+    },
     {
       "numero": "01.03.043201.010026/2026-83",
       "origem": "sefaz",
